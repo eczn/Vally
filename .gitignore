@@ -1,0 +1,4 @@
+/node_modules/*
+/bower_components/*
+/src/lib/app.js
+/src/lib/router.js
