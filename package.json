@@ -1,0 +1,40 @@
+{
+  "name": "aValley",
+  "version": "1.0.0",
+  "description": "blog app based on vue",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "eczn",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-runtime": "^6.9.2",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.9.0",
+    "gulp": "^3.9.1",
+    "gulp-collector": "^0.1.0",
+    "gulp-connect": "^4.2.0",
+    "gulp-rev": "^7.1.0",
+    "gulp-rev-append": "^0.1.6",
+    "gulp-rev-collector": "^1.0.5",
+    "gulp-uglify": "^1.5.4",
+    "gulp-webpack": "^1.5.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "vinyl-named": "^1.1.0",
+    "vue": "^1.0.26",
+    "vue-hot-reload-api": "^1.3.3",
+    "vue-html-loader": "^1.2.3",
+    "vue-loader": "^8.5.3",
+    "vue-resource": "^0.9.3",
+    "vue-router": "^0.7.13",
+    "vue-style-loader": "^1.0.0",
+    "vue-validator": "^2.1.4",
+    "webpack": "^1.13.1"
+  }
+}
