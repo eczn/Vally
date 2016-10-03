@@ -2,9 +2,10 @@
 <style>
 	.btn-A {
 		font-size: .6rem;
-		border: 1px solid #555;
+		border: 2px dashed #555;
 		padding: .3rem .5rem;
 		border-radius: 16px;
+		cursor: pointer;
 	}
 </style>
 

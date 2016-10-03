@@ -4,6 +4,8 @@
 		position: relative;
 		width: 80%;
 		margin: 0 auto;
+		filter: blur(0px);
+		transition: all 1.5s;
 		/*min-height: 100%;*/
 	}
 
@@ -12,11 +14,19 @@
 		margin: 0;
 		padding: 0;
 	}
+
+	.addBlur {
+		filter: blur(20px);
+		transition: all 1.5s;
+	}
 </style>
 
 <template>
-	<div class="container">
-		<router-view></router-view>
+	<div>
+		<div id="main-body" class="container">
+			<router-view></router-view>
+		
+		</div>
 		<v-footer></v-footer>
 	</div>
 </template>

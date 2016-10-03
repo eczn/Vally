@@ -53,14 +53,14 @@
 	<div class="blog-list-container">
 		<v-header position="first"></v-header>
 		<ul class="blog-list-ul">
-			<li class="blog-list-li" v-for="elem in blogList">
+			<li v-on:click="showBlog" class="blog-list-li" v-for="elem in blogList">
 				<!-- {{elem.id}} -->
 				<h2>{{elem.title}}</h2>
-				<p>{{elem.body}}</p>
-				
+				<!-- this is the intro of the body -->
+				<p>{{elem.body.slice(0,25)}}</p>
 			</li>
 		</ul>
-		
+
 		<div style="margin: 0 auto;margin-top: 1.5rem;text-align: center;">
 			<div class="pageNum">
 				<span>1</span>
@@ -124,6 +124,9 @@
 		methods: {
 			sortById: function(a, b){
 				return a.id - b.id;
+			},
+			showBlog: function(){
+
 			}
 		}
 	}

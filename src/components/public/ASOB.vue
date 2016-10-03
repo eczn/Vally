@@ -1,7 +1,7 @@
 <!-- ASOB.vue -->
 <style>
 	.asob-container {
-
+		
 	}
 	.asob-container > div {
 		text-align: center;
