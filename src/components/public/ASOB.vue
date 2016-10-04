@@ -1,11 +1,11 @@
 <!-- ASOB.vue -->
 <style>
 	.asob-container {
-		
+		margin: 1rem 10%;		
 	}
 	.asob-container > div {
 		text-align: center;
-		margin: 1rem;
+
 	}
 </style>
 

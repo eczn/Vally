@@ -1,11 +1,11 @@
 <style>
 	.container{
 		/*display: flex;*/
-		position: relative;
+		/*position: relative;
 		width: 80%;
 		margin: 0 auto;
-		filter: blur(0px);
-		transition: all 1.5s;
+		filter: blur(0px);*/
+		/*transition: all 1.5s;*/
 		/*min-height: 100%;*/
 	}
 

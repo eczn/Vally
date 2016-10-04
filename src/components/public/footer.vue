@@ -4,7 +4,7 @@
 		width: 6rem;
 		margin: 0 auto;
 		padding-top: .1rem;
-		font-size: .1rem;
+		font-size: .2rem;
 		margin-top: 2rem;
 		border-radius: 6rem / 1rem;
 		border-top: 2px dashed rgb(93, 93, 93);
