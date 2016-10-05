@@ -10,9 +10,10 @@
 	}
 
 	* {
-		font-family: "Microsoft Yahei";
+		/*font-family: "Microsoft Yahei";*/
 		margin: 0;
 		padding: 0;
+		font-family: "Hiragino Sans GB", "microsoft yahei", "WenQuanYi Microhei", "黑体";
 	}
 
 	h1 {
