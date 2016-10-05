@@ -59,14 +59,12 @@
 <template>
 	<div style="margin: 0 10%;" class="blog-list-container">
 		<v-header position="first"></v-header>
+
 		<div v-if="isShow==false" class="list-container">
 			<ul class="blog-list-ul">
 				<li v-on:click="showBlog($index)" class="blog-list-li" v-for="elem in blogList">
-					<!-- {{elem.id}} -->
 					<h1>{{elem.title}}</h1>
-					<!-- this is the intro of the body -->
-					<!-- <p>{{elem.body.slice(0,25)}}</p> -->
-					<p>{{elem.body}}</p>
+					<p>{{elem.body.slice(0, 26) + "......."}}</p>
 				</li>
 			</ul>
 
@@ -155,6 +153,8 @@
 						// alert('Ajax error!')
 						// do nothing
 						// console.log(xhr);
+						console.log(xhr);
+						console.log(type);
 					}
 				});
 			},
@@ -171,4 +171,8 @@
 			}
 		}
 	}
+
+
+
+
 </script>
