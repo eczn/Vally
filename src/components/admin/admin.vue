@@ -9,7 +9,6 @@
 	<div class="admin-container">
 		<v-header position="admin"></v-header>
 		<router-view></router-view>
-
 	</div>
 </template>
 
