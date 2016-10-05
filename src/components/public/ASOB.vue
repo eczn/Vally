@@ -14,8 +14,8 @@
 		<v-header position="asob"></v-header>
 		<div>
 			<h2>fortunately, i</h2>
-			<h2>make this for blogging</h2>
-			<btn style="margin-top: 1.5rem;" btntype="A" text="Hack in here"></btn>
+			<h2 style="margin-bottom: 1.5rem;">make this for blogging</h2>
+			<btn btntype="A" text="Hack in here"></btn>
 		</div>
 	</div>
 </template>

@@ -10,10 +10,6 @@
 		margin: .5rem 0;
 	}
 
-	.blog-list-li > h2 {
-		color: #222;
-	}
-
 	.blog-list-li > p {
 		color: #555;
 	}
@@ -44,8 +40,8 @@
 	}
 
 	.pageNum:hover {
-		color: rgba(97, 83, 120, .7);
-		border: 3px dotted rgba(59, 59, 70, .309);
+		/*color: rgba(97, 83, 120, .7);*/
+		/*border: 3px dotted rgba(59, 59, 70, .309);*/
 		/*border: 2px dashed #555;*/
 		transition: all .3s;
 	}
@@ -63,27 +59,35 @@
 <template>
 	<div style="margin: 0 10%;" class="blog-list-container">
 		<v-header position="first"></v-header>
-		<ul class="blog-list-ul">
-			<li v-on:click="showBlog" class="blog-list-li" v-for="elem in blogList">
-				<!-- {{elem.id}} -->
-				<h2>{{elem.title}}</h2>
-				<!-- this is the intro of the body -->
-				<!-- <p>{{elem.body.slice(0,25)}}</p> -->
-				<p>{{elem.body}}</p>
-			</li>
-		</ul>
+		<div v-if="isShow==false" class="list-container">
+			<ul class="blog-list-ul">
+				<li v-on:click="showBlog($index)" class="blog-list-li" v-for="elem in blogList">
+					<!-- {{elem.id}} -->
+					<h1>{{elem.title}}</h1>
+					<!-- this is the intro of the body -->
+					<!-- <p>{{elem.body.slice(0,25)}}</p> -->
+					<p>{{elem.body}}</p>
+				</li>
+			</ul>
 
-		<ul style="margin: 0 auto;margin-top: 1.5rem;text-align: center;">
-			<li v-on:click="changePage($index,this)" v-for="num in serverPage" class="pageNum">
-				<span>{{ num + 1}}</span>
-			</li>
-		</ul>
+			<ul style="margin: 0 auto;margin-top: 1.5rem;text-align: center;">
+				<li v-on:click="changePage($index,this)" v-for="num in serverPage" class="pageNum">
+					<span>{{ num + 1}}</span>
+				</li>
+			</ul>
+		</div>
+	
+		<div style="position: relative;" v-else style="margin: 0 3%;" class="blog-display">
+			<btn v-on:click="hiddenDisplay" btntype="B" text="return"></btn>
+			<h1 style="text-align: center;">{{ blogList[blogPosition].title }}</h1>
+			<p style="text-indent: 2em;">嗯，先要说明的是，这本书在中国大陆出版了，它经过了删改，所以如果想读到些“禁言”是不可能的。 怎么说呢，作者还是肯定大于否定的，不过仔细想想，书里有否定的东西吗？不记得了，有也是很少的。 书主要写的是他个人的人生经历，各大bbs的传闻很少见到，而且也很少涉及中国社会，如果对他这个人感兴趣的话，这本书倒是可以读读。</p>
+		</div>
 	</div>
 </template>
 
 <script>
 	var myHeader = require('./public/header.vue');
-
+	var myBtn = require('./public/btn.vue');
 	// 常量
 	var backEnd = "http://127.0.0.1/ProjectBuilding"; 
 
@@ -93,11 +97,14 @@
 				blogList: [
 
 				],
-				serverPage: this.get_page()
+				serverPage: this.get_page(),
+				blogPosition: 0,
+				isShow: false
 			}
 		},
 		components: {
-			"v-header": myHeader
+			"v-header": myHeader,
+			btn: myBtn
 		},
 		ready: function(){
 			$($(".pageNum")[0]).addClass("pageBtn-active");
@@ -107,8 +114,12 @@
 			sortById: function(a, b){
 				return a.id - b.id;
 			},
-			showBlog: function(){
-
+			showBlog: function(index){
+				this.blogPosition = index;
+				this.isShow = true;
+			},
+			hiddenDisplay: function(){
+				this.isShow = false;
 			},
 			get_page: function(){
 				// get_page.php
