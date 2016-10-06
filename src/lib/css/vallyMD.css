@@ -1,0 +1,69 @@
+/*vallyMD.css*/
+/*.blog-display*/ 
+
+.md h1 , .md h2 , .md h2, .md h3, .md h4, .md h5, .md h6 {
+	color: rgb(31,18,50); 
+}
+
+.md h1 {
+	/*line-height: .8;*/
+	border-bottom: 3px dotted rgb(31,18,50);
+	border-radius: 0 0 0 .1rem / 0 0 0 .05rem;
+	/*margin-bottom: 0.2em;*/
+	margin-bottom: 6px;
+	padding-left: .3rem;
+	margin-left: -.3rem;
+	width: 8em;
+	white-space: nowrap;
+}
+
+.md code {
+	color: #B22;
+	/* background-color: rgb(46,46,46); */
+	padding: 0 .4em;
+	margin: .1em .2em;
+	border: 2px;
+	border: 2px dashed;
+	border-radius: .3em;
+	font-size: .3rem;
+}
+
+.md blockquote {
+	margin: .15rem 0;
+	margin: .15rem calc( (0.3em + 10px) * -1 );
+
+	padding: .3em .3em;
+	
+
+	border-left: 10px rgba(60, 45, 80, 1) solid; 
+	background-color: rgba(60, 45, 80, .2);
+}
+
+.md p {
+	color: #111; 
+	font-size: .35rem;
+}
+
+.md a {
+	text-decoration: none;
+	color: rgb(150, 50, 30);
+
+	margin: .15rem 0;
+	padding: 0 .3em;
+
+	border-left: 2px rgb(150, 50, 30) dotted;
+	border-radius: 8px 0 0 0;
+	border-bottom: 2px dotted transparent;
+	transition: all .3s;
+}
+
+.md a:hover {
+	border-radius: 1em 0 0 12px;
+	border-bottom: 2px dotted rgb(150, 50, 30);
+	transition: all .2s;
+}
+	
+.md hr {
+	border: .1rem dashed rgba(0, 0, 30, .3); 
+	margin: .5rem .1rem .8rem .1rem;
+}
