@@ -25,18 +25,73 @@
 		/*text-indent: 2em;*/
 
 	}
+
+	.writearea {
+		margin: 0 auto;
+		width: 100%;
+		text-align: center;
+	}
+
+
+	.blog-type {
+		font-size: 0!important;
+		cursor: pointer;
+		margin-left: 10%;
+		text-align: left;
+
+	}
+	.blog-type span {
+		font-size: .3rem;
+		display: inline-flex;
+    	position: relative;
+		margin: 0 .2rem;
+		color: #5a5;
+		padding: 0 .1rem;
+    	line-height: 1.5;
+    	background-color: #ddd;
+		transition: all .3s;
+    	/*border-radius: 0 .3em 0 0;*/
+	}
+
+	.blog-type span:before, .blog-type span:after{
+	    position: absolute;
+	    content: "";
+	}
+	.blog-type span:before {
+		border: transparent 0.75em solid;
+		border-right-color: #ddd;
+		top: 0;
+		left: -1.5em;
+		height: 0;
+		width: 0;
+	}
+	.type-choiced {
+		color: #d55!important;
+		font-size: .35rem!important;
+		/*margin-left: -1px;*/
+		transition: all .3s;
+	}
 </style>
 
 <template>
 	<div class="writedesk">
 		<btn btntype="B"></btn>
-		<center>
+
+		
+		<div class="writearea">
+			<div class="blog-type">
+				<span v-on:click="article.isMD=!article.isMD" v-bind:class="{ 'type-choiced': !article.isMD }">htmlText</span>
+				<span v-on:click="article.isMD=!article.isMD" v-bind:class="{ 'type-choiced': article.isMD }">markDown</span>
+			</div>
 			<input v-model="article.title" style="text-align:center;" type="text" placeholder="标题">
 			<!-- <t type="text" placeholder="body"> -->
 			<textarea v-model="article.body" placeholder="文章 （现在仅支持纯文本..）"></textarea>
 			<btn btntype="C"></btn>
-		</center>
+		</div>
+		<!-- {{ article.body.replace("\n", "<br>") }} -->
 
+
+		<!-- rtmsg = rtmsg.Replace("\r\n", "\\r\\n"); -->
 		<!-- <p>{{article.title}}</p> -->
 		<!-- <p>{{article.body}}</p> -->
 	</div>
@@ -51,7 +106,8 @@
 			return {
 				article: {
 					title: '',
-					body: ''
+					body: '',
+					isMD: true
 				}
 			}
 		},
@@ -74,6 +130,23 @@
 					return 0; 
 				}
 
+				// this.article.title = 
+				// this.article.body = this.article.body.replace(/[\r\n]/g,"\n");
+				
+				
+
+				// var parser,mdAfterParse;
+				// if (this.article.isMD){
+				// 	parser = new HyperDown(); 
+				// 	mdAfterParse = parser.makeHtml( this.article.body );
+
+
+				// 	mdAfterParse.replace(/[\']/g, "\'");
+				// 	console.log(mdAfterParse);
+				// } else {
+				// 	// this.article.body = this.article.body.replace(/[\r\n]/g, "\\r\\n");
+				// }
+
 				$.ajax({
 					type: 'POST',
 					url: backEnd+'/KV/add_blog.php',
@@ -82,7 +155,7 @@
 					data: {
 						title: that.article.title,
 						body: that.article.body,
-						type: 'justText',
+						type: that.article.isMD?'markdown':'text',
 						pw: "" // 应该哈希化这里
 					},
 					// type of data we are expecting in return:
