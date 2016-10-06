@@ -20,7 +20,9 @@
 		transition: all .3s;
 	}
 	.blog-list-li:active {
-		font-size: .4rem;
+		font-size: .8rem;
+		opacity: 0;
+		transition: all .3s;
 	}
 
 	.blog-list-li > p {
@@ -29,6 +31,7 @@
 
 	.blog-list-li > h1 {
 		color: rgb(31,18,50);
+		white-space: nowrap;
 	}
 
 	.pageNum {
