@@ -8,6 +8,19 @@
 
 	.blog-list-li {
 		margin: .5rem 0;
+		transition: all .2s; 
+	}
+
+	.blog-list-li:hover {
+		/*margin: .7rem 0!important;*/
+		margin-left: .5rem;
+		transform: rotate(1deg);
+		text-shadow: -20px -4px 2px rgba(34, 34, 34, .2);
+		/*transform-origin: 50% 0;*/
+		transition: all .3s;
+	}
+	.blog-list-li:active {
+		font-size: .4rem;
 	}
 
 	.blog-list-li > p {
@@ -74,7 +87,7 @@
 
 			<ul style="margin: 0 auto;margin-top: 1.5rem;text-align: center;">
 				<li v-on:click="changePage($index,this)" v-for="num in serverPage" class="pageNum">
-					<span>{{ num + 0}}</span>
+					<span>{{ num + 0 }}</span>
 				</li>
 			</ul>
 		</div>

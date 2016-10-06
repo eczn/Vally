@@ -1,7 +1,8 @@
 <!-- ASOB.vue -->
 <style>
 	.asob-container {
-		margin: 1rem 10%;		
+		margin: 1rem 10%;	
+		color: rgb(60, 45, 80);	
 	}
 	.asob-container > div {
 		text-align: center;
