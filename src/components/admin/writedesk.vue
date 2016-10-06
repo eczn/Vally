@@ -85,7 +85,7 @@
 			</div>
 			<input v-model="article.title" style="text-align:center;" type="text" placeholder="标题">
 			<!-- <t type="text" placeholder="body"> -->
-			<textarea v-model="article.body" placeholder="文章 （现在仅支持纯文本..）"></textarea>
+			<textarea v-model="article.body" placeholder="文章 [纯文本,Markdown] enabled"></textarea>
 			<btn btntype="C"></btn>
 		</div>
 		<!-- {{ article.body.replace("\n", "<br>") }} -->
@@ -132,14 +132,11 @@
 
 				// this.article.title = 
 				// this.article.body = this.article.body.replace(/[\r\n]/g,"\n");
-				
-				
 
 				// var parser,mdAfterParse;
 				// if (this.article.isMD){
 				// 	parser = new HyperDown(); 
 				// 	mdAfterParse = parser.makeHtml( this.article.body );
-
 
 				// 	mdAfterParse.replace(/[\']/g, "\'");
 				// 	console.log(mdAfterParse);
@@ -163,6 +160,7 @@
 					timeout: 2000,
 					success: function(data){
 						console.log(data); 
+						alert("update成功");
 					},
 					error: function(xhr, type){
 						console.log(xhr);

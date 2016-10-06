@@ -39,12 +39,21 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		height: 1rem;
-		width: 1rem;
+		height: 1.5rem;
+		width: 2rem;
 		border: 3px dashed #545;
-		border-radius: 1rem;
-		cursor: pointer;	
+		cursor: pointer;
+		border-radius: 10px;
+
+		transition: all .3s;
 	}
+
+	.btn-C:hover {
+		border-radius: 1rem;
+		width: 1.5rem;
+		transition: all .3s;
+	}
+
 	.btn-C > span {
 		width: .3rem;
 		height: .6rem; 

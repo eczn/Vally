@@ -70,7 +70,7 @@
 
 			<ul style="margin: 0 auto;margin-top: 1.5rem;text-align: center;">
 				<li v-on:click="changePage($index,this)" v-for="num in serverPage" class="pageNum">
-					<span>{{ num + 1}}</span>
+					<span>{{ num + 0}}</span>
 				</li>
 			</ul>
 		</div>
@@ -78,8 +78,7 @@
 		<div style="position: relative;" v-else style="margin: 0 3%;" class="blog-display">
 			<btn btntype="B" text="return"></btn>
 			<h1 style="text-align: center;font-size: .8rem;margin: .2rem;">{{ blogList[blogPosition].title }}</h1>
-			<div v-html="processFormat(blogList[blogPosition])" style="font-size: .4rem;padding: 0 5%;"></div>
-
+			<div v-html="processFormat(blogList[blogPosition])" class="md" style="font-size: .4rem;padding: 0 5%;"></div>
 		</div>
 	</div>
 </template>
@@ -97,7 +96,7 @@
 				blogList: [
 
 				],
-				serverPage: this.get_page(),
+				serverPage: 5,
 				blogPosition: 0,
 				isShow: false,
 				myParser: parser
@@ -130,10 +129,6 @@
 			hiddenDisplay: function(){
 				this.isShow = false;
 			},
-			get_page: function(){
-				// get_page.php
-				return 3;
-			},
 			getBlogsByPage: function(pageAt){
 				var thatVM = this; 
 				$.ajax({
@@ -155,7 +150,9 @@
 						// console.log(data);
 						// thatVM.blogList.push(data);
 						// console.log(data);
-						thatVM.blogList = data;
+						thatVM.blogList = data.blogList;
+						thatVM.serverPage = parseInt((parseInt(data.count)+7)/7);
+						// console.log((parseInt(data.count)+7)/7);
 					},
 					error: function(xhr, type){
 						// alert('Ajax error!')
