@@ -14,6 +14,10 @@
 		color: #555;
 	}
 
+	.blog-list-li > h1 {
+		color: rgb(31,18,50);
+	}
+
 	.pageNum {
 		margin: 0 5px;
 		display: inline-flex;
@@ -77,7 +81,7 @@
 	
 		<div style="position: relative;" v-else style="margin: 0 3%;" class="blog-display">
 			<btn btntype="B" text="return"></btn>
-			<h1 style="text-align: center;font-size: .8rem;margin: .2rem;">{{ blogList[blogPosition].title }}</h1>
+			<h1 style="text-align: center;font-size: .8rem;margin: .2rem;color: rgb(31,18,50);">{{ blogList[blogPosition].title }}</h1>
 			<div v-html="processFormat(blogList[blogPosition])" class="md" style="font-size: .4rem;padding: 0 5%;"></div>
 		</div>
 	</div>
