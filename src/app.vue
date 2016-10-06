@@ -16,14 +16,11 @@
 		font-family: "Hiragino Sans GB", "microsoft yahei", "WenQuanYi Microhei", "黑体";
 	}
 
-	h1 {
-		color: #222;
-	}
-
 	.addBlur {
 		filter: blur(20px);
 		transition: all 1.5s;
 	}
+
 </style>
 
 <template>
