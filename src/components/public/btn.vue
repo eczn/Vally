@@ -54,7 +54,7 @@
 		transition: all .3s;
 	}
 
-	.btn-C > span {
+	.icon_true {
 		width: .3rem;
 		height: .6rem; 
 		border-top: 4px solid #5a5;
@@ -65,8 +65,35 @@
 		transform-origin: 55% 45% ;
 	}
 
-	.btn-C:after {
-		content: "Update to ASOB"; 
+	.icon_false {
+		/*transform: scaleY(-1);*/
+		position: relative;
+		margin-top: .4rem;
+		margin-left: .4rem;
+		margin-top: calc(.4rem + 3px);
+		/*margin-left: calc(.4rem + 3px);*/
+		width: .4rem;
+		height: .4rem; 
+		border-top: 4px solid #a55;
+		border-left: 4px solid #a55;
+		/*border-bottom: 4px solid transparent;*/
+		/*border-right: 4px solid transparent;*/
+		transform: rotate(45deg);
+		transform-origin: 3px 3px;
+	}
+	.icon_false:after {
+		content: '';
+		position: absolute;
+		height: 100%; 
+		width: 100%; 
+		top: calc(-100% - 4px); 
+		left: calc(-100% - 4px); 
+		border-bottom: 4px solid #a55;
+		border-right: 4px solid #a55;
+
+	}
+
+	.btn-C div {
 		position: absolute;
 		left: 120%;
 		font-size: .4rem;
@@ -79,13 +106,16 @@
 	<div>
 		<span v-on:click="sentEvent('A')" class="btn-A" v-if="btntype == 'A'">{{text}}</span>
 		<span v-on:click="sentEvent('B')" class="btn-B" v-if="btntype == 'B'"><span></span></span>
-		<span v-on:click="sentEvent('C')" class="btn-C" v-if="btntype == 'C'"><span></span></span>
+		<span v-on:click="sentEvent('C')" class="btn-C" v-if="btntype == 'C'">
+			<span v-bind:class="{ 'icon_true': icon=='true', 'icon_false': icon=='false' }"></span>
+			<div>{{text}}</div>
+		</span>
 	</div>
 </template>
 
 <script>
 	module.exports = {
-		props: ['btntype', 'text'],
+		props: ['btntype', 'text', 'icon'],
 		methods: {
 			// trigger the event just like this: 'A_onClick', based on the value of typeStr
 			sentEvent: function(typeStr){
