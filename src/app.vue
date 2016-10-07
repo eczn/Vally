@@ -7,6 +7,14 @@
 		filter: blur(0px);*/
 		/*transition: all 1.5s;*/
 		/*min-height: 100%;*/
+		margin: 0 10%;
+	}
+
+	/*@media screen and (min-width: 425px) and (max-width: 1000px) */
+	@media screen and (max-width: 768px) {
+		.container {
+			margin: 0 .3rem;
+		}
 	}
 
 	* {
