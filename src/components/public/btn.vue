@@ -65,7 +65,7 @@
 		transform-origin: 55% 45% ;
 	}
 
-	.icon_false {
+	.icon_false, .icon_add {
 		/*transform: scaleY(-1);*/
 		position: relative;
 		margin-top: .4rem;
@@ -81,7 +81,8 @@
 		transform: rotate(45deg);
 		transform-origin: 3px 3px;
 	}
-	.icon_false:after {
+	
+	.icon_false:after, .icon_add:after {
 		content: '';
 		position: absolute;
 		height: 100%; 
@@ -90,8 +91,16 @@
 		left: calc(-100% - 4px); 
 		border-bottom: 4px solid #a55;
 		border-right: 4px solid #a55;
-
 	}
+	
+	.icon_add {
+		transform: rotate(0deg);
+		border-color: #5a5;
+	}
+	.icon_add:after {
+		border-color: #5a5;
+	}
+	
 
 	.btn-C div {
 		position: absolute;
@@ -107,7 +116,7 @@
 		<span v-on:click="sentEvent('A')" class="btn-A" v-if="btntype == 'A'">{{text}}</span>
 		<span v-on:click="sentEvent('B')" class="btn-B" v-if="btntype == 'B'"><span></span></span>
 		<span v-on:click="sentEvent('C')" class="btn-C" v-if="btntype == 'C'">
-			<span v-bind:class="{ 'icon_true': icon=='true', 'icon_false': icon=='false' }"></span>
+			<span v-bind:class="{ 'icon_true': icon=='true', 'icon_false': icon=='false', 'icon_add': icon=='add' }"></span>
 			<div>{{text}}</div>
 		</span>
 	</div>
