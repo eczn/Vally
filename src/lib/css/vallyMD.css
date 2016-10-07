@@ -66,7 +66,7 @@
 	transition: all .2s;
 }
 	
-.md hr {
+.md hr, .md-hr {
 	border: .1rem dashed rgba(0, 0, 30, .3); 
 	margin: .5rem .1rem .8rem .1rem;
 }
