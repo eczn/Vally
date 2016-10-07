@@ -20,7 +20,7 @@
 		transition: all .3s;
 	}
 	.blog-list-li:active {
-		font-size: .8rem;
+		/*font-size: .3rem;*/
 		opacity: 0;
 		transition: all .3s;
 	}
@@ -72,12 +72,12 @@
 	}
 
 	.blog-list-container {
-		margin: 0 1rem;
+		/*margin: 0 1rem;*/
 	}
 </style>
 
 <template>
-	<div style="margin: 0 10%;" class="blog-list-container">
+	<div class="blog-list-container">
 		<v-header position="first"></v-header>
 
 		<div v-if="isShow==false" class="list-container">
@@ -107,9 +107,6 @@
 	var myHeader = require('./public/header.vue');
 	var myBtn = require('./public/btn.vue');
 	// 常量
-	var backEnd = "http://127.0.0.1/ProjectBuilding"; 
-	var parser = new HyperDown(); 
-				// 	mdAfterParse = parser.makeHtml( this.article.body );
 	module.exports = {
 		data: function(){
 			return {

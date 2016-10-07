@@ -86,7 +86,7 @@
 			<input v-model="article.title" style="text-align:center;" type="text" placeholder="标题">
 			<!-- <t type="text" placeholder="body"> -->
 			<textarea v-model="article.body" placeholder="文章 [纯文本,Markdown] enabled"></textarea>
-			<btn btntype="C"></btn>
+			<btn btntype="C" text="Update to ASOB" icon="true"></btn>
 		</div>
 		<!-- {{ article.body.replace("\n", "<br>") }} -->
 
@@ -99,8 +99,7 @@
 
 <script>
 	var myBtn = require('../public/btn.vue');
-	var backEnd = "http://127.0.0.1/ProjectBuilding"; 
-
+	 
 	module.exports = {
 		data: function(){
 			return {
