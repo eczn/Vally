@@ -3,6 +3,12 @@
 	.admin-container {
 		margin: 0 10%;
 	}
+
+	@media screen and (max-width: 768px) {
+		.admin-container {
+			margin: 0 .3rem 0 1.6rem;
+		}
+	}
 </style>
 
 <template>

@@ -34,13 +34,36 @@
 		display: inline-block;
 	}
 
+	.admin-ul-pageNum {
+		position: absolute;
+		/*margin-top: 1rem;*/
+		/*align-items: center;*/
+		display: flex;
+		/*justify-content: center;*/
+
+		flex-direction: column;
+		height: 100%;
+		top: 2rem;
+		left: -1.3rem;
+		padding-right: .1rem;
+		min-height: 100%;
+		border-right: 3px dashed #626;
+		/*box-shadow: -16px -20px 4px rgba(0, 0, 30, .1);*/
+		border-radius: 1rem;
+	}
+
+	.admin-ul-pageNum > li{
+		margin: .1rem 0;
+		flex-shrink: 0;
+	}
+
 </style>
 
 <template>
 	<div class="blog-list-container admin-list">
 		<!-- <h1 class="btn-C" v-on:click="adminDel">删除</h1> -->
-		
-		<div v-if="isShow==false" class="list-container">
+		<hr class="md-hr">
+		<div  style="position: relative;" v-if="isShow==false" class="list-container">
 			<btn btntype="C" text="删除所选项" icon="false"></btn>
 			<ul class="blog-list-ul">
 				<li class="admin-list-li" v-for="elem in blogList">
@@ -52,8 +75,7 @@
 					</div>
 				</li>
 			</ul>
-			
-			<ul style="margin: 0 auto;margin-top: 1.5rem;text-align: center;">
+			<ul class="admin-ul-pageNum">
 				<li v-on:click="changePage($index,this)" v-for="num in serverPage" class="pageNum">
 					<span>{{ num + 0 }}</span>
 				</li>
