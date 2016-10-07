@@ -39,10 +39,9 @@
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-
-		/*width: 1rem;*/
+		width: 1rem;
+		height: 1rem; 
 		width: calc(1rem - 3px * 2);
-		/*height: 1rem; */
 		height: calc(1rem - 3px * 2);
 		border-radius: 11rem;
 		/*border: 3px dotted rgb(60, 45, 80);*/
@@ -80,7 +79,7 @@
 	<div class="blog-list-container">
 		<v-header position="first"></v-header>
 
-		<div v-if="isShow==false" class="list-container">
+		<div v-if="isShow==false">
 			<ul class="blog-list-ul">
 				<li v-on:click="showBlog($index)" class="blog-list-li" v-for="elem in blogList">
 					<h1>{{elem.title}}</h1>
@@ -168,7 +167,7 @@
 						// thatVM.blogList.push(data);
 						// console.log(data);
 						thatVM.blogList = data.blogList;
-						thatVM.serverPage = parseInt((parseInt(data.count)+7)/7);
+						thatVM.serverPage = parseInt((parseInt(data.count)+6)/7);
 						// console.log((parseInt(data.count)+7)/7);
 					},
 					error: function(xhr, type){
