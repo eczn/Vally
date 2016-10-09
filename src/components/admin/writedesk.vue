@@ -9,7 +9,7 @@
 		font-size: .8rem;
 	}
 
-	.writedesk input, .writedesk textarea {
+	.writedesk input, .writedesk textarea, .editInputTextarea {
 		border: 2px dashed #555;
 		color: #222;
 		width: 80%; 

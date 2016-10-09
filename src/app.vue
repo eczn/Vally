@@ -21,7 +21,7 @@
 		/*font-family: "Microsoft Yahei";*/
 		margin: 0;
 		padding: 0;
-		font-family: "Hiragino Sans GB", "microsoft yahei", "WenQuanYi Microhei", "黑体";
+		font-family: "Heiti SC", "Hiragino Sans GB", "microsoft yahei", "WenQuanYi Microhei", "微软雅黑";
 	}
 
 	.addBlur {

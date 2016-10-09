@@ -1,5 +1,8 @@
 /*vallyMD.css*/
 /*.blog-display*/ 
+.md {
+	word-wrap: break-word;
+}
 
 .md h1 , .md h2 , .md h2, .md h3, .md h4, .md h5, .md h6 {
 	color: rgb(31,18,50); 
@@ -45,6 +48,10 @@
 .md p {
 	color: #111; 
 	font-size: .3rem;
+	/*margin-before: 1em;
+	margin-after: 1em;
+	-webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;*/
 }
 
 .md a {

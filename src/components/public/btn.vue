@@ -26,6 +26,8 @@
 	.btn-B > span {
 		width: .3rem;
 		height: .3rem; 
+		margin-top: 4px;
+		display: inline-block;
 		border-top: 4px solid #555;
 		border-left: 4px solid #555;
 		/*border-bottom: 4px solid transparent;*/
@@ -61,23 +63,21 @@
 		border-left: 4px solid #5a5;
 		/*border-bottom: 4px solid transparent;*/
 		/*border-right: 4px solid transparent;*/
+
 		transform: rotate(-135deg);
 		transform-origin: 55% 45% ;
 	}
 
 	.icon_false, .icon_add {
-		/*transform: scaleY(-1);*/
 		position: relative;
+		display: inline-block;
 		margin-top: .4rem;
 		margin-left: .4rem;
 		margin-top: calc(.4rem + 3px);
-		/*margin-left: calc(.4rem + 3px);*/
 		width: .4rem;
 		height: .4rem; 
 		border-top: 4px solid #a55;
 		border-left: 4px solid #a55;
-		/*border-bottom: 4px solid transparent;*/
-		/*border-right: 4px solid transparent;*/
 		transform: rotate(45deg);
 		transform-origin: 3px 3px;
 	}
@@ -85,8 +85,11 @@
 	.icon_false:after, .icon_add:after {
 		content: '';
 		position: absolute;
+		display: inline-block;
 		height: 100%; 
 		width: 100%; 
+		top: -100%;
+		left: -100%; 
 		top: calc(-100% - 4px); 
 		left: calc(-100% - 4px); 
 		border-bottom: 4px solid #a55;
@@ -104,6 +107,9 @@
 
 	.btn-C div {
 		position: absolute;
+		/*display: inline-block;*/
+		top: 30%;
+
 		left: 120%;
 		font-size: .4rem;
 		white-space: nowrap;

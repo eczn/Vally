@@ -57,12 +57,46 @@
 		flex-shrink: 0;
 	}
 
+	.blog-display {
+		/*width: 125%;*/
+		width: 47%;
+		left: 1%; 
+		top: 5%;
+		height: 95%;
+		overflow-y: scroll; 
+		position: absolute!important;
+		font-size: .3rem;
+		border: 1px solid #222;
+	}
+	.blog-edit > input, .blog-edit > textarea{
+		width: 100%!important;
+		max-width: 100%!important;
+	}
+
+	.blog-edit {
+		text-align: center;
+		width: 47%;
+		left: 52%;
+		height: 95%; 
+		top: 5%; 
+		position: absolute!important;
+		font-size: .3rem;
+		/*min-height: 100000rem!important;*/
+	}
+	.edit {
+		background-color: #fff;
+		position: fixed;
+		width: 100%;
+		height: 100%; 
+		left: 0;
+		top: 0;
+	}
+
 </style>
 
 <template>
 	<div class="blog-list-container admin-list">
 		<!-- <h1 class="btn-C" v-on:click="adminDel">删除</h1> -->
-		<hr class="md-hr">
 		<div  style="position: relative;" v-if="isShow==false" class="list-container">
 			<btn btntype="C" text="删除所选项" icon="false"></btn>
 			<ul class="blog-list-ul">
@@ -81,18 +115,30 @@
 				</li>
 			</ul>
 		</div>
-	
-		<div style="position: relative;" v-else style="margin: 0 3%;" class="blog-display">
+
+		<div class="edit" v-else>
 			<btn btntype="B" text="return"></btn>
-			<h1 style="text-align: center;font-size: .8rem;margin: .2rem;color: rgb(31,18,50);">{{ blogList[blogPosition].title }}</h1>
-			<div v-html="processFormat(blogList[blogPosition])" class="md" style="font-size: .4rem;padding: 0 5%;"></div>
+			<div class="blog-display">
+				
+				<h1 style="text-align: center;font-size: .8rem;margin: .2rem;color: rgb(31,18,50);">{{ blogList[blogPosition].title }}</h1>
+				<div v-html="markVally(blogList[blogPosition])" class="md" style="font-size: .4rem;padding: 0 5%;"></div>
+				<!-- .editInputarea defined in writedesk.vue -->
+			</div>
+			<div class="writedesk blog-edit">
+				<input v-model="blogList[blogPosition].title" class="editInputTextarea" type="text">
+				<textarea v-model="blogList[blogPosition].body" class="editInputTextarea"></textarea>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
 	var myBtn = require('../public/btn.vue');
-
+					// mdHtml.toString(); 
+					// console.log(mdHtml);
+					// alert("!");
+					// mdHtml.replace('sscc', '<scr'+'ipt>'); 
+					// mdHtml.replace('ccss', '</scr'+'ipt>'); 
 	module.exports = {
 		data: function(){
 			return {
@@ -120,12 +166,14 @@
 					that.delBlogById(elem.getAttribute('blogId')); 
 				});
 			},
-			processFormat: function(blog){
+			markVally: function(blog){
 				//blogList[blogPosition].body
 				if (blog.type == 'text'){
-					return blog.format; 
+					return blog.format;
 				} else {
-					return this.myParser.makeHtml(blog.body); 
+					// footnotes
+					var mdHtml = this.myParser.makeHtml(blog.body); 
+					return mdHtml; 
 				}
 			},
 			sortById: function(a, b){

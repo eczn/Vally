@@ -93,7 +93,7 @@
 				</li>
 			</ul>
 		</div>
-	
+		
 		<div style="position: relative;" v-else style="margin: 0 3%;" class="blog-display">
 			<btn btntype="B" text="return"></btn>
 			<h1 style="text-align: center;font-size: .8rem;margin: .2rem;color: rgb(31,18,50);">{{ blogList[blogPosition].title }}</h1>
@@ -125,15 +125,28 @@
 		ready: function(){
 			$($(".pageNum")[0]).addClass("pageBtn-active");
 			this.getBlogsByPage(1); 
+
 		},
 		methods: {
 			processFormat: function(blog){
 				//blogList[blogPosition].body
+
 				if (blog.type == 'text'){
 					return blog.format; 
 				} else {
-					return this.myParser.makeHtml(blog.body); 
+					// str.replace(/[\r\n]/g,"");
+					console.log(blog.body);
+					var mdHtml = this.myParser.makeHtml(blog.body);
+					// mdHtml = mdHtml.replace(/<\/p><p>/g,"<pp>");
+					// mdHtml = mdHtml.replace(/<\/p><\/li>/g,"<pl>");
+					// mdHtml = mdHtml.replace(/<\/p>/g,"<\/p><br />");
+					// mdHtml = mdHtml.replace(/<pp>/g,"<\/p><p>");
+					// mdHtml = mdHtml.replace(/<pl>/,"<\/p><\/li>");
+
+					console.log(mdHtml);
+					return mdHtml;
 				}
+
 			},
 			sortById: function(a, b){
 				return a.id - b.id;
@@ -167,6 +180,7 @@
 						// thatVM.blogList.push(data);
 						// console.log(data);
 						thatVM.blogList = data.blogList;
+
 						thatVM.serverPage = parseInt((parseInt(data.count)+6)/7);
 						// console.log((parseInt(data.count)+7)/7);
 					},
