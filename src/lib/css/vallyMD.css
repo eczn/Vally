@@ -4,7 +4,7 @@
 	word-wrap: break-word;
 }
 
-.md h1 , .md h2 , .md h2, .md h3, .md h4, .md h5, .md h6 {
+.md h1 , .md h2 , .md h3, .md h4, .md h5, .md h6 {
 	color: rgb(31,18,50); 
 }
 
@@ -17,9 +17,12 @@
 	padding-left: .3rem;
 	margin-left: -.3rem;
 	width: 8em;
-	white-space: nowrap;
+	/*white-space: nowrap;*/
 
-	font-size: .7rem;
+	font-size: .65rem;
+}
+.md h2 {
+	font-size: .5rem;
 }
 
 .md code {
@@ -40,7 +43,6 @@
 
 	padding: .3em .3em;
 	
-
 	border-left: 10px rgba(60, 45, 80, 1) solid; 
 	background-color: rgba(60, 45, 80, .2);
 }
@@ -48,11 +50,28 @@
 .md p {
 	color: #111; 
 	font-size: .3rem;
+	margin: 0 0 1.1em;
 	/*margin-before: 1em;
 	margin-after: 1em;
 	-webkit-margin-before: 1em;
     -webkit-margin-after: 1em;*/
 }
+
+blockquote p:last-child {
+	margin: 0;
+}
+
+ul p, li p {
+	margin: 0!important;
+}
+ul, ol {
+	margin: 0 0 1.1em;
+}
+
+.md > ol, .md > li {
+	margin-left: 1.1em;
+}
+
 
 .md a {
 	text-decoration: none;
