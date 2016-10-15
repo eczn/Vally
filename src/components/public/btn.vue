@@ -134,7 +134,7 @@
 		methods: {
 			// trigger the event just like this: 'A_onClick', based on the value of typeStr
 			sentEvent: function(typeStr){
-				this.$dispatch( typeStr + '_onClick');
+				this.$dispatch( typeStr + '_onClick', this.icon);
 			}
 		}
 	}

@@ -40,7 +40,6 @@
 		/*align-items: center;*/
 		display: flex;
 		/*justify-content: center;*/
-
 		flex-direction: column;
 		height: 100%;
 		top: 2rem;
@@ -57,28 +56,40 @@
 		flex-shrink: 0;
 	}
 
-	.blog-display {
+
+	.admin-blog-display {
 		/*width: 125%;*/
-		width: 47%;
-		left: 1%; 
-		top: 5%;
-		height: 95%;
+		width: 48%;
+		right: 1%;
+		top: 10%;
+		height: 90%;
 		overflow-y: scroll; 
 		position: absolute!important;
-		font-size: .3rem;
 		border: 1px solid #222;
 	}
 	.blog-edit > input, .blog-edit > textarea{
 		width: 100%!important;
 		max-width: 100%!important;
+		overflow-x: hidden;
+		margin: 0!important;
+		padding: 0!important;
+		width: 100%!important;
+	}
+	.blog-edit > input {
+		height: 10%;
+		text-align: center;
+		border-bottom: none!important;
+	}
+	.blog-edit > textarea {
+		height: 90%;
 	}
 
 	.blog-edit {
 		text-align: center;
-		width: 47%;
-		left: 52%;
-		height: 95%; 
-		top: 5%; 
+		width: 48%;
+		left: 1%;
+		height: 90%; 
+		top: 10%; 
 		position: absolute!important;
 		font-size: .3rem;
 		/*min-height: 100000rem!important;*/
@@ -87,6 +98,7 @@
 		background-color: #fff;
 		position: fixed;
 		width: 100%;
+
 		height: 100%; 
 		left: 0;
 		top: 0;
@@ -117,8 +129,9 @@
 		</div>
 
 		<div class="edit" v-else>
-			<btn btntype="B" text="return"></btn>
-			<div class="blog-display">
+			<btn style="display: inline-block" btntype="B" text="return"></btn>
+			<btn style="display: inline-block" btntype="C" icon="true" text="update"></btn>
+			<div class="blog-display admin-blog-display">
 				
 				<h1 style="text-align: center;font-size: .8rem;margin: .2rem;color: rgb(31,18,50);">{{ blogList[blogPosition].title }}</h1>
 				<div v-html="markVally(blogList[blogPosition])" class="md" style="font-size: .4rem;padding: 0 5%;"></div>
@@ -165,6 +178,32 @@
 					// console.log(elem.getAttribute('blogId'));
 					that.delBlogById(elem.getAttribute('blogId')); 
 				});
+			},
+			updateById: function(){
+				// alert(this.blogList[id].id);
+				$.ajax({
+					type: 'GET',
+					// url: backEnd+'/KV/get_blog.php',
+					asyne: false,
+					data: {
+						id: this.blogList[blogPosition].id,
+						title: this.blogList[blogPosition].title,
+						body: this.blogList[blogPosition].body,
+						req: 'update',
+						pw: "" // 应该哈希化这里
+					},
+					dataType: 'json',
+					timeout: 2000,
+					success: function(data){
+						thatVM.blogList = data.blogList;
+						thatVM.serverPage = parseInt((parseInt(data.count)+6)/7);
+					},
+					error: function(xhr, type){
+						console.log(xhr);
+						console.log(type);
+					}
+				});
+
 			},
 			markVally: function(blog){
 				//blogList[blogPosition].body
@@ -239,9 +278,13 @@
 			B_onClick: function(){
 				this.hiddenDisplay();
 			},
-			C_onClick: function(){
-				console.log('C onclick');
-				this.adminDel(); 
+			C_onClick: function(type){
+				if (type == 'false'){
+					alert("false");
+					this.adminDel(); 	
+				} else if (type == 'true'){
+					this.updateById();
+				}
 			}
 		}
 	}
