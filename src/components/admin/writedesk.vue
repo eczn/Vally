@@ -152,7 +152,7 @@
 						title: that.article.title,
 						body: that.article.body,
 						type: that.article.isMD?'markdown':'text',
-						pw: "" // 应该哈希化这里
+						pwd: "asd123" // 应该哈希化这里
 					},
 					// type of data we are expecting in return:
 					dataType: 'json',
