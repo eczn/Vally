@@ -1,9 +1,10 @@
 var index = require('./app.vue');
 var ASOB = require('./components/public/ASOB.vue');
-var blogList = require('./components/blogList.vue'); 
+var blogList = require('./components/blog/blogList.vue'); 
 var admin = require('./components/admin/admin.vue');
 var adminNav = require('./components/admin/adminNav.vue');
-var writedesk = require('./components/admin/writedesk.vue')
+var writedesk = require('./components/admin/writedesk.vue');
+var display = require('./components/blog/display.vue'); 
 
 module.exports = function(router){
 	router.map({
@@ -17,7 +18,13 @@ module.exports = function(router){
 				},
 				"blogList": {
 					name: "blogList",
-					component: blogList
+					component: blogList,
+					subRoutes: {
+						"/display": {
+							name: "display",
+							component: display
+						}
+					}
 				}
 			}
 		},

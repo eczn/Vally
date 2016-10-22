@@ -79,7 +79,7 @@
 	<div class="blog-list-container">
 		<v-header position="first"></v-header>
 
-		<div v-if="isShow==false">
+		<div v-if="this.$route.name=='blogList'">
 			<ul class="blog-list-ul">
 				<li v-on:click="showBlog($index)" class="blog-list-li" v-for="elem in blogList">
 					<h1>{{elem.title}}</h1>
@@ -88,23 +88,19 @@
 			</ul>
 
 			<ul style="margin: 0 auto;margin-top: 1.5rem;text-align: center;">
-				<li v-on:click="changePage($index,this)" v-for="num in serverPage" class="pageNum">
+				<li v-on:click="changePage($index,this)" v-for="num in serverPage" class="pageNum" v-bind:class="{'pageBtn-active': $route.query.page==num}">
 					<span>{{ num + 0 }}</span>
 				</li>
 			</ul>
 		</div>
 		
-		<div style="position: relative;" v-else style="margin: 0 3%;" class="blog-display">
-			<btn btntype="B" text="return"></btn>
-			<h1 style="text-align: center;font-size: .8rem;margin: .2rem;color: rgb(31,18,50);">{{ blogList[blogPosition].title }}</h1>
-			<div v-html="processFormat(blogList[blogPosition])" class="md" style="font-size: .4rem;padding: 0 5%;"></div>
-		</div>
+		<router-view v-bind:blog="blogList[blogPosition]"></router-view>
 	</div>
 </template>
 
 <script>
-	var myHeader = require('./public/header.vue');
-	var myBtn = require('./public/btn.vue');
+	var myHeader = require('../public/header.vue');
+	var myBtn = require('../public/btn.vue');
 	// 常量
 	module.exports = {
 		data: function(){
@@ -123,9 +119,28 @@
 			btn: myBtn
 		},
 		ready: function(){
-			$($(".pageNum")[0]).addClass("pageBtn-active");
-			this.getBlogsByPage(1); 
-
+			// alert(this.$route.query.page)
+			// $($(".pageNum")[this.$route.query.page]).addClass("pageBtn-active");
+			// if (this.$route.name == 'display'){
+			// 	return;
+			// }
+			if (this.$route.query.page == undefined){
+				if (this.$route.name != 'display'){
+					this.$route.router.go({
+						name: "blogList", 
+						query: {
+							page: 0
+						}
+					});
+					this.getBlogsByPage(0+1);
+				} else {
+					// this.getBlogsByPage(); 
+					// this.$brocast("pageAt",this.$route.query.page)
+				}
+				
+			} else {
+				this.getBlogsByPage(parseInt(this.$route.query.page)+1);
+			}
 		},
 		methods: {
 			processFormat: function(blog){
@@ -151,15 +166,19 @@
 			sortById: function(a, b){
 				return a.id - b.id;
 			},
+
 			showBlog: function(index){
 				this.blogPosition = index;
-				this.isShow = true;
-			},
-			hiddenDisplay: function(){
-				this.isShow = false;
+				// this.isShow = true;
+				this.$route.router.go({
+					name: "display",
+					query: {
+						id: this.blogList[this.blogPosition].id
+					}
+				});
 			},
 			getBlogsByPage: function(pageAt){
-				var thatVM = this; 
+				var thatVM = this;
 				$.ajax({
 					type: 'GET',
 					url: backEnd+'/KV/get_blog.php',
@@ -185,9 +204,6 @@
 						// console.log((parseInt(data.count)+7)/7);
 					},
 					error: function(xhr, type){
-						// alert('Ajax error!')
-						// do nothing
-						// console.log(xhr);
 						console.log(xhr);
 						console.log(type);
 					}
@@ -195,14 +211,12 @@
 			},
 			changePage: function(index,that){
 				this.getBlogsByPage(index+1);
-
-				$(".pageNum").removeClass("pageBtn-active");
-				$($(".pageNum")[index]).addClass("pageBtn-active")
-			}
-		},
-		events: {
-			B_onClick: function(){
-				this.hiddenDisplay();
+				this.$route.router.go({
+					name: "blogList", 
+					query: {
+						page: index
+					}
+				});
 			}
 		}
 	}

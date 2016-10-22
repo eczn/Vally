@@ -35,7 +35,6 @@
 	<div>
 		<div id="main-body" class="container">
 			<router-view></router-view>
-		
 		</div>
 		<v-footer></v-footer>
 	</div>
