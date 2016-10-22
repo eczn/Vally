@@ -53,7 +53,7 @@
 					that.blog = data.blog; 
 				},
 				error: function(xhr, type){
-					that.getBlogById(); 
+					// that.ready(); 
 					console.log(xhr);
 					console.log(type);
 				}
