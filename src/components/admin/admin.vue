@@ -23,6 +23,11 @@
 	var header = require('../public/header.vue');
 	
 	module.exports = {
+		data: function(){
+			return {
+				pwd: undefined
+			}
+		},
 		components: {
 			"v-header": header
 		}

@@ -104,6 +104,17 @@
 		top: 0;
 	}
 
+	.beenSelected {
+		font-size: .35rem;
+	}
+
+	.type-change {
+		display: inline-block;
+	}
+	.type-change span {
+		margin: 2px;
+	}
+
 </style>
 
 <template>
@@ -130,11 +141,20 @@
 
 		<div class="edit" v-else>
 			<btn style="display: inline-block" btntype="B" text="return"></btn>
+			<div class="type-change">
+				<span v-on:click="blogList[blogPosition].type = 'text'" v-bind:class="{ 'beenSelected': blogList[blogPosition].type == 'text' }">htmlText</span>
+				<span v-on:click="blogList[blogPosition].type = 'markdown'" v-bind:class="{ 'beenSelected': blogList[blogPosition].type == 'markdown' }">markDown</span>
+			</div>
+			
 			<btn style="display: inline-block" btntype="C" icon="true" text="update"></btn>
+
 			<div class="blog-display admin-blog-display">
-				
+				<h1>type: {{ blogList[blogPosition].type }}</h1>
+				<h1>createAt: {{ blogList[blogPosition].date }}</h1>
+				<h1>lastUpdate: {{ blogList[blogPosition].updateDate }}</h1>
 				<h1 style="text-align: center;font-size: .8rem;margin: .2rem;color: rgb(31,18,50);">{{ blogList[blogPosition].title }}</h1>
-				<div v-html="markVally(blogList[blogPosition])" class="md" style="font-size: .4rem;padding: 0 5%;"></div>
+				<div v-if="blogList[blogPosition].type == 'text'" v-html="textDis(blogList[blogPosition].body)"></div>
+				<div v-else v-html="markVally(blogList[blogPosition])" class="md" style="font-size: .4rem;padding: 0 5%;"></div>
 				<!-- .editInputarea defined in writedesk.vue -->
 			</div>
 			<div class="writedesk blog-edit">
@@ -172,6 +192,11 @@
 			this.getBlogsByPage(1); 
 		},
 		methods: {
+			textDis: function(textSrc){
+				// blogList[blogPosition].body.replace(/\n/g, '<br />')
+				return textSrc.replace(/\n/g, "<br />")+"<br /><br /><br /><br /><br />"; 
+
+			},
 			adminDel: function(){
 				var that = this; 
 				$(".del-btn:checked").forEach(function(elem){
@@ -182,21 +207,21 @@
 			updateById: function(){
 				// alert(this.blogList[id].id);
 				$.ajax({
-					type: 'GET',
-					// url: backEnd+'/KV/get_blog.php',
+					type: 'post',
+					url: backEnd+'/KV/update_blog_by_id.php',
 					asyne: false,
 					data: {
-						id: this.blogList[blogPosition].id,
-						title: this.blogList[blogPosition].title,
-						body: this.blogList[blogPosition].body,
+						id: this.blogList[this.blogPosition].id,
+						title: this.blogList[this.blogPosition].title,
+						body: this.blogList[this.blogPosition].body,
 						req: 'update',
-						pw: "" // 应该哈希化这里
+						type: this.blogList[this.blogPosition].type, 
+						pwd: "asd123" // 应该哈希化这里
 					},
 					dataType: 'json',
 					timeout: 2000,
 					success: function(data){
-						thatVM.blogList = data.blogList;
-						thatVM.serverPage = parseInt((parseInt(data.count)+6)/7);
+						alert("update success");
 					},
 					error: function(xhr, type){
 						console.log(xhr);
@@ -212,7 +237,7 @@
 				} else {
 					// footnotes
 					var mdHtml = this.myParser.makeHtml(blog.body); 
-					return mdHtml; 
+					return mdHtml+"<br /><br /><br /><br /><br />"; 
 				}
 			},
 			sortById: function(a, b){
