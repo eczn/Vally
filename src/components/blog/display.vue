@@ -48,12 +48,12 @@
 					pw: "" // 应该哈希化这里
 				},
 				dataType: 'json',
-				timeout: 500,
+				timeout: 1000,
 				success: function(data){
 					that.blog = data.blog; 
 				},
 				error: function(xhr, type){
-					// that.ready(); 
+					that.ready(); 
 					console.log(xhr);
 					console.log(type);
 				}
