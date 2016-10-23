@@ -51,7 +51,8 @@
 <template>
 	<div class="a-blog-display">
 		<btn btntype="B" text="return" style="display: inline-block;"></btn>
-		<span style="font-size: .3rem;">Simple-introdution 4 this blog here: right side of btn B</span>
+		<!-- <span style="font-size: .3rem;">Simple-introdution 4 this blog here: right side of btn B</span> -->
+		<span style="font-size: .3rem;">{{blog.intro}}</span>
 		<wait></wait>
 		<div class="after-wait">
 			<h1 style="text-align: center;font-size: .8rem;margin: .2rem;color: rgb(31,18,50);">{{ blog.title }}</h1>

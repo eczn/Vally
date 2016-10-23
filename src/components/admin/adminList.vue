@@ -128,7 +128,8 @@
 					<span>id: {{ elem.id }}</span>
 					<div v-on:click="showBlog($index)" class="admin-list-li-text">
 						<h1>{{elem.title}}</h1>
-						<p>{{elem.body.slice(0, 40) + "......."}}</p>
+						<!-- <p>{{elem.body.slice(0, 40) + "......."}}</p> -->
+						<p>{{elem.intro}}</p>
 					</div>
 				</li>
 			</ul>

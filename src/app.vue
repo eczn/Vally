@@ -33,6 +33,7 @@
 
 <template>
 	<div>
+		<div id="v-top"></div>
 		<div id="main-body" class="container">
 			<router-view></router-view>
 		</div>
