@@ -1,6 +1,6 @@
 <!-- display -->
 <style>
-	.blog-display {
+	.a-blog-display {
 		position: relative;
 		margin: 0 3%;
 	}
@@ -49,7 +49,7 @@
 </style>
 
 <template>
-	<div class="blog-display">
+	<div class="a-blog-display">
 		<btn btntype="B" text="return" style="display: inline-block;"></btn>
 		<span style="font-size: .3rem;">Simple-introdution 4 this blog here: right side of btn B</span>
 		<wait></wait>
