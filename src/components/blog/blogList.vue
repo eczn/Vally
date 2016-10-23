@@ -83,7 +83,8 @@
 			<ul class="blog-list-ul">
 				<li v-on:click="showBlog($index)" class="blog-list-li" v-for="elem in blogList">
 					<h1>{{elem.title}}</h1>
-					<p>{{elem.body.slice(0, 26) + "......."}}</p>
+					<!-- <p>{{elem.body.slice(0, 26) + "......."}}</p> -->
+					<p>{{elem.intro}}</p>
 				</li>
 			</ul>
 

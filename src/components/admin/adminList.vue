@@ -159,6 +159,7 @@
 			</div>
 			<div class="writedesk blog-edit">
 				<input v-model="blogList[blogPosition].title" class="editInputTextarea" type="text">
+				<input v-model="blogList[blogPosition].intro" placeholder="简短的介绍" class="editInputTextarea" type="text">
 				<textarea v-model="blogList[blogPosition].body" class="editInputTextarea"></textarea>
 			</div>
 		</div>
@@ -213,6 +214,7 @@
 					data: {
 						id: this.blogList[this.blogPosition].id,
 						title: this.blogList[this.blogPosition].title,
+						intro: this.blogList[this.blogPosition].intro,
 						body: this.blogList[this.blogPosition].body,
 						req: 'update',
 						type: this.blogList[this.blogPosition].type, 

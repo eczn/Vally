@@ -76,15 +76,14 @@
 <template>
 	<div class="writedesk">
 		<btn btntype="B"></btn>
-
-		
 		<div class="writearea">
 			<div class="blog-type">
 				<span v-on:click="article.isMD=!article.isMD" v-bind:class="{ 'type-choiced': !article.isMD }">htmlText</span>
 				<span v-on:click="article.isMD=!article.isMD" v-bind:class="{ 'type-choiced': article.isMD }">markDown</span>
 			</div>
+
 			<input v-model="article.title" style="text-align:center;" type="text" placeholder="标题">
-			<!-- <t type="text" placeholder="body"> -->
+			<input v-model="article.intro" style="text-align:center;" type="text" placeholder="简短的blog介绍">
 			<textarea v-model="article.body" placeholder="文章 [纯文本,Markdown] enabled"></textarea>
 			<btn btntype="C" text="Update to ASOB" icon="true"></btn>
 		</div>
@@ -106,6 +105,7 @@
 				article: {
 					title: '',
 					body: '',
+					intro: '', 
 					isMD: true
 				}
 			}
@@ -150,6 +150,7 @@
 					// data to be added to query string:
 					data: {
 						title: that.article.title,
+						intro: that.article.intro,
 						body: that.article.body,
 						type: that.article.isMD?'markdown':'text',
 						pwd: "asd123" // 应该哈希化这里
