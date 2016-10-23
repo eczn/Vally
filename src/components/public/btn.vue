@@ -26,7 +26,7 @@
 	.btn-B > span {
 		width: .3rem;
 		height: .3rem; 
-		margin-top: 4px;
+		/*margin-top: 4px;*/
 		display: inline-block;
 		border-top: 4px solid #555;
 		border-left: 4px solid #555;
