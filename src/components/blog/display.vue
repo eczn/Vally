@@ -98,7 +98,7 @@
 				var that = this; 
 				$.ajax({
 					type: 'GET',
-					url: backEnd+'/KV/get_blog_by_id.php',
+					url: backEnd+'/get_blog_by_id.php',
 					asyne: false,
 					data: {
 						id: queryId,
@@ -114,7 +114,7 @@
 					error: function(xhr, type){
 						that.$broadcast('waitToggle');
 
-						that.ready(); 
+						// that.ready(); 
 						console.log(xhr);
 						console.log(type);
 					}

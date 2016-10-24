@@ -9,7 +9,8 @@
 		/*opacity: 0; */
 		top: 0;
 
-		color: #FFF;
+		/*color: #FFF;*/
+		color: rgba(255,255,255,.65); 
 		/*background-color: #555; */
 		background-color: rgb(51, 46, 57);
 
@@ -35,8 +36,54 @@
 		margin: 5px;
 	}
 	.VS-intro {
-		 text-align:center;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
 	}
+	
+	.VS-intro .avatar span {
+		width: 125px;
+		height: 125px;
+		background-image: url("http://localhost/intro/cir.png");
+		background-size: 125px;
+		display: inline-block;
+	}
+	
+	.VS-intro .avatar {
+		text-align: center;
+		/*margin: 25px 0; */
+		padding: 25px 0;
+		width: 80%; 
+		margin: 25px 10%;
+		border-top: 2px dashed rgba(255,255,255,.2);
+		border-bottom: 2px dashed rgba(255,255,255,.2);
+	}
+
+	.VS-contact {
+		/*margin: */
+		margin: 25px 10%; 
+		align-self: flex-start;
+		font-family: "Consolas";
+		font-size: .3rem;
+		/*color: rgba(255,255,255,.6);*/
+	}
+	.VS-contact a {
+		color: rgba(255,255,255,.3);
+		/*text-decoration-color: rgba(255,255,255,.3);*/
+		text-decoration: none;
+		padding: 0 .25em;
+		border-bottom: dotted 2px; 
+		transition: color .3s; 
+	}
+	.VS-contact a:hover {
+		color: rgba(200,200,255,.6);
+	}
+
+
+	.VS-intro h2 {
+		margin: 8px 0;
+	}
+
 </style>
 
 <template>
@@ -45,6 +92,22 @@
 
 		<div class="VS-intro">
 			<h2>yoo 我是eczn， 这破站的建立者。</h2>
+			<div class="avatar">
+				<span></span>
+				<h2>varEczn</h2>
+			</div>
+			<div class="VS-contact">
+				<!-- <h2>联系我：</h2> -->
+				<h2>Contact Connecting</h2>
+				<ul>
+					<li>QQ: 1975845422</li>
+					<!-- <li>Tel: 15625058135</li> -->
+					<li>mail: eczn@moebaka.com</li>
+					<li>Pixiv: <a href="http://www.pixiv.net/member.php?id=3185353" target="_blank">ecznPI</a></li>
+					<li>webSite: <a href="http://eczn.website" target="_blank">varEczn</a></li>
+					<!-- <li></li> -->
+				</ul>
+			</div>
 		</div>
 
 		<div class="VS-btn">

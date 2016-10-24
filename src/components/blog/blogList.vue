@@ -182,7 +182,7 @@
 				var thatVM = this;
 				$.ajax({
 					type: 'GET',
-					url: backEnd+'/KV/get_blog.php',
+					url: backEnd+'/get_blog.php',
 					asyne: false,
 					// data to be added to query string:
 					data: {

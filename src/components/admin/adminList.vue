@@ -210,7 +210,7 @@
 				// alert(this.blogList[id].id);
 				$.ajax({
 					type: 'post',
-					url: backEnd+'/KV/update_blog_by_id.php',
+					url: backEnd+'/update_blog_by_id.php',
 					asyne: false,
 					data: {
 						id: this.blogList[this.blogPosition].id,
@@ -257,7 +257,7 @@
 				var thatVM = this; 
 				$.ajax({
 					type: 'GET',
-					url: backEnd+'/KV/get_blog.php',
+					url: backEnd+'/get_blog.php',
 					asyne: false,
 					data: {
 						page: pageAt,
@@ -284,7 +284,7 @@
 				// 
 				$.ajax({
 					type: 'GET', 
-					url: backEnd+'/KV/del_blog_by_id.php',
+					url: backEnd+'/del_blog_by_id.php',
 					asyne: false,
 					data: {
 						id: id,
