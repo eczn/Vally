@@ -29,21 +29,53 @@
 		transition: all 1.5s;
 	}
 
+	/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+	::-webkit-scrollbar { 
+		width: 12px;  
+		height: 16px;  
+		background-color: rgba(255,255,255,0);  
+	}  
+
+	/*定义滚动条轨道 内阴影+圆角*/  
+	::-webkit-scrollbar-track {  
+		/*border: 3px solid rgba(255,255,255,0.5);*/
+		background-color: rgba(31,18,50,0.05);  
+		/*background: linear-gradient(to right, transparent, rgba(31,18,50,0.1), rgba(31,18,50,0.2));*/
+	}  
+
+	/*定义滑块 内阴影+圆角*/  
+	::-webkit-scrollbar-thumb {
+		border-radius: 12px 0 0 12px / 16px 0 0 16px;
+		/*border-right: 12px dashed rgba(31,18,50,.4);*/
+		background-color: rgba(31,18,50,.3);
+
+	}
+
+	#app {
+		/*background: linear-gradient(to top, transparent, rgba(31,18,50,0.05));*/
+		padding: 0;
+		margin: 0;
+		display: block;
+	}
 </style>
 
 <template>
-	<div>
+	<div id="app">
 		<div id="v-top"></div>
 		<div id="main-body" class="container">
+			<!-- text -->
 			<router-view></router-view>
 		</div>
 		<v-footer></v-footer>
+		<vally-side></vally-side>
 	</div>
 </template>
 
 <script>
 	var header = require("./components/public/header.vue"); 
 	var myFooter = require("./components/public/footer.vue");
+	var vallySide = require("./components/public/vallySide.vue"); 
+
 	module.exports = {
 		data: function(){
 			return {
@@ -58,7 +90,8 @@
 		},
 		components: {
 			"v-header": header,
-			"v-footer": myFooter
+			"v-footer": myFooter,
+			"vally-side": vallySide
 		}
 	}
 </script>
