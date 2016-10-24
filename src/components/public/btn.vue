@@ -115,6 +115,56 @@
 		white-space: nowrap;
 	}
 
+	.btn-VS-toggle {
+		position: relative;
+		/*padding: 5px; */
+		bottom: 20px; 
+		left: 15px;
+		display: flex;
+		align-items: center;
+		transition: opacity .1s, left .1s;
+/*		animation-name: VSHaipa; 
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+		animation-timing-function: ease;*/
+	}
+
+	.btn-VS-toggle:hover {
+		opacity: .5;
+		left: 20px;
+		/*transition: opacity .1s, left .1s;*/
+	}
+
+	.btn-VS-toggle > div {
+		width: 24px; 
+		height: 24px;
+		border-left: 4px solid rgb(31,18,50); 
+		border-top: 4px solid rgb(31,18,50); 
+		transform: rotate(135deg) scaleX(1) scaleY(1);
+
+		/*transition: property duration timing-function delay;*/
+		transition: transform .3s ease .3s; 
+		/*transition-property: transform, opacity; */
+		/*transition-duration: .3s;/*/
+		/*transition-delay: .5s;*/
+	}
+
+	@keyframes VSHaipa {
+		from {
+			left: 15px;
+		} to {
+			left: 10px;
+		}
+	}
+
+	.btn-VS-toggle-true {
+		transform: rotate(135deg) scaleX(-1) scaleY(-1)!important;
+	}
+	.btn-VS-toggle-false {
+		
+	}
+
 </style>
 
 <template>
@@ -125,12 +175,17 @@
 			<span v-bind:class="{ 'icon_true': icon=='true', 'icon_false': icon=='false', 'icon_add': icon=='add' }"></span>
 			<div>{{text}}</div>
 		</span>
+
+		<span v-on:click="sentEvent('VS-toggle')" class="btn-VS-toggle" v-if=" btntype == 'VS-toggle'">
+			<div v-bind:class="{'btn-VS-toggle-true': toggleStatus, 'btn-VS-toggle-false': !toggleStatus }"></div>
+			<div v-bind:class="{'btn-VS-toggle-true': toggleStatus, 'btn-VS-toggle-false': !toggleStatus }"></div>
+		</span>
 	</div>
 </template>
 
 <script>
 	module.exports = {
-		props: ['btntype', 'text', 'icon'],
+		props: ['btntype', 'text', 'icon', 'toggle-status'],
 		methods: {
 			// trigger the event just like this: 'A_onClick', based on the value of typeStr
 			sentEvent: function(typeStr){
