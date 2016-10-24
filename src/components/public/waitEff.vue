@@ -14,7 +14,7 @@
 		width: 20px;
 		height: 20px;
 		display: inline-block;
-		background: url("/images/loading_sprite.png");
+		background: url("../../images/loading_sprite.png");
 		background-size: auto 20px;
 		animation: am-rotate 1s steps(12) infinite;
 	}
