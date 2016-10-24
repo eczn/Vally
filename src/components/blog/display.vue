@@ -61,7 +61,7 @@
 			<div class="blog-info">
 				<h2>blogId: {{$route.query.id}}</h2>
 				<h2>写于 {{blog.date}}</h2>
-				<h2>最后更新于{{blog.updateDate}}</h2>
+				<h2>最后更新于 {{blog.updateDate}}</h2>
 			</div>
 		</div>
 	</div>
