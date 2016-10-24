@@ -98,7 +98,7 @@
 				var that = this; 
 				$.ajax({
 					type: 'GET',
-					url: backEnd+'/get_blog_by_id.php',
+					url: backEnd+'get_blog_by_id.php',
 					asyne: false,
 					data: {
 						id: queryId,

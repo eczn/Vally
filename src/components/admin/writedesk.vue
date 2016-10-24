@@ -145,7 +145,7 @@
 
 				$.ajax({
 					type: 'POST',
-					url: backEnd+'/add_blog.php',
+					url: backEnd+'add_blog.php',
 					asyne: false,
 					// data to be added to query string:
 					data: {
