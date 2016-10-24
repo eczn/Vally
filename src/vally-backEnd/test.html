@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+</form>
+</body>
+<script type="text/javascript" src="/lib/jquery.min.js"></script>
+<script type="text/javascript">
+	$.ajax({
+		async: true, 
+		type: 'GET',
+		url: 'get_blog.php',
+		dataType: 'JSON',
+		// 严格的json字符串
+		data: {
+			id: 1
+		},
+		success: function(msg){
+			console.log(msg.id);
+		
+		},
+		error: function(err){
+			console.log(err); 
+		}
+
+	});
+</script>
+</html>
