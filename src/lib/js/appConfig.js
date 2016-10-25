@@ -1,22 +1,33 @@
 // appConfig.js
-// Many Global Setting For Vally
+// Global Setting and Functions For Vally
 
-// var backEnd = "http://192.168.1.10/ProjectBuilding";
-// var backEnd = "http://localhost/ProjectBuilding"; 
-
+var parser = new HyperDown(); 
 var HOST = window.location.href.split('#!')[0]; 
-
-
 var whereVallyEnd = "vally-backEnd/";
-
-// console.log(HOST+whereVallyEnd); 
 var backEnd = HOST+whereVallyEnd;
 
 if (HOST.indexOf("8080")){
-	backEnd = "http://localhost/ProjectBuilding/aVally/src/vally-backEnd/"; 
+	backEnd = "http://localhost/ProjectBuilding/aVally/src/vally-backEnd/";
+}
+console.log(backEnd);
+
+function setCookie(c_name, value, expiredays){
+    var exdate=new Date()
+    exdate.setDate(exdate.getDate()+expiredays)
+    document.cookie=c_name+ "=" +escape(value)+((expiredays==null) ? "" : ";expires="+exdate.toGMTString()); 
 }
 
-// var backEnd = "";
-
-var parser = new HyperDown(); 
-// 	mdAfterParse = parser.makeHtml( this.article.body );
+function getCookie(c_name){
+	if (document.cookie.length>0){
+		c_start=document.cookie.indexOf(c_name + "=");
+		if (c_start != -1){ 
+			c_start = c_start + c_name.length+1;
+			c_end=document.cookie.indexOf(";",c_start);
+			if (c_end==-1){
+				c_end=document.cookie.length
+			}
+			return unescape(document.cookie.substring(c_start,c_end))
+		}
+	}
+	return "";
+}
