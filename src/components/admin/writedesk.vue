@@ -142,6 +142,8 @@
 				// } else {
 				// 	// this.article.body = this.article.body.replace(/[\r\n]/g, "\\r\\n");
 				// }
+				var cHash = getCookie('objHash');
+				var cRand = getCookie('objRand'); 
 
 				$.ajax({
 					type: 'POST',
@@ -153,7 +155,8 @@
 						intro: that.article.intro,
 						body: that.article.body,
 						type: that.article.isMD?'markdown':'text',
-						pwd: "asd123" // 应该哈希化这里
+						cHash: cHash,
+						cRand: cRand
 					},
 					// type of data we are expecting in return:
 					dataType: 'json',

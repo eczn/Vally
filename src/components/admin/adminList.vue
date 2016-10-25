@@ -208,6 +208,9 @@
 			},
 			updateById: function(){
 				// alert(this.blogList[id].id);
+				var cHash = getCookie('objHash');
+				var cRand = getCookie('objRand'); 
+
 				$.ajax({
 					type: 'post',
 					url: backEnd+'update_blog_by_id.php',
@@ -217,9 +220,10 @@
 						title: this.blogList[this.blogPosition].title,
 						intro: this.blogList[this.blogPosition].intro,
 						body: this.blogList[this.blogPosition].body,
+						type: this.blogList[this.blogPosition].type,
 						req: 'update',
-						type: this.blogList[this.blogPosition].type, 
-						pwd: "asd123" // 应该哈希化这里
+						cHash: cHash,
+						cRand: cRand
 					},
 					dataType: 'json',
 					timeout: 2000,
@@ -261,7 +265,7 @@
 					asyne: false,
 					data: {
 						page: pageAt,
-						pw: "" // 应该哈希化这里
+						// pw: "" get_blog 不需要密码了 
 					},
 					dataType: 'json',
 					timeout: 2000,
@@ -281,22 +285,41 @@
 				$($(".pageNum")[index]).addClass("pageBtn-active")
 			},
 			delBlogById: function(id){
-				// 
+				var cHash = getCookie('objHash');
+				var cRand = getCookie('objRand'); 
+				var that = this; 
 				$.ajax({
-					type: 'GET', 
+					type: 'POST', 
 					url: backEnd+'del_blog_by_id.php',
 					asyne: false,
 					data: {
 						id: id,
-						pw: ''
+						// hash 
+						cHash: cHash,
+						cRand: cRand
 					},
 					dataType: 'json', 
 					timeout: 2000, 
 					success: function(data){
-						// alert("删除是否成功： "+data.sql_status); 
+						// alert("删除是否成功： "+data.sql_status);
+						if (data.status == 1){
+							alert("删除成功");
+
+
+							// old code 
+							$($(".pageNum")[0]).addClass("pageBtn-active");
+							that.getBlogsByPage(1); 
+
+						} else {
+							alert("出错了");
+						}
+
+						console.log(data); 
 					},
 					error: function(xhr, type){
 						// alert("出错: " + type); 
+						alert("删除失败，请重试"); 
+						console.log(xhr); 
 						console.log(type); 
 					}
 				});
@@ -308,7 +331,6 @@
 			},
 			C_onClick: function(type){
 				if (type == 'false'){
-					alert("false");
 					this.adminDel(); 	
 				} else if (type == 'true'){
 					this.updateById();

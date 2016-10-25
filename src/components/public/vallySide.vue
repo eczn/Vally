@@ -44,7 +44,7 @@
 	.VS-intro .avatar span {
 		width: 125px;
 		height: 125px;
-		background-image: url("http://localhost/intro/cir.png");
+		background-image: url("http://eczn.website/intro/cir.png");
 		background-size: 125px;
 		display: inline-block;
 	}
