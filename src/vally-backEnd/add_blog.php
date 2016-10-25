@@ -12,10 +12,13 @@ $dd = mysql_select_db($sql_info->database, $con);
 $title = $_POST['title'];
 $body = $_POST['body'];
 $type = $_POST['type'];
+$client_hash = $_POST['cHash']; 
+$client_rand = $_POST['cRand']; 
 // $req = $_POST['req']; 
 $introdution = $_POST['intro']; 
 
-if ($sql_info->api_pwd != $_POST['pwd']){
+if ($sql_info->very_pwd($client_hash, $client_rand) == false){
+	echo '{"status": "-1", msg: "pwd false"}';
 	exit(); 
 }
 
@@ -37,7 +40,7 @@ $insertBlog = "INSERT INTO blog (title, body, date, format, type, update_date, i
 mysql_query("SET NAMES utf8");
 $result = mysql_query($insertBlog);
 
-echo '{ "sql_status": true }'; 
+echo '{"status": "1", "msg": "add blog success!"}';
 // echo json_encode(
 // 	array(
 // 		'target' => $tempArr,

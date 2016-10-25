@@ -5,5 +5,17 @@ class sql_config {
 	public $account = "root"; 
 	public $pwd = "root";
 	public $api_pwd = "asd123";
+
+
+	public function very_pwd($client_hash, $client_rand ){
+		$server_hash = md5($this->api_pwd.$client_rand);
+
+		if ($server_hash == $client_hash) {
+			return true; 
+		} else {
+			return false; 
+		}
+		
+	}
 }
 ?>

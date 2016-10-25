@@ -13,12 +13,18 @@ $id = $_POST['id'];
 $title = $_POST['title'];
 $body = $_POST['body'];
 $type = $_POST['type'];
+
+$client_hash = $_POST['cHash']; 
+$client_rand = $_POST['cRand']; 
+
+if ($sql_info->very_pwd($client_hash, $client_rand) == false){
+	echo '{"status": "-1", "msg": "pwd false"}';
+	exit(); 
+}
+
 // $req = $_POST['req']; 
 $introdution = $_POST['intro']; 
 
-if ($sql_info->api_pwd != $_POST['pwd']){
-	exit();
-}
 
 if ($type == 'text'){
 	// $format = str_replace(PHP_EOL, '<br>', $body);
@@ -31,21 +37,12 @@ if ($type == 'text'){
 	// $introdution = str_replace('\"', '\\\"', $introdution);
 }
 
-// UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing' WHERE LastName = 'Wilson'
-// $insertBlog = "INSERT INTO blog (title, body) VALUES ('$title', '$body')";
 $update = "UPDATE blog SET title = '$title', body = '$body', update_date = now(), type = '$type', format = '$format', intro = '$introdution' WHERE id = $id";
 mysql_query("SET NAMES utf8");
 $result = mysql_query($update);
 
+echo '{"status": "1", "msg": "update success"}';
 
-
-echo '{ "sql_status": "success" }'; 
-// echo json_encode(
-// 	array(
-// 		'target' => $tempArr,
-// 		'count' => $count
-// 	)
-// );
 
 mysql_close($con);
 ?>
