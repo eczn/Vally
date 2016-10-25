@@ -78,7 +78,8 @@
 					// title: 'asd', 
 					// body: '#asdasd',
 					// type: 'markdown'
-				}
+				},
+				whereUserFrom: 'blogList'
 			}
 		},
 		props: ["id", "page"],
@@ -113,7 +114,6 @@
 					},
 					error: function(xhr, type){
 						that.$broadcast('waitToggle');
-
 						// that.ready(); 
 						console.log(xhr);
 						console.log(type);
@@ -144,7 +144,17 @@
 		events: {
 			B_onClick: function(){
 				// sent from myBtn 
-				window.history.go(-1);
+				// alert(this.whereUserFrom);
+				if (this.whereUserFrom == 'display'){
+					this.$route.router.go({
+						name: 'welcome',
+					});
+				} else {
+					window.history.go(-1);
+				}
+			},
+			whereUserActuallyFrom: function(where){
+				this.whereUserFrom = where; 
 			}
 		},
 		// beforeDestroy: function(){

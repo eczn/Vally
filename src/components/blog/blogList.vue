@@ -125,6 +125,13 @@
 			// if (this.$route.name == 'display'){
 			// 	return;
 			// }
+			// alert("!!");
+			if (this.$route.name == 'display'){
+				this.$broadcast("whereUserActuallyFrom", "display");
+			} else {
+				this.$broadcast("whereUserActuallyFrom", "blogList");
+			}
+
 			if (this.$route.query.page == undefined){
 				if (this.$route.name != 'display'){
 					this.$route.router.go({
