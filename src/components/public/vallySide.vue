@@ -28,6 +28,7 @@
 		position: absolute;
 		bottom: 0; 
 		left: 400px;
+		font-size: 0; 
 		color: #222;
 	}
 
@@ -105,7 +106,7 @@
 					<li>mail: eczn@moebaka.com</li>
 					<li>Pixiv: <a href="http://www.pixiv.net/member.php?id=3185353" target="_blank">ecznPI</a></li>
 					<li>webSite: <a href="http://eczn.website" target="_blank">varEczn</a></li>
-					<!-- <li></li> -->
+					
 				</ul>
 			</div>
 		</div>

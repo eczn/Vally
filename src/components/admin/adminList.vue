@@ -276,6 +276,7 @@
 					error: function(xhr, type){
 						console.log(xhr);
 						console.log(type);
+						thatVM.getBlogsByPage(pageAt); 
 					}
 				});
 			},
