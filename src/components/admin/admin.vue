@@ -61,7 +61,7 @@
 	<div class="admin-container">
 		<v-header position="admin"></v-header>
 
-		<div class="pwd-input-area">
+		<div class="pwd-input-area" v-if="!isEnter">
 			<input type="password" v-model="pwd" placeholder="admin-password" type="text">
 			<!-- <div v-on:click="enter">TraceInto</div> -->
 			<!-- <btn btntype="C" icon="true" text=""></btn> -->
@@ -69,8 +69,6 @@
 				<span class="icon_true"></span>
 			</span>
 		</div>
-
-		
 		<router-view v-else></router-view>
 	</div>
 </template>
@@ -91,6 +89,7 @@
 		ready: function(){
 			var cHash = getCookie("objHash"); 
 			var cRand = getCookie("objRand"); 
+			var that = this;
 			
 			if (cHash.length != 0 || cRand.length != 0){
 				console.group("cHash cRand"); 
@@ -103,6 +102,7 @@
 					$(".pwd-input-area").addClass("traceInto");
 					setTimeout(function(){
 						$(".pwd-input-area").css("display", "none"); 
+						that.isEnter = true; 
 					},500);
 				},200);
 			}
