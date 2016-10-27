@@ -95,7 +95,7 @@
 			<h2>yoo 我是eczn， 这破站的建立者。</h2>
 			<div class="avatar">
 				<span></span>
-				<h2>varEczn</h2>
+				<a v-link="{name: 'admin'}"><h2>varEczn</h2></a>
 			</div>
 			<div class="VS-contact">
 				<!-- <h2>联系我：</h2> -->
