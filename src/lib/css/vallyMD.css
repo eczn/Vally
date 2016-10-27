@@ -271,7 +271,9 @@ img h1 {
 .footer-tail:hover {
 	border: none!important;
 }
-
+.md a strong {
+	color: rgba(150, 50, 30, 1);
+}
 .footer-tail i {
 	color: rgb(31,18,50);
 	border-left: none; 
