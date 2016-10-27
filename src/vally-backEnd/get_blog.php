@@ -20,6 +20,8 @@ header("Access-Control-Allow-Origin: *");
 // $_GET['page'];
 // select * from blog limit 2,3
 $page = $_GET['page'];
+$needBody = $_GET['need_body']; 
+
 //  order by c desc
 $sql = "SELECT * FROM blog ORDER BY id DESC LIMIT ". ($page-1)*$blog_num .",".$page*$blog_num;
 // $insertBlog = "SELECT * FROM blog limit 0,7";
@@ -42,11 +44,18 @@ while ( $temp = mysql_fetch_array($result) ) {
 	// $temp['body'] = nl2br($temp['body']);
 	// $temp['body'] = str_replace(PHP_EOL, '', $temp['body']);
 
+	if ($needBody == 'yes') {
+		$tempBody = $temp['body']; 
+	} else {
+		$tempBody = 'nobody';
+	}
+
 	array_push($tempArr, array(
 		'id'=> $temp['id'], 
 		'title'=> $temp['title'],
 		'intro'=> $temp['intro'],
 		// 'body'=> $temp['body'],
+		'body'=> $tempBody,
 		'format'=> $temp['format'],
 		'type'=> $temp['type'],
 		'date'=> $temp['date'],

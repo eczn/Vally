@@ -200,7 +200,7 @@
 					// data to be added to query string:
 					data: {
 						page: pageAt,
-						pw: "" // 应该哈希化这里
+						need_body: 'no'
 					},
 					// type of data we are expecting in return:
 					dataType: 'json',
@@ -213,6 +213,7 @@
 						// thatVM.blogList.push(data);
 						// console.log(data);
 						thatVM.blogList = data.blogList;
+						// alert(data.blogList[0].body);
 
 						thatVM.serverPage = parseInt((parseInt(data.count)+6)/7);
 						// console.log((parseInt(data.count)+7)/7);
@@ -220,7 +221,9 @@
 					error: function(xhr, type){
 						console.log(xhr);
 						console.log(type);
-						thatVM.getBlogsByPage(pageAt); 
+						setTimeout(function(){
+							thatVM.getBlogsByPage(pageAt);
+						},400); 
 					}
 				});
 			},
