@@ -34,13 +34,15 @@
 	padding-bottom: .3em;
 	margin-bottom: 1em;
 }
-/*.md pre:after {
+.md pre:after {
 	content: "codeBoard v0.0.1 (别问了高亮还在搞)"; 
 	font-size: .2rem;
-	position: absolute;
+	float: right;
 	top: 100%; 
 	right: 0; 
-}*/
+	color: rgba(255,255,255,.65);
+	font-size: .1rem;
+}
 
 .md pre code {
 	/*color: rgba(255,255,255,.65)!important;*/
