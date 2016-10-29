@@ -7,21 +7,88 @@
 	}
 
 	.blog-list-li {
+		position: relative;
 		margin: .5rem 0;
-		transition: all .2s; 
+		/*padding: 16px 0; */
+		padding-bottom: .5rem;
+		min-width: 320px;
+		/*border-radius: .4rem;*/
+		transition: all .65s;
+	}
+
+	.blog-list-li > p {
+		color: #555;
+
+		/*font-size: */
+	}
+
+	.blog-list-li > h1 {
+		color: rgb(31,18,50);
+		font-size: 0.6rem;
+		font-weight: normal;
+		/*white-space: nowrap;*/
+	}
+
+	.blog-list-li > span {
+		position: relative;
+		z-index: -9;
+		/*filter: blur(1px);*/
+		/*display: flex;*/
+		display: block;
+		justify-content: flex-start;
+		align-items: center;
+		/*text-align: left;*/
+		/*right: 10%;*/
+		margin: 0 10%;
+		width: 80%;
+		height: 100%; 
+		top: 0;
+		/*font-size: 1rem;*/
+		font-size: .6rem;
+		font-weight: bold;
+		/*color: rgba(31,18,50, .0618);*/
+		/*color: rgb(31,18,50);*/
+		color: rgb(255,255,255);
+
+		/*text-align: center;*/
+	}
+	.blog-list-li > span:after {
+		content: "";
+		border-radius: 2px;
+		/*position: absolute;*/
+		margin: 0 auto;
+		margin-top: 20px;
+		width: 24px;
+		height: 24px;
+
+		/*margin-top: -10px;*/
+		/*background-color: rgba(31,18,50,0.8);*/
+		/*border: 2px solid rgba(31,18,50,0.8);*/
+		border-left: 2px solid rgba(31,18,50,0.8);
+		border-top: 2px solid rgba(31,18,50,0.8);
+		transform: rotate(45deg);
+		display: block;
+		bottom: 0;
+
+		/*left: 50%;*/
 	}
 
 	@media screen and (min-width: 768px) {
 		.blog-list-li:hover {
-			margin-left: .5rem;
-			transform: rotate(1deg);
-			text-shadow: -20px -4px 2px rgba(34, 34, 34, .2);
+			opacity: .8;
+			/*margin-left: .5rem;*/
+			/*transform: rotate(1deg);*/
+			background-color: rgba(31,18,50,.02);
+			/*background-color: rgba(31,18,50,.2);*/
+			/*text-shadow: -20px -4px 2px rgba(34, 34, 34, .2);*/
+			text-shadow: 0px 6px 4px rgba(34, 34, 34, .2);
+
 			transition: all .3s;
 		}
 		.blog-list-li:active {
 			/*font-size: .3rem;*/
 			opacity: 0;
-			transition: all .3s;
+			transition: opacity .3s;
 		}
 	}
 	@media screen and (max-width: 768px) {
@@ -29,15 +96,6 @@
 			margin-top: .4rem;
 			opacity: 0.5;
 		}
-	}
-
-	.blog-list-li > p {
-		color: #555;
-	}
-
-	.blog-list-li > h1 {
-		color: rgb(31,18,50);
-		/*white-space: nowrap;*/
 	}
 
 	.pageNum {
@@ -91,6 +149,8 @@
 					<h1>{{elem.title}}</h1>
 					<!-- <p>{{elem.body.slice(0, 26) + "......."}}</p> -->
 					<p>{{elem.intro}}</p>
+					<!-- <span>{{elem.updateDate}}</span> -->
+					<span></span>
 				</li>
 			</ul>
 
@@ -216,6 +276,8 @@
 						// alert(data.blogList[0].body);
 
 						thatVM.serverPage = parseInt((parseInt(data.count)+6)/7);
+						footOn('v-top');
+
 						// console.log((parseInt(data.count)+7)/7);
 					},
 					error: function(xhr, type){

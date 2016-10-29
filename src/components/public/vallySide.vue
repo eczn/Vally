@@ -1,5 +1,21 @@
 <!-- vallySide.vue -->
 <style>
+body {
+	position: relative;
+}
+
+body:after {
+	content: ""; 
+	position: fixed;
+	opacity: .2;
+	width: 100%; 
+	height: 100%;
+	top: 0; 
+	left: 0; 
+	z-index: -9; 
+
+	/*background-image: url('../../images/black_denim_@2X.png');*/
+}
 	.vally-side {
 		position: fixed;
 		height: 100%; 
@@ -16,6 +32,21 @@
 
 		transition: left .6s;
 	}
+	.vally-side:after {
+		content: ""; 
+		position: absolute;
+		height: 100%; 
+		width: 100%; 
+		top: 0; 
+		left: 0; 
+		/*filter: blur(1px);*/
+		z-index: -9; 
+		opacity: 0.06;
+		/*background-image: url('../../images/black_denim_@2X.png');*/
+		background-image: url('../../images/geometry22.png');
+		
+
+	}
 
 	.vally-push {
 		/*isPushed == true*/
@@ -30,7 +61,12 @@
 		left: 400px;
 		font-size: 0; 
 		color: #222;
+		cursor: pointer;
 	}
+	.VS-btn {
+		cursor: pointer;
+	}
+
 
 	.VS-navTitle {
 		/*<h1>ASOB</h1>*/
@@ -68,7 +104,8 @@
 		font-size: .3rem;
 		/*color: rgba(255,255,255,.6);*/
 	}
-	.VS-contact a {
+	/*.VS-contact a {*/
+	.vally-side a {
 		color: rgba(255,255,255,.3);
 		/*text-decoration-color: rgba(255,255,255,.3);*/
 		text-decoration: none;
@@ -76,7 +113,9 @@
 		border-bottom: dotted 2px; 
 		transition: color .3s; 
 	}
-	.VS-contact a:hover {
+
+	/*.VS-contact a:hover {*/
+	.vally-side a:hover {
 		color: rgba(200,200,255,.6);
 	}
 
@@ -95,7 +134,8 @@
 			<h2>yoo 我是eczn， 这破站的建立者。</h2>
 			<div class="avatar">
 				<span></span>
-				<a v-link="{name: 'admin'}"><h2>varEczn</h2></a>
+				<!-- <a v-link="{name: 'admin'}"><h2>varEczn</h2></a> -->
+				<a href="http://eczn.website/" target="_blank"><h2>varEczn</h2></a>
 			</div>
 			<div class="VS-contact">
 				<!-- <h2>联系我：</h2> -->
@@ -106,9 +146,10 @@
 					<li>mail: eczn@moebaka.com</li>
 					<li>Pixiv: <a href="http://www.pixiv.net/member.php?id=3185353" target="_blank">ecznPI</a></li>
 					<li>webSite: <a href="http://eczn.website" target="_blank">varEczn</a></li>
-					
 				</ul>
 			</div>
+
+			<a href="http://qun.torzo.club" target="_blank"><img style="opacity: 0.65;margin-top: 24px;" src="../../images/bb64.png" alt=""></a>
 		</div>
 
 		<div class="VS-btn">
