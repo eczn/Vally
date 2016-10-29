@@ -29,7 +29,7 @@ gulp.task('bundle', function(){
 					},
 					watch: true
 				}))
-				.pipe(uglify())
+				// .pipe(uglify())
         		.pipe(gulp.dest('src/lib/'))
 				.pipe(connect.reload());
 });
