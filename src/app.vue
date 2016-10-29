@@ -13,7 +13,7 @@
 	/*@media screen and (min-width: 425px) and (max-width: 1000px) */
 	@media screen and (max-width: 768px) {
 		.container {
-			margin: 0 .3rem;
+			margin: 0 0rem;
 		}
 	}
 
