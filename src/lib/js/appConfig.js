@@ -6,9 +6,9 @@ var HOST = window.location.href.split('#!')[0];
 var whereVallyEnd = "vally-backEnd/";
 var backEnd = HOST+whereVallyEnd;
 
-if (HOST.indexOf("localhost")){
-	backEnd = "http://localhost/ProjectBuilding/aVally/src/vally-backEnd/";
-}
+// if (HOST.indexOf("localhost")){
+//	backEnd = "http://localhost/ProjectBuilding/aVally/src/vally-backEnd/";
+// }
 console.log(backEnd);
 
 function setCookie(c_name, value, expiredays){
