@@ -132,15 +132,17 @@
 
 	.btn-VS-toggle:hover {
 		opacity: .5;
-		left: 20px;
+		/*left: 20px;*/
 		/*transition: opacity .1s, left .1s;*/
 	}
 
 	.btn-VS-toggle > div {
 		width: 24px; 
 		height: 24px;
-		border-left: 4px solid rgb(31,18,50); 
-		border-top: 4px solid rgb(31,18,50); 
+		border-radius: 24px;
+		/*border-left: 4px solid rgb(31,18,50); */
+		border: 3px solid rgb(31,18,50); 
+		/*border-top: 4px solid rgb(31,18,50); */
 		transform: rotate(135deg) scaleX(1) scaleY(1);
 
 		/*transition: property duration timing-function delay;*/
@@ -178,7 +180,7 @@
 
 		<span v-on:click="sentEvent('VS-toggle')" class="btn-VS-toggle" v-if=" btntype == 'VS-toggle'">
 			<div v-bind:class="{'btn-VS-toggle-true': toggleStatus, 'btn-VS-toggle-false': !toggleStatus }"></div>
-			<div v-bind:class="{'btn-VS-toggle-true': toggleStatus, 'btn-VS-toggle-false': !toggleStatus }"></div>
+			<!-- <div v-bind:class="{'btn-VS-toggle-true': toggleStatus, 'btn-VS-toggle-false': !toggleStatus }"></div> -->
 		</span>
 	</div>
 </template>

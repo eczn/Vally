@@ -265,6 +265,7 @@
 					asyne: false,
 					data: {
 						page: pageAt,
+						need_body: 'yes'
 						// pw: "" get_blog 不需要密码了 
 					},
 					dataType: 'json',

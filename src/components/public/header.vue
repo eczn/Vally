@@ -1,5 +1,9 @@
 <!-- header.vue -->
 <style>
+	.header-container h1 {
+		font-weight: normal;
+	}
+
 	.header-container > div {
 		color: rgb(31,18,50);
 	}
@@ -18,7 +22,7 @@
 		/*color: #222;*/
 		padding-top: .25rem;
 		padding-bottom: .25rem;
-		border-bottom: 4px dotted rgba(0, 0, 30, .5);
+		border-bottom: 1px dashed rgba(0, 0, 30, .5);
 		/*text-align: center;*/
 	}
 

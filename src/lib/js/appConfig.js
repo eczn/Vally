@@ -6,7 +6,7 @@ var HOST = window.location.href.split('#!')[0];
 var whereVallyEnd = "vally-backEnd/";
 var backEnd = HOST+whereVallyEnd;
 
-if (HOST.indexOf("8080")){
+if (HOST.indexOf("localhost")){
 	backEnd = "http://localhost/ProjectBuilding/aVally/src/vally-backEnd/";
 }
 console.log(backEnd);

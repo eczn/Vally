@@ -34,13 +34,15 @@
 	padding-bottom: .3em;
 	margin-bottom: 1em;
 }
-/*.md pre:after {
+.md pre:after {
 	content: "codeBoard v0.0.1 (别问了高亮还在搞)"; 
 	font-size: .2rem;
-	position: absolute;
+	float: right;
 	top: 100%; 
 	right: 0; 
-}*/
+	color: rgba(255,255,255,.65);
+	font-size: .1rem;
+}
 
 .md pre code {
 	/*color: rgba(255,255,255,.65)!important;*/
@@ -84,17 +86,28 @@ blockquote p:last-child {
 	margin: 0;
 }
 
-ul p, li p {
+/*ul p, li p {
 	margin: 0!important;
 }
 ul, ol {
 	margin: 0 0 1.1em;
-}
+}*/
 
 .md > ol, .md > li {
-	margin-left: 1.1em;
+	/*margin-left: 1.1em;*/
 }
 
+.md blockquote ul, .md blockquote ol {
+	margin-left: 1.1em;
+} 
+
+.md blockquote * {
+	/*font-weight: bold;*/
+	color: rgb(31,18,50);
+}
+.md strong {
+	color: rgb(31,18,50);	
+}
 
 .md a {
 	text-decoration: none;
@@ -136,22 +149,21 @@ h6 strong img {
 	/*transition-duration: .3s; */
 	/*transition-delay: 1s; */
 	/*opacity: .5; */
-	margin: 0;
+	
+	margin: 20px;
 	padding: 0; 
 	transition: max-height,max-width .3s,.3s;
-	
-	filter: grayscale(.8);
-	-webkit-animation: imgShowOne .4s ease 2s 1 normal forwards;
-	-o-animation: imgShowOne .4s ease 2s 1 normal forwards;
-	animation: imgShowOne .4s ease 2s 1 normal forwards;
-	animation-name: imgShowOne .4s ease 2s 1 normal forwards;;
 }
 
-h6 strong img:hover {
-	max-height: 130px;
-	max-width: 170px; 
-
-	transition: max-height,max-width .3s,.3s;
+@media screen and (min-width: 768px) {
+	h6 strong img {
+		margin: 0;
+		filter: grayscale(.8);
+		-webkit-animation: imgShowOne .4s ease 2s 1 normal forwards;
+		-o-animation: imgShowOne .4s ease 2s 1 normal forwards;
+		animation: imgShowOne .4s ease 2s 1 normal forwards;
+		animation-name: imgShowOne .4s ease 2s 1 normal forwards;
+	}
 }
 
 @keyframes imgShowOne {
@@ -165,7 +177,23 @@ h6 strong img:hover {
 		filter: grayscale(0);
 	}
 }
+@-webkit-keyframes imgShowOne {
+	from {
+		margin: 0; 
+		opacity: .5; 
+		filter: grayscale(.8);
+	} to {
+		margin: 20px;
+		opacity: 1; 
+		filter: grayscale(0);
+	}
+}
+h6 strong img:hover {
+	max-height: 130px;
+	max-width: 170px; 
 
+	transition: max-height,max-width .3s,.3s;
+}
 
 h6 strong {
 	display: flex;
@@ -173,6 +201,7 @@ h6 strong {
 	flex-wrap: wrap;
 	justify-content: center;
 	width: 100%; 
+	text-align: center;
 	/*background-color: rgba(51, 46, 57, 0.1);*/
 	
 }
@@ -244,7 +273,9 @@ img h1 {
 .footer-tail:hover {
 	border: none!important;
 }
-
+.md a strong {
+	color: rgba(150, 50, 30, 1);
+}
 .footer-tail i {
 	color: rgb(31,18,50);
 	border-left: none; 
