@@ -84,6 +84,7 @@
 
 			<input v-model="article.title" style="text-align:center;" type="text" placeholder="标题">
 			<input v-model="article.intro" style="text-align:center;" type="text" placeholder="简短的blog介绍">
+			<input v-model="article.tags" style="text-align:center;" type="text" placeholder="文章标签">
 			<textarea v-model="article.body" placeholder="文章 [纯文本,Markdown] enabled"></textarea>
 			<btn btntype="C" text="Update to ASOB" icon="true"></btn>
 		</div>
@@ -106,6 +107,7 @@
 					title: '',
 					body: '',
 					intro: '', 
+					tags: '', 
 					isMD: true
 				}
 			}
@@ -154,6 +156,7 @@
 						title: that.article.title,
 						intro: that.article.intro,
 						body: that.article.body,
+						tags: that.article.tags,
 						type: that.article.isMD?'markdown':'text',
 						cHash: cHash,
 						cRand: cRand

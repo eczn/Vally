@@ -13,7 +13,7 @@ $id = $_POST['id'];
 $title = $_POST['title'];
 $body = $_POST['body'];
 $type = $_POST['type'];
-
+$tags = $_POST['tags']; 
 $client_hash = $_POST['cHash']; 
 $client_rand = $_POST['cRand']; 
 
@@ -37,9 +37,12 @@ if ($type == 'text'){
 	// $introdution = str_replace('\"', '\\\"', $introdution);
 }
 
-$update = "UPDATE blog SET title = '$title', body = '$body', update_date = now(), type = '$type', format = '$format', intro = '$introdution' WHERE id = $id";
+$update = "UPDATE blog SET title = '$title', body = '$body', update_date = now(), type = '$type', format = '$format', intro = '$introdution', tags = '$tags' WHERE id = $id";
 mysql_query("SET NAMES utf8");
 $result = mysql_query($update);
+
+// $tagsNew = "UPDATE tags SET tagName = '$tags' WHERE id=$id"; 
+// $resultTag = mysql_query($tagsNew);
 
 echo '{"status": "1", "msg": "update success"}';
 

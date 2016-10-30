@@ -12,6 +12,7 @@ $dd = mysql_select_db($sql_info->database, $con);
 $title = $_POST['title'];
 $body = $_POST['body'];
 $type = $_POST['type'];
+$tags = $_POST['tags']; 
 $client_hash = $_POST['cHash']; 
 $client_rand = $_POST['cRand']; 
 // $req = $_POST['req']; 
@@ -35,12 +36,17 @@ if ($type == 'text'){
 }
 
 // $insertBlog = "INSERT INTO blog (title, body) VALUES ('$title', '$body')";
-$insertBlog = "INSERT INTO blog (title, body, date, format, type, update_date, intro) VALUES ('$title', '$body', now(), '$format', '$type', now(), '$introdution')";
+$insertBlog = "INSERT INTO blog (title, body, date, format, type, update_date, intro, tags) VALUES ('$title', '$body', now(), '$format', '$type', now(), '$introdution', '$tags')";
 
 mysql_query("SET NAMES utf8");
 $result = mysql_query($insertBlog);
 
+// $tagRes = mysql_fetch_array($result); 
+// $inserTags = "INSERT INTO "
+
 echo '{"status": "1", "msg": "add blog success!"}';
+// echo $result; 
+// echo $tagRes['id'];
 // echo json_encode(
 // 	array(
 // 		'target' => $tempArr,

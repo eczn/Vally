@@ -73,6 +73,17 @@
 		/*left: 50%;*/
 	}
 
+	.blog-list-li ul {
+
+	}
+
+	.blog-list-li li {
+		list-style: none; 
+		display: inline-block;
+		margin: 2px 4px;
+		/*z-index: 999;*/
+	}
+
 	@media screen and (min-width: 768px) {
 		.blog-list-li:hover {
 			opacity: .8;
@@ -91,6 +102,7 @@
 			transition: opacity .3s;
 		}
 	}
+
 	@media screen and (max-width: 768px) {
 		.blog-list-li > h1:active {
 			margin-top: .4rem;
@@ -142,25 +154,26 @@
 <template>
 	<div class="blog-list-container">
 		<v-header position="first"></v-header>
-
 		<div v-if="this.$route.name=='blogList'">
 			<ul class="blog-list-ul">
 				<li v-on:click="showBlog($index)" class="blog-list-li" v-for="elem in blogList">
 					<h1>{{elem.title}}</h1>
-					<!-- <p>{{elem.body.slice(0, 26) + "......."}}</p> -->
 					<p>{{elem.intro}}</p>
-					<!-- <span>{{elem.updateDate}}</span> -->
+					<!-- <p v-html="elem.tags"></p> -->
 					<span></span>
+					<ul>
+						<li v-for="tag in elem.tags.split(',')">
+							{{tag}}
+						</li>
+					</ul>
 				</li>
 			</ul>
-
 			<ul style="margin: 0 auto;margin-top: 1.5rem;text-align: center;">
 				<li v-on:click="changePage($index,this)" v-for="num in serverPage" class="pageNum" v-bind:class="{'pageBtn-active': $route.query.page==num}">
 					<span>{{ num + 0 }}</span>
 				</li>
 			</ul>
 		</div>
-		
 		<router-view v-bind:blog="blogList[blogPosition]"></router-view>
 	</div>
 </template>
@@ -168,7 +181,7 @@
 <script>
 	var myHeader = require('../public/header.vue');
 	var myBtn = require('../public/btn.vue');
-	// 常量
+	
 	module.exports = {
 		data: function(){
 			return {

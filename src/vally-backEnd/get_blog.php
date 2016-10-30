@@ -31,10 +31,6 @@ mysql_query("SET NAMES utf8");
 $result = mysql_query($sql);
 //$temp = mysql_fetch_array($result);
 
-// echo count($temp);
-// echo $temp;
-// echo '{ "id": "'.$temp[0].'", "title": "'.$temp[1].'", "body": "'.$temp[2].'" }';
-// $temp = mysql_fetch_array($result);
 $tempArr = array(); 
 
 
@@ -43,12 +39,16 @@ $tempArr = array();
 while ( $temp = mysql_fetch_array($result) ) {
 	// $temp['body'] = nl2br($temp['body']);
 	// $temp['body'] = str_replace(PHP_EOL, '', $temp['body']);
-
 	if ($needBody == 'yes') {
 		$tempBody = $temp['body']; 
 	} else {
 		$tempBody = 'nobody';
 	}
+
+	// $targetId = $temp['id']; 
+	// $tagSQL = "SELECT * FROM tags WHERE id=$targetId"; 
+	// $tagRes = mysql_query($tagSQL);
+	// $tagRes = mysql_fetch_array($tagRes); 
 
 	array_push($tempArr, array(
 		'id'=> $temp['id'], 
@@ -59,7 +59,9 @@ while ( $temp = mysql_fetch_array($result) ) {
 		'format'=> $temp['format'],
 		'type'=> $temp['type'],
 		'date'=> $temp['date'],
-		'updateDate'=> $temp['update_date']
+		'updateDate'=> $temp['update_date'],
+		// 'tags'=> $tagRes['tagName']
+		'tags'=> $temp['tags']
 	)); 
 
 	// echo '{"id": "'.$temp[0].'", "title": "'.$temp[1].'", "body": "'.$temp[2].'"},';

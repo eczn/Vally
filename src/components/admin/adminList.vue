@@ -145,6 +145,7 @@
 			<div class="type-change">
 				<span v-on:click="blogList[blogPosition].type = 'text'" v-bind:class="{ 'beenSelected': blogList[blogPosition].type == 'text' }">htmlText</span>
 				<span v-on:click="blogList[blogPosition].type = 'markdown'" v-bind:class="{ 'beenSelected': blogList[blogPosition].type == 'markdown' }">markDown</span>
+				<span v-on:click="blogList[blogPosition].type = 'markVally'" v-bind:class="{ 'beenSelected': blogList[blogPosition].type == 'markVally' }">markVally</span>
 			</div>
 			
 			<btn style="display: inline-block" btntype="C" icon="true" text="update"></btn>
@@ -161,6 +162,7 @@
 			<div class="writedesk blog-edit">
 				<input v-model="blogList[blogPosition].title" class="editInputTextarea" type="text">
 				<input v-model="blogList[blogPosition].intro" placeholder="简短的介绍" class="editInputTextarea" type="text">
+				<input v-model="blogList[blogPosition].tags" placeholder="标签用逗号分隔" class="editInputTextarea" type="text">
 				<textarea v-model="blogList[blogPosition].body" class="editInputTextarea"></textarea>
 			</div>
 		</div>
@@ -221,6 +223,7 @@
 						intro: this.blogList[this.blogPosition].intro,
 						body: this.blogList[this.blogPosition].body,
 						type: this.blogList[this.blogPosition].type,
+						tags: this.blogList[this.blogPosition].tags,
 						req: 'update',
 						cHash: cHash,
 						cRand: cRand
