@@ -1,6 +1,6 @@
 <!-- vallySide.vue -->
 <style>
-body {
+/*body {
 	position: relative;
 }
 
@@ -13,9 +13,13 @@ body:after {
 	top: 0; 
 	left: 0; 
 	z-index: -9; 
+}*/
+	@media screen and (max-width: 768px) {
+		.vally-side {
+			display: none;
+		}
+	} /* 移动端隐藏 */
 
-	/*background-image: url('../../images/black_denim_@2X.png');*/
-}
 	.vally-side {
 		position: fixed;
 		height: 100%; 
@@ -44,8 +48,6 @@ body:after {
 		opacity: 0.06;
 		/*background-image: url('../../images/black_denim_@2X.png');*/
 		background-image: url('../../images/geometry22.png');
-		
-
 	}
 
 	.vally-push {

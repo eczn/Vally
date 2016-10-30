@@ -16,6 +16,7 @@
 		/*width: 100%; */
 		/*text-align: center;*/
 		/*margin: .5em;*/
+		
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -27,14 +28,34 @@
 		height: 1.0rem;
 		/*border: 3px dashed rgb(48, 103, 133);*/
 		border-radius: 3rem;
-		margin: 0 .2rem;
-		filter: grayscale(1);
+		/*margin: 0 .2rem;*/
+		filter: grayscale(1) blur(0px);
 		transition: all 3s; 
 	}
 	.torzo img:hover {
-		filter: grayscale(0);
-		box-shadow: 0 0 15px rgb(48, 103, 133);
+		filter: grayscale(0) blur(0px);
+		/*box-shadow: 0 0 15px rgb(48, 103, 133);*/
+		text-shadow: 0 0 15px rgb(48, 103, 133);
 		transition: all 2s; 
+	}
+
+	.torzo > a {
+		/*position: relative;*/
+		/*display: inline-block;*/
+	}
+
+	.torzo > a:after {
+		/*content: "";*/
+		/*z-index: -9;*/
+		/*position: absolute;*/
+		/*width: 100%; */
+		/*height: 100%; */
+		/*height: 1.0rem;*/
+		/*width: 1.0rem; */
+		/*background-image: url(../../images/bb256.png);*/
+		/*background-size: 1.0rem;*/
+		/*background-repeat: no-repeat;*/
+		/*left: 0; */
 	}
 
 	.footerBigger {
