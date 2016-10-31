@@ -38,6 +38,8 @@ if ($type == 'text'){
 // $insertBlog = "INSERT INTO blog (title, body) VALUES ('$title', '$body')";
 $insertBlog = "INSERT INTO blog (title, body, date, format, type, update_date, intro, tags) VALUES ('$title', '$body', now(), '$format', '$type', now(), '$introdution', '$tags')";
 
+// $sql_info->inject_check($insertBlog); 
+
 mysql_query("SET NAMES utf8");
 $result = mysql_query($insertBlog);
 

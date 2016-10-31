@@ -23,6 +23,7 @@ $dd = mysql_select_db($sql_info->database, $con);
 $delId = $_POST['id']; 
 // echo $delId;
 $sql = "DELETE FROM blog WHERE id=$delId";
+// $sql = mysql_real_escape_string($sql); 
 
 mysql_query("SET NAMES utf8");
 $result = mysql_query($sql);

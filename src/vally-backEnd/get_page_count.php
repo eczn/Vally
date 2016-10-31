@@ -11,7 +11,8 @@ function article_count(){
 
 	// $insertBlog = "INSERT INTO blog (title, body) VALUES ('$title', '$body')";
 	$sql = "SELECT count(*) as cou FROM blog";
-
+	// $sql_info->inject_check($sql); 
+	$sql = mysql_real_escape_string($sql); 
 	mysql_query("SET NAMES utf8");
 	$result = mysql_query($sql);
 	$temp = mysql_fetch_array($result); 

@@ -279,15 +279,8 @@
 					dataType: 'json',
 					timeout: 2000,
 					success: function(data){
-						// Supposing this JSON payload was received:
-						//   {"project": {"id": 42, "html": "<div>..." }}
-						// append the HTML to context object.
-						// console.log(data);
-						// thatVM.blogList.push(data);
-						// console.log(data);
 						thatVM.blogList = data.blogList;
 						// alert(data.blogList[0].body);
-
 						thatVM.serverPage = parseInt((parseInt(data.count)+6)/7);
 						footOn('v-top');
 

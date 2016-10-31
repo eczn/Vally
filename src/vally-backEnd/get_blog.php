@@ -24,7 +24,8 @@ $needBody = $_GET['need_body'];
 
 //  order by c desc
 $sql = "SELECT * FROM blog ORDER BY id DESC LIMIT ". ($page-1)*$blog_num .",".$page*$blog_num;
-// $insertBlog = "SELECT * FROM blog limit 0,7";
+$sql = mysql_real_escape_string($sql); 
+// $sql_info->inject_check($sql);
 
 // echo $insertBlog;
 mysql_query("SET NAMES utf8");

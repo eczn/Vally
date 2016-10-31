@@ -38,6 +38,9 @@ if ($type == 'text'){
 }
 
 $update = "UPDATE blog SET title = '$title', body = '$body', update_date = now(), type = '$type', format = '$format', intro = '$introdution', tags = '$tags' WHERE id = $id";
+
+// $sql_info->inject_check($update);
+
 mysql_query("SET NAMES utf8");
 $result = mysql_query($update);
 
