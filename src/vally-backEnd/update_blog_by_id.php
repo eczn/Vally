@@ -1,8 +1,7 @@
 <?php
 require("./SQL_config.php");
 
-header('Content-type: text/html;charset=utf-8;');
-header("Access-Control-Allow-Origin: *");
+$sql_info->headerPub(); 
 
 $sql_info = new sql_config(); 
 

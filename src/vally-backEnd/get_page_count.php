@@ -6,8 +6,8 @@ function article_count(){
 	$con = mysql_connect($sql_info->host, $sql_info->account, $sql_info->pwd);
 	$dd = mysql_select_db($sql_info->database, $con);
 
-	header('Content-type: text/html;charset=utf-8;');
-	header("Access-Control-Allow-Origin: *");
+	// header('Content-type: text/html;charset=utf-8;');
+	// header("Access-Control-Allow-Origin: *");
 
 	// $insertBlog = "INSERT INTO blog (title, body) VALUES ('$title', '$body')";
 	$sql = "SELECT count(*) as cou FROM blog";

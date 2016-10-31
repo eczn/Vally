@@ -2,8 +2,7 @@
 // DELETE FROM 表名称 WHERE 列名称 = 值
 require_once("./SQL_config.php");
 
-header("Content-type: text/plain; charset=utf-8;");
-header("Access-Control-Allow-Origin: *");
+$sql_info->headerPub(); 
 
 $sql_info = new sql_config(); 
 

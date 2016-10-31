@@ -11,8 +11,7 @@ $dd = mysql_select_db($sql_info->database, $con);
 
 $blog_num = 7; 
 
-header("Content-type: text/plain; charset=utf-8;");
-header("Access-Control-Allow-Origin: *");
+$sql_info->headerPub(); 
 
 $id = $_GET['id'];
 $id = intval($id); 
