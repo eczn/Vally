@@ -55,3 +55,14 @@ function mapFiles(list, extname) {
 
 // gulp.task('default', ['bundle', 'connect', 'uglify']);
 gulp.task('default', ['bundle', 'connect']);
+
+// gulp.task('minify_js',["clean"], function() {
+//     var jsSrc = ['./lib/*.js','!./lib/*.src.js'];
+// 
+//     return gulp.src(jsSrc)
+//         .pipe(concat('all.js'))    //合并所有js到all.js
+//         .pipe(gulp.dest('./lib'))    //输出all.js到文件夹
+//         .pipe(rename({suffix: '.min'}))   //rename压缩后的文件名
+//         .pipe(uglify())    //压缩
+//         .pipe(gulp.dest('./lib'));  //输出
+// });
