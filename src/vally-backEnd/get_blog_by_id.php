@@ -11,7 +11,7 @@ $dd = mysql_select_db($sql_info->database, $con);
 
 $blog_num = 7; 
 
-$sql_info->headerPub(); 
+headerPub(); 
 
 $id = $_GET['id'];
 $id = intval($id); 
