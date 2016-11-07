@@ -3,7 +3,7 @@ class sql_config {
 	public $host = "127.0.0.1"; 
 	public $database = "ku"; 
 	public $account = "root"; 
-	public $pwd = "asd123";
+	public $pwd = "root";
 	public $api_pwd = "asd123";
 
 
@@ -34,7 +34,7 @@ class sql_config {
 }
 
 function headerPub(){
-	// header("Content-type: text/plain; charset=utf-8;");
-	// header("Access-Control-Allow-Origin: *");
+	header("Content-type: text/plain; charset=utf-8;");
+	header("Access-Control-Allow-Origin: *");
 }
 ?>

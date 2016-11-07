@@ -37,7 +37,7 @@ gulp.task('bundle', function(){
 });
 
 gulp.task('uglify', function() {
-	var temp = gulp.src(['src/lib/js/fastclick.js', 'src/lib/js/appConfig.js', 'src/lib/js/markVally.js'])
+	var temp = gulp.src(['src/lib/js/fastclick.js', 'src/lib/js/Parser.js', 'src/lib/js/appConfig.js', 'src/lib/js/markVally.js']) 
 		.pipe(named('fastclick.min.js'))
 		.pipe(uglify())
 		.pipe( concat('libs.min.js') )
@@ -54,8 +54,8 @@ function mapFiles(list, extname) {
 };
 
 
-// gulp.task('default', ['bundle', 'connect', 'uglify']);
-gulp.task('default', ['bundle', 'connect']);
+gulp.task('default', ['bundle', 'connect', 'uglify']);
+// gulp.task('default', ['bundle', 'connect']);
 
 // gulp.task('minify_js',["clean"], function() {
 //     var jsSrc = ['./lib/*.js','!./lib/*.src.js'];
