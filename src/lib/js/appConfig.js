@@ -31,3 +31,8 @@ function getCookie(c_name){
 	}
 	return "";
 }
+
+var config = new Object(); 
+
+config.aboutId = '999';
+config.historyId = '3000'; 
