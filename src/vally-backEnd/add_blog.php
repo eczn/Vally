@@ -1,7 +1,7 @@
 <?php
 require("./SQL_config.php");
 
-$sql_info->headerPub(); 
+headerPub(); 
 
 $sql_info = new sql_config(); 
 

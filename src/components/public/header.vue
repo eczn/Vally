@@ -44,9 +44,9 @@
 	.header-fir ul {
 		/*position: absolute;*/
 		text-align: right;
-		/*right: 2em; */
+		margin-bottom: -0.15rem;
 		
-		bottom: 0.5em; 
+		
 	}
 	/*.header-fir ul:after {*/
 	.header-fir:after {

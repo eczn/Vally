@@ -2,7 +2,7 @@
 // DELETE FROM 表名称 WHERE 列名称 = 值
 require_once("./SQL_config.php");
 
-$sql_info->headerPub(); 
+headerPub(); 
 
 $sql_info = new sql_config(); 
 

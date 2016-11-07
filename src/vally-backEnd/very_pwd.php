@@ -6,7 +6,7 @@ require('./get_page_count.php');
 $count = article_count();
 $sql_info = new sql_config();
 
-$sql_info->headerPub(); 
+headerPub();
 
 $client_hash = $_POST['hash'];
 $client_rand = $_POST['rand'];
