@@ -4,23 +4,62 @@
 	word-wrap: break-word;
 }
 
+.md-title {
+	text-align: center;
+	font-size: .9rem;
+	margin: .2rem;
+	color: rgb(40,30,60);
+	font-weight: normal; 
+}
+
+.md > p {
+	text-indent: 2em; 
+	line-height: 1.5; 
+	margin: 0 0 1.1em;
+}
+.md p {
+	color: rgba(0,0,0,0.9); 
+	/*font-weight: bold;*/
+	text-shadow: 0 0 1px rgba(0,0,0,0.2); 
+	font-weight: normal;
+	font-size: .3rem;
+}
 .md h1 , .md h2 , .md h3, .md h4, .md h5, .md h6 {
-	color: rgb(31,18,50); 
+	/*color: rgb(31,18,50); */
+	position: relative;
+	color: rgb(55, 45, 75);
+	font-weight: normal;
+	text-shadow: 0 0 1px rgba(0,0,0,0.2); 
 }
 
 .md h1 {
+	margin-bottom: 0.1rem;
+	margin-top: .3rem; 
+}
+.md h1:before {
+	content: ""; 
+	position: absolute;
+	bottom: -0.12rem; 
 	/*line-height: .8;*/
-	border-bottom: 3px dotted rgb(31,18,50);
-	border-radius: 0 0 0 .1rem / 0 0 0 .05rem;
+	/*border-bottom: 2px solid rgba(31,18,50, .1);*/
+	height: 2px; 
+	background: linear-gradient(to right, rgba(31,18,50, .15), rgba(31,18,50, .15), rgba(31,18,50, .15), rgba(31,18,50, .15), transparent);
+	    
+
+	border-radius: 0 0 0 1rem / 0 0 0 .01rem;
 	/*margin-bottom: 0.2em;*/
 	margin-bottom: 6px;
 	padding-left: .3rem;
 	margin-left: -.3rem;
 	width: 12em;
+
 	/*white-space: nowrap;*/
 
 	font-size: .65rem;
 }
+
+
+
 .md h2 {
 	font-size: .5rem;
 }
@@ -31,8 +70,10 @@
 	/*border: 2px dotted rgb(51, 46, 57); */
 	background-color: rgb(51, 46, 57);
 
-	padding-bottom: .3em;
-	margin-bottom: 1em;
+	padding: .1rem .4rem;
+	/*margin-top: 
+	margin-bottom: 1em;*/
+	margin: .4rem 0; 
 }
 .md pre:after {
 	content: "codeBoard v0.0.1 (别问了高亮还在搞)"; 
@@ -47,15 +88,15 @@
 .md pre code {
 	/*color: rgba(255,255,255,.65)!important;*/
 	color: #dde;
-	border-radius: .3em;
+	/*border-radius: .3em;*/
 	font-size: .3rem;
 	font-family: "Consolas"; 
+	line-height: 1;
 }
 
 
-p code {
-	color: #B22;
-	/* background-color: rgb(46,46,46); */
+/*p code {
+	color: #B22; 
 	padding: 0 .4em;
 	margin: .1em .2em;
 	border: 2px;
@@ -63,23 +104,16 @@ p code {
 	border-radius: .3em;
 	font-size: .3rem;
 	font-family: "Consolas"; 
-}
+}*/
 
 .md blockquote {
 	margin: .15rem 0;
 	margin: .15rem calc( (0.3em + 10px) * -1 );
-
 	padding: .3em .3em;
-	
-	border-left: 10px rgba(60, 45, 80, 1) solid; 
-	background-color: rgba(60, 45, 80, .2);
-}
-
-.md p {
-	color: #111; 
-	font-size: .3rem;
-	margin: 0 0 1.1em;
-
+	/*border-left: 10px rgba(60, 45, 80, 1) solid; */
+	border-left: 10px rgba(100, 80, 110, 1) solid; 
+	background-color: rgba(60, 45, 80, .1);
+	border-radius: 4px 0 0 4px;
 }
 
 blockquote p:last-child {
@@ -93,17 +127,23 @@ ul, ol {
 	margin: 0 0 1.1em;
 }*/
 
-.md > ol, .md > li {
-	/*margin-left: 1.1em;*/
+.md > ol, .md > li, .md > ul {
+	margin-left: 1.1em;
+	font-size: .3rem;
+}
+
+.md li {
+	/*color: */
 }
 
 .md blockquote ul, .md blockquote ol {
 	margin-left: 1.1em;
+	font-size: .3rem;
 } 
 
 .md blockquote * {
 	/*font-weight: bold;*/
-	color: rgb(31,18,50);
+	/*color: rgb(31,18,50);*/
 }
 .md strong {
 	color: rgb(31,18,50);	
@@ -130,9 +170,17 @@ ul, ol {
 
 }
 	
-.md hr, .md-hr {
-	border: .1rem dashed rgba(0, 0, 30, .3); 
-	margin: .5rem .1rem .8rem .1rem;
+.md > hr, .md-hr {
+	border: .04rem dashed rgba(0, 0, 30, .3); 
+	/*border: .05rem dashed rgba(0, 0, 30, .3); */
+	/*background: linear-gradient(to left, transparent, rgba(31,18,50,0.5), transparent);*/
+	/*border: none; */
+	/*height: .08rem; */
+	/*width: 90%; */
+	/*margin: */
+	/*filter: blur(2px);*/
+	
+	margin: .5rem auto .8rem auto;
 }
 
 

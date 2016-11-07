@@ -55,7 +55,7 @@
 		<span style="font-size: .3rem;">{{blog.intro}}</span>
 		<wait></wait>
 		<div class="after-wait">
-			<h1 style="text-align: center;font-size: .8rem;margin: .2rem;color: rgb(31,18,50);">{{ blog.title }}</h1>
+			<h1 class="md-title">{{ blog.title }}</h1>
 			<div v-html="processFormat(blog)" class="md" style="font-size: .4rem;padding: 0 5%;"></div>
 
 			<div class="blog-info">
@@ -113,7 +113,10 @@
 						that.pushAll();
 					},
 					error: function(xhr, type){
-						that.$broadcast('waitToggle');
+						// that.$broadcast('waitToggle');
+						setTimeout(function(){
+							that.getBlogById(queryId); 
+						},500); 
 						// that.ready(); 
 						console.log(xhr);
 						console.log(type);
