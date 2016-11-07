@@ -30,8 +30,8 @@ class sql_config {
 	}
 
 	public function headerPub(){
-		header("Content-type: text/plain; charset=utf-8;");
-		header("Access-Control-Allow-Origin: *");
+		// header("Content-type: text/plain; charset=utf-8;");
+		// header("Access-Control-Allow-Origin: *");
 	}
 
 }
