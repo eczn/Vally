@@ -13,8 +13,18 @@
 		/*padding: .5rem;*/
 		padding-top: .25rem;
 		padding-bottom: .25rem;
-		border-bottom: 8px dotted rgba(0, 0, 30, .5);
+		/*border-bottom: .1rem dotted rgba(0, 0, 30, .5);*/
 		text-align: center;
+	}
+	.header-notFir h1 {
+		margin-bottom: .15rem;
+	}
+	.header-notFir > span {
+		display: block;
+		height: .04rem;
+		background: linear-gradient(to right, transparent, rgba(31,18,50, .2), transparent);
+		width: 100%; 
+		/*background-color: #eee; */
 	}
 
 	.header-fir {
@@ -44,6 +54,7 @@
 		</div>
 		<div class="header-notFir" v-if="position=='asob'">
 			<h1>ASOB</h1>
+			<span></span>
 		</div>
 		<div class="header-admin" v-if="position=='admin'">
 			<h1>aVally - admin</h1>
