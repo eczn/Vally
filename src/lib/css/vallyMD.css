@@ -20,7 +20,7 @@
 .md p {
 	color: rgba(0,0,0,0.9); 
 	/*font-weight: bold;*/
-	text-shadow: 0 0 1px rgba(0,0,0,0.2); 
+	text-shadow: 0 0 1px rgba(0,0,0,0.1); 
 	font-weight: normal;
 	font-size: .3rem;
 }
@@ -29,17 +29,17 @@
 	position: relative;
 	color: rgb(55, 45, 75);
 	font-weight: normal;
-	text-shadow: 0 0 1px rgba(0,0,0,0.2); 
+	text-shadow: 0 0 1px rgba(0,0,0,0.1); 
 }
 
 .md h1 {
-	margin-bottom: 0.1rem;
+	margin-bottom: 0.15rem;
 	margin-top: .3rem; 
 }
 .md h1:before {
 	content: ""; 
 	position: absolute;
-	bottom: -0.12rem; 
+	bottom: -0.15rem; 
 	/*line-height: .8;*/
 	/*border-bottom: 2px solid rgba(31,18,50, .1);*/
 	height: 2px; 
@@ -58,10 +58,33 @@
 	font-size: .65rem;
 }
 
-
-
 .md h2 {
 	font-size: .5rem;
+}
+.md blockquote h2, .md blockquote h3, .md blockquote h4 {
+	margin-left: 10px; 
+	display: inline-block;
+	margin-bottom: 0.1rem; 
+}
+.md blockquote h2:before, .md blockquote h3:before, .md blockquote h4:before {
+	content: ""; 
+	position: absolute;
+	left: -10px;
+	top: 0; 
+	width: 10px; 
+	height: 10px; 
+	border-top: 2px solid rgba(31,18,50, .8);
+	border-left: 2px solid rgba(31,18,50, .8);
+}
+.md blockquote h2:after, .md blockquote h3:after, .md blockquote h4:after {
+	content: ""; 
+	position: absolute;
+	right: -10px;
+	bottom: 0; 
+	width: 10px; 
+	height: 10px; 
+	border-right: 2px solid rgba(31,18,50, .8);
+	border-bottom: 2px solid rgba(31,18,50, .8);
 }
 
 .md pre {
@@ -132,8 +155,9 @@ ul, ol {
 	font-size: .3rem;
 }
 
-.md li {
-	/*color: */
+.md ul li {
+	color: rgba(31,18,50, .8);
+	/*font-size: .1rem;*/
 }
 
 .md blockquote ul, .md blockquote ol {
