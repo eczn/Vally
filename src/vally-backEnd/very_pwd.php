@@ -6,8 +6,7 @@ require('./get_page_count.php');
 $count = article_count();
 $sql_info = new sql_config();
 
-header("Content-type: text/plain; charset=utf-8;"); 
-header("Access-Control-Allow-Origin: *"); 
+$sql_info->headerPub(); 
 
 $client_hash = $_POST['hash'];
 $client_rand = $_POST['rand'];

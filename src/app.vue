@@ -39,7 +39,8 @@
 	/*定义滚动条轨道 内阴影+圆角*/  
 	::-webkit-scrollbar-track {  
 		/*border: 3px solid rgba(255,255,255,0.5);*/
-		background-color: rgba(31,18,50,0.05);  
+		/*background-color: rgba(31,18,50,0.01);  */
+		background-color: transparent;  
 		/*background: linear-gradient(to right, transparent, rgba(31,18,50,0.1), rgba(31,18,50,0.2));*/
 	}  
 

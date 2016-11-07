@@ -2,8 +2,7 @@
 // DELETE FROM 表名称 WHERE 列名称 = 值
 require_once("./SQL_config.php");
 
-header("Content-type: text/plain; charset=utf-8;");
-header("Access-Control-Allow-Origin: *");
+$sql_info->headerPub(); 
 
 $sql_info = new sql_config(); 
 
@@ -23,6 +22,7 @@ $dd = mysql_select_db($sql_info->database, $con);
 $delId = $_POST['id']; 
 // echo $delId;
 $sql = "DELETE FROM blog WHERE id=$delId";
+// $sql = mysql_real_escape_string($sql); 
 
 mysql_query("SET NAMES utf8");
 $result = mysql_query($sql);

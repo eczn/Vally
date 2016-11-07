@@ -11,12 +11,20 @@ $dd = mysql_select_db($sql_info->database, $con);
 
 $blog_num = 7; 
 
-header("Content-type: text/plain; charset=utf-8;");
-header("Access-Control-Allow-Origin: *");
+$sql_info->headerPub(); 
 
 $id = $_GET['id'];
+$id = intval($id); 
 
-$sql = "SELECT * FROM blog WHERE id = '$id'";
+if (is_int($id)){
+	// true 
+	$sql = "SELECT * FROM blog WHERE id = $id";
+	$sql = mysql_real_escape_string($sql); 
+} else {
+	echo '{"status": "-999", msg: "有话好好说.. id要纯数字..."}';
+	exit(); 
+}
+
 mysql_query("SET NAMES utf8");
 $result = mysql_query($sql);
 

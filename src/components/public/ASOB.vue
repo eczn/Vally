@@ -13,7 +13,7 @@
 <template>
 	<div class="asob-container">
 		<v-header position="asob"></v-header>
-		<div>
+		<div class="md">
 			<h2>fortunately, i</h2>
 			<h2 style="margin-bottom: 1.5rem;">make this for blogging</h2>
 			<btn btntype="A" text="Hack in here"></btn>

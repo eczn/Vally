@@ -13,8 +13,9 @@ $dd = mysql_select_db($sql_info->database, $con);
 
 $blog_num = 7; 
 
-header("Content-type: text/plain; charset=utf-8;");
-header("Access-Control-Allow-Origin: *");
+// header("Content-type: text/plain; charset=utf-8;");
+// header("Access-Control-Allow-Origin: *");
+$sql_info->headerPub(); 
 
 // $blogId = $_GET['id'];
 // $_GET['page'];
@@ -24,7 +25,8 @@ $needBody = $_GET['need_body'];
 
 //  order by c desc
 $sql = "SELECT * FROM blog ORDER BY id DESC LIMIT ". ($page-1)*$blog_num .",".$page*$blog_num;
-// $insertBlog = "SELECT * FROM blog limit 0,7";
+$sql = mysql_real_escape_string($sql); 
+// $sql_info->inject_check($sql);
 
 // echo $insertBlog;
 mysql_query("SET NAMES utf8");
