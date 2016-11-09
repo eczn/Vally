@@ -8,54 +8,70 @@
 		margin-top: 2rem;
 		border-radius: 6rem / 1rem;
 		border-top: 2px dashed rgb(93, 93, 93);
-		color: rgb(93, 93, 93); 
+		/*color: rgb(93, 93, 93); */
+		color: rgba(255,255,255,1);
+		text-align: center;
+		/*margin-bottom: 3rem; */
+		/*margin-bottom: 200px; */
+	}
+
+	.footer-container > div {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		background-color: rgb(85, 85, 85);
+		height: 200px;
+		width: 100%;
+		z-index: -999;
+		overflow: hidden;
+	}
+	.footer-container > div:after {
+		content: ""; 
+		position: absolute;
+		width: 200%; 
+		height: 200%; 
+		left: -50%; 
+		top: -50%;
+		/*background-color: rgba(0,0,0,.4);*/
+		/*background-image: url("http://localhost/lib/torzo-z.png");*/
+		background-image: url("http://eczn.website/picStore/torzo-z.png");
+		background-repeat: repeat;
+		transform: rotate(12deg);
+		z-index: -998; 
+	}
+	.footer-container > div > span {
+		position: absolute;
+		display: block; 
+		width: 100%; 
+		bottom: 0; 
+		
 		text-align: center;
 	}
 
-	.torzo {
-		/*width: 100%; */
-		/*text-align: center;*/
-		/*margin: .5em;*/
+	.footer-container ul {
+		display: flex;
+		justify-content: center;
+	}
+
+	.footer-container ul li {
+		margin-top: 35px;
 		
+	}
+
+	.torzo {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		color: rgb(93, 93, 93);
-		transition: all .3s;
 	}
+
 	.torzo img {
-		width: 1.0rem;
-		height: 1.0rem;
-		/*border: 3px dashed rgb(48, 103, 133);*/
-		border-radius: 3rem;
-		/*margin: 0 .2rem;*/
-		filter: grayscale(1) blur(0px);
-		transition: all 3s; 
-	}
-	.torzo img:hover {
-		filter: grayscale(0) blur(0px);
-		/*box-shadow: 0 0 15px rgb(48, 103, 133);*/
-		text-shadow: 0 0 15px rgb(48, 103, 133);
-		transition: all 2s; 
-	}
+		height: 100px;
+		/*filter: grayscale(0);*/
 
-	.torzo > a {
-		/*position: relative;*/
-		/*display: inline-block;*/
+		/*filter: drop-shadow(0px 0px 0px #FFF) opacity(.8);*/
+		filter: brightness(16);
 	}
-
-	.torzo > a:after {
-		/*content: "";*/
-		/*z-index: -9;*/
-		/*position: absolute;*/
-		/*width: 100%; */
-		/*height: 100%; */
-		/*height: 1.0rem;*/
-		/*width: 1.0rem; */
-		/*background-image: url(../../images/bb256.png);*/
-		/*background-size: 1.0rem;*/
-		/*background-repeat: no-repeat;*/
-		/*left: 0; */
+	.torzo span {
+		font-size: .3rem;
 	}
 
 	.footerBigger {
@@ -68,12 +84,20 @@
 
 <template>
 	<div class="footer-container">
-		<div v-on:click="make" class="torzo" :class="{ footerBigger: showFooter }">
-			<span>装于学</span>
-			<a href="http://vec.moe/qun/" target="_blank"><img src="../../images/bb256.png" align="middle" alt=""></a>
-			<span>学于装</span>
-		</div>
-		<span>eczn@Cscw | {{time.getFullYear()}} GDUT</span>
+		<!-- <div>
+			<ul>
+				<li class="torzo">
+					<span>学于装</span>
+					<a href="http://vec.moe/qun/" target="_blank">
+						<img src="../../images/bb256.png" align="middle" alt="">
+					</a>
+					<span>装于学</span>
+				</li>
+				<li></li>
+			</ul>
+			<span>eczn@Cscw | {{time.getFullYear()}} GDUT</span>
+		</div> -->
+		<span style="color: #222">eczn@Cscw | {{time.getFullYear()}} GDUT</span>
 	</div>
 </template>
 
