@@ -57,6 +57,7 @@
 		padding: 0;
 		margin: 0;
 		display: block;
+		background-color: #FFF;
 	}
 </style>
 
