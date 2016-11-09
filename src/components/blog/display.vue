@@ -2,8 +2,27 @@
 <style>
 	.a-blog-display {
 		position: relative;
-		margin: 0 3%;
+		/*margin: 0 3%;*/
+		/*margin: 0 16%; */
 	}
+	
+	@media screen and (min-width: 768px) and (max-width: 1024px){
+		.a-blog-display {
+			margin: 0 4%;
+		}
+	}
+	
+	@media screen and (min-width: 1024px) {
+		.a-blog-display {
+			margin: 0 16%; 
+		}
+	}
+	
+	@media screen and (max-width: 768px) {
+		.a-blog-display {
+			margin: 0 4%; 
+		}
+	}		
 
 	.after-wait {
 		/*display: none; */

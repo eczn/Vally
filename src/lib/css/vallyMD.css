@@ -22,7 +22,7 @@
 	/*font-weight: bold;*/
 	text-shadow: 0 0 1px rgba(0,0,0,0.1); 
 	font-weight: normal;
-	font-size: .3rem;
+	font-size: .35rem;
 }
 .md h1 , .md h2 , .md h3, .md h4, .md h5, .md h6 {
 	/*color: rgb(31,18,50); */
@@ -112,7 +112,7 @@
 	/*color: rgba(255,255,255,.65)!important;*/
 	color: #dde;
 	/*border-radius: .3em;*/
-	font-size: .3rem;
+	font-size: .35rem;
 	font-family: "Consolas"; 
 	line-height: 1;
 }
@@ -152,7 +152,7 @@ ul, ol {
 
 .md > ol, .md > li, .md > ul {
 	margin-left: 1.1em;
-	font-size: .3rem;
+	font-size: .35rem;
 }
 
 .md ul li {
@@ -162,7 +162,7 @@ ul, ol {
 
 .md blockquote ul, .md blockquote ol {
 	margin-left: 1.1em;
-	font-size: .3rem;
+	font-size: .35rem;
 } 
 
 .md blockquote * {
