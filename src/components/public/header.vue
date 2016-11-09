@@ -37,17 +37,33 @@
 		border-bottom: 1px dashed rgba(0, 0, 30, .5);
 		/*text-align: center;*/
 	}
-	.header-fir > div {
-		margin-bottom: -.25rem; 
 
-	}
-	.header-fir ul {
-		/*position: absolute;*/
-		text-align: right;
-		margin-bottom: -0.15rem;
-		
-		
-	}
+	
+	@media screen and (min-width: 768px) {
+		.header-fir ul {
+			/*position: absolute;*/
+			text-align: right;
+			margin-bottom: -0.15rem;
+
+		}
+		.header-fir > div {
+			margin-bottom: -.25rem; 
+		}
+	}		
+	@media screen and (max-width: 768px) {
+		.header-fir ul {
+			/*position: absolute;*/
+			text-align: center;
+			margin-bottom: -0.15rem;
+			margin-top: .4rem;
+			border-top: 1px dashed rgba(0, 0, 30, .5);
+			padding-top: .1rem;
+		}
+
+		.header-fir > div {
+			margin: 0 4% .5rem 4%;
+		}
+	}		
 	/*.header-fir ul:after {*/
 	.header-fir:after {
 		content: ""; 
