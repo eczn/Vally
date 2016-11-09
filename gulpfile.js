@@ -54,8 +54,8 @@ function mapFiles(list, extname) {
 };
 
 
-gulp.task('default', ['bundle', 'connect', 'uglify']);
-// gulp.task('default', ['bundle', 'connect']);
+// gulp.task('default', ['bundle', 'connect', 'uglify']);
+gulp.task('default', ['bundle', 'connect']);
 
 // gulp.task('minify_js',["clean"], function() {
 //     var jsSrc = ['./lib/*.js','!./lib/*.src.js'];
