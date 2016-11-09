@@ -31,7 +31,7 @@
 
 	.blog-list-li > span {
 		position: relative;
-		z-index: -9;
+		/*z-index: -9;*/
 		/*filter: blur(1px);*/
 		/*display: flex;*/
 		display: block;
@@ -56,19 +56,18 @@
 		content: "";
 		border-radius: 2px;
 		/*position: absolute;*/
+		/*position: relative;*/
 		margin: 0 auto;
 		margin-top: 20px;
 		width: 24px;
 		height: 24px;
 
-		/*margin-top: -10px;*/
-		/*background-color: rgba(31,18,50,0.8);*/
-		/*border: 2px solid rgba(31,18,50,0.8);*/
 		border-left: 2px solid rgba(31,18,50,0.8);
 		border-top: 2px solid rgba(31,18,50,0.8);
 		transform: rotate(45deg);
 		display: block;
 		bottom: 0;
+		/*z-index: 999; */
 
 		/*left: 50%;*/
 	}
