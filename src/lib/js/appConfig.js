@@ -7,7 +7,8 @@ var whereVallyEnd = "vally-backEnd/";
 var backEnd = HOST+whereVallyEnd;
 
 if (HOST.indexOf("8080")){
-	backEnd = "http://localhost/ProjectBuilding/aVally/src/vally-backEnd/";
+	// backEnd = "http://localhost/ProjectBuilding/aVally/src/vally-backEnd/";
+	backEnd = "http://192.168.1.2/ProjectBuilding/aVally/src/vally-backEnd/";
 }
 console.log(backEnd);
 
