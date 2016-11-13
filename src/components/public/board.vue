@@ -203,7 +203,7 @@
 				<!-- <p>{{commenter.name}}</p> -->
 				<a style="display: block;border: none; color: currentColor;text-align: center;" target="_blank" v-bind:href="commenter.website">{{commenter.who_say}}</a>
 			</span>
-			<div>
+			<div v-if="commenter.avatar != ''">
 				<span v-on:click="checkUser('√')" class="btn-launch">SettinG</span>
 				<span v-on:click="launch" class="btn-launch">LauncH</span>
 			</div>
@@ -254,7 +254,7 @@
 				this.now_time = new Date(); 
 			}, 
 			checkUser: function(force_display){
-				if (window.localStorage.commenter == undefined || force_display) {
+				if (window.localStorage.commenter == undefined || force_display || this.commenter.avatar == '') {
 					$(".regis").css("display", 'block'); 
 					setTimeout(function(){
 						$(".regis").css("opacity", '1'); 
