@@ -85,9 +85,9 @@
 			margin: 0 auto;
 
 		}
-		body {
+		/*body {
 			overflow: hidden;
-		}
+		}*/
 	}
 
 	@media screen and (max-width: 321px) {
