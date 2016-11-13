@@ -1,38 +1,5 @@
 <!-- writedesk -->
 <style>
-	.writedesk {
-		position: relative;
-		margin-bottom: 3rem;
-	}
-
-	.writedesk input {
-		font-size: .8rem;
-	}
-
-	.writedesk input, .writedesk textarea, .editInputTextarea {
-		border: 2px dashed #555;
-		color: #222;
-		width: 80%; 
-		max-width: 80%;
-
-		padding: .1rem; 
-		margin: .2rem auto;
-
-	}
-	.writedesk textarea {
-		min-height: 10rem;
-		font-size: .4rem;
-		/*text-indent: 2em;*/
-
-	}
-
-	.writearea {
-		margin: 0 auto;
-		width: 100%;
-		text-align: center;
-	}
-
-
 	.blog-type {
 		font-size: 0!important;
 		cursor: pointer;
@@ -50,7 +17,6 @@
     	line-height: 1.5;
     	background-color: #ddd;
 		transition: all .3s;
-    	/*border-radius: 0 .3em 0 0;*/
 	}
 
 	.blog-type span:before, .blog-type span:after{
@@ -65,35 +31,111 @@
 		height: 0;
 		width: 0;
 	}
-	.type-choiced {
-		color: #d55!important;
-		font-size: .35rem!important;
-		/*margin-left: -1px;*/
+
+
+
+
+
+
+	.writedesk {
+		position: absolute;
+		top: 0; 
+		left: 0; 
+		width: 100%; 
+		height: 100%; 
+		background-color: #eee; 
+		/*margin-bottom: 3rem;*/
+	}
+	
+	.controler {
+		height: 5%; 
+	}
+	.controler > span {
 		transition: all .3s;
+	}
+	.type-choiced {
+		color: #d55;
+		/*transition: all .3s;*/
+	}
+
+	.writearea {
+		width: 50%; 
+		position: absolute;
+		top: 5%; 
+		left: 0; 
+		display: inline-block;
+
+		background-color: #ddd;
+
+	}
+	.writearea input, .writearea textarea {
+		width: 100%; 
+		max-width: 100%; 
+		display: block;
+		border: 1px dashed #bbb;
+	}
+	.atricle-meta {
+		display: flex;
+		height: 20%; 
+		flex-direction: column;
+		justify-content: center;
+
+	}
+	.writearea textarea {
+		height: 75%; 
+	}
+	.writearea input {
+		/*height: 5%; */
+		padding: 1% 0; 
+		margin: .5% 0;
+	}
+	/*.write*/
+
+	.preview-area {
+		/*display: inline-block;*/
+		position: absolute;
+		right: 0; 
+		top: 5%; 
+		width: calc(50% - 4px);
 	}
 </style>
 
 <template>
 	<div class="writedesk">
-		<btn btntype="B"></btn>
-		<div class="writearea">
-			<div class="blog-type">
-				<span v-on:click="article.isMD=!article.isMD" v-bind:class="{ 'type-choiced': !article.isMD }">htmlText</span>
-				<span v-on:click="article.isMD=!article.isMD" v-bind:class="{ 'type-choiced': article.isMD }">markDown</span>
-			</div>
-
+<!-- 		<div class="writearea">
 			<input v-model="article.title" style="text-align:center;" type="text" placeholder="标题">
 			<input v-model="article.intro" style="text-align:center;" type="text" placeholder="简短的blog介绍">
 			<input v-model="article.tags" style="text-align:center;" type="text" placeholder="文章标签">
 			<textarea v-model="article.body" placeholder="文章 [纯文本,Markdown] enabled"></textarea>
 			<btn btntype="C" text="Update to ASOB" icon="true"></btn>
+		</div> -->
+
+
+		<div class="controler">
+			<span class="return" v-link="{name: 'admin'}">return</span>
+			<span class=""></span>
+			<span v-on:click="article.isMD=!article.isMD" v-bind:class="{ 'type-choiced': !article.isMD }">htmlText</span>
+			<span v-on:click="article.isMD=!article.isMD" v-bind:class="{ 'type-choiced': article.isMD }">markDown</span>
 		</div>
-		<!-- {{ article.body.replace("\n", "<br>") }} -->
 
 
-		<!-- rtmsg = rtmsg.Replace("\r\n", "\\r\\n"); -->
-		<!-- <p>{{article.title}}</p> -->
-		<!-- <p>{{article.body}}</p> -->
+
+		<div class="writearea">
+			<div class="atricle-meta">
+				<input v-model="article.title" style="text-align:center;" type="text" placeholder="标题">
+				<input v-model="article.intro" style="text-align:center;" type="text" placeholder="简短的blog介绍">
+				<input v-model="article.tags" style="text-align:center;" type="text" placeholder="文章标签">
+			</div>
+
+			<textarea v-model="article.body" column="123" placeholder="文章 [纯文本,Markdown] enabled"></textarea>
+
+
+		</div>
+
+		<div v-html="markVally(article)" class="md preview-area">
+			
+		</div>
+		
 	</div>
 </template>
 
@@ -105,7 +147,7 @@
 			return {
 				article: {
 					title: '',
-					body: '',
+					body: '# i am eczn, building this;',
 					intro: '', 
 					tags: '', 
 					isMD: true
@@ -115,6 +157,18 @@
 		components: {
 			btn: myBtn
 		},
+		methods: {
+			markVally: function(blog){
+				//blogList[blogPosition].body
+				if (blog.isMD == false){
+					return blog.format;
+				} else {
+					// footnotes
+					var mdHtml = parser.makeHtml(blog.body); 
+					return mdHtml+"<br /><br /><br /><br /><br />"; 
+				}
+			}
+		}, 
 		events: {
 			B_onClick: function(){
 				this.$route.router.go({
@@ -131,19 +185,6 @@
 					return 0; 
 				}
 
-				// this.article.title = 
-				// this.article.body = this.article.body.replace(/[\r\n]/g,"\n");
-
-				// var parser,mdAfterParse;
-				// if (this.article.isMD){
-				// 	parser = new HyperDown(); 
-				// 	mdAfterParse = parser.makeHtml( this.article.body );
-
-				// 	mdAfterParse.replace(/[\']/g, "\'");
-				// 	console.log(mdAfterParse);
-				// } else {
-				// 	// this.article.body = this.article.body.replace(/[\r\n]/g, "\\r\\n");
-				// }
 				var cHash = getCookie('objHash');
 				var cRand = getCookie('objRand'); 
 

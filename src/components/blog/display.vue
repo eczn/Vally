@@ -107,10 +107,7 @@
 			wait: wait
 		},
 		ready: function(){
-			// to get blog by id 
-			// console.log(this.$route.query.id); chaxun 
 			this.$broadcast('waitToggle');
-
 			this.getBlogById(this.$route.query.id); 
 		},
 		methods: {
@@ -178,10 +175,6 @@
 			whereUserActuallyFrom: function(where){
 				this.whereUserFrom = where; 
 			}
-		},
-		// beforeDestroy: function(){
-		// 	// alert("!!!");
-		// 	// this.$dispatch( , this.icon);
-		// }
+		}
 	}
 </script>
