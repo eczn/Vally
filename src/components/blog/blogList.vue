@@ -11,7 +11,7 @@
 		margin: .5rem 0;
 		/*padding: 16px 0; */
 		padding-bottom: .5rem;
-		min-width: 320px;
+		/*min-width: 320px;*/
 		/*border-radius: .4rem;*/
 		transition: all .65s;
 	}
