@@ -11,10 +11,8 @@
 
 <template>
 	<div class="adminNav">
-		<!-- <div class="btn-C"><a v-link="{ name: 'writedesk' }">new</a></div> -->
 		<btn btntype='C' icon='add' text='新篇目'></btn>
 		<hr class="md-hr">
-		<!-- <div class="btn-B"><a v-link="{ name: 'admin' }">del</a></div> -->
 		<admin-list></admin-list>
 	</div>
 </template>

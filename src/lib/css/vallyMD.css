@@ -100,19 +100,18 @@
 }
 .md pre:after {
 	content: "codeBoard v0.0.1 (别问了高亮还在搞)"; 
-	font-size: .2rem;
+	font-size: .15rem;
 	float: right;
 	top: 100%; 
 	right: 0; 
 	color: rgba(255,255,255,.65);
-	font-size: .1rem;
 }
 
 .md pre code {
 	/*color: rgba(255,255,255,.65)!important;*/
 	color: #dde;
 	/*border-radius: .3em;*/
-	font-size: .35rem;
+	font-size: .3rem;
 	font-family: "Consolas"; 
 	line-height: 1;
 }

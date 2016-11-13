@@ -138,7 +138,7 @@
 				article: {
 					id: 'newId',
 					title: '',
-					body: '# i am eczn, building this;',
+					body: '',
 					intro: '', 
 					tags: '', 
 				},
