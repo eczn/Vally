@@ -2,7 +2,7 @@
 <style>
 	.comment-board {
 		margin: 1rem auto; 
-		min-width: 300px; 
+		min-width: 250px; 
 		width: 30%; 
 		transition: all .3s; 
 	}
@@ -28,10 +28,9 @@
 
 	.comment-body {
 		position: relative;
-		padding: .25rem .4rem; 
-		padding-bottom: .5rem; 
+
 		width: 100%; 
-		min-height: 64px;
+		min-height: 128px;
 		border: 1px dashed #bbc; 
 		border-radius: .15rem; 
 		/*border-bottom: 2px solid #bbc; */
@@ -42,11 +41,21 @@
 		.comment-board {
 			width: 30%; 
 		}
+		.comment-body {
+			padding: .1rem .4rem; 
+			margin-left: -.2rem;
+			padding-bottom: .5rem; 
+		}
 	}
 
 	@media screen and (min-width: 900px) {
 		.comment-board {
 			width: 45%; 
+		}
+		.comment-body {
+			padding: .25rem .4rem;
+			margin-left: -.2rem;
+			padding-bottom: .5rem; 
 		}
 	}
 
@@ -66,7 +75,7 @@
 		border: none; 
 		width: 100%; 
 		max-width: 100%; 
-		min-height: 64px; 
+		min-height: 128px; 
 		background-color: transparent;
 	}
 
@@ -255,6 +264,7 @@
 			}, 
 			checkUser: function(force_display){
 				if (window.localStorage.commenter == undefined || force_display || this.commenter.avatar == '') {
+
 					$(".regis").css("display", 'block'); 
 					setTimeout(function(){
 						$(".regis").css("opacity", '1'); 
