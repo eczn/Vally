@@ -1,42 +1,5 @@
 <!-- writedesk -->
 <style>
-	.blog-type {
-		font-size: 0!important;
-		cursor: pointer;
-		margin-left: 10%;
-		text-align: left;
-
-	}
-	.blog-type span {
-		font-size: .3rem;
-		display: inline-flex;
-    	position: relative;
-		margin: 0 .2rem;
-		color: #5a5;
-		padding: 0 .1rem;
-    	line-height: 1.5;
-    	background-color: #ddd;
-		transition: all .3s;
-	}
-
-	.blog-type span:before, .blog-type span:after{
-	    position: absolute;
-	    content: "";
-	}
-	.blog-type span:before {
-		border: transparent 0.75em solid;
-		border-right-color: #ddd;
-		top: 0;
-		left: -1.5em;
-		height: 0;
-		width: 0;
-	}
-
-
-
-
-
-
 	.writedesk {
 		position: absolute;
 		top: 0; 
@@ -47,10 +10,8 @@
 		/*margin-bottom: 3rem;*/
 	}
 	
-	.controler {
-		height: 5%; 
-	}
 	.controler > span {
+		cursor: pointer;
 		transition: all .3s;
 	}
 	.type-choiced {
@@ -59,30 +20,26 @@
 	}
 
 	.writearea {
-		width: 50%; 
-		position: absolute;
-		top: 5%; 
-		left: 0; 
-		display: inline-block;
 
-		background-color: #ddd;
+		/*background-color: #ddd;*/
 
 	}
 	.writearea input, .writearea textarea {
 		width: 100%; 
 		max-width: 100%; 
 		display: block;
-		border: 1px dashed #bbb;
+		border: 1px dashed #bbc;
+		background-color: #eee; 
 	}
 	.atricle-meta {
 		display: flex;
 		height: 20%; 
 		flex-direction: column;
 		justify-content: center;
-
 	}
 	.writearea textarea {
-		height: 75%; 
+		/*font-size: .5%; */
+		/*height: */
 	}
 	.writearea input {
 		/*height: 5%; */
@@ -93,32 +50,67 @@
 
 	.preview-area {
 		/*display: inline-block;*/
-		position: absolute;
-		right: 0; 
-		top: 5%; 
-		width: calc(50% - 4px);
+
+		overflow-y: scroll;
 	}
+
+	.preview-area{
+			position: absolute;
+			right: 0%; 
+			padding-right: 2%;
+			top: 5%; 
+			width: 46%;
+			height: 95%; 
+	}
+	
+	@media screen and (min-width: 900px) {
+		.writearea {
+			width: 50%; 
+			position: absolute;
+			top: 5%; 
+			left: 0; 
+			display: inline-block;
+		}
+		.controler {
+			height: 5%; 
+		}
+	}
+	
+	@media screen and (max-width: 900px) {
+		.preview-area {
+			display: none; 
+		}
+		.writearea {
+			width: 80%; 
+			margin: 0 auto;
+
+		}
+		body {
+			overflow: hidden;
+		}
+	}
+
+	@media screen and (max-width: 321px) {
+		.writearea {
+			width: 94%!important; 
+		}
+	}
+
+
 </style>
 
 <template>
 	<div class="writedesk">
-<!-- 		<div class="writearea">
-			<input v-model="article.title" style="text-align:center;" type="text" placeholder="标题">
-			<input v-model="article.intro" style="text-align:center;" type="text" placeholder="简短的blog介绍">
-			<input v-model="article.tags" style="text-align:center;" type="text" placeholder="文章标签">
-			<textarea v-model="article.body" placeholder="文章 [纯文本,Markdown] enabled"></textarea>
-			<btn btntype="C" text="Update to ASOB" icon="true"></btn>
-		</div> -->
-
-
 		<div class="controler">
 			<span class="return" v-link="{name: 'admin'}">return</span>
 			<span class=""></span>
-			<span v-on:click="article.isMD=!article.isMD" v-bind:class="{ 'type-choiced': !article.isMD }">htmlText</span>
-			<span v-on:click="article.isMD=!article.isMD" v-bind:class="{ 'type-choiced': article.isMD }">markDown</span>
+			<span v-on:click="isMD=!isMD" v-bind:class="{ 'type-choiced': !isMD }">htmlText</span>
+			<span v-on:click="isMD=!isMD" v-bind:class="{ 'type-choiced': isMD }">markDown</span>
+			<span class="" v-on:click="toServer">launch</span>
+			<br />
+			<span>mode: {{mode}}</span>
+			<span>id: {{article.id}}</span>
 		</div>
-
-
 
 		<div class="writearea">
 			<div class="atricle-meta">
@@ -128,8 +120,6 @@
 			</div>
 
 			<textarea v-model="article.body" column="123" placeholder="文章 [纯文本,Markdown] enabled"></textarea>
-
-
 		</div>
 
 		<div v-html="markVally(article)" class="md preview-area">
@@ -146,16 +136,32 @@
 		data: function(){
 			return {
 				article: {
+					id: 'newId',
 					title: '',
 					body: '# i am eczn, building this;',
 					intro: '', 
 					tags: '', 
-					isMD: true
-				}
+				},
+				mode: 'new', 
+				isMD: true
 			}
 		},
 		components: {
 			btn: myBtn
+		},
+		ready: function(){
+			if (this.$route.query.edit){
+				// alert(this.mode); 
+				this.mode = 'edit'; 
+				this.article = JSON.parse(window.localStorage['toEdit']); 
+				if (this.article.type == 'text') {
+					this.isMD = false; 
+				} else {
+					this.isMD = true; 
+				}
+			}
+
+			$(".writearea textarea").css("height", window.innerHeight * 0.78); 
 		},
 		methods: {
 			markVally: function(blog){
@@ -167,15 +173,9 @@
 					var mdHtml = parser.makeHtml(blog.body); 
 					return mdHtml+"<br /><br /><br /><br /><br />"; 
 				}
-			}
-		}, 
-		events: {
-			B_onClick: function(){
-				this.$route.router.go({
-					name: 'admin'
-				});
 			},
-			C_onClick: function(){
+			// 
+			toServer: function(){
 				// alert("updating!");
 
 				var that = this; 
@@ -188,33 +188,64 @@
 				var cHash = getCookie('objHash');
 				var cRand = getCookie('objRand'); 
 
-				$.ajax({
-					type: 'POST',
-					url: backEnd+'add_blog.php',
-					asyne: false,
-					// data to be added to query string:
-					data: {
-						title: that.article.title,
-						intro: that.article.intro,
-						body: that.article.body,
-						tags: that.article.tags,
-						type: that.article.isMD?'markdown':'text',
-						cHash: cHash,
-						cRand: cRand
-					},
-					// type of data we are expecting in return:
-					dataType: 'json',
-					timeout: 2000,
-					success: function(data){
-						console.log(data); 
-						alert("update成功");
-					},
-					error: function(xhr, type){
-						console.log(xhr);
-						console.log(type);
-						alert("出错了。。。 可能是超时了 也可能是当机了。。");
-					}
-				});
+				if (this.mode == 'new'){
+					$.ajax({
+						type: 'POST',
+						url: backEnd+'add_blog.php',
+						asyne: false,
+						// data to be added to query string:
+						data: {
+							title: that.article.title,
+							intro: that.article.intro,
+							body: that.article.body,
+							tags: that.article.tags,
+							// type: that.article.isMD?'markdown':'text',
+							type: that.isMD?'markdown':'text',
+							cHash: cHash,
+							cRand: cRand
+						},
+						// type of data we are expecting in return:
+						dataType: 'json',
+						timeout: 2000,
+						success: function(data){
+							console.log(data); 
+							alert("update成功");
+						},
+						error: function(xhr, type){
+							console.log(xhr);
+							console.log(type);
+							alert("error: "+type);
+						}
+					});
+				} else { // edit
+					$.ajax({
+						type: 'post',
+						url: backEnd+'update_blog_by_id.php',
+						asyne: false,
+						data: {
+							id: that.article.id,
+							title: that.article.title,
+							intro: that.article.intro,
+							body: that.article.body,
+							// type: that.article.type,
+							type: that.isMD?'markdown':'text',
+							tags: that.article.tags,
+							req: 'update',
+							cHash: cHash,
+							cRand: cRand
+						},
+						dataType: 'json',
+						timeout: 2000,
+						success: function(data){
+							alert("update success");
+							localStorage.removeItem('toEdit'); 
+						},
+						error: function(xhr, type){
+							console.log(xhr);
+							alert("error: "+type);
+						}
+					});
+				}
 			}
 		}
 	}

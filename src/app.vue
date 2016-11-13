@@ -31,25 +31,24 @@
 
 	/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
 	::-webkit-scrollbar { 
-		width: 12px;  
+		width: 6px;  
 		height: 16px;  
-		background-color: rgba(255,255,255,0);  
+		/*background-color: rgba(255,255,255,0);*/
 	}  
 
 	/*定义滚动条轨道 内阴影+圆角*/  
 	::-webkit-scrollbar-track {  
 		/*border: 3px solid rgba(255,255,255,0.5);*/
 		/*background-color: rgba(31,18,50,0.01);  */
-		background-color: transparent;  
+		/*background-color: transparent;  */
 		/*background: linear-gradient(to right, transparent, rgba(31,18,50,0.1), rgba(31,18,50,0.2));*/
 	}  
 
 	/*定义滑块 内阴影+圆角*/  
 	::-webkit-scrollbar-thumb {
-		border-radius: 12px 0 0 12px / 16px 0 0 16px;
+		/*border-radius: 12px 0 0 12px / 16px 0 0 16px;*/
 		/*border-right: 12px dashed rgba(31,18,50,.4);*/
-		background-color: rgba(31,18,50,.3);
-
+		background-color: rgba(25,15,60,.3);
 	}
 
 	#app {

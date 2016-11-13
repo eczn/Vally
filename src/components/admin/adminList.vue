@@ -120,7 +120,7 @@
 <template>
 	<div class="blog-list-container admin-list">
 		<!-- <h1 class="btn-C" v-on:click="adminDel">删除</h1> -->
-		<div  style="position: relative;" v-if="isShow==false" class="list-container">
+		<div style="position: relative;" v-if="isShow==false" class="list-container">
 			<btn btntype="C" text="删除所选项" icon="false"></btn>
 			<ul class="blog-list-ul">
 				<li class="admin-list-li" v-for="elem in blogList">
@@ -139,43 +139,13 @@
 				</li>
 			</ul>
 		</div>
-
-		<div class="edit" v-else>
-			<btn style="display: inline-block" btntype="B" text="return"></btn>
-			<div class="type-change">
-				<span v-on:click="blogList[blogPosition].type = 'text'" v-bind:class="{ 'beenSelected': blogList[blogPosition].type == 'text' }">htmlText</span>
-				<span v-on:click="blogList[blogPosition].type = 'markdown'" v-bind:class="{ 'beenSelected': blogList[blogPosition].type == 'markdown' }">markDown</span>
-				<span v-on:click="blogList[blogPosition].type = 'markVally'" v-bind:class="{ 'beenSelected': blogList[blogPosition].type == 'markVally' }">markVally</span>
-			</div>
-			
-			<btn style="display: inline-block" btntype="C" icon="true" text="update"></btn>
-
-			<div class="blog-display admin-blog-display">
-				<h1>type: {{ blogList[blogPosition].type }}</h1>
-				<h1>createAt: {{ blogList[blogPosition].date }}</h1>
-				<h1>lastUpdate: {{ blogList[blogPosition].updateDate }}</h1>
-				<h1 style="text-align: center;font-size: .8rem;margin: .2rem;color: rgb(31,18,50);">{{ blogList[blogPosition].title }}</h1>
-				<div v-if="blogList[blogPosition].type == 'text'" v-html="textDis(blogList[blogPosition].body)"></div>
-				<div v-else v-html="markVally(blogList[blogPosition])" class="md" style="font-size: .4rem;padding: 0 5%;"></div>
-				<!-- .editInputarea defined in writedesk.vue -->
-			</div>
-			<div class="writedesk blog-edit">
-				<input v-model="blogList[blogPosition].title" class="editInputTextarea" type="text">
-				<input v-model="blogList[blogPosition].intro" placeholder="简短的介绍" class="editInputTextarea" type="text">
-				<input v-model="blogList[blogPosition].tags" placeholder="标签用逗号分隔" class="editInputTextarea" type="text">
-				<textarea v-model="blogList[blogPosition].body" class="editInputTextarea"></textarea>
-			</div>
-		</div>
 	</div>
 </template>
 
 <script>
 	var myBtn = require('../public/btn.vue');
-					// mdHtml.toString(); 
-					// console.log(mdHtml);
-					// alert("!");
-					// mdHtml.replace('sscc', '<scr'+'ipt>'); 
-					// mdHtml.replace('ccss', '</scr'+'ipt>'); 
+	var writeDesk = require('./writedesk.vue'); 
+
 	module.exports = {
 		data: function(){
 			return {
@@ -189,7 +159,8 @@
 			}
 		},
 		components: {
-			btn: myBtn
+			btn: myBtn,
+			writedesk: writeDesk
 		},
 		ready: function(){
 			$($(".pageNum")[0]).addClass("pageBtn-active");
@@ -208,54 +179,28 @@
 					that.delBlogById(elem.getAttribute('blogId')); 
 				});
 			},
-			updateById: function(){
-				// alert(this.blogList[id].id);
-				var cHash = getCookie('objHash');
-				var cRand = getCookie('objRand'); 
-
-				$.ajax({
-					type: 'post',
-					url: backEnd+'update_blog_by_id.php',
-					asyne: false,
-					data: {
-						id: this.blogList[this.blogPosition].id,
-						title: this.blogList[this.blogPosition].title,
-						intro: this.blogList[this.blogPosition].intro,
-						body: this.blogList[this.blogPosition].body,
-						type: this.blogList[this.blogPosition].type,
-						tags: this.blogList[this.blogPosition].tags,
-						req: 'update',
-						cHash: cHash,
-						cRand: cRand
-					},
-					dataType: 'json',
-					timeout: 2000,
-					success: function(data){
-						alert("update success");
-					},
-					error: function(xhr, type){
-						console.log(xhr);
-						console.log(type);
-					}
-				});
-
-			},
-			markVally: function(blog){
-				//blogList[blogPosition].body
-				if (blog.type == 'text'){
-					return blog.format;
-				} else {
-					// footnotes
-					var mdHtml = this.myParser.makeHtml(blog.body); 
-					return mdHtml+"<br /><br /><br /><br /><br />"; 
-				}
-			},
-			sortById: function(a, b){
-				return a.id - b.id;
-			},
+			// markVally: function(blog){
+			// 	//blogList[blogPosition].body
+			// 	if (blog.type == 'text'){
+			// 		return blog.format;
+			// 	} else {
+			// 		// footnotes
+			// 		var mdHtml = this.myParser.makeHtml(blog.body); 
+			// 		return mdHtml+"<br /><br /><br /><br /><br />"; 
+			// 	}
+			// },
 			showBlog: function(index){
 				this.blogPosition = index;
 				this.isShow = true;
+
+				window.localStorage.toEdit = JSON.stringify(this.blogList[index]); 
+
+				this.$route.router.go({
+					name: 'writedesk',
+					query: {
+						edit: 'yes'
+					}
+				}); 
 			},
 			hiddenDisplay: function(){
 				this.isShow = false;
