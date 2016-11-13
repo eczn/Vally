@@ -146,7 +146,8 @@
 	}
 
 	.blog-list-container {
-		/*margin: 0 1rem;*/
+/*		border-bottom: 1px dashed;
+		padding-bottom: 1rem;*/
 	}
 </style>
 

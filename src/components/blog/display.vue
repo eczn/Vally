@@ -14,7 +14,7 @@
 	
 	@media screen and (min-width: 1024px) {
 		.a-blog-display {
-			margin: 0 16%; 
+			margin: 0 6.18%; 
 		}
 	}
 	
@@ -83,12 +83,15 @@
 				<h2>最后更新于 {{blog.updateDate}}</h2>
 			</div>
 		</div>
+
+		<board></board>
 	</div>
 </template>
 
 <script>
 	var myBtn = require('../public/btn.vue'); 
 	var wait = require('../public/waitEff.vue'); 
+	var board = require('../public/board.vue'); 
 
 	module.exports = {
 		data: function(){
@@ -104,7 +107,8 @@
 		props: ["id", "page"],
 		components: {
 			btn: myBtn,
-			wait: wait
+			wait: wait,
+			board: board
 		},
 		ready: function(){
 			this.$broadcast('waitToggle');
