@@ -5,6 +5,9 @@ demo: http://vally.frandre.cc
 # .......
 
 > ``` bash
+> # install dependencies
+> npm install 
+> 
 > # dev mode
 > gulp 
 > 
