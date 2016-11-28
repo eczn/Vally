@@ -70,7 +70,7 @@ gulp.task('copy',  function() {
 
 
 gulp.task('default', ['bundle', 'connect']);
-gulp.task('deploy', ['bundle', 'lib-uglify', 'copy']);
+gulp.task('deploy', ['bundle', 'connect', 'lib-uglify', 'copy']);
 
 
 // gulp.task('minify_js',["clean"], function() {
