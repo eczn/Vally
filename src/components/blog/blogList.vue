@@ -191,7 +191,8 @@
 				serverPage: 5,
 				blogPosition: 0,
 				isShow: false,
-				myParser: parser
+				myParser: parser,
+				nowArch: 'none'
 			}
 		},
 		components: {
@@ -199,12 +200,6 @@
 			btn: myBtn
 		},
 		ready: function(){
-			// alert(this.$route.query.page)
-			// $($(".pageNum")[this.$route.query.page]).addClass("pageBtn-active");
-			// if (this.$route.name == 'display'){
-			// 	return;
-			// }
-			// alert("!!");
 			if (this.$route.name == 'display'){
 				this.$broadcast("whereUserActuallyFrom", "display");
 			} else {
@@ -273,16 +268,23 @@
 					// data to be added to query string:
 					data: {
 						page: pageAt,
+						archive: thatVM.nowArch,
 						need_body: 'no'
 					},
 					// type of data we are expecting in return:
 					dataType: 'json',
 					timeout: 2000,
 					success: function(data){
-						thatVM.blogList = data.blogList;
-						// alert(data.blogList[0].body);
-						thatVM.serverPage = parseInt((parseInt(data.count)+6)/7);
-						footOn('v-top');
+						
+						if (data.status == 404){
+							thatVM.blogList = [{"id":"-404","title":"Not Found!","intro":"没找到这个分类...","body":"404 not fonud","format":"","type":"markdown","date":new Date(),"updateDate":new Date(),"tags":"#404 #Vally-Sys"}]; 
+							thatVM.serverPage = 1;
+						} else {
+							thatVM.blogList = data.blogList;
+							thatVM.serverPage = parseInt((parseInt(data.count)+6)/7);
+							footOn('v-top');
+						}
+						
 
 						// console.log((parseInt(data.count)+7)/7);
 					},
@@ -303,6 +305,15 @@
 						page: index
 					}
 				});
+			}
+		}, 
+		events: {
+			newArch: function(newArch){
+				// alert(typeof newArch.key);
+
+				// alert(newArch.key)
+				this.nowArch = newArch.key;
+				this.getBlogsByPage(1); 
 			}
 		}
 	}

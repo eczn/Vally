@@ -21,11 +21,13 @@ headerPub();
 // $_GET['page'];
 // select * from blog limit 2,3
 $page = $_GET['page'];
+$archive = $_GET['archive'];
 $needBody = $_GET['need_body']; 
 
 //  order by c desc
-$sql = "SELECT * FROM blog ORDER BY id DESC LIMIT ". ($page-1)*$blog_num .",".$page*$blog_num;
-$sql = mysql_real_escape_string($sql); 
+
+$sql = "SELECT * FROM `blog` WHERE archive = '$archive' ORDER BY id DESC LIMIT ". ($page-1)*$blog_num .",".$page*$blog_num;
+// $sql = mysql_real_escape_string($sql); 
 // $sql_info->inject_check($sql);
 
 // echo $insertBlog;
@@ -36,21 +38,14 @@ $result = mysql_query($sql);
 $tempArr = array(); 
 
 
-
-// $echo '{ "blogList": [';
+$c = 0; 
 while ( $temp = mysql_fetch_array($result) ) {
-	// $temp['body'] = nl2br($temp['body']);
-	// $temp['body'] = str_replace(PHP_EOL, '', $temp['body']);
 	if ($needBody == 'yes') {
 		$tempBody = $temp['body']; 
 	} else {
 		$tempBody = 'nobody';
 	}
 
-	// $targetId = $temp['id']; 
-	// $tagSQL = "SELECT * FROM tags WHERE id=$targetId"; 
-	// $tagRes = mysql_query($tagSQL);
-	// $tagRes = mysql_fetch_array($tagRes); 
 
 	array_push($tempArr, array(
 		'id'=> $temp['id'], 
@@ -65,8 +60,11 @@ while ( $temp = mysql_fetch_array($result) ) {
 		// 'tags'=> $tagRes['tagName']
 		'tags'=> $temp['tags']
 	)); 
-
-	// echo '{"id": "'.$temp[0].'", "title": "'.$temp[1].'", "body": "'.$temp[2].'"},';
+	$c++; 
+}
+if ($c == 0){
+	echo '{ "status": "404", "msg": "archive not found!!" }'; 
+	exit(); 
 }
 // echo '{ "id": "-1", "title": "End Of This Page", "body": "这页到底了"}]}';
 
