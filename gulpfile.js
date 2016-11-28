@@ -1,9 +1,21 @@
 var gulp = require('gulp');
+var gulpif = require('gulp-if'); 
 var webpack = require('gulp-webpack');
 var named = require('vinyl-named');
 var connect = require('gulp-connect');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat'); 
+
+var minimist = require('minimist');
+
+
+var opt = minimist(process.argv.slice(2), {
+	string: 'dest'
+}); 
+if (opt.dest == ''){
+	opt.dest = './build'; 
+}
+console.log(opt); 
 
 gulp.task('connect', function(){
 	connect.server({
@@ -13,7 +25,14 @@ gulp.task('connect', function(){
 	});
 });
 
+
 var appList = ['app', 'router'];
+
+function mapFiles(list, extname) {
+	return list.map(function (app){
+		return 'src/' + app + '.' + extname;
+	});
+};
 
 gulp.task('bundle', function(){
 	return gulp.src(mapFiles(appList, 'js'))
@@ -28,34 +47,31 @@ gulp.task('bundle', function(){
 							loader: 'url'
 						}]
 					},
-					watch: true
+					watch: opt.dest == undefined
 				}))
-			.pipe(uglify())
-				// .pipe(uglify())
-        		.pipe(gulp.dest('src/lib/'))
-				.pipe(connect.reload());
+			.pipe(gulpif( opt.dest != undefined , uglify()))
+       		.pipe(gulp.dest('src/lib/'))
+			.pipe(connect.reload());
 });
 
-gulp.task('uglify', function() {
-	var temp = gulp.src(['src/lib/js/fastclick.js', 'src/lib/js/Parser.js', 'src/lib/js/appConfig.js', 'src/lib/js/markVally.js']) 
+
+gulp.task('lib-uglify', function() {
+	return gulp.src(['src/lib/js/fastclick.js', 'src/lib/js/Parser.js', 'src/lib/js/appConfig.js', 'src/lib/js/markVally.js']) 
 		.pipe(named('fastclick.min.js'))
 		.pipe(uglify())
 		.pipe( concat('libs.min.js') )
 		.pipe(gulp.dest('src/lib/js/mins'))
-		.pipe(connect.reload());; 
-
-    return temp; 
 });
 
-function mapFiles(list, extname) {
-	return list.map(function (app){
-		return 'src/' + app + '.' + extname;
-	});
-};
+gulp.task('copy',  function() {
+	return gulp.src(['src/**/*', '!src/components/**/*'])
+		.pipe(gulp.dest(opt.dest))
+});
 
 
-// gulp.task('default', ['bundle', 'connect', 'uglify']);
 gulp.task('default', ['bundle', 'connect']);
+gulp.task('deploy', ['bundle', 'lib-uglify', 'copy']);
+
 
 // gulp.task('minify_js',["clean"], function() {
 //     var jsSrc = ['./lib/*.js','!./lib/*.src.js'];
