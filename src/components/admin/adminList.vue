@@ -159,7 +159,7 @@
 					data: {
 						page: pageAt,
 						need_body: 'yes',
-						archive: 'none'
+						archive: '*'
 					},
 					dataType: 'json',
 					timeout: 2000,
@@ -170,7 +170,9 @@
 					error: function(xhr, type){
 						console.log(xhr);
 						console.log(type);
-						thatVM.getBlogsByPage(pageAt); 
+						setTimeout(function(){
+							thatVM.getBlogsByPage(pageAt); 
+						}, 500);
 					}
 				});
 			},
