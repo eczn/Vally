@@ -226,9 +226,7 @@ h6 strong img {
 	margin: 0 auto; 
 	text-align: center;
 }
-.mid-img > img {
-	max-width: 500px;
-}
+
 
 @media screen and (min-width: 768px) {
 	h6 strong img {
@@ -239,11 +237,13 @@ h6 strong img {
 		animation: imgShowOne .4s ease 2s 1 normal forwards;
 		animation-name: imgShowOne .4s ease 2s 1 normal forwards;
 	}
-
+	.mid-img > img {
+		max-width: 500px;
+	}
 }
 @media screen and (max-width: 600px) {
 	.mid-img > img {
-		width: 250px;
+		max-width: 250px;
 	}
 }
 
