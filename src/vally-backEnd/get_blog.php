@@ -74,7 +74,9 @@ if ($c == 0){
 echo json_encode(
 	array(
 		'blogList' => $tempArr,
-		'count' => count($tempArr)
+		'count' => count($tempArr),
+		'status' => 0,
+		'msg' => ($archive == '*')?("select *"):("with arch argu")
 	)
 ); 
 
