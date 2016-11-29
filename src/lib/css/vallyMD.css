@@ -216,14 +216,18 @@ h6 strong img {
 	display: inline-block; 
 	max-height: 120px;
 	max-width: 160px;	
-	/*transition-property: margin; */
-	/*transition-duration: .3s; */
-	/*transition-delay: 1s; */
-	/*opacity: .5; */
-	
+
 	margin: 20px;
 	padding: 0; 
 	transition: max-height,max-width .3s,.3s;
+}
+.mid-img {
+	display: block;
+	margin: 0 auto; 
+	text-align: center;
+}
+.mid-img > img {
+	max-width: 500px;
 }
 
 @media screen and (min-width: 768px) {
@@ -234,6 +238,12 @@ h6 strong img {
 		-o-animation: imgShowOne .4s ease 2s 1 normal forwards;
 		animation: imgShowOne .4s ease 2s 1 normal forwards;
 		animation-name: imgShowOne .4s ease 2s 1 normal forwards;
+	}
+
+}
+@media screen and (max-width: 600px) {
+	.mid-img > img {
+		width: 250px;
 	}
 }
 
