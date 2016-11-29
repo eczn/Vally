@@ -26,9 +26,11 @@ $needBody = $_GET['need_body'];
 
 //  order by c desc
 
-$sql = "SELECT * FROM `blog` WHERE archive = '$archive' ORDER BY id DESC LIMIT ". ($page-1)*$blog_num .",".$page*$blog_num;
-// $sql = mysql_real_escape_string($sql); 
-// $sql_info->inject_check($sql);
+if ($archive == '*'){
+	$sql = "SELECT * FROM `blog` ORDER BY id DESC LIMIT ". ($page-1)*$blog_num .",".$page*$blog_num;
+} else {
+	$sql = "SELECT * FROM `blog` WHERE archive = '$archive' ORDER BY id DESC LIMIT ". ($page-1)*$blog_num .",".$page*$blog_num;	
+}
 
 // echo $insertBlog;
 mysql_query("SET NAMES utf8");
@@ -58,7 +60,8 @@ while ( $temp = mysql_fetch_array($result) ) {
 		'date'=> $temp['date'],
 		'updateDate'=> $temp['update_date'],
 		// 'tags'=> $tagRes['tagName']
-		'tags'=> $temp['tags']
+		'tags'=> $temp['tags'],
+		'archive'=> $temp['archive']
 	)); 
 	$c++; 
 }
@@ -71,7 +74,7 @@ if ($c == 0){
 echo json_encode(
 	array(
 		'blogList' => $tempArr,
-		'count' => $count
+		'count' => count($tempArr)
 	)
 ); 
 

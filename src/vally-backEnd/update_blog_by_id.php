@@ -1,7 +1,6 @@
 <?php
 require("./SQL_config.php");
 
-// $sql_info->headerPub(); 
 headerPub(); 
 
 $sql_info = new sql_config(); 
@@ -14,6 +13,7 @@ $title = $_POST['title'];
 $body = $_POST['body'];
 $type = $_POST['type'];
 $tags = $_POST['tags']; 
+$archive = $_POST['archive']; 
 $client_hash = $_POST['cHash']; 
 $client_rand = $_POST['cRand']; 
 
@@ -37,7 +37,7 @@ if ($type == 'text'){
 	// $introdution = str_replace('\"', '\\\"', $introdution);
 }
 
-$update = "UPDATE blog SET title = '$title', body = '$body', update_date = now(), type = '$type', format = '$format', intro = '$introdution', tags = '$tags' WHERE id = $id";
+$update = "UPDATE blog SET title = '$title', body = '$body', update_date = now(), type = '$type', format = '$format', intro = '$introdution', tags = '$tags', archive = '$archive' WHERE id = $id";
 
 // $sql_info->inject_check($update);
 

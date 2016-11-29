@@ -14,7 +14,7 @@ $type = $_POST['type'];
 $tags = $_POST['tags']; 
 $client_hash = $_POST['cHash']; 
 $client_rand = $_POST['cRand']; 
-// $req = $_POST['req']; 
+$archive = $_POST['archive']; 
 $introdution = $_POST['intro']; 
 
 if ($sql_info->very_pwd($client_hash, $client_rand) == false){
@@ -35,7 +35,7 @@ if ($type == 'text'){
 }
 
 // $insertBlog = "INSERT INTO blog (title, body) VALUES ('$title', '$body')";
-$insertBlog = "INSERT INTO blog (title, body, date, format, type, update_date, intro, tags) VALUES ('$title', '$body', now(), '$format', '$type', now(), '$introdution', '$tags')";
+$insertBlog = "INSERT INTO blog (title, body, date, format, type, update_date, intro, tags, archive) VALUES ('$title', '$body', now(), '$format', '$type', now(), '$introdution', '$tags', '$archive')";
 
 // $sql_info->inject_check($insertBlog); 
 
