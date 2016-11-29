@@ -13,19 +13,16 @@
 }
 
 .md > p {
-	/*text-indent: 2em; */
 	line-height: 1.5; 
 	margin: 0 0 1.1em;
 }
 .md p {
 	color: rgba(0,0,0,0.9); 
-	/*font-weight: bold;*/
 	text-shadow: 0 0 1px rgba(0,0,0,0.1); 
 	font-weight: normal;
 	font-size: .35rem;
 }
 .md h1 , .md h2 , .md h3, .md h4, .md h5, .md h6 {
-	/*color: rgb(31,18,50); */
 	position: relative;
 	color: rgb(55, 45, 75);
 	font-weight: normal;
@@ -40,21 +37,13 @@
 	content: ""; 
 	position: absolute;
 	bottom: -0.15rem; 
-	/*line-height: .8;*/
-	/*border-bottom: 2px solid rgba(31,18,50, .1);*/
 	height: 2px; 
 	background: linear-gradient(to right, rgba(31,18,50, .15), rgba(31,18,50, .15), rgba(31,18,50, .15), rgba(31,18,50, .15), transparent);
-	    
-
 	border-radius: 0 0 0 1rem / 0 0 0 .01rem;
-	/*margin-bottom: 0.2em;*/
 	margin-bottom: 6px;
 	padding-left: .3rem;
 	margin-left: -.3rem;
 	width: 12em;
-
-	/*white-space: nowrap;*/
-
 	font-size: .65rem;
 }
 
@@ -116,7 +105,6 @@
 	line-height: 1;
 }
 
-
 /*p code {
 	color: #B22; 
 	padding: 0 .4em;
@@ -165,8 +153,7 @@ ul, ol {
 } 
 
 .md blockquote * {
-	/*font-weight: bold;*/
-	/*color: rgb(31,18,50);*/
+
 }
 .md strong {
 	color: rgb(31,18,50);	
@@ -195,18 +182,8 @@ ul, ol {
 	
 .md > hr, .md-hr {
 	border: .04rem dashed rgba(0, 0, 30, .3); 
-	/*border: .05rem dashed rgba(0, 0, 30, .3); */
-	/*background: linear-gradient(to left, transparent, rgba(31,18,50,0.5), transparent);*/
-	/*border: none; */
-	/*height: .08rem; */
-	/*width: 90%; */
-	/*margin: */
-	/*filter: blur(2px);*/
-	
 	margin: .5rem auto .8rem auto;
 }
-
-
 
 /* =============== */
 /*    markVally    */
