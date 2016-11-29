@@ -242,8 +242,8 @@
 			return {
 				now_time: new Date(), 
 				commenter: window.localStorage.hasOwnProperty('commenter')?JSON.parse(window.localStorage.commenter):{
-					who_say: '', 
-					avatar: '', 
+					who_say: '无名', 
+					avatar: 'http://eczn.website/picStore/001.jpg', 
 					website: '', 
 					email: '',
 					comment: ''
@@ -255,6 +255,20 @@
 			// alert(this.$route.query.id); 
 			// get comments by id
 			setInterval(this.add1s, 1000); 
+
+			
+			var noName = {
+				who_say: '无名', 
+				avatar: 'http://eczn.website/picStore/001.jpg', 
+				website: '', 
+				email: '',
+				comment: ''
+			}
+			if (window.localStorage.hasOwnProperty('commenter')){
+
+			} else {
+				window.localStorage.commenter = JSON.stringify(noName); 
+			}
 
 			this.getCommentsById(this.$route.query.id); 
 		}, 
