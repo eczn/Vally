@@ -80,13 +80,13 @@
 
 <template>
 	<div class="blog-list-container admin-list">
-		<!-- <h1 class="btn-C" v-on:click="adminDel">删除</h1> -->
 		<div style="position: relative;" class="list-container">
 			<btn btntype="C" text="删除所选项" icon="false"></btn>
 			<ul class="blog-list-ul">
 				<li class="admin-list-li" v-for="elem in blogList">
 					<input v-bind:blogId="elem.id" class="del-btn" type="checkbox">
 					<span>id: {{ elem.id }}</span>
+					<span>分类: {{ elem.archive }}</span>
 					<div v-on:click="showBlog($index)" class="admin-list-li-text">
 						<h1>{{elem.title}}</h1>
 						<p>{{elem.intro}}</p>
@@ -104,7 +104,7 @@
 
 <script>
 	var myBtn = require('../public/btn.vue');
-	var writeDesk = require('./writedesk.vue'); 
+	// var writeDesk = require('./writedesk.vue'); 
 
 	module.exports = {
 		data: function(){
@@ -120,7 +120,7 @@
 		},
 		components: {
 			btn: myBtn,
-			writedesk: writeDesk
+			// writedesk: writeDesk
 		},
 		ready: function(){
 			$($(".pageNum")[0]).addClass("pageBtn-active");
@@ -158,7 +158,8 @@
 					asyne: false,
 					data: {
 						page: pageAt,
-						need_body: 'yes'
+						need_body: 'yes',
+						archive: 'none'
 					},
 					dataType: 'json',
 					timeout: 2000,

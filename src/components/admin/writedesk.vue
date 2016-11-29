@@ -117,6 +117,7 @@
 				<input v-model="article.title" style="text-align:center;" type="text" placeholder="标题">
 				<input v-model="article.intro" style="text-align:center;" type="text" placeholder="简短的blog介绍">
 				<input v-model="article.tags" style="text-align:center;" type="text" placeholder="文章标签">
+				<input v-model="article.archive" style="text-align:center;" type="text" placeholder="文章分类">
 			</div>
 
 			<textarea v-model="article.body" column="123" placeholder="文章 [纯文本,Markdown] enabled"></textarea>
@@ -141,6 +142,7 @@
 					body: '',
 					intro: '', 
 					tags: '', 
+					archive: 'none',
 				},
 				mode: 'new', 
 				isMD: true
@@ -199,6 +201,7 @@
 							intro: that.article.intro,
 							body: that.article.body,
 							tags: that.article.tags,
+							archive: that.article.archive,
 							// type: that.article.isMD?'markdown':'text',
 							type: that.isMD?'markdown':'text',
 							cHash: cHash,
@@ -227,6 +230,7 @@
 							title: that.article.title,
 							intro: that.article.intro,
 							body: that.article.body,
+							archive: that.article.archive,
 							// type: that.article.type,
 							type: that.isMD?'markdown':'text',
 							tags: that.article.tags,
