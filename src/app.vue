@@ -67,6 +67,7 @@
 			<!-- text -->
 			<router-view></router-view>
 		</div>
+		<msg-box></msg-box>
 		<v-footer></v-footer>
 		<vally-side></vally-side>
 	</div>
@@ -76,6 +77,7 @@
 	var header = require("./components/public/header.vue"); 
 	var myFooter = require("./components/public/footer.vue");
 	var vallySide = require("./components/public/vallySide.vue"); 
+	var msgBox = require("./components/public/msg-box.vue"); 
 
 	module.exports = {
 		data: function(){
@@ -85,6 +87,10 @@
 		},
 		ready: function(){
 			// console.log(accordion);
+			// this.$broadcast('showMsg', {
+			// 	pics: [], 
+			// 	msg: 'hello, Vally'
+			// }); 
 		},
 		methods: {
 
@@ -92,7 +98,13 @@
 		components: {
 			"v-header": header,
 			"v-footer": myFooter,
-			"vally-side": vallySide
+			"vally-side": vallySide,
+			"msg-box": msgBox
+		},
+		events: {
+			HelpMeBroadCast: function(event_name, args){
+				this.$broadcast(event_name, args); 
+			}
 		}
 	}
 </script>

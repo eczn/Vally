@@ -160,8 +160,18 @@
 					// mdHtml = mdHtml.replace(/<\/p>/g,"<\/p><br />");
 					// mdHtml = mdHtml.replace(/<pp>/g,"<\/p><p>");
 					// mdHtml = mdHtml.replace(/<pl>/,"<\/p><\/li>");
+					var that = this; 
+					setTimeout(function(){
+						$('.md img').click(function(){
+							that.$dispatch('HelpMeBroadCast', 'showMsg', {
+								pics: [$(this).attr('src')], 
+								msg: $(this).attr('title')
+							});
+						});
+					}, 500); 
 					return mdHtml;
 				}
+
 			}
 		},
 		events: {
