@@ -118,7 +118,7 @@
 				historyId: config.historyId,
 				archiveList: [
 					{
-						key: 'none',
+						key: '*',
 						name: '全部'
 					},{
 						key: 'code',
@@ -132,7 +132,7 @@
 			}
 		},
 		ready: function(){
-			$('#archs0').css('background-color', '#cef').css('color', 'rgb(31,18,50)'); 
+			$('#archs1').css('background-color', '#cef').css('color', 'rgb(31,18,50)'); 
 		},
 		methods: {
 			routo: function(r4){

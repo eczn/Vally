@@ -192,7 +192,7 @@
 				blogPosition: 0,
 				isShow: false,
 				myParser: parser,
-				nowArch: 'none'
+				nowArch: 'code'
 			}
 		},
 		components: {
@@ -281,11 +281,10 @@
 							thatVM.serverPage = 1;
 						} else {
 							thatVM.blogList = data.blogList;
+							// alert(data.count);
 							thatVM.serverPage = parseInt((parseInt(data.count)+6)/7);
 							footOn('v-top');
 						}
-						
-
 						// console.log((parseInt(data.count)+7)/7);
 					},
 					error: function(xhr, type){
@@ -309,11 +308,14 @@
 		}, 
 		events: {
 			newArch: function(newArch){
-				// alert(typeof newArch.key);
-
-				// alert(newArch.key)
 				this.nowArch = newArch.key;
 				this.getBlogsByPage(1); 
+				this.$route.router.go({
+					name: 'blogList',
+					query: {
+						page: 0
+					}
+				}); 
 			}
 		}
 	}
