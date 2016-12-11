@@ -11,6 +11,7 @@
   "author": "eczn",
   "license": "Apache 2.0",
   "dependencies": {
+    "art-template": "^3.0.3",
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-runtime": "^6.9.0",
@@ -28,6 +29,7 @@
     "gulp-rev-collector": "^1.0.5",
     "gulp-uglify": "^1.5.4",
     "gulp-webpack": "^1.5.0",
+    "markdown": "^0.5.0",
     "minimist": "^1.2.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
