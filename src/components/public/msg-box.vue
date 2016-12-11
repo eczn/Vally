@@ -44,11 +44,6 @@
 	white-space: nowrap;
 }
 
-.msgMiddle > img {
-	max-width: 280px; 
-	max-height: 300px;
-}
-
 .msgInfo > span {
 	position: absolute;
 	top: 100%; 
@@ -125,6 +120,19 @@
 	border-left: none;
 	border-top: none;
 	transform: translate(-14px, -14px);
+}
+
+.msgMiddle > img {
+	max-width: 280px; 
+	max-height: 300px;
+	cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+	.msgMiddle > img {
+		transform: scale(1.7,1.7);
+		transform-origin: 50% -10px;
+	}
 }
 
 @media screen and (max-width: 600px) {
