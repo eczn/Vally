@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+	<title>{{blog.title}}</title>
+	<link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+	<header>
+		<h1 class="title">{{ blog.title }}</h1>	
+	</header>
+	
+	<div class="md">{{ md }}</div>
+</body>
+
+<style>
+	* {
+		margin: 0; 
+		padding: 0; 
+		font-weight: normal;
+		font-family: "Heiti SC", "Hiragino Sans GB", "microsoft yahei", "WenQuanYi Microhei", "微软雅黑";
+	}
+
+	header {
+		margin: 0 auto; 
+		/*width: 100%; */
+		text-align: center;
+	}
+
+	.title {
+		position: relative;
+		font-size: 48px;
+	}
+
+	.title:after {
+		content: ""; 
+		position: relative;
+		display: block;
+		margin: 0 auto; 
+		bottom: 0;
+		left: 0; 
+		height: 2px;
+		width: 320px;
+		background: linear-gradient(
+			to right, 
+			transparent,
+			rgba(31,18,50, .18), 
+			transparent
+		);
+	}
+
+	.md {
+		max-width: 960px; 
+		margin: 0 auto;
+	}
+</style>
+
+</html>

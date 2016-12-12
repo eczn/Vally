@@ -1,9 +1,5 @@
-# hello, i am eczn 
+# look fir! 
 
-look, markdown 
+hello, vally
 
-vally staticify project 
-
-``` js 
-console.log("hello, world"); 
-```
+fir 

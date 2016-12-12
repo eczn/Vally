@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+	<title>The New Vally</title>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<header>
+		<h1>欢迎，欢迎来到静态化的Vally</h1>
+	</header>
+	{{each archives as arch ai }}
+	<div class="arch">
+		<h1>分类：{{arch.name}}</h1>
+		<ul>
+			{{each arch.list as blogName bi }}
+			<li>
+				<a href="{{ 'blog/' + arch.name + '/' + blogName.replace('.md', '.html')}}">
+					{{bi + 1}} ：{{blogName.replace('.md', '')}}
+				</a>
+			</li>
+	    	{{/each}}
+		</ul>
+	</div>
+	{{/each}}
+</body>
+<style>
+	* {
+		margin: 0; 
+		padding: 0; 
+		font-weight: normal;
+		font-family: "Heiti SC", "Hiragino Sans GB", "microsoft yahei", "WenQuanYi Microhei", "微软雅黑";
+	}
+
+	.arch, header {
+		max-width: 960px; 
+		margin: 0 auto;
+	}
+	header > h1 {
+		text-align: center;
+		margin-bottom: .4em;
+	}
+	.arch > ul {
+		margin-left: 4em;
+	}
+</style>
+</html>
