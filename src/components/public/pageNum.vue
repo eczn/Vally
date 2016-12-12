@@ -1,2 +1,0 @@
-<!-- pageNum.vue -->
-
