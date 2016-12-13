@@ -4,15 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 	<title>{{blog.title}}</title>
-	<link rel="stylesheet" href="css/main.css">
-
+	<script src="/js/flexible.js"></script>
+	<script src="/js/flexible_css"></script>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/blog.css">
 </head>
 <body>
-	<header>
+	<!-- <header> -->
 		<h1 class="title">{{ blog.title }}</h1>	
-	</header>
+	<!-- </header> -->
 	
 	<div class="md">{{ md }}</div>
+
+	{{include '../public/footer'}}
 </body>
 
 <style>
@@ -23,15 +27,10 @@
 		font-family: "Heiti SC", "Hiragino Sans GB", "microsoft yahei", "WenQuanYi Microhei", "微软雅黑";
 	}
 
-	header {
-		margin: 0 auto; 
-		/*width: 100%; */
-		text-align: center;
-	}
-
 	.title {
 		position: relative;
-		font-size: 48px;
+		font-size: 1.2rem;
+		text-align: center;
 	}
 
 	.title:after {
@@ -42,7 +41,7 @@
 		bottom: 0;
 		left: 0; 
 		height: 2px;
-		width: 320px;
+		width: 310px;
 		background: linear-gradient(
 			to right, 
 			transparent,

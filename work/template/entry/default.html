@@ -11,21 +11,21 @@
 </head>
 <body>
 	{{include '../public/header'}}
-	{{each archives as arch ai }}
+
 	<div class="arch main">
-		<h1>分类：<a href="{{ '/blog/' + arch.name + '/' + 'index.html'}}">{{arch.name}}</a></h1>
 		<ul>
 			{{each arch.list as blogName bi }}
 			<li>
-				<a href="{{ '/blog/' + arch.name + '/' + blogName.replace('.md', '.html')}}">
-					{{bi + 1}} ：{{blogName.replace('.md', '')}}
+				<a href="{{ 'blog/' + arch.name + '/' + blogName.replace('.md', '.h' + 't' + 'ml')}}">
+					{{blogName.replace('.md', '')}}
 				</a>
+				<span></span>
 			</li>
 	    	{{/each}}
 		</ul>
 	</div>
-	{{/each}}
-
+	
 	{{include '../public/footer'}}
 </body>
-</html>
+
+</html>   
