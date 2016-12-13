@@ -5,6 +5,68 @@ var fs = require("fs");
 var path = require('path'); 
 var template = require('art-template');
 var server = require('./server'); 
+
+var colors = require('colors');
+
+colors.setTheme({
+	silly: 'rainbow',
+	input: 'grey',
+	verbose: 'cyan',
+	prompt: 'red',
+	info: 'green',
+	data: 'blue',
+	help: 'cyan',
+	warn: 'yellow',
+	debug: 'magenta',
+	error: 'red'
+});
+
+// var log = console.log.bind(console);
+console.log('this is an error'.error);
+console.log('this is a warning'.warn);
+console.log('this is a debug'.debug);
+console.log('this is a help'.help);
+console.log('this is a silly'.silly);
+console.log('this is a input'.input);
+console.log('this is a prompt'.prompt);
+console.log('this is a data'.data);
+console.log('this is a info'.info); 
+console.log('this is a verbose'.verbose); 
+
+function DatePro(date){
+	var h, m, s; 
+	h = date.getHours(); 
+	m = date.getMinutes(); 
+	s = date.getSeconds(); 
+
+	return 0; 
+}
+
+Date.prototype.parse = function(){
+	var h, m, s; 
+	h = this.getHours(); 
+	m = this.getMinutes(); 
+	s = this.getSeconds(); 
+
+	h>=10?(''+h):(h='0'+h); 
+	m>=10?(''+m):(m='0'+m); 
+	s>=10?(''+s):(s='0'+s); 
+
+
+	return ('['+h+':'+m+':'+s+']').grey; 
+};
+
+function log(name, disArr, color){
+	if (!color){
+		color = 'verbose'; 
+	}
+	console.log(new Date().parse()+name[color]); 
+	disArr.forEach(function(elem){
+		console.log(elem); 
+	}); 
+	console.log((name+"End")[color]); 
+}
+
 // vally.generate();
 // console.log(config); 
 // dist 
@@ -14,7 +76,7 @@ var server = require('./server');
 // 	console.log(archives[0].length);
 // });
 var config = require('./config'); 
-var startVally = function(){
+var startVally = function(cb){
 	// var path = require('path'); 
 	// console.log("!!!"); 
 	// console.log(__dirname)
@@ -22,8 +84,9 @@ var startVally = function(){
 
 	// archTree('./blogs', function(archives){
 	archTree(config.path.blog, function(archives){
-		console.log("@@ "); 
-		console.log(archives); 
+		// console.log("@@ archives ↓".info); 
+		log('@@ archives' ,[archives], 'green'); 
+		// console.log("@@ archivesEnd".info); 
 		// get the file list(archives) and travel & render it by template: blog.html 
 		archName = []; 
 		archives.forEach((arch) => {
@@ -67,6 +130,7 @@ var startVally = function(){
 		template.config('base', __dirname);
 		template.config('escape', false);
 		template.config('encoding', 'utf-8'); 
+		template.config('cache', false); 
 		// var html = template("./template/entry/entry", entryData);
 		// all blogs; all arch 
 		var html = template(config.path.template+"/entry/entry", entryData);
@@ -105,7 +169,14 @@ var startVally = function(){
 					arch: arch,
 					archName: archName
 				}
+
+				// fs.readFile(config.path.template+"/entry/default.html", function (err, data) {
+				// 	console.log(data.toString()); 
+				// });
+
 				var html = template(config.path.template+"/entry/default", defaultData);
+
+				// console.log(html); 
 
 				fs.writeFile(config.path.dist + '/index.html', html, {
 					flags: 'w+'
@@ -113,9 +184,11 @@ var startVally = function(){
 					if (err){
 						console.log(err); 
 					}
+
+					// cb(); 
 				}); 
 
-				console.log(arch); 
+				// console.log(arch); 
 
 			}
 		});
@@ -128,12 +201,30 @@ var startVally = function(){
 }
 
 server.start(); 
-// var chokidar = require('chokidar'); 
-// watcher = chokidar.watch('./work/template', {ignored: /[\/\\]\./}).on('all', (event, path) => {
-// 	console.log('regene')
+
+
+var chokidar = require('chokidar'); 
+
+var watcher = chokidar.watch('./work/template', {
+	ignored: /[\/\\]\./,
+	persistent: true
+	// awaitWriteFinish: true
+});
+
+watcher.on('change', (event, path) => {
+	startVally(); 
+	// console.log(connect.reload.toString()); 
+});
+
+
+// function tttt(){
 // 	startVally(); 
-// });
+// }
+// setInterval(startVally, 2000)
+// setInterval(function(){
+// 	console.log('sv');
+// }, 2000)
+startVally(function(){
 
-
-startVally(); 
+}); 
 // module.exports = startVally; 
