@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+	<title>bDown - 自制博客尝试（0）</title>
+	<script src="/js/flexible.js"></script>
+	<script src="/js/flexible_css"></script>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
+	<!-- <header> -->
+		<h1 class="title">bDown - 自制博客尝试（0）</h1>	
+	<!-- </header> -->
+	
+	<div class="md"><center style="margin-top: -2em;">
+我什么都喜欢自制哇！
+</center>
+<!--more--> 
+<hr>
+<h1>初衷</h1>
+<p>虽然hexo是挺好用的，但是每次都要 <code>./update.sh</code> ，然后滚条很慢，而且也不能实时预览。
+　　当然能独立的搞出一个博客当然是极强势的，不过比起造轮子，我更喜欢站在巨人的肩膀上编程。（使用各种库）
+　　本博客暂命名为 bB ( bB is bB blog )
+　　bB是摆脱github运行的，后台应该是php的（暂定），可以在后台markdown写博文，然后在前台就会显示了，一切都在网页进行，而且有预览功能，此外，可以直接利用服务器资源做图床（很难的样子）。</p>
+<hr>
+<h1>bB是怎么样的？</h1>
+<h2>前端部分</h2>
+<blockquote>
+<p>第三方的：
+jquery.min.js
+Parser.js
+highlight.min.js</p>
+</blockquote>
+<blockquote>
+<p>自造的
+bDown.js
+bDown.css
+markdown.css</p>
+</blockquote>
+<h2>前端需要的后台支持</h2>
+<blockquote>
+<p>.md file push and pop
+pic store</p>
+</blockquote>
+<hr>
+<h1>HyperDown - md2html</h1>
+<p>用到了 github上面的HyperDown 里面的格式化工具 Parser.js。</p>
+<pre><code class="language-js">// Parser.js 食用方法： 
+var parser = new HyperDown, 
+	html = parser.makeHtml(&quot;# hello,world&quot;); // 这时候变量html里面存有html标签集
+
+document.write( html );
+</code></pre>
+<p>但是这样子得到的Markdown是没有样式的，需要样式的话得自行编写markdown.css。</p>
+<hr>
+<h1>highlight.js - 代码高亮工具</h1>
+<h2>食用方法</h2>
+<pre><code class="language-js">var i = 0;
+for (i=0;i&lt;$('code').length;i++  ){
+	hljs.highlightBlock( $('code')[i] ); // 把每个code的DOM结点传递给 highlightBlock函数处理
+}
+</code></pre>
+<h2>改造</h2>
+<p>原生的highlight是不支持行号显示的。因此我做了一个ul放在代码块左边。</p>
+<pre><code class="language-js">// 本函数参考过网上别的实现方法
+function lineCount(){
+    $('pre code').each(function(){		// 用匿名函数遍历pre和code
+        var lines = $(this).text().split('\n').length;  // 行数
+        var $numbering = $('&lt;ul/&gt;').addClass('pre-numbering');
+
+        // 链式
+        $(this)
+            .addClass('has-numbering')
+            .parent()
+            .append($numbering);
+
+        // 每个li结束前加个数字
+        for(i=0;i&lt;lines;i++){
+            $numbering.append($('&lt;li/&gt;').text(i));
+        }
+    });
+}
+</code></pre>
+<p>然后重写了 markdown.css</p>
+<pre><code class="language-css">pre {
+    position: relative;
+    overflow: hidden;
+}
+
+code {
+    line-height: 20px; /* 行高20px */
+    font-size: 16px;
+    display: block;
+    overflow-y: auto;
+}
+
+code.has-numbering {
+    margin-left: 21px;
+}
+
+.pre-numbering {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    padding: 8px 2px 12px 0;
+    margin-top: 0;
+
+    font-size: 16px;
+    text-align: right;
+
+    border-radius: 9px 0 0 0;
+    -webkit-border-radius: 9px 0 0 0;
+    -moz-border-radius: 9px 0 0 0;
+    background-color: rgb(35,36,31);
+}
+
+li {
+    height: 20px;  /* 数字行高20px */
+
+    color: rgb(143,144,122);
+    background-color: rgb(35,36,31);
+}
+</code></pre>
+<p>最终效果是这样的：</p>
+<hr>
+<h1>参考资料</h1>
+<p><a href="https://github.com/SegmentFault/HyperDown.js">github: Hyperdown.js</a>
+<a href="https://github.com/isagalaev/highlight.js">github: highlight.js</a>
+<a href="https://highlightjs.org/">highlight.js食用方法</a>
+<a href="http://vec.moe/pache/">Vec: pache</a></p>
+</div>
+
+	<!-- footer.html -->
+<footer>
+	<p style="font-size: 12px;">eczn ❤ Cscw | 2016 GDUT</p>
+</footer>
+<style>
+	footer {
+		border-top: 1px dashed;
+		margin-top: 1rem; 
+		text-align: center;
+	}
+</style>
+
+</body>
+
+<style>
+	* {
+		margin: 0; 
+		padding: 0; 
+		font-weight: normal;
+		font-family: "Heiti SC", "Hiragino Sans GB", "microsoft yahei", "WenQuanYi Microhei", "微软雅黑";
+	}
+
+	.title {
+		position: relative;
+		font-size: 1.2rem;
+		text-align: center;
+	}
+
+	.title:after {
+		content: ""; 
+		position: relative;
+		display: block;
+		margin: 0 auto; 
+		bottom: 0;
+		left: 0; 
+		height: 2px;
+		width: 310px;
+		background: linear-gradient(
+			to right, 
+			transparent,
+			rgba(31,18,50, .18), 
+			transparent
+		);
+	}
+
+	.md {
+		max-width: 960px; 
+		margin: 0 auto;
+	}
+</style>
+
+</html>

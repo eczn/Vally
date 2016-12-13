@@ -1,0 +1,111 @@
+* {
+	margin: 0; 
+	padding: 0; 
+	font-weight: normal;
+	font-family: "Heiti SC", "Hiragino Sans GB", "microsoft yahei", "WenQuanYi Microhei", "微软雅黑";
+}
+
+a {
+	color: #446;
+	text-decoration: none;
+	/*border-bottom: 1px dashed;*/
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	color: #446; 
+}
+
+body {
+	color: #446;
+	border-top: 5px dashed;
+}
+
+.h-red {
+	font-size: .6rem;
+	color: #955; 
+}
+
+.color446 {
+	color: #446; 
+}
+
+strong {
+	font-weight: bold;
+}
+
+
+header {
+	max-width: 960px; 
+	margin: 0 auto;
+}
+
+.header-msg {
+	margin: 20px 0;
+}
+.header-msg > h1 {
+	display: inline-block;
+}
+.header-msg > p {
+	margin: 6px 0;
+}
+
+.arch-hook {
+	float: right;
+	display: inline-block;
+}
+.arch-hook * {
+	color: white;
+}
+.arch-hook a, .about a {
+	border-bottom: none;
+}
+
+
+.arch-hook span {
+	transition: all .3s;
+	cursor: pointer;
+	display: inline-block;
+	margin: 8px .5em;
+	padding: .25em .5em;
+	background-color: #446;
+	color: white;
+	border-radius: 5px;
+	margin-bottom: .8em;
+}
+
+
+@media screen and (min-width: 768px) {
+	.about {
+		text-align: right;
+		margin-top: -.4rem;
+		border-bottom: 1px dashed;
+	}
+}
+@media screen and (max-width: 768px) {
+	.about {
+		text-align: center;
+		border-top: 1px dashed;
+		border-bottom: 1px dashed;
+	}
+
+	.main {
+		width: 80%;
+		padding: 0 5%; 
+	}
+
+	header h1, header p {
+		width: 80%;
+		padding: 0 5%;
+	}
+	.arch-hook {
+		margin-right: 4%;
+	}
+}
+
+
+.about > span {
+	display: inline-block;
+	margin: 8px 20px;
+	font-size: 12px;
+}
+
