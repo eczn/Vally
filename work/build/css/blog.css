@@ -1,0 +1,23 @@
+/*blog.css*/
+.title {
+	position: relative;
+	font-size: 48px;
+	text-align: center;
+}
+
+.title:after {
+	content: ""; 
+	position: relative;
+	display: block;
+	margin: 0 auto; 
+	bottom: 0;
+	left: 0; 
+	height: 2px;
+	width: 310px;
+	background: linear-gradient(
+		to right, 
+		transparent,
+		rgba(31,18,50, .18), 
+		transparent
+	);
+}

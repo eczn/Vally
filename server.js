@@ -5,54 +5,80 @@ var fs = require('fs');
 var mine = require('./mine').types;
 var path = require('path');
 var config = require('./config'); 
+var gulp = require('gulp');
+var connect = require('gulp-connect'); 
+var server; 
 
 module.exports = {
+	server: server, 
 	start: function(){
-		var server = http.createServer(function (request, response) {
-			var pathname = url.parse(request.url).pathname;
-			// var realPath = path.join("assets", pathname);
-			var realPath = path.join(path.resolve(config.path.dist), pathname); 
-			// config.path.dist
-			//console.log(realPath);
-			var ext = path.extname(realPath);
-			ext = ext ? ext.slice(1) : 'unknown';
-
-
-			if (pathname == '\\' || pathname == '/'){
-				pathname = '/index.html'; 
-				realPath = path.join(realPath, 'index.html');
-			}
-
-			console.log(pathname); 
-			console.log(realPath); 
-			fs.exists(realPath, function(exists) {
-				if (!exists) {
-					response.writeHead(404, {
-						'Content-Type': 'text/plain'
-					});
-
-					response.write("This request URL " + pathname + " was not found on this server.");
-					response.end();
-				} else {
-					fs.readFile(realPath, "binary", function (err, file) {
-						if (err) {
-							response.writeHead(500, {
-								'Content-Type': 'text/plain'
-							});
-							response.end('500, err');
-						} else {
-							var contentType = mine[ext] || "text/html";
-							response.writeHead(200, {
-								'Content-Type': contentType
-							});
-							response.write(file, "binary");
-							response.end();
-						}
-					});
-				}
-			});
-		}).listen(config.server.PORT);
 		
-		console.log("vally server now runing at port: " + config.server.PORT);
+		connect.server({
+			root: './work/build',
+			port: 4444,
+			livereload: true
+		});
+
+		gulp.watch('./work/build/**/*', ['reload']); 
+
+		gulp.task('reload', function(){
+			console.log('reload');
+			return gulp.src(['work/build/**/*'])
+				.pipe(connect.reload());
+		});
+
+		// gulp.watch();
+		
+	},
+	// start: function(){
+	// 	 server = http.createServer(function (request, response) {
+	// 		var pathname = url.parse(request.url).pathname;
+	// 		// var realPath = path.join("assets", pathname);
+	// 		var realPath = path.join(path.resolve(config.path.dist), pathname); 
+	// 		// config.path.dist
+	// 		//console.log(realPath);
+	// 		var ext = path.extname(realPath);
+	// 		ext = ext ? ext.slice(1) : 'unknown';
+
+
+	// 		if (pathname == '\\' || pathname == '/'){
+	// 			pathname = '/index.html'; 
+	// 			realPath = path.join(realPath, 'index.html');
+	// 		}
+
+	// 		console.log(pathname); 
+	// 		console.log(realPath); 
+	// 		fs.exists(realPath, function(exists) {
+	// 			if (!exists) {
+	// 				response.writeHead(404, {
+	// 					'Content-Type': 'text/plain'
+	// 				});
+
+	// 				response.write("This request URL " + pathname + " was not found on this server.");
+	// 				response.end();
+	// 			} else {
+	// 				fs.readFile(realPath, "binary", function (err, file) {
+	// 					if (err) {
+	// 						response.writeHead(500, {
+	// 							'Content-Type': 'text/plain'
+	// 						});
+	// 						response.end('500, err');
+	// 					} else {
+	// 						var contentType = mine[ext] || "text/html";
+	// 						response.writeHead(200, {
+	// 							'Content-Type': contentType
+	// 						});
+	// 						response.write(file, "binary");
+	// 						response.end();
+	// 					}
+	// 				});
+	// 			}
+	// 		});
+	// 	}).listen(config.server.PORT);
+		
+	// 	console.log("vally server now runing at port: " + config.server.PORT);
+	// },
+	close: function(cb){
+		server.close(cb); 
 	}
 }
