@@ -6,7 +6,7 @@
 }
 ------
 
-<center style="margin-top: -2em;">
+<center>
 我什么都喜欢自制哇！
 </center>
 
@@ -27,18 +27,19 @@
 ## 前端部分
 
 > 第三方的：
-> jquery.min.js
-> Parser.js
-> highlight.min.js
+> * jquery.min.js 
+> * Parser.js 
+> * highlight.min.js 
 
-> 自造的
-> bDown.js 
-> bDown.css
-> markdown.css
+> 自造的 
+> * bDown.js 
+> * bDown.css 
+> * markdown.css 
 
 ## 前端需要的后台支持
 
 > .md file push and pop
+> 
 > pic store
 
 ---
@@ -147,8 +148,11 @@ li {
 ---  
 
 # 参考资料
-<a href="https://github.com/SegmentFault/HyperDown.js">github: Hyperdown.js</a>
-<a href="https://github.com/isagalaev/highlight.js">github: highlight.js</a>
-<a href="https://highlightjs.org/">highlight.js食用方法</a>
-<a href="http://vec.moe/pache/">Vec: pache</a>
+<a href="https://github.com/SegmentFault/HyperDown.js">github: Hyperdown.js</a> 
+<a href="https://github.com/isagalaev/highlight.js">github: highlight.js</a> 
+<a href="https://highlightjs.org/">highlight.js食用方法</a> 
+<a href="http://vec.moe/pache/">Vec: pache</a> 
+
+
+<img src="http://localhost/picLib/gulp-success.png" alt="">
 
