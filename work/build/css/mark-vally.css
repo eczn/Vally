@@ -3,6 +3,14 @@
 .md {
 	word-wrap: break-word;
 	position: relative;
+	/*color: #446;*/
+}
+
+@media screen and (max-width: 960px) {
+	.md {
+		width: 90%;
+		margin: 0 auto;
+	}
 }
 
 .md-title {
@@ -21,7 +29,7 @@
 	color: rgba(0,0,0,0.9); 
 	text-shadow: 0 0 1px rgba(0,0,0,0.1); 
 	font-weight: normal;
-	font-size: .35rem;
+	font-size: .33rem;
 }
 .md h1 , .md h2 , .md h3, .md h4, .md h5, .md h6 {
 	position: relative;
@@ -31,7 +39,7 @@
 }
 
 .md h1 {
-	font-size: .6rem;
+	font-size: .55rem;
 	margin-bottom: 0.15rem;
 	margin-top: .3rem; 
 }
@@ -267,10 +275,16 @@ h6 strong {
 	
 }
 
-img h1 {
-
+.md > img {
+	display: block;
+	max-width: 960px;
+	margin: 0 auto;
 }
-
+@media screen and (max-width: 960px) {
+	.md > img {
+		width: 90%;
+	}
+}
 
 /* =============== */
 /*    markFooter   */
