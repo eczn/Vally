@@ -2,6 +2,7 @@
 /*.blog-display*/ 
 .md {
 	word-wrap: break-word;
+	position: relative;
 }
 
 .md-title {
@@ -30,6 +31,7 @@
 }
 
 .md h1 {
+	font-size: .6rem;
 	margin-bottom: 0.15rem;
 	margin-top: .3rem; 
 }
@@ -50,6 +52,7 @@
 .md h2 {
 	font-size: .5rem;
 }
+
 .md blockquote h2, .md blockquote h3, .md blockquote h4 {
 	margin-left: 10px; 
 	display: inline-block;
@@ -117,9 +120,10 @@
 }*/
 
 .md blockquote {
-	margin: .15rem 0;
-	margin: .15rem calc( (0.3em + 10px) * -1 );
-	padding: .3em .3em;
+	margin: .15rem 1%;
+	width: 94%;
+	/*margin: .15rem calc( (0.3em + 10px) * -1 );*/
+	padding: .3em 1%;
 	/*border-left: 10px rgba(60, 45, 80, 1) solid; */
 	border-left: 10px rgba(100, 80, 110, 1) solid; 
 	background-color: rgba(60, 45, 80, .1);
