@@ -10,13 +10,16 @@
 	<link rel="stylesheet" href="/css/blog.css">
 	<link rel="stylesheet" href="/css/mark-vally.css">
 	<link rel="stylesheet" href="/css/monokai_sublime.min.css">
+	
 </head>
 <body>
 	<!-- <header> -->
-		<h1 class="title">Hello, Vally - 自制博客尝试（-1）</h1>	
 	<!-- </header> -->
 	
-	<div class="md"><center>
+	
+	<h1 class="title">Hello, Vally - 自制博客尝试（-1）</h1>	
+	<div class="md">
+	<center>
 渐入佳境
 </center>
 <!--more--> 
@@ -33,7 +36,12 @@
 <p>之后应该不太可能会在githubPage发blog了，转向自家的Vally</p>
 <h2>addressVally</h2>
 <p><a href="http://Vally.frandre.cc">vallyTheBlog</a></p>
-</div>
+
+	</div>
+	
+	<div class="img-dis display-none">
+		<img src="http://192.168.1.2/picLib/gulp-success.png" alt="">
+	</div>
 
 	<!-- footer.html -->
 <footer>
@@ -50,19 +58,13 @@
 </style>
 
 </body>
-
-<style>
-/*	* {
-		margin: 0; 
-		padding: 0; 
-		font-weight: normal;
-		font-family: "Heiti SC", "Hiragino Sans GB", "microsoft yahei", "WenQuanYi Microhei", "微软雅黑";
-	}
-*/
-	.md {
-		max-width: 960px; 
-		margin: 0 auto;
-	}
-</style>
-
+<script src="/js/fastclick.js"></script>
+<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		FastClick.attach(document.body);
+		console.log('fastclick is ready');
+	}, false);
+</script>
+<script src="/js/zepto.min.js"></script>
+<script src="/js/markVally.js"></script>
 </html>

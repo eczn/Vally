@@ -10,16 +10,24 @@
 	<link rel="stylesheet" href="/css/blog.css">
 	<link rel="stylesheet" href="/css/mark-vally.css">
 	<link rel="stylesheet" href="/css/monokai_sublime.min.css">
+	
 </head>
 <body>
 	<!-- <header> -->
-		<h1 class="title"></h1>	
 	<!-- </header> -->
 	
-	<div class="md"><h1>look fir!</h1>
+	
+	<h1 class="title"></h1>	
+	<div class="md">
+	<h1>look fir!</h1>
 <p>hello, vally</p>
 <p>fir</p>
-</div>
+
+	</div>
+	
+	<div class="img-dis display-none">
+		<img src="http://192.168.1.2/picLib/gulp-success.png" alt="">
+	</div>
 
 	<!-- footer.html -->
 <footer>
@@ -36,19 +44,13 @@
 </style>
 
 </body>
-
-<style>
-/*	* {
-		margin: 0; 
-		padding: 0; 
-		font-weight: normal;
-		font-family: "Heiti SC", "Hiragino Sans GB", "microsoft yahei", "WenQuanYi Microhei", "微软雅黑";
-	}
-*/
-	.md {
-		max-width: 960px; 
-		margin: 0 auto;
-	}
-</style>
-
+<script src="/js/fastclick.js"></script>
+<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		FastClick.attach(document.body);
+		console.log('fastclick is ready');
+	}, false);
+</script>
+<script src="/js/zepto.min.js"></script>
+<script src="/js/markVally.js"></script>
 </html>
