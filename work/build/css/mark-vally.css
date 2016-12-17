@@ -3,6 +3,8 @@
 .md {
 	word-wrap: break-word;
 	position: relative;
+	max-width: 960px; 
+	margin: 0 auto;
 	/*color: #446;*/
 }
 
@@ -99,7 +101,7 @@
 	margin: .4rem 0; 
 }
 .md pre:after {
-	content: "codeBoard v0.0.1 (别问了高亮还在搞)"; 
+	content: "codeBoard v0.1.1 (Sublime Monokai)"; 
 	font-size: .15rem;
 	float: right;
 	top: 100%; 
@@ -112,7 +114,7 @@
 	color: #dde;
 	/*border-radius: .3em;*/
 	font-size: .3rem;
-	font-family: "Consolas"; 
+	font-family: "Consolas", Courier; 
 	line-height: 1;
 }
 
@@ -275,10 +277,11 @@ h6 strong {
 	
 }
 
-.md > img {
+.md img {
 	display: block;
 	max-width: 960px;
 	margin: 0 auto;
+	cursor: pointer;
 }
 @media screen and (max-width: 960px) {
 	.md > img {
