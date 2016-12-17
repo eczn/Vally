@@ -2,6 +2,7 @@
 .title {
 	position: relative;
 	font-size: .65rem;
+	margin-top: 20px;
 	text-align: center;
 }
 
@@ -32,6 +33,8 @@
 	background-color: rgba(0, 0, 0, .5);
 	text-align: center;
 	font-size: 1%; 
+	opacity: 0; 
+	transition: opacity 0.3s;
 }
 
 .img-dis img {
@@ -43,6 +46,60 @@
 	cursor: pointer;
 }
 
+.opa1 {
+	opacity: 1; 
+}
+
 .display-none {
 	display: none; 
+}
+
+
+
+
+
+
+
+.md .line-count {
+	margin-right: 1em; 
+	color: rgba(255,255,255,.5);
+	-moz-user-select: -moz-none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+.md pre {
+	position: relative;
+	overflow-x: scroll;	
+	background-color: rgb(51, 46, 57);
+	/*left: -5%;*/
+	/*width: 110%;*/
+	padding: 4px 8px; 
+	margin: 4px 0; 
+	overflow-wrap: normal;
+
+}
+
+.md code:after {
+	content: "[ codeBoard v0.2.1 ]"; 
+	position: absolute;
+	bottom: 5px;
+	color: gray;
+	left: 0; 
+	width: 100%; 
+	text-align: center;
+	
+	
+
+	font-size: .2rem; 
+	line-height: .3rem;
+}
+
+.md pre code {
+	font-size: .3rem;
+	/*overflow-wrap: normal;*/
+	font-family: "Consolas", "Lucida Console", "Monaco", "Menlo", Courier; 
+	display: block;
 }
