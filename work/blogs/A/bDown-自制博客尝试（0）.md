@@ -1,7 +1,8 @@
 {
     "title": "bDown - 自制博客尝试（0）",
     "date": "2016-07-22 23:47:18 ",
-    "tags": "md js blog",
+    "tags": "md, js, blog",
+    "intro": "大坑！！！",
     "category": "blog"
 }
 ------
@@ -206,6 +207,7 @@ ddasdasdsadas
 
 # 图片引用
 <img src="http://192.168.1.2/picLib/gulp-success.png" alt="">
+<img src="http://192.168.1.2/picLib/t.jpg" alt="">
 
 # 字体效果
 
