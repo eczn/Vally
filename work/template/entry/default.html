@@ -7,17 +7,17 @@
 	<script src="/js/flexible.js"></script>
 	<script src="/js/flexible_css.js"></script>
 	<link rel="stylesheet" href="/css/main.css">
-	<link rel="stylesheet" href="/css/arch.css">
+	<link rel="stylesheet" href="/css/arch-default.css">
 </head>
 <body>
 	{{include '../public/header'}}
 	
-	<div class="arch main">
+	<div class="arch-default main">
 		<ul>
-			{{each arch.list as blogName bi }}
+			{{each arch.list as blog bi }}
 			<li>
-				<a href="{{ 'blog/' + arch.name + '/' + blogName.replace('.md', '.h' + 't' + 'ml')}}">
-					{{blogName.replace('.md', '')}}
+				<a href="{{ 'blog/' + arch.name + '/' + blog.name.replace('.md', '.h' + 't' + 'ml')}}">
+					{{blog.name.replace('.md', '')}}
 				</a>
 				<span></span>
 			</li>

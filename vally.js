@@ -69,12 +69,14 @@ module.exports = {
 			}
 			
 			
+			var stat = fs.statSync(filePath); 
+			// console.log(stat); 
 			// console.log(parseRes); 
-
 			var data = {
 				msg: 'blogs',
 				md: parseRes,
-				blog: blog
+				blog: blog,
+				stat: stat
 			}
 
 			// parseRes = template(parseRes, {
@@ -89,13 +91,12 @@ module.exports = {
 			var html = template(config.path.template+"/blog/blog", data);
 
 			// console.log(html); 
-
-
 			// fs.writeFile(config.dist+'/'+(fileName.split('.'))[0]+'.html', html,  function(err) {
 			// 	if (err) {
 			// 		return console.error(err);
 			// 	}
 			// });
+			
 			cb(html); 
 		});
 	}

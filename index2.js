@@ -91,14 +91,17 @@ var startVally = function(cb){
 		archName = []; 
 		archives.forEach((arch) => {
 			// travel 
+			// console.log(arch); 
 			archName.push(arch.name); 
 			arch.list.forEach((file)=>{
 				// console.log(arch.path+'/'+file); 
 				// console.log("!!");
 				// console.log(arch); 
-				vally.generate(arch.path+'/'+file, function(data){ // Sync
+				// console.log(arch.path+'/'+file); 
+				// console.log(arch); 
+				vally.generate(arch.path+'/'+file.name, function(data){ // Sync
 					// console.log(data); 
-					var tmp = path.parse(file); 
+					var tmp = path.parse(file.name); 
 
 					// console.log(arch.name); 
 					// var tmp = fs.readdirSync('./build/blog'); 
@@ -106,7 +109,6 @@ var startVally = function(cb){
 					// console.log( './build/blog/' + arch.name + '/' + tmp.name + '.html'); 
 					// fs.mkdirSync('./build/blog');
 					
-
 					fs.writeFile(config.path.dist + '/blog/' + arch.name + '/' + tmp.name + '.html', data, {
 						flags: 'w+'
 					}, function(err) {
@@ -127,6 +129,8 @@ var startVally = function(cb){
 			archives: archives,
 			archName: archName
 		}
+		// console.log(archives[0].list[0].stat); 
+		// console.log(archives); 
 		template.config('base', __dirname);
 		template.config('escape', false);
 		template.config('encoding', 'utf-8'); 

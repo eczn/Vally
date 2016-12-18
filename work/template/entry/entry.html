@@ -15,12 +15,16 @@
 	<div class="arch main">
 		<h1>分类：<a href="{{ '/blog/' + arch.name + '/' + 'index.html'}}">{{arch.name}}</a></h1>
 		<ul>
-			{{each arch.list as blogName bi }}
+			{{each arch.list as blog bi }}
 			<li>
-				<a href="{{ '/blog/' + arch.name + '/' + blogName.replace('.md', '.html')}}">
-					{{bi + 1}} ：{{blogName.replace('.md', '')}}
+				<a href="{{ '/blog/' + arch.name + '/' + blog.name.replace('.md', '.html')}}">
+					{{blog.name.replace('.md', '')}}
+					<div class="update-time">
+						{{ ''+blog.stat.update.year+'-'+blog.stat.update.month+'-'+blog.stat.update.day }}
+					</div>
 				</a>
 			</li>
+			
 	    	{{/each}}
 		</ul>
 	</div>
