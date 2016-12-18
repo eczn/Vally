@@ -168,7 +168,10 @@ var startVally = function(cb){
 
 		// 默认分类 config.blog.default 
 		archives.forEach((arch) => {
+
 			if (arch.name == config.blog.default){
+				// console.log("!@!@".warn); 
+				// console.log(arch)
 				var defaultData = {
 					arch: arch,
 					archName: archName
@@ -177,7 +180,7 @@ var startVally = function(cb){
 				// fs.readFile(config.path.template+"/entry/default.html", function (err, data) {
 				// 	console.log(data.toString()); 
 				// });
-
+				
 				var html = template(config.path.template+"/entry/default", defaultData);
 
 				// console.log(html); 

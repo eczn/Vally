@@ -19,7 +19,20 @@
 				<a href="{{ 'blog/' + arch.name + '/' + blog.name.replace('.md', '.h' + 't' + 'ml')}}">
 					{{blog.name.replace('.md', '')}}
 				</a>
+				<div class="intro">
+				{{if blog.info.intro}}
+					{{blog.info.intro}}
+				{{/if}}
+				</div>
 				<span></span>
+				<div class="blog-info">
+				{{if blog.info.tags}}
+					{{each blog.info.tags.split(',') as tag}}
+					{{'#'+tag.trim()}}
+					{{/each}}
+				{{/if}}
+				
+				</div>
 			</li>
 	    	{{/each}}
 		</ul>

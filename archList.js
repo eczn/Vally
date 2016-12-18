@@ -55,12 +55,20 @@ function loadFile(path, cb){
 				var stat = fs.statSync(temp); 
 				var str = archive[i].list[j]; 
 
+				var mdFileText = (fs.readFileSync(temp)).toString();
+				
+				var mdArr = mdFileText.split('------'); 
+				var blogInfo; 
+				mdArr[0].length==mdFileText.length ? (blogInfo = {} ):(blogInfo = JSON.parse(mdArr[0]) )
+				// console.log(blogInfo)
+
 				archive[i].list[j] = {
 					name: str, 
 					stat: {
 						update: date2str(stat.mtime),
 						birth: date2str(stat.birthtime),
-					}
+					},
+					info: blogInfo
 				}; 
 			}
 

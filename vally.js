@@ -64,7 +64,7 @@ module.exports = {
 			} else {
 				blog = JSON.parse(mdArr[0]); 
 				// console.log(blog.title); 
-
+				// console.log(blog); 
 				parseRes = md.render( mdArr[1] ); 
 			}
 			
