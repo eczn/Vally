@@ -67,22 +67,10 @@ function log(name, disArr, color){
 	console.log((name+"End")[color]); 
 }
 
-// vally.generate();
-// console.log(config); 
-// dist 
-// var dist = './build'; 
 
-// arch('./blogs', function(archives){
-// 	console.log(archives[0].length);
-// });
 var config = require('./config'); 
 var startVally = function(cb){
-	// var path = require('path'); 
-	// console.log("!!!"); 
-	// console.log(__dirname)
-	// console.log(path.resolve('./')); 
 
-	// archTree('./blogs', function(archives){
 	archTree(config.path.blog, function(archives){
 		// console.log("@@ archives ↓".info); 
 		log('@@ archives' ,[archives], 'green'); 
@@ -94,20 +82,10 @@ var startVally = function(cb){
 			// console.log(arch); 
 			archName.push(arch.name); 
 			arch.list.forEach((file)=>{
-				// console.log(arch.path+'/'+file); 
-				// console.log("!!");
-				// console.log(arch); 
-				// console.log(arch.path+'/'+file); 
-				// console.log(arch); 
+				
 				vally.generate(arch.path+'/'+file.name, function(data){ // Sync
 					// console.log(data); 
 					var tmp = path.parse(file.name); 
-
-					// console.log(arch.name); 
-					// var tmp = fs.readdirSync('./build/blog'); 
-
-					// console.log( './build/blog/' + arch.name + '/' + tmp.name + '.html'); 
-					// fs.mkdirSync('./build/blog');
 					
 					fs.writeFile(config.path.dist + '/blog/' + arch.name + '/' + tmp.name + '.html', data, {
 						flags: 'w+'
@@ -120,8 +98,6 @@ var startVally = function(cb){
 			}); 
 
 		}); 
-
-
 
 
 		// all 
@@ -224,14 +200,6 @@ watcher.on('change', (event, path) => {
 });
 
 
-// function tttt(){
-// 	startVally(); 
-// }
-// setInterval(startVally, 2000)
-// setInterval(function(){
-// 	console.log('sv');
-// }, 2000)
-startVally(function(){
+startVally(function(){}); 
 
-}); 
-// module.exports = startVally; 
+vally.preDirInit(); 

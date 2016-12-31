@@ -1,19 +1,10 @@
 var template = require('art-template');
-var fs = require("fs"); 
-
+var fs = require('fs'); 
+var path = require('path')
 var hljs = require('highlight.js'); // https://highlightjs.org/
 
 // Actual default values
 var md = require('markdown-it')({
-	// highlight: function (str, lang) {
-	// 	if (lang && hljs.getLanguage(lang)) {
-	// 		try {
-	// 			return hljs.highlight(lang, str).value;
-	// 		} catch (__) {}
-	// 	}
-
-	// 	return ''; // use external default escaping
-	// },
 	highlight: function (str, lang) {
 		if (lang && hljs.getLanguage(lang)) {
 			try {
@@ -36,13 +27,77 @@ var md = require('markdown-it')({
 // 	typographer: true
 // });
 
-
 // var config = require('./config'); 
 var config = require('./config'); 
 
 module.exports = {
 	// generate a file 
 	entry: (toWhere, archives) => {
+
+	}, 
+	preDirInit: (cb) => { // Sync mkdir 
+		var dist = path.resolve(config.path.dist); 
+		dist = path.join(dist, 'blog'); 
+		var blogFrom = path.resolve(config.path.blog); 
+		
+		try {
+			fs.mkdirSync(dist); 	
+		} catch (e){
+
+		}
+		try {
+			fs.mkdirSync(path.join(dist, 'noname')); 
+		} catch (e){
+
+		}
+		try {
+			fs.mkdirSync(path.join(dist, 'all')); 
+		} catch (e){
+
+		}
+		
+		try {
+			fs.mkdirSync(dist); 
+		} catch (e) {
+
+		}
+
+		var fileList = fs.readdirSync(blogFrom); 
+		fileList.forEach((elem) => {
+			var targetDir = path.join(blogFrom, elem); 
+			console.log(targetDir); 
+			var targetDirStat = fs.statSync(targetDir); 
+			if (targetDirStat.isDirectory()){
+				try {
+					fs.mkdirSync(path.join(dist, elem))
+				} catch (e){}
+			}
+			// console.log(target); 
+		}); 
+
+		// fs.mkdir(dist, (err) => {
+		// 	// if err or not that is no problem 
+		// 	fs.readdir(blogFrom, (err, fileList) => {
+		// 		if (err){
+		// 			console.log('init bug'); 
+		// 		} else {
+		// 			fileList.forEach((elem) => {
+		// 				var targetDir = path.join(blogFrom, elem); 
+		// 				console.log(targetDir); 
+		// 				var targetDirStat = fs.statSync(targetDir); 
+		// 				if (targetDirStat.isDirectory()){
+		// 					fs.mkdir(path.join(dist, elem), (err) => {
+		// 						if (err){
+		// 							console.log(err); 
+		// 						}
+		// 					}); 
+		// 				} else {			
+		// 				}
+		// 				// console.log(target); 
+		// 			}); 
+		// 		}
+		// 	});
+		// });
 
 	}, 
 	generate: (filePath, cb) => {
