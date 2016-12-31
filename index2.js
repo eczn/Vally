@@ -196,10 +196,10 @@ var watcher = chokidar.watch('./work/template', {
 
 watcher.on('change', (event, path) => {
 	startVally(); 
+	
 	// console.log(connect.reload.toString()); 
 });
 
 
-startVally(function(){}); 
-
+startVally(); 
 vally.preDirInit(); 

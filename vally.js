@@ -58,29 +58,48 @@ module.exports = {
 			// console.log(target); 
 		}); 
 
-		// fs.mkdir(dist, (err) => {
-		// 	// if err or not that is no problem 
-		// 	fs.readdir(blogFrom, (err, fileList) => {
-		// 		if (err){
-		// 			console.log('init bug'); 
-		// 		} else {
-		// 			fileList.forEach((elem) => {
-		// 				var targetDir = path.join(blogFrom, elem); 
-		// 				console.log(targetDir); 
-		// 				var targetDirStat = fs.statSync(targetDir); 
-		// 				if (targetDirStat.isDirectory()){
-		// 					fs.mkdir(path.join(dist, elem), (err) => {
-		// 						if (err){
-		// 							console.log(err); 
-		// 						}
-		// 					}); 
-		// 				} else {			
-		// 				}
-		// 				// console.log(target); 
-		// 			}); 
-		// 		}
-		// 	});
-		// });
+		var static = path.resolve(config.path.static);
+		try {fs.mkdirSync(path.join(config.path.dist, 'css'));} catch (e){}
+		try {fs.mkdirSync(path.join(config.path.dist, 'js')); } catch (e){}
+		
+		var cssList = fs.readdirSync(path.join(static, 'css'));
+		var jsList = fs.readdirSync(path.join(static, 'js'));
+
+		console.log('cssFile'.debug); 
+		console.log(cssList); 
+		console.log('jsFile'.debug); 
+		console.log(jsList); 
+
+		
+		cssList.forEach((elem) => {
+			fs.readFile(path.join(static, 'css', elem), (err, data) => {
+				// data is binary data 
+				
+				fs.writeFile(path.join(config.path.dist, 'css', elem), data, (err) => {
+					if (err){
+						console.log("error".error); 
+						console.log(err); 
+					} else {
+						console.log('filecopy succeed'.info);
+						console.log(path.join(config.path.dist, 'css', elem).info); 
+					}
+				}); 
+			}); 
+		}); 
+		jsList.forEach((elem) => {
+			fs.readFile(path.join(static, 'js', elem), (err, data) => {
+				// data is binary data 
+				fs.writeFile(path.join(config.path.dist, 'js', elem), data, (err) => {
+					if (err){
+						console.log("error".error); 
+						console.log(err); 
+					} else {
+						console.log('filecopy succeed'.info);
+						console.log(path.join(config.path.dist, 'js', elem).info); 
+					}
+				}); 
+			})
+		}); 
 
 	}, 
 	generate: (filePath, cb) => {

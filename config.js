@@ -1,7 +1,7 @@
 module.exports = {
 	path: { // diretory 
 		blog: './work/blogs', 
-		dist: './work/build', 
+		dist: 'D:\\www\\svally', 
 		static: './work/static',
 		template: './work/template'
 	},
