@@ -17,12 +17,10 @@
 		<ul>
 			{{each arch.list as blog bi }}
 			<li>
-				<a href="{{ '/blog/' + arch.name + '/' + blog.name.replace('.md', '.html')}}">
-					{{blog.name.replace('.md', '')}}
-					<div class="update-time">
-						{{ ''+blog.stat.update.year+'-'+blog.stat.update.month+'-'+blog.stat.update.day }}
-					</div>
-				</a>
+				<a href="{{ '/blog/' + arch.name + '/' + blog.name.replace('.md', '.html')}}">{{blog.name.replace('.md', '')}}</a>
+				<p class="update-time">
+					{{ ''+blog.stat.update.year+'-'+blog.stat.update.month+'-'+blog.stat.update.day }}
+				</p>
 			</li>
 			
 	    	{{/each}}
