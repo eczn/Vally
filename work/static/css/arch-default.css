@@ -1,0 +1,63 @@
+/*arch.css*/
+.arch-default {
+	max-width: 960px; 
+	margin: 0 auto;
+}
+.arch-default > ul {
+	/*margin-left: 4em;*/
+	list-style: none;
+}
+.arch-default > ul > li {
+	position: relative;
+	margin: .5rem 0;
+	padding-bottom: .5rem;
+	-webkit-transition: all .65s;
+	transition: all .65s;
+	text-align: center;
+	font-size: .65rem;
+}
+
+.arch-default > ul > li > span {
+	position: relative;
+	/* z-index: -9; */
+	display: block;
+	-webkit-box-pack: start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	margin: 0 10%;
+	width: 80%;
+	height: 100%;
+	top: 0;
+	font-size: .6rem;
+	font-weight: bold;
+	color: rgb(255,255,255);
+}
+.arch-default > ul > li > span:after {
+	content: "";
+	border-radius: 2px;
+	/* position: absolute; */
+	/* position: relative; */
+	margin: 0 auto;
+	margin-top: 20px;
+	width: 24px;
+	height: 24px;
+	border-left: 2px solid rgba(31,18,50,0.8);
+	border-top: 2px solid rgba(31,18,50,0.8);
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	display: block;
+	bottom: 0;
+	/* z-index: 999; */
+	/* left: 50%; */
+}
+
+.blog-info {
+	font-size: .24rem; 
+}
+
+.intro {
+	font-size: .24rem;
+}
