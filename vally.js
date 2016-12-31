@@ -40,27 +40,10 @@ module.exports = {
 		dist = path.join(dist, 'blog'); 
 		var blogFrom = path.resolve(config.path.blog); 
 		
-		try {
-			fs.mkdirSync(dist); 	
-		} catch (e){
-
-		}
-		try {
-			fs.mkdirSync(path.join(dist, 'noname')); 
-		} catch (e){
-
-		}
-		try {
-			fs.mkdirSync(path.join(dist, 'all')); 
-		} catch (e){
-
-		}
-		
-		try {
-			fs.mkdirSync(dist); 
-		} catch (e) {
-
-		}
+		try {fs.mkdirSync(dist);} catch (e){}
+		try {fs.mkdirSync(path.join(dist, 'noname')); } catch (e){}
+		try {fs.mkdirSync(path.join(dist, 'all')); } catch (e){}
+		try {fs.mkdirSync(dist); } catch (e) {}
 
 		var fileList = fs.readdirSync(blogFrom); 
 		fileList.forEach((elem) => {
