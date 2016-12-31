@@ -82,7 +82,9 @@
 
 }
 
-.md code:after {
+
+
+.md pre code:after {
 	content: "[ codeBoard v0.2.1 ]"; 
 	position: absolute;
 	bottom: 5px;
@@ -102,4 +104,14 @@
 	/*overflow-wrap: normal;*/
 	font-family: "Consolas", "Lucida Console", "Monaco", "Menlo", Courier; 
 	display: block;
+	border: none;
+	color: white; 
+}
+
+.md code {
+	font-family: consolas, "New Courier", Courier; 
+	border: #BB3332 1px solid;
+	border-radius: 4px;
+	padding: 2px 5px; 
+	color: #BB3332;
 }
