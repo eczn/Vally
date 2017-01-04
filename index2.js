@@ -188,7 +188,7 @@ server.start();
 
 var chokidar = require('chokidar'); 
 
-var watcher = chokidar.watch('./work/template', {
+var watcher = chokidar.watch(['./work/**/*', config.path.blog], {
 	ignored: /[\/\\]\./,
 	persistent: true
 	// awaitWriteFinish: true
@@ -196,7 +196,7 @@ var watcher = chokidar.watch('./work/template', {
 
 watcher.on('change', (event, path) => {
 	startVally(); 
-	
+	vally.preDirInit(); 
 	// console.log(connect.reload.toString()); 
 });
 

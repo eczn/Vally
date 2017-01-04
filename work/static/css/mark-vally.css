@@ -167,7 +167,7 @@ blockquote p:last-child {
 
 .md img {
 	display: block;
-	width: 90%;
+	/*width: 90%;*/
 	max-width: 960px;
 	margin: 0 auto;
 	cursor: pointer;

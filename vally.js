@@ -17,8 +17,9 @@ var md = require('markdown-it')({
 		return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
 	},
 	html: true,
+	breaks: true,
 	linkify: true,
-	typographer: true
+	typographer: false
 });
 
 // var md = require('markdown-it')({
