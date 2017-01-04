@@ -108,7 +108,7 @@
 }
 
 .md code {
-	font-family: consolas, "New Courier", Courier; 
+	font-family: consolas, "New Courier", Courier, "-apple-system", BlinkMacSystemFont, "微软雅黑", "黑体", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";; 
 	border: #BB3332 1px solid;
 	border-radius: 4px;
 	padding: 2px 5px; 
