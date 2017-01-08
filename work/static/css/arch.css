@@ -1,5 +1,27 @@
 /*arch.css*/
+.arch-container {
+	display: block;
+	max-width: 960px; 
+	margin: .4rem auto; 
+	
+}
+
+@media screen and (min-width: 960px){
+	.arch-container {
+		column-count: 2;
+	}
+}
+
+.arch-container > div {
+	padding-bottom: 20px; 
+	padding: 20px 30px;
+}
+
 .arch {
+	-moz-page-break-inside: avoid;
+	-webkit-column-break-inside: avoid;
+	break-inside: avoid;
+	width: 50%; 
 	max-width: 960px; 
 	margin: .4rem auto; 
 }

@@ -54,7 +54,13 @@
 	display: none; 
 }
 
-
+.blog-bottom {
+	word-wrap: break-word;
+	/*position: relative;*/
+	max-width: 960px; 
+	margin: 0 auto;
+	color: #446;
+}
 
 
 
@@ -114,4 +120,13 @@
 	border-radius: 4px;
 	padding: 2px 5px; 
 	color: #BB3332;
+}
+
+.md > blockquote li > code {
+	display: inline-block;
+	padding: 0px 5px 2px 5px; 
+	border: none;
+	border-bottom: 1px solid;
+	border-radius: 0; 
+	color: inherit; 
 }

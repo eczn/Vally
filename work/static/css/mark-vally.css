@@ -73,7 +73,7 @@
 	font-size: .5rem;
 }
 .md h3 {
-	font-size: .35rem;
+	font-size: .4rem;
 }
 
 .md blockquote h2, .md blockquote h3, .md blockquote h4 {
@@ -135,6 +135,10 @@ blockquote p:last-child {
 	font-size: .35rem;
 }
 
+.md blockquote ul li {
+	margin: .2em 0; 
+}
+
 .md ol {
 	list-style-type: decimal;
 }
@@ -169,14 +173,12 @@ blockquote p:last-child {
 	border-left: 2px rgb(150, 50, 30) dotted;
 	border-radius: 8px 0 0 0;
 	border-bottom: 2px dotted transparent;
-	/*transition: all .3s;*/
 }
 
 .md a:hover {
 	border-radius: 1em 0 0 12px;
 	border-bottom: 2px dotted rgb(150, 50, 30);
 	color: rgba(150, 50, 30, .6);
-	/*transition: all .2s;*/
 }
 	
 .md > hr, .md-hr {
