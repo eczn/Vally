@@ -28,6 +28,24 @@ var md = require('markdown-it')({
 // 	typographer: true
 // });
 
+function date2str(date){
+	var year = date.getFullYear(); 
+	var month = date.getMonth() + 1; 
+	var day = date.getDate(); 
+
+	return {
+		year: year,
+		month: month,
+		day: day
+	}
+}
+
+template.helper('dateFormat', function (date, format) {
+	let time = date2str(date.birthtime); 
+	let str = '' + time.year + '-' + time.month + '-' + time.day; 
+    return str;
+});
+
 // var config = require('./config'); 
 var config = require('./config'); 
 
@@ -157,6 +175,29 @@ module.exports = {
 			
 			cb(html); 
 		});
+	},
+	mdRender: (blog) => {
+		var mdContent = md.render(blog.content); 
+		var data = {
+			msg: 'blogs',
+			md: mdContent,
+			blog: blog.info, // info
+			stat: blog.stat
+		}
+		template.config('base', __dirname);
+		template.config('escape', false);
+		template.config('encoding', 'utf-8'); 
+
+		var html = template(config.path.template+"/blog/blog", data);
+		return html; 
+	},
+	render: (data, templatePath) => {
+		template.config('base', __dirname);
+		template.config('escape', false);
+		template.config('encoding', 'utf-8'); 
+
+		var html = template(templatePath, data);
+		return html; 
 	}
 }
 

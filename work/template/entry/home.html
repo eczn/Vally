@@ -15,22 +15,26 @@
 	
 	<div class="arch-default main">
 		<ul>
-			{{each arch.list as blog bi }}
+			{{each blogs as blog bi }}
 			<li>
-				<a href="{{ 'blog/' + arch.name + '/' + blog.name.replace('.md', '.h' + 't' + 'ml')}}">
-					{{blog.name.replace('.md', '')}}
+				<a href="{{ '/blog/all' + '/' + blog.fileName.replace('.md', '.h' + 't' + 'ml')}}">
+					{{blog.fileName.replace('.md', '')}}
 				</a>
 				<div class="intro">
-				{{if blog.info.intro}}
-					{{blog.info.intro}}
+				{{if blog.info}}
+					{{if blog.info.intro}}
+						{{blog.info.intro}}
+					{{/if}}
 				{{/if}}
 				</div>
 				<span></span>
 				<div class="blog-info">
-				{{if blog.info.tags}}
-					{{each blog.info.tags.split(',') as tag}}
-					{{'#'+tag.trim()}}
-					{{/each}}
+				{{if blog.info}}
+					{{if blog.info.tags}}
+						{{each blog.info.tags.split(',') as tag}}
+						{{'#'+tag.trim()}}
+						{{/each}}
+					{{/if}}
 				{{/if}}
 				
 				</div>
@@ -41,9 +45,21 @@
 	
 	<!-- now, nowArch, total -->
 	<ul style="margin: 0 auto;margin-top: 1.5rem;text-align: center;">
-		<li v-on:click="changePage($index,this)" v-for="num in serverPage" class="pageNum" v-bind:class="{'pageBtn-active': $route.query.page==num}">
-			<span>{{ 1 }}</span>
-		</li>
+
+		{{each total as temp bi}}
+			{{if bi == 0}}
+				{{ '<a href="/index.html">'}}
+			{{else}}
+				{{ '<a href=' + '/page/index' + bi + '.html' + '>'}}
+			{{/if}}
+			
+			{{if bi == now}}
+			    {{ '<li class="pageNum pageBtn-active"><span>' + bi + '</span></li>' }}
+			{{else}}
+			    {{ '<li class="pageNum"><span>' + bi + '</span></li>' }}
+			{{/if}}
+			</a>
+		{{/each}}
 	</ul>
 
 	{{include '../public/footer'}}

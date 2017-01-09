@@ -19,14 +19,13 @@
 		<div class="arch main">
 			<h1>分类：<a href="{{ '/blog/' + arch.name + '/' + 'index.html'}}">{{arch.name}}</a></h1>
 			<ul>
-				{{each arch.list as blog bi }}
+				{{each arch.list as blog bi}}
 				<li>
-					<a href="{{ '/blog/' + arch.name + '/' + blog.name.replace('.md', '.html')}}">{{blog.name.replace('.md', '')}}</a>
+					<a href="{{ '/blog/' + arch.name + '/' + blog.fileName.replace('.md', '.html')}}">{{blog.fileName.replace('.md', '')}}</a>
 					<p class="update-time">
-						{{ ''+blog.stat.update.year+'-'+blog.stat.update.month+'-'+blog.stat.update.day }}
+						{{dateFormat(blog.stat)}}
 					</p>
 				</li>
-				
 				{{/each}}
 			</ul>
 		</div>

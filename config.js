@@ -9,6 +9,10 @@ module.exports = {
 		PORT: 4444
 	},
 	blog: {
-		default: 'A'
+		default: 'A',
+		countPerPage: 7
+	},
+	display: {
+		head: ['Code', 'life']
 	}
 }
