@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/css/blog.css">
 	<link rel="stylesheet" href="/css/mark-vally.css">
 	<link rel="stylesheet" href="/css/monokai_sublime.min.css">
-	
+	<script src="/js/zepto.min.js"></script>
 </head>
 <body>
 	<!-- <header> -->
@@ -26,7 +26,7 @@
 	<div class="img-dis display-none">
 		<img alt="">
 	</div>
-
+	{{include '../public/aside'}}
 	{{include '../public/footer'}}
 </body>
 <script src="/js/fastclick.js"></script>
@@ -36,6 +36,5 @@
 		console.log('fastclick is ready');
 	}, false);
 </script>
-<script src="/js/zepto.min.js"></script>
 <script src="/js/markVally.js"></script>
 </html>

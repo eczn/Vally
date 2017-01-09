@@ -9,11 +9,10 @@
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/arch-default.css">
 </head>
-
+<script src="/js/zepto.min.js"></script>
 <body>
 	{{include '../public/header'}}
-	
-	<div class="arch-default main">
+	<div class="arch-default main"> 
 		<ul>
 			{{each blogs as blog bi }}
 			<li>
@@ -61,8 +60,15 @@
 			</a>
 		{{/each}}
 	</ul>
-
+	
+	{{include '../public/aside'}}
 	{{include '../public/footer'}}
 </body>
-
+<script src="/js/fastclick.js"></script>
+<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		FastClick.attach(document.body);
+		console.log('fastclick is ready');
+	}, false);
+</script>
 </html>   

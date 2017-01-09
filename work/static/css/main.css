@@ -10,6 +10,7 @@ body {
 	color: #446;
 	border-top: 2px dashed;
 	font-family: "-apple-system", BlinkMacSystemFont, "微软雅黑", "黑体", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	transition: padding .65s;
 }
 
 a {
@@ -108,39 +109,39 @@ header {
 	font-size: 12px;
 }
 
-	.pageNum {
-		margin: 0 5px;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		width: 1rem;
-		height: 1rem; 
-		width: calc(1rem - 3px * 2);
-		height: calc(1rem - 3px * 2);
-		border-radius: 11rem;
-		/*border: 3px dotted rgb(60, 45, 80);*/
-		border: 3px dotted rgba(59, 59, 70, .618);
-		/*box-shadow: 0 1rem 200px #eee;*/
-		cursor: pointer;
-		transition: all .3s;
-		color: rgb(60, 45, 80);
-	}
-	.pageNum > span {
-		font-family: Courier;
-		font-size: .5rem; 
-		font-weight: bolder;
-		/*text-shadow: 0 5px 5px #bbb; */
-	}
+.pageNum {
+	margin: 0 5px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 1rem;
+	height: 1rem; 
+	width: calc(1rem - 3px * 2);
+	height: calc(1rem - 3px * 2);
+	border-radius: 11rem;
+	/*border: 3px dotted rgb(60, 45, 80);*/
+	border: 3px dotted rgba(59, 59, 70, .618);
+	/*box-shadow: 0 1rem 200px #eee;*/
+	cursor: pointer;
+	transition: all .3s;
+	color: rgb(60, 45, 80);
+}
+.pageNum > span {
+	font-family: Courier;
+	font-size: .5rem; 
+	font-weight: bolder;
+	/*text-shadow: 0 5px 5px #bbb; */
+}
 
-	.pageNum:hover {
-		color: rgba(97, 83, 120, .7);
-		border: 3px dotted rgba(59, 59, 70, .309);
-		/*border: 2px dashed #555;*/
-		transition: all .3s;
-	}
+.pageNum:hover {
+	color: rgba(97, 83, 120, .7);
+	border: 3px dotted rgba(59, 59, 70, .309);
+	/*border: 2px dashed #555;*/
+	transition: all .3s;
+}
 
-	.pageBtn-active {
-		color: #FFF;
-		background-color: rgb(60, 45, 80);
-	}
+.pageBtn-active {
+	color: #FFF;
+	background-color: rgb(60, 45, 80);
+}
 

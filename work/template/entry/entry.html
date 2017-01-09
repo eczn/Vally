@@ -34,7 +34,14 @@
 	</div>
 	{{/if}}
 
-
+	{{include '../public/aside'}}
 	{{include '../public/footer'}}
 </body>
+<script src="/js/fastclick.js"></script>
+<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		FastClick.attach(document.body);
+		console.log('fastclick is ready');
+	}, false);
+</script>
 </html>

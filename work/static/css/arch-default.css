@@ -19,7 +19,6 @@
 
 .arch-default > ul > li > span {
 	position: relative;
-	/* z-index: -9; */
 	display: block;
 	-webkit-box-pack: start;
 	-ms-flex-pack: start;
@@ -50,8 +49,6 @@
 	transform: rotate(45deg);
 	display: block;
 	bottom: 0;
-	/* z-index: 999; */
-	/* left: 50%; */
 }
 
 .blog-info {
