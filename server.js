@@ -9,10 +9,11 @@ var gulp = require('gulp');
 var connect = require('gulp-connect'); 
 var path = require('path'); 
 var server; 
+var chokidar = require('chokidar'); 
 
 module.exports = {
 	server: server, 
-	start: function(){
+	start: function(cb){
 		connect.server({
 			root: config.path.dist,
 			port: 4444,
@@ -20,14 +21,21 @@ module.exports = {
 		});
 
 		var toWatch = path.join(config.path.dist, '**/*');
-		console.log(toWatch.error); 
 		gulp.watch(toWatch, ['reload']); 
 
 		gulp.task('reload', function(){
-			console.log('reload');
 			return gulp.src([toWatch])
 				.pipe(connect.reload());
 		});
+
+		var watcher = chokidar.watch(['./**/*', config.path.blog], {
+			ignored: /[\/\\]\./,
+			persistent: true
+			// awaitWriteFinish: true
+		});
+
+		watcher.on('change', cb);
+
 	},
 	close: function(cb){
 		server.close(cb); 

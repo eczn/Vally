@@ -22,6 +22,16 @@ var md = require('markdown-it')({
 	typographer: false
 });
 
+function log(name, disArr, color){
+	if (!color){
+		color = 'verbose'; 
+	}
+	console.log(new Date().parse()+' '+name[color]); 
+	disArr.forEach(function(elem){
+		console.log(elem); 
+	}); 
+	// console.log((name+"End")[color]); 
+}
 // var md = require('markdown-it')({
 // 	html: true,
 // 	linkify: true,
@@ -40,88 +50,81 @@ function date2str(date){
 	}
 }
 
+
 template.helper('dateFormat', function (date, format) {
 	let time = date2str(date.birthtime); 
 	let str = '' + time.year + '-' + time.month + '-' + time.day; 
     return str;
 });
 
-// var config = require('./config'); 
 var config = require('./config'); 
+var preInit = function(blogList, categoryNames, cb){
+	var dist = path.join(config.path.dist, 'blog');
+	var pageDir = path.join(config.path.dist, 'page');
+	// var noname = path.join(config.path.dist, 'blog', 'noname');
+	try { fs.mkdirSync(dist) } catch (e){}
+	try { fs.mkdirSync(pageDir) } catch (e){}
+	// try { fs.mkdirSync(noname) } catch (e){}
 
-module.exports = {
-	// generate a file 
-	entry: (toWhere, archives) => {
+	log('To create category directory', [`>> Create at ${dist}`.verbose], 'info');
 
-	}, 
-	preDirInit: (cb) => { // Sync mkdir 
-		var dist = path.resolve(config.path.dist); 
-		dist = path.join(dist, 'blog'); 
-		var blogFrom = path.resolve(config.path.blog); 
-		
-		try {fs.mkdirSync(dist);} catch (e){}
-		try {fs.mkdirSync(path.join(dist, 'noname')); } catch (e){}
-		try {fs.mkdirSync(path.join(dist, 'all')); } catch (e){}
-		try {fs.mkdirSync(dist); } catch (e) {}
+	categoryNames.forEach((elem, idx, its)=>{
+		try {
+			fs.mkdirSync(path.join(dist, elem))
+			log(`Create ${elem} succeed`, [], 'verbose'); 
+		} catch (e){
+			let temp = [
+				`>> Faild to create category directory ${elem}.`.warn, 
+				'   May the directory already exists'.warn
+			];
+			log('WARNING', temp, 'warn'); 
+		}
+	});
 
-		var fileList = fs.readdirSync(blogFrom); 
-		fileList.forEach((elem) => {
-			var targetDir = path.join(blogFrom, elem); 
-			console.log(targetDir); 
-			var targetDirStat = fs.statSync(targetDir); 
-			if (targetDirStat.isDirectory()){
-				try {
-					fs.mkdirSync(path.join(dist, elem))
-				} catch (e){}
-			}
-			// console.log(target); 
-		}); 
+	var static = path.resolve(config.path.static);
+	try {fs.mkdirSync(path.join(config.path.dist, 'images'));} catch (e){}
+	log(`To copy static files`, [], 'info'); 
 
-		var static = path.resolve(config.path.static);
+	setTimeout(function(){
 		try {fs.mkdirSync(path.join(config.path.dist, 'css'));} catch (e){}
-		try {fs.mkdirSync(path.join(config.path.dist, 'js')); } catch (e){}
-		
 		var cssList = fs.readdirSync(path.join(static, 'css'));
-		var jsList = fs.readdirSync(path.join(static, 'js'));
-
-		console.log('cssFile'.debug); 
-		console.log(cssList); 
-		console.log('jsFile'.debug); 
-		console.log(jsList); 
-
-		
 		cssList.forEach((elem) => {
 			fs.readFile(path.join(static, 'css', elem), (err, data) => {
 				// data is binary data 
-				
 				fs.writeFile(path.join(config.path.dist, 'css', elem), data, (err) => {
 					if (err){
-						console.log("error".error); 
-						console.log(err); 
+						log(`COPY ERR`, [err], 'error');
 					} else {
-						console.log('filecopy succeed'.info);
-						console.log(path.join(config.path.dist, 'css', elem).info); 
+						log(`COPY`, [`>> √  ${elem}`.info], 'verbose');
 					}
-				}); 
+				});
 			}); 
-		}); 
+		});
+	}, 0);
+
+	setTimeout(function(){
+		try {fs.mkdirSync(path.join(config.path.dist, 'js')); } catch (e){}
+		var jsList = fs.readdirSync(path.join(static, 'js'));
 		jsList.forEach((elem) => {
 			fs.readFile(path.join(static, 'js', elem), (err, data) => {
 				// data is binary data 
 				fs.writeFile(path.join(config.path.dist, 'js', elem), data, (err) => {
 					if (err){
-						console.log("error".error); 
-						console.log(err); 
+						log(`COPY ERR`, [err], 'error');
 					} else {
-						console.log('filecopy succeed'.info);
-						console.log(path.join(config.path.dist, 'js', elem).info); 
+						log(`COPY`, [`>> √  ${elem}`.info], 'verbose');
 					}
 				}); 
 			})
 		}); 
+	}, 0); 
 
-	}, 
-	generate: (filePath, cb) => {
+	cb(); 
+}
+
+module.exports = {
+	preInit: preInit, 
+	generate(filePath, cb){
 		fs.readFile(filePath, (err, mdFileData) => {
 			if (err){
 				console.log(err); 
@@ -187,6 +190,7 @@ module.exports = {
 		template.config('base', __dirname);
 		template.config('escape', false);
 		template.config('encoding', 'utf-8'); 
+		template.config('cache', false); 
 
 		var html = template(config.path.template+"/blog/blog", data);
 		return html; 
@@ -195,6 +199,7 @@ module.exports = {
 		template.config('base', __dirname);
 		template.config('escape', false);
 		template.config('encoding', 'utf-8'); 
+		template.config('cache', false); 
 
 		var html = template(templatePath, data);
 		return html; 
