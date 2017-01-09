@@ -160,8 +160,9 @@ var startVally = function(cb){
 				var html = template(config.path.template+"/entry/default", defaultData);
 
 				// console.log(html); 
-
-				fs.writeFile(config.path.dist + '/index.html', html, {
+				console.log("DEBUG".debug); 
+				console.log(path.join(config.path.dist, 'index.html')); 
+				fs.writeFile(path.join(config.path.dist, 'index.html'), html, {
 					flags: 'w+'
 				}, function(err) {
 					if (err){
