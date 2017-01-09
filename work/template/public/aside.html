@@ -1,0 +1,201 @@
+<!-- vallySide.vue -->
+<style>
+	@media screen and (max-width: 768px) {
+		.vally-side {
+			display: none;
+		}
+	} /* 移动端隐藏 */
+
+	.vally-side {
+		position: fixed;
+		height: 100%; 
+		width: 320px; 
+		left: -320px;
+		top: 0;
+
+		color: rgba(255,255,255,.65); 
+		/*background-color: #555; */
+		background-color: rgb(51, 46, 57);
+
+		transition: left .6s;
+	}
+	.vally-side:after {
+		content: ""; 
+		position: absolute;
+		height: 100%; 
+		width: 100%; 
+		top: 0; 
+		z-index: -9; 
+		left: 0; 
+		opacity: 0.06;
+		background-image: url('/images/geometry22.png');
+	}
+
+	.vally-push {
+		left: 0px; 
+	}
+	
+	.VS-btn {
+		position: absolute;
+		bottom: 0; 
+		left: 320px;
+		font-size: 0; 
+		color: #222;
+		cursor: pointer;
+	}
+	.VS-btn {
+		cursor: pointer;
+	}
+
+
+	.VS-navTitle {
+		/*<h1>ASOB</h1>*/
+		margin: 5px;
+	}
+	.VS-intro {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+	
+	.VS-intro .avatar span {
+		width: 125px;
+		height: 125px;
+		border-radius: 125px;
+		background-image: url("/images/cir.jpg");
+		background-size: 125px;
+		display: inline-block;
+	}
+	
+	.VS-intro .avatar {
+		text-align: center;
+		/*margin: 25px 0; */
+		padding: 25px 0;
+		width: 80%; 
+		margin: 25px 10%;
+		border-top: 2px dashed rgba(255,255,255,.2);
+		border-bottom: 2px dashed rgba(255,255,255,.2);
+	}
+
+	.VS-contact {
+		margin: 25px 10%; 
+		align-self: flex-start;
+		font-family: "Consolas";
+		font-size: .3rem;
+	}
+	
+	.vally-side a {
+		color: rgba(255,255,255,.3);
+		text-decoration: none;
+		padding: 0 .25em;
+		border-bottom: dotted 2px; 
+		transition: color .3s; 
+	}
+
+	.vally-side a:hover {
+		color: rgba(200,200,255,.6);
+	}
+
+
+	.VS-intro h2 {
+		margin: 8px 0;
+	}
+	.btn-VS-toggle {
+		position: relative;
+		bottom: 20px; 
+		left: 15px;
+		display: flex;
+		align-items: center;
+		transition: opacity .1s, left .1s;
+	}
+
+	.btn-VS-toggle:hover {
+		opacity: .5;
+	}
+
+	.btn-VS-toggle > div {
+		width: 24px; 
+		height: 24px;
+		border-radius: 24px;
+		border: 3px solid rgb(31,18,50); 
+		transform: rotate(135deg) scaleX(1) scaleY(1);
+		transition: transform .3s ease .3s; 
+	}
+
+	@keyframes VSHaipa {
+		from {
+			left: 15px;
+		} to {
+			left: 10px;
+		}
+	}
+
+	.btn-VS-toggle-true {
+		transform: rotate(135deg) scaleX(-1) scaleY(-1)!important;
+	}
+	.btn-VS-toggle-false {
+		
+	}
+	
+	.padding-push {
+		padding-left: 320px;
+	}
+
+</style>
+<div class="vally-side" id="VS">
+	<h1 class="VS-navTitle">Vally demo: ASOB</h1>
+
+	<div class="VS-intro">
+		<h2>yoo 我是eczn， 这破站的建立者。</h2>
+		<div class="avatar">
+			<span></span>
+			<!-- <a v-link="{name: 'admin'}"><h2>varEczn</h2></a> -->
+			<a href="http://frandre.cc/" target="_blank"><h2>varEczn</h2></a>
+		</div>
+		<div class="VS-contact">
+			<!-- <h2>联系我：</h2> -->
+			<h2>Contact Connecting</h2>
+			<ul>
+				<li>QQ: 1975845422</li>
+				<!-- <li>Tel: 15625058135</li> -->
+				<li>mail: eczn@moebaka.com</li>
+				<li>Pixiv: <a href="http://www.pixiv.net/member.php?id=3185353" target="_blank">ecznPI</a></li>
+				<li>webSite: <a href="http://eczn.website" target="_blank">varEczn</a></li>
+			</ul>
+		</div>
+
+		<a href="http://qun.torzo.club" target="_blank"><img style="opacity: 0.65;margin-top: 24px;" src="/images/bb64.png" alt=""></a>
+	</div>
+
+	<div class="VS-btn">
+		<span class="btn-VS-toggle">
+			<div id="toggle-btn" class="btn-VS-toggle-false"></div>
+		</span>
+	</div>
+	</div>
+</div>
+
+<script>
+(function($){
+	var toggle = false; 
+	var $btn = $('#toggle-btn'); 
+	var $VS = $('#VS'); 
+	var $body = $('body');
+
+	$('.btn-VS-toggle').click(function(){
+		// $('.btn-VS-toggle-false, .btn-VS-toggle-true')
+		if (toggle){ // turn to false
+			$body.removeClass('padding-push'); 
+			$btn.removeClass('btn-VS-toggle-true')
+				.addClass('btn-VS-toggle-false'); 
+			$VS.removeClass('vally-push'); 
+		} else { // turn to true 
+			$body.addClass('padding-push'); 
+			$btn.removeClass('btn-VS-toggle-false')
+				.addClass('btn-VS-toggle-true');
+			$VS.addClass('vally-push'); 
+		}
+		toggle = !toggle; 
+	});
+})($); 
+</script>
