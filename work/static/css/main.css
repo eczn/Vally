@@ -111,9 +111,13 @@ header {
 
 .pageNum {
 	margin: 0 5px;
+	display: -webkit-inline-box;
 	display: inline-flex;
+	-webkit-box-pack: center;
 	justify-content: center;
+	-webkit-box-align:center;
 	align-items: center;
+
 	width: 1rem;
 	height: 1rem; 
 	width: calc(1rem - 3px * 2);
@@ -130,7 +134,7 @@ header {
 	font-family: Courier;
 	font-size: .5rem; 
 	font-weight: bolder;
-	/*text-shadow: 0 5px 5px #bbb; */
+	display: inline-block;
 }
 
 .pageNum:hover {
