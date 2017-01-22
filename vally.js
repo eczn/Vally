@@ -17,9 +17,10 @@ var md = require('markdown-it')({
 		return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
 	},
 	html: true,
+	xhtmlOut: true,
 	breaks: true,
 	linkify: true,
-	typographer: false
+	typographer: true
 });
 
 function log(name, disArr, color){
@@ -50,11 +51,17 @@ function date2str(date){
 	}
 }
 
-
 template.helper('dateFormat', function (date, format) {
 	let time = date2str(date.birthtime); 
+	if (time.month < 10) {
+		time.month = '0' + time.month.toString();
+	}
+	if (time.day < 10) {
+		time.day = '0' + time.day.toString(); 
+	}
+
 	let str = '' + time.year + '-' + time.month + '-' + time.day; 
-    return str;
+	return str;
 });
 
 var config = require('./config'); 
@@ -167,6 +174,7 @@ module.exports = {
 			template.config('escape', false);
 			template.config('encoding', 'utf-8'); 
 
+
 			var html = template(config.path.template+"/blog/blog", data);
 
 			// console.log(html); 
@@ -180,17 +188,25 @@ module.exports = {
 		});
 	},
 	mdRender: (blog) => {
-		var mdContent = md.render(blog.content); 
+		var mdContent = md.render(blog.content);
+		// console.log(blog) 
+		blog.md = mdContent; 
+
+		if (blog.info.date) {
+			var specTime  = new Date(blog.info.date); 
+			blog.stat.birthtime = specTime; 
+		}
+
 		var data = {
 			msg: 'blogs',
-			md: mdContent,
-			blog: blog.info, // info
-			stat: blog.stat
+			// md: mdContent,
+			blog: blog // info
 		}
 		template.config('base', __dirname);
 		template.config('escape', false);
 		template.config('encoding', 'utf-8'); 
 		template.config('cache', false); 
+		// template.config('compress', false); 
 
 		var html = template(config.path.template+"/blog/blog", data);
 		return html; 
@@ -200,6 +216,7 @@ module.exports = {
 		template.config('escape', false);
 		template.config('encoding', 'utf-8'); 
 		template.config('cache', false); 
+		// template.config('compress', false); 
 
 		var html = template(templatePath, data);
 		return html; 

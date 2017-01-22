@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+	<title>The New Vally</title>
+	<!-- <script src="/js/flexible.js"></script> -->
+	<!-- <script src="/js/flexible_css.js"></script> -->
+	<link rel="stylesheet" href="/css/rem.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/arch-default.css">
+</head>
+
+<body>
+	{{include '../public/nav'}}
+	<div class="arch-default main">
+		<ul>
+			{{each arch.list as blog bi }}
+			<li>
+				<a href="{{ 'blog/' + arch.name + '/' + blog.name.replace('.md', '.h' + 't' + 'ml')}}">
+					{{blog.name.replace('.md', '')}}
+				</a>
+				<div class="intro">
+				{{if blog.info.intro}}
+					{{blog.info.intro}}
+				{{/if}}
+				</div>
+				<span></span>
+				<div class="blog-info">
+				{{if blog.info.tags}}
+					{{each blog.info.tags.split(',') as tag}}
+					{{'#'+tag.trim()}}
+					{{/each}}
+				{{/if}}
+				
+				</div>
+			</li>
+	    	{{/each}}
+		</ul>
+	</div>
+	
+	<!-- now, nowArch, total -->
+	<ul style="margin: 0 auto;margin-top: 1.5rem;text-align: center;">
+		<li v-on:click="changePage($index,this)" v-for="num in serverPage" class="pageNum" v-bind:class="{'pageBtn-active': $route.query.page==num}">
+			<span>{{ 1 }}</span>
+		</li>
+	</ul>
+
+	{{include '../public/footer'}}
+</body>
+
+</html>   

@@ -1,11 +1,10 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN"> 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 	<title>{{blog.title}}</title>
-	<script src="/js/flexible.js"></script>
-	<script src="/js/flexible_css.js"></script>
+	<link rel="stylesheet" href="/css/rem.css">
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/blog.css">
 	<link rel="stylesheet" href="/css/mark-vally.css">
@@ -13,11 +12,14 @@
 	<script src="/js/zepto.min.js"></script>
 </head>
 <body>
-	<!-- <header> -->
-	<!-- </header> -->
-	
-	<h1 class="title">{{ blog.title }}</h1>	
-	<div class="md">{{ md }} <hr /> </div>
+	{{include '../public/header'}}
+	<article class="md">
+		<div class="title">
+			<p class="time">{{dateFormat(blog.stat)}}</p>
+			<h1>{{ blog.info.title }}</h1>
+		</div>
+		{{ blog.md }}
+	</article>
 	
 	<div class="blog-bottom">
 		<a href="/">← GotoHome</a>
@@ -28,7 +30,41 @@
 	</div>
 	{{include '../public/aside'}}
 	{{include '../public/footer'}}
+
+
+
+
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="001" data-title="Test" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"markvally"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
 </body>
+
+<style>
+	.blog-bottom {
+		word-wrap: break-word;
+		/*position: relative;*/
+		max-width: 960px; 
+		margin: 0 auto;
+		color: #446;
+	}
+</style>
+
 <script src="/js/fastclick.js"></script>
 <script>
 	document.addEventListener('DOMContentLoaded', function(){

@@ -1,0 +1,78 @@
+/*arch.css*/
+.arch-default {
+	color: #444; 
+}
+.arch-default a {
+	color: #444;
+	display: inline-block;
+	text-decoration: none;
+	transition: margin-bottom 0.3s; 
+}
+/*@media screen and (min-width: 900px) {*/
+	.arch-default a:hover {
+		color: #644; 
+		text-decoration: underline;
+		/*margin: -8px 0 -4px 0; */
+		/*margin-bottom: 2px;*/
+	}
+/*}*/
+
+.arch-default {
+	max-width: 700px; 
+	margin: 0 auto;
+}
+
+.arch-default > ul {
+	/*margin-left: 4em;*/
+	list-style: none;
+}
+
+.arch-default > ul > li {
+	position: relative;
+	margin: 1rem 0;
+	padding-bottom: 1rem;
+	-webkit-transition: all .65s;
+	transition: all .65s;
+	text-align: center;
+	font-size: 1.4rem;
+}
+
+.arch-default > ul > li > span {
+	position: relative;
+	display: block;
+	-webkit-box-pack: start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	margin: 0 10%;
+	width: 80%;
+	height: 100%;
+	top: 0;
+	font-size: .6rem;
+	font-weight: bold;
+	color: rgb(255,255,255);
+}
+
+.arch-default > ul > li > span:after {
+	content: "";
+	border-radius: 2px;
+	/* position: absolute; */
+	/* position: relative; */
+	margin: 0 auto;
+	margin-top: 20px;
+	width: 24px;
+	height: 24px;
+	border-left: 2px solid rgba(102, 68, 68, 0.8);
+	border-top: 2px solid rgba(102, 68, 68, 0.8);
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	display: block;
+	bottom: 0;
+}
+
+.intro, .blog-info {
+	font-size: .8rem;
+	color: inherit;
+}

@@ -19,6 +19,25 @@
 
 		transition: left .6s;
 	}
+	.vally-side:before {
+		content: ""; 
+		position: absolute;
+		height: 100%;
+		width: 100px;
+		top: 0; 
+		right: 0; 
+		
+		background: linear-gradient(
+			to right,
+			transparent,
+			transparent,
+			transparent,
+			rgba(0,0,0,0.4)
+		);
+		
+		/*box-shadow: 0 0 10px 10px rgba(0,0,0,0.4); */
+	}
+
 	.vally-side:after {
 		content: ""; 
 		position: absolute;
@@ -148,9 +167,10 @@
 	<div class="VS-intro">
 		<h2 class="VS-navTitle">yoo 我是eczn， 这破站的建立者。</h2>
 		<div class="avatar">
-			<span></span>
-			<!-- <a v-link="{name: 'admin'}"><h2>varEczn</h2></a> -->
-			<a href="http://frandre.cc/" target="_blank"><h2>varEczn</h2></a>
+			<a style="border: none;" href="http://frandre.cc/" target="_blank">
+				<span></span>
+				<h2>varEczn</h2>
+			</a>
 		</div>
 		<div class="VS-contact">
 			<!-- <h2>联系我：</h2> -->
@@ -160,7 +180,7 @@
 				<!-- <li>Tel: 15625058135</li> -->
 				<li>mail: eczn@moebaka.com</li>
 				<li>Pixiv: <a href="http://www.pixiv.net/member.php?id=3185353" target="_blank">ecznPI</a></li>
-				<li>webSite: <a href="http://eczn.website" target="_blank">varEczn</a></li>
+				<li>webSite: <a href="http://frandre.cc" target="_blank">varEczn</a></li>
 			</ul>
 		</div>
 

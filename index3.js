@@ -21,10 +21,6 @@ colors.setTheme({
 	error: 'red'
 });
 
-
-
-
-
 function DatePro(date){
 	var h, m, s; 
 	h = date.getHours(); 

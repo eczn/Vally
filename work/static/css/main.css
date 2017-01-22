@@ -5,23 +5,17 @@
 }
 
 body {
-	/*font-family: "Heiti SC", "Hiragino Sans GB", "microsoft yahei", "WenQuanYi Microhei", "微软雅黑";*/
-	/*color: #446;*/
-	color: #446;
-	border-top: 2px dashed;
-	font-family: "-apple-system", BlinkMacSystemFont, "微软雅黑", "黑体", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	color: #444;
+	border-top: .04rem dashed rgba(0, 0, 30, .3); 
+	font-family: "PT Sans", Menlo, Consolas, "-apple-system", BlinkMacSystemFont,"微软雅黑", Verdana, Arial, Helvetica, sans-serif;
 	transition: padding .65s;
 }
 
-a {
+.md a {
 	color: #446;
 	text-decoration: none;
 	/*border-bottom: 1px dashed;*/
 }
-
-/*h1, h2, h3, h4, h5, h6, p {
-	color: #446; 
-}*/
 
 .red {
 	color: #955; 
@@ -35,57 +29,67 @@ strong {
 	font-weight: bold;
 }
 
-header {
-	max-width: 960px; 
+nav {
+	max-width: 700px; 
 	margin: 0 auto;
 }
 
-.header-msg {
+.nav-msg {
 	margin: 20px 0;
+	padding: 0 .8rem; 
 }
-.header-msg > h1 {
-	font-size: 2em;
+.nav-msg > h1 {
+	font-size: 1.8rem;
 	font-weight: normal;
 	display: inline-block;
 }
-.header-msg > p {
+.nav-msg > p {
 	margin: 6px 0;
+	font-size: 0.8rem;
 }
 
 .arch-hook {
 	float: right;
 	display: inline-block;
+	font-size: .8rem;
 }
+
 .arch-hook * {
 	color: white;
 }
+
 .arch-hook a, .about a {
+	
+	text-decoration: none; 
 	border-bottom: none;
+}
+.about a {
+	color: #444;
 }
 
 .arch-hook span {
-	cursor: pointer;
 	display: inline-block;
 	margin: 8px .5em;
-	padding: .25em .5em;
-	background-color: #446;
-	color: white;
-	border-radius: 5px;
 	margin-bottom: .8em;
+	padding: .3em .6em;
+	color: white;
+	background-color: #644;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
 	.about {
 		text-align: right;
 		margin-top: -.4rem;
-		border-bottom: 1px dashed;
+		border-bottom: 1px dashed rgba(0, 0, 30, .3); 
 	}
 }
 @media screen and (max-width: 768px) {
 	.about {
 		text-align: center;
-		border-top: 1px dashed;
-		border-bottom: 1px dashed;
+		border-top: 1px dashed #DDD;
+		border-bottom: 1px dashed #DDD;
 	}
 
 	.main {
@@ -102,10 +106,9 @@ header {
 	}
 }
 
-
 .about > span {
 	display: inline-block;
-	margin: 8px 20px;
+	margin: 8px 1rem;
 	font-size: 12px;
 }
 
@@ -118,10 +121,10 @@ header {
 	-webkit-box-align:center;
 	align-items: center;
 
-	width: 1rem;
-	height: 1rem; 
-	width: calc(1rem - 3px * 2);
-	height: calc(1rem - 3px * 2);
+	width: 2.4rem;
+	height: 2.4rem; 
+	/*width: calc(2.2rem - 3px * 2);*/
+	/*height: calc(2.2rem - 3px * 2);*/
 	border-radius: 11rem;
 	/*border: 3px dotted rgb(60, 45, 80);*/
 	border: 3px dotted rgba(59, 59, 70, .618);
@@ -132,14 +135,15 @@ header {
 }
 .pageNum > span {
 	font-family: Courier;
-	font-size: .5rem; 
+	font-size: 1.5rem; 
 	font-weight: bolder;
+	margin-top: 3px;
 	display: inline-block;
 }
 
 .pageNum:hover {
 	color: rgba(97, 83, 120, .7);
-	border: 3px dotted rgba(59, 59, 70, .309);
+	border: 3px dotted rgba(59, 59, 70, .3);
 	/*border: 2px dashed #555;*/
 	transition: all .3s;
 }
@@ -148,4 +152,3 @@ header {
 	color: #FFF;
 	background-color: rgb(60, 45, 80);
 }
-

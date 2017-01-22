@@ -4,33 +4,39 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 	<title>The New Vally</title>
-	<script src="/js/flexible.js"></script>
-	<script src="/js/flexible_css.js"></script>
+	<!-- <script src="/js/flexible.js"></script> -->
+	<!-- <script src="/js/flexible_css.js"></script> -->
+	<link rel="stylesheet" href="/css/rem.css">
 	<link rel="stylesheet" href="/css/main.css">
-	<link rel="stylesheet" href="/css/arch.css">
+	<link rel="stylesheet" href="/css/entry.css">
 </head>
 <body>
-	{{include '../public/header'}}
+	{{include '../public/nav'}}
 
-	{{if archives.length >= 2}}
+	{{if archives.length}}
 	<div class="arch-container">
-	{{/if}}
 		{{each archives as arch ai }}
 		<div class="arch main">
-			<h1>分类：<a href="{{ '/blog/' + arch.name + '/' + 'index.html'}}">{{arch.name}}</a></h1>
+			<h1><a href="{{ '/blog/' + arch.name + '/' + 'index.html'}}">{{arch.name}}</a></h1>
 			<ul>
-				{{each arch.list as blog bi}}
-				<li>
-					<a href="{{ '/blog/' + arch.name + '/' + blog.fileName.replace('.md', '.html')}}">{{blog.fileName.replace('.md', '')}}</a>
-					<p class="update-time">
-						{{dateFormat(blog.stat)}}
-					</p>
-				</li>
-				{{/each}}
+				{{if arch.list.length >= 1}}
+					{{each arch.list as blog bi}}
+					<li>
+						<a href="{{ '/blog/' + arch.name + '/' + blog.fileName.replace('.md', '.html')}}">{{blog.fileName.replace('.md', '')}}</a>
+						<p class="update-time">
+							{{dateFormat(blog.stat)}}
+						</p>
+					</li>
+					{{/each}}
+				{{else}}
+					<li>
+						<a href="#}">Nothing</a>
+						<p class="update-time">Vally-Sys</p>
+					</li>
+				{{/if}}
 			</ul>
 		</div>
 		{{/each}}
-	{{if archives.length >= 2}}
 	</div>
 	{{/if}}
 

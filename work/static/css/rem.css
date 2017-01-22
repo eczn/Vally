@@ -1,0 +1,51 @@
+/*** 
+ *  rem.css
+ *  Devices List: 
+ *  iPhone 4s, 5s, 6, 6P 
+ *  iPad, iPad Pro
+ *  Screen 1366 x  768
+ *  Screnn 1920 x 1080
+ */
+
+
+/* iPhone 4s/5s */
+@media screen and (max-width: 375px) and (min-width: 320px) {
+	html {
+		font-size: 12px; 
+	}
+}
+
+/* iPhone 6 */
+@media screen and (max-width: 414px) and (min-width: 375px) {
+	html {
+		font-size: 14px; 
+	}
+}
+
+/* iPhone 6P */
+@media screen and (max-width: 768px) and (min-width: 414px) {
+	html {
+		font-size: 15px;
+	}
+}
+
+/* iPad and iPad Pro */
+@media screen and (max-width: 1366px) and (min-width: 768px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+/* desktop small */
+@media screen and (max-width: 1920px) and (min-width: 1366px) {
+	html {
+		font-size: 16px; 
+	}
+}
+
+/* desktop HD */
+@media screen and (min-width: 1920px) {
+	html {
+		font-size: 20px; 
+	}
+}

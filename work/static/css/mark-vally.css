@@ -2,189 +2,184 @@
 /*.blog-display*/ 
 .md {
 	word-wrap: break-word;
-	/*position: relative;*/
-	max-width: 960px; 
+	line-height: 1.5;
+	max-width: 700px; 
 	margin: 0 auto;
-	color: #446;
-	/*box-shadow: 0px 4px 4px 4px rgba(0,0,0,.3);*/
-	/*border-left: 20px solid transparent;*/
-	/*outline: 20px solid rgba(0,0,0,.1);*/
+	/*color: #222;*/
+}
+.md p {
+	word-wrap: break-word;
 }
 
 @media screen and (max-width: 960px) {
 	.md {
 		width: 90%;
-		/*width: 280px;*/
 		margin: 0 auto;
 		border: none;
 	}
 }
 
-.md-title {
-	text-align: center;
-	font-size: .9rem;
-	margin: .2rem;
-	font-weight: normal; 
-}
-
-.md > p {
-	line-height: 1.5; 
-	margin: 0 0 1.1em;
-}
-
-.md p {
-	text-shadow: 0 0 1px rgba(0,0,0,0.1); 
+h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
-	font-size: .33rem;
 }
-.md h1 , .md h2 , .md h3, .md h4, .md h5, .md h6 {
+h2 {
+	font-size: 1.3rem;
+}
+
+p {
+	font-weight: normal;
+}
+
+.md {
+	max-width: 700px;
+	margin: 0 auto;
+	line-height: 1.5;
 	position: relative;
-	color: rgb(55, 45, 75);
-	font-weight: normal;
-	text-shadow: 0 0 1px rgba(0,0,0,0.1); 
-	margin-top: 24px; 
 }
 
-.md h1 {
-	font-size: .55rem;
-	margin-bottom: 0.15rem;
-	margin-top: .3rem; 
-}
-.md h1:before {
-	content: ""; 
-	position: absolute;
-	bottom: -0.15rem; 
-	height: 2px; 
-	background: linear-gradient(
-		to right,
-		rgba(31,18,50, .15),
-		rgba(31,18,50, .15),
-		transparent
-	);
-	border-radius: 0 0 0 1rem / 0 0 0 .01rem;
-	margin-bottom: 0.1rem;
-	padding-left: .3rem;
-	margin-left: -.3rem;
-	width: 12em;
-	font-size: .65rem;
+.md > h1 {
+	/*font-size: 1rem;*/
+	position: relative;
+	margin: .6em 0; 
+	/*border-bottom: 2px dashed #CCC;*/
 }
 
-.md h2 {
-	font-size: .5rem;
-}
-.md h3 {
-	font-size: .4rem;
-}
-
-.md blockquote h2, .md blockquote h3, .md blockquote h4 {
-	margin-left: 10px; 
-	display: inline-block;
-	margin-bottom: 0.1rem; 
-}
-.md blockquote h2:before, .md blockquote h3:before, .md blockquote h4:before {
+.md > h1:after {
 	content: ""; 
 	position: absolute;
-	left: -10px;
-	top: 0; 
-	width: 10px; 
-	height: 10px; 
-	border-top: 2px solid rgba(31,18,50, .8);
-	border-left: 2px solid rgba(31,18,50, .8);
-}
-.md blockquote h2:after, .md blockquote h3:after, .md blockquote h4:after {
-	content: ""; 
-	position: absolute;
-	right: -10px;
+	/*margin: 2em 0;*/
+	left: 0;
 	bottom: 0; 
-	width: 10px; 
-	height: 10px; 
-	border-right: 2px solid rgba(31,18,50, .8);
-	border-bottom: 2px solid rgba(31,18,50, .8);
+	width: 100%; 
+	height: 3px;
+	background-color: #DDD;
+	background-image: repeating-linear-gradient(
+		-45deg,
+		#FFF,#FFF 4px,
+		transparent 4px,
+		transparent 8px
+	);
 }
 
-
-.md blockquote {
-	margin: .15rem 1%;
-	width: 94%;
-	/*margin: .15rem calc( (0.3em + 10px) * -1 );*/
-	padding: .3em 1%;
-	/*border-left: 10px rgba(60, 45, 80, 1) solid; */
-	border-left: 10px rgba(100, 80, 110, 1) solid; 
-	background-color: rgba(60, 45, 80, .1);
-	border-radius: 4px 0 0 4px;
+.md > h2 {
+	margin: .6em 0; 
 }
 
-blockquote p:last-child {
-	margin: 0;
-	margin-left: 0.2em;
-	margin-bottom: 0.5em;
+.md > p > code, li > code {
+	font-family: Menlo, "Consolas", "微软雅黑";
+	padding: .2em .5em;
+	border: 1px dashed #BBB;
+	border-radius: 4px;
 }
 
-
-.md > ol, .md > li, .md > ul {
-	margin-left: 1.1em;
-	font-size: .35rem;
+.md li > code {
+	padding: 0em .4em;
 }
 
-/*.md ul li {
-	color: rgba(31,18,50, .8);
-}*/
-
-.md blockquote ul, .md blockquote ol {
-	margin-left: 1.1em;
-	font-size: .35rem;
+.md > ul {
+	list-style: none;
+	/*position: relative;*/
 }
 
-.md blockquote ul li {
-	margin: .2em 0; 
+/*======  List  ======*/
+/*    .md u/ol > li   */
+/*    .md > u/ol      */
+/*    .md li > u/ol   */
+/*====================*/
+.md ul > li {
+	position: relative;
+	margin: 0.1em 0; 
+	font-size: inherit;
 }
 
-.md ol {
-	list-style-type: decimal;
-}
-.md li ol {
-	list-style-type: lower-alpha;	
-}
-.md ul {
-	list-style-type: disc;
-}
-.md li ul {
-	list-style-type: circle;	
-}
-
-.md blockquote * {
-
-}
-
-.md blockquote strong {
-	/*color: rgb(31,18,50);*/
+.md li > ul {
+	list-style: circle;
 	display: inline-block;
-	font-size: .4rem; 
-	margin: 4px 0; 
+	vertical-align: top;
+	padding-left: 1.5em;
+	/*position: relative;*/
 }
 
-.md a {
-	text-decoration: none;
-	color: rgba(150, 50, 30, 1);
-
-	margin: .15rem 0;
-	padding: 0 .3em;
-
-	border-left: 2px rgb(150, 50, 30) dotted;
-	border-radius: 8px 0 0 0;
-	border-bottom: 2px dotted transparent;
+.md li > ul > li:before {
+	/*display: inline-block;*/
+	/*left: 0;*/
 }
 
-.md a:hover {
-	border-radius: 1em 0 0 12px;
-	border-bottom: 2px dotted rgb(150, 50, 30);
-	color: rgba(150, 50, 30, .6);
+.md > ul > li:before {
+	content: "> "; 
+	font-family: "PT Sans", Consolas; 
+	/*font-family: Meiryo, Courier;*/
+	/*background-color: #BBB;*/
+	left: 0; 
+	top: 0;
 }
-	
-.md > hr, .md-hr {
-	border: .04rem dashed rgba(0, 0, 30, .3); 
-	margin: .5rem auto .8rem auto;
+
+.md > ol {
+	position: relative;
+	margin-left: 2em;
+	font-size: inherit;
 }
+
+/*====== blockquote ======*/
+.md > blockquote {
+	max-width: 80%;
+	display: inline-block;
+	/*margin: 0 auto;*/
+	padding: 0.8em 10%; 
+	font-size: 1.2rem;
+	position: relative;
+	vertical-align: top;
+}
+.md > blockquote:before {
+	content: "“";
+	left: 0; 
+	font-size: 2rem;
+	top: 0;
+	position: absolute;
+	display: inline-block;
+}
+.md > blockquote:after {
+	content: "”"; 
+	right: 0; 
+	font-size: 2rem;
+	bottom: -0.5em; 
+	position: absolute;
+	display: inline-block;
+}
+
+.md > blockquote > ul {
+	list-style-type: circle;
+	padding-left: 1em;
+}
+.md > blockquote > ol {
+	list-style-type: katakana-iroha;
+	padding-left: 1.8em;
+}
+
+.md > blockquote strong {
+	font-size: 1.5rem;
+}
+
+.md > blockquote code {
+	font-family: Menlo, "Consolas", "微软雅黑";
+	padding: 1px .4em;
+	border: 1px dashed #BBB;
+	border-radius: 4px;
+}
+
+.md > hr {
+	margin: 2em 0;
+	height: 3px;
+	border: none;
+	background-color: #DDD;
+	background-image: repeating-linear-gradient(
+		-45deg,
+		#FFF,#FFF 4px,
+		transparent 4px,
+		transparent 8px
+	);
+}
+
 
 /* =============== */
 /*    markVally    */
@@ -193,7 +188,7 @@ blockquote p:last-child {
 .md img {
 	display: block;
 	/*width: 90%;*/
-	max-width: 960px;
+	max-width: 700px;
 	margin: 0 auto;
 	cursor: pointer;
 }
@@ -206,4 +201,80 @@ blockquote img {
 	.md img {
 		width: 90%;
 	}
+}
+
+.img-dis {
+	position: fixed;
+	z-index: 99;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, .5);
+	text-align: center;
+	font-size: 1%; 
+	opacity: 0; 
+	transition: opacity 0.3s;
+}
+
+.img-dis img {
+	/*display: inline-block;*/
+	max-width: 90%;
+	max-height: 90%;
+	/*margin: 0 auto;*/
+	cursor: pointer;
+}
+
+.opa1 {
+	opacity: 1; 
+}
+
+.display-none {
+	display: none; 
+}
+
+
+/*=====*/
+
+
+.md .line-count {
+	margin-right: 1em; 
+	color: rgba(255,245,240,.5);
+	-moz-user-select: -moz-none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.md pre {
+	position: relative;
+	overflow-x: auto;	
+	background-color: rgb(46, 46, 46);
+	/*left: -5%;*/
+	/*width: 110%;*/
+	padding: 4px 8px; 
+	margin: 4px 0; 
+	overflow-wrap: normal;
+}
+
+.md pre code:after {
+	content: "[ codeBoard v0.2.1 ]"; 
+	position: absolute;
+	bottom: 5px;
+	color: gray;
+	left: 0; 
+	width: 100%; 
+	text-align: center;
+	
+	font-size: .8rem; 
+	line-height: .6rem;
+}
+
+.md pre code {
+	font-size: .8rem;
+	/*overflow-wrap: normal;*/
+	font-family: "Consolas", "Lucida Console", "Monaco", "Menlo", Courier; 
+	display: block;
+	border: none;
+	color: white; 
 }
