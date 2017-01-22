@@ -3,6 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+	
+	{{if blog.info}}
+		{{if blog.info.tags}}
+			<meta name="keywords" content="{{blog.info.tags}}">
+		{{/if}}
+	{{/if}}
+	{{if blog.info}}
+		{{if blog.info.intro}}
+			<meta name="description" content="{{blog.info.intro}}">
+		{{/if}}
+	{{/if}}
 	<title>{{blog.title}}</title>
 	<link rel="stylesheet" href="/css/rem.css">
 	<link rel="stylesheet" href="/css/main.css">
@@ -60,4 +71,5 @@
 	}, false);
 </script>
 <script src="/js/markVally.js"></script>
+{{include '../public/ga'}}
 </html>
