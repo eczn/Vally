@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="/css/rem.css">
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/entry.css">
+	<script src="/js/zepto.min.js"></script>
 </head>
 <body>
 	{{include '../public/nav'}}
@@ -30,7 +31,7 @@
 					{{/each}}
 				{{else}}
 					<li>
-						<a href="#}">Nothing</a>
+						<a href="#该分类为空">Nothing</a>
 						<p class="update-time">Vally-Sys</p>
 					</li>
 				{{/if}}
@@ -50,4 +51,6 @@
 		console.log('fastclick is ready');
 	}, false);
 </script>
+
+<script src="/js/markVally.js"></script>
 </html>

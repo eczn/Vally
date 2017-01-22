@@ -15,6 +15,8 @@
 	{{include '../public/header'}}
 	<article class="md">
 		<div class="title">
+			<!-- 0v0 -->
+			<!-- <p class="time">{{+blog.stat.birthtime}}</p> -->
 			<p class="time">{{dateFormat(blog.stat)}}</p>
 			<h1>{{ blog.info.title }}</h1>
 		</div>
@@ -28,15 +30,16 @@
 	<div class="img-dis display-none">
 		<img alt="">
 	</div>
+
+	<article style="width: 700px;margin: 0 auto;">
+	<!-- 多说评论框 start -->
+		<div class="ds-thread" data-thread-key="{{blog.id}}" data-title="{{blog.info.title}}"></div>
+	<!-- 多说评论框 end -->
+	</article>
+
 	{{include '../public/aside'}}
 	{{include '../public/footer'}}
-
-
-
-
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="001" data-title="Test" data-url="请替换成文章的网址"></div>
-<!-- 多说评论框 end -->
+</body>
 
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -52,14 +55,10 @@ var duoshuoQuery = {short_name:"markvally"};
 </script>
 <!-- 多说公共JS代码 end -->
 
-
-</body>
-
 <style>
 	.blog-bottom {
 		word-wrap: break-word;
-		/*position: relative;*/
-		max-width: 960px; 
+		max-width: 700px; 
 		margin: 0 auto;
 		color: #446;
 	}

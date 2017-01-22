@@ -2,7 +2,7 @@ var template = require('art-template');
 var fs = require('fs'); 
 var path = require('path')
 var hljs = require('highlight.js'); // https://highlightjs.org/
-
+var md5 = require('md5'); 
 // Actual default values
 var md = require('markdown-it')({
 	highlight: function (str, lang) {
@@ -39,7 +39,7 @@ function log(name, disArr, color){
 // 	typographer: true
 // });
 
-function date2str(date){
+function yearMonthDay(date){
 	var year = date.getFullYear(); 
 	var month = date.getMonth() + 1; 
 	var day = date.getDate(); 
@@ -52,7 +52,7 @@ function date2str(date){
 }
 
 template.helper('dateFormat', function (date, format) {
-	let time = date2str(date.birthtime); 
+	let time = yearMonthDay(date.mtime); 
 	if (time.month < 10) {
 		time.month = '0' + time.month.toString();
 	}
@@ -63,6 +63,8 @@ template.helper('dateFormat', function (date, format) {
 	let str = '' + time.year + '-' + time.month + '-' + time.day; 
 	return str;
 });
+
+template.helper('md5', md5); 
 
 var config = require('./config'); 
 var preInit = function(blogList, categoryNames, cb){
@@ -197,6 +199,8 @@ module.exports = {
 			blog.stat.birthtime = specTime; 
 		}
 
+		// console.log(blog)
+		blog.id = md5(blog.fileName); // 唯一标识符 
 		var data = {
 			msg: 'blogs',
 			// md: mdContent,
