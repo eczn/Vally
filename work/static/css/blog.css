@@ -11,3 +11,32 @@
 	color: #AAA;
 	font-size: 10px;
 }
+
+.comment a {
+	color: #444;
+	text-decoration: none;
+}
+.comment a:hover {
+	/*color: #444;*/
+	text-decoration: underline;
+}
+
+.comment {
+	max-width: 600px;
+	margin: 0 auto;
+	color: #444; 
+}
+.comment summary {
+	margin-left: 2rem;
+}
+
+/* Re */
+.cm-submit > button {
+    cursor: pointer!important;
+    font-weight: normal!important;
+    border: 1px dashed!important;
+    padding: 0 .8em!important;
+    border-radius: 1em;
+    color: #aab!important;
+    background: none!important;
+}

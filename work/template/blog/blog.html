@@ -32,9 +32,13 @@
 			<h1>{{ blog.info.title }}</h1>
 		</div>
 		{{ blog.md }}
+		<ol id="vally-foot">
+			<h1>脚注</h1>
+		</ol>
 	</article>
 	
-	<div class="blog-bottom">
+
+	<div style="margin: 4rem auto;" class="blog-bottom">
 		<a href="/">← GotoHome</a>
 	</div>
 
@@ -42,13 +46,14 @@
 		<img alt="">
 	</div>
 
-	<aside style="width: 700px;margin: 0 auto;">
+	<details class="comment">
+		<summary>茶馆</summary>
 		<!-- 在需要展示评论框处插入 -->
 		<div class="cm-article" data-key="{{blog.id}}"></div>
 		<!-- </body> 标签结束前插入 -->
 		<link rel="stylesheet" href="//comment.moe/dest/static/css/plus.css">
 		<script src="//comment.moe/dest/static/js/build.js" charset="UTF-8"></script>
-	</aside>
+	</details>
 
 	{{include '../public/aside'}}
 	{{include '../public/footer'}}
