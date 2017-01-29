@@ -21,7 +21,7 @@ var md = require('markdown-it')({
 	breaks: true,
 	linkify: true,
 	typographer: true
-});
+}); 
 
 function log(name, disArr, color){
 	if (!color){
@@ -65,6 +65,19 @@ template.helper('dateFormat', function (date, format) {
 });
 
 template.helper('md5', md5); 
+
+template.helper('dateNormalize', function (date, format) {
+	let time = yearMonthDay(date); 
+	if (time.month < 10) {
+		time.month = '0' + time.month.toString();
+	}
+	if (time.day < 10) {
+		time.day = '0' + time.day.toString(); 
+	}
+
+	let str = '' + time.year + '-' + time.month + '-' + time.day; 
+	return str;
+});
 
 var config = require('./config'); 
 var preInit = function(blogList, categoryNames, cb){

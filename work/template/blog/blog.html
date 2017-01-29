@@ -9,17 +9,20 @@
 			<meta name="keywords" content="{{blog.info.tags}}">
 		{{/if}}
 	{{/if}}
+
 	{{if blog.info}}
 		{{if blog.info.intro}}
 			<meta name="description" content="{{blog.info.intro}}">
 		{{/if}}
 	{{/if}}
 	<title>{{blog.title}}</title>
+	<link rel="shortcut icon" type="image/x-icon" href="icon.jpg" media="screen" >
 	<link rel="stylesheet" href="/css/rem.css">
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/blog.css">
 	<link rel="stylesheet" href="/css/mark-vally.css">
 	<link rel="stylesheet" href="/css/monokai_sublime.min.css">
+
 	<script src="/js/zepto.min.js"></script>
 </head>
 <body>
@@ -29,11 +32,14 @@
 			<!-- 0v0 -->
 			<!-- <p class="time">{{+blog.stat.birthtime}}</p> -->
 			<p class="time">{{dateFormat(blog.stat)}}</p>
-			<h1>{{ blog.info.title }}</h1>
+			<p class="title-content">{{ blog.info.title }}</p>
 		</div>
 		{{ blog.md }}
+
+
+		<h1>脚注</h1>
 		<ol id="vally-foot">
-			<h1>脚注</h1>
+			
 		</ol>
 	</article>
 	
@@ -54,7 +60,8 @@
 		<link rel="stylesheet" href="//comment.moe/dest/static/css/plus.css">
 		<script src="//comment.moe/dest/static/js/build.js" charset="UTF-8"></script>
 	</details>
-
+	
+	
 	{{include '../public/aside'}}
 	{{include '../public/footer'}}
 </body>
