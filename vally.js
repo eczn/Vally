@@ -21,7 +21,9 @@ var md = require('markdown-it')({
 	breaks: true,
 	linkify: true,
 	typographer: true
-}); 
+}).use(require('markdown-it-toc-and-anchor').default, {
+	
+});
 
 function log(name, disArr, color){
 	if (!color){
