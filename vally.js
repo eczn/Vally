@@ -66,6 +66,8 @@ template.helper('dateFormat', function (date, format) {
 	return str;
 });
 
+template.helper('path', path); 
+
 template.helper('md5', md5); 
 
 template.helper('dateNormalize', function (date, format) {
@@ -204,11 +206,12 @@ module.exports = {
 			cb(html); 
 		});
 	},
-	mdRender: (blog) => {
+	mdRender: (blog, cate) => {
+		// cate.position, cate.list   
 		var mdContent = md.render(blog.content);
-		// console.log(blog) 
 		blog.md = mdContent; 
 
+		// birthtime spec 
 		if (blog.info.date) {
 			var specTime  = new Date(blog.info.date); 
 			blog.stat.birthtime = specTime; 
@@ -216,8 +219,12 @@ module.exports = {
 
 		// console.log(blog)
 		blog.id = md5(blog.fileName); // 唯一标识符 
+
+		
+
 		var data = {
 			msg: 'blogs',
+			cate: cate,
 			// md: mdContent,
 			blog: blog // info
 		}

@@ -101,94 +101,113 @@
 		padding-left: 320px;
 	}
 
-	
-.toc {
-	overflow-y:auto
-}
+	.toc {
+		overflow-y:auto
+	}
 
-.toc > ul {
-	overflow:hidden;
-	position:relative
-}
+	.toc > ul {
+		overflow:hidden;
+		position:relative
+	}
 
-.toc-list {
-	list-style-type: none;
-	padding-left: 0.6em;
-}
+	.toc-list {
+		list-style-type: none;
+		padding-left: 0.6em;
+	}
 
-.toc-list-item {
-	
-}
+	.toc-list-item {
+		
+	}
 
-a.node-name--H1 {
-	font-size: 1.0rem; 
-	color: rgba(255,255,255,.65);
-}
+	a.node-name--H1 {
+		font-size: 1.0rem; 
+		color: rgba(255,255,255,.65);
+	}
 
-a.node-name--H2 {
-	font-size: 0.8rem; 
-	color: rgba(255,255,255,.5);
-}
+	a.node-name--H2 {
+		font-size: 0.8rem; 
+		color: rgba(255,255,255,.5);
+	}
 
-a.toc-link {
-	/*color: rgba(255,255,255,.65);*/
-	height: 100%
-}
+	a.toc-link {
+		/*color: rgba(255,255,255,.65);*/
+		height: 100%
+	}
 
-.is-collapsible {
-	max-height:1000px;
-	overflow:hidden;
-	transition:all 300ms ease-in-out
-}
-.is-collapsed {
-	max-height: 0;
-}
-.is-position-fixed {
-	position:fixed !important;
-	top: 0;
-}
+	.is-collapsible {
+		max-height:1000px;
+		overflow:hidden;
+		transition:all 300ms ease-in-out
+	}
+	.is-collapsed {
+		max-height: 0;
+	}
+	.is-position-fixed {
+		position:fixed !important;
+		top: 0;
+	}
 
-a.is-active-link {
-	/*font-weight: 700;*/
-	font-size: 1.2rem; 
-	color: rgba(255,255,255,.8);
-	margin-left: 4px;
-}
+	a.is-active-link {
+		/*font-weight: 700;*/
+		font-size: 1.2rem; 
+		color: rgba(255,255,255,.8);
+		margin-left: 4px;
+	}
 
-.toc-link::before {
-	background-color: #2E1B1B;
-	content: '';
-	display: inline-block;
-	height: inherit;
-	left: 0;
-	/*margin-top: -1px;*/
-	position: absolute;
-	width: 2px
-}
+	.toc-link::before {
+		background-color: #2E1B1B;
+		content: '';
+		display: inline-block;
+		height: inherit;
+		left: 0;
+		/*margin-top: -1px;*/
+		position: absolute;
+		width: 2px
+	}
 
-.is-active-link::before {
-	/*background-color:#54BC4B*/
-	background-color:#507B50;
-}
+	.is-active-link::before {
+		/*background-color:#54BC4B*/
+		background-color:#507B50;
+	}
 
-.toc-container > h1, .toc-container > span {
-	margin: .2rem; 
-	padding: 10px; 
-}
-.toc-container > span {
-	font-size: 10px; 
-	color: #AAA; 
-}
-
+	.toc-container > h1, .toc-container > span {
+		margin: .2rem; 
+		padding: 10px; 
+	}
+	.toc-container > span {
+		font-size: 10px; 
+		color: #AAA; 
+	}
 </style>
 <aside class="vally-side" id="VS">
 	{{if blog}}
 	<div class="toc-container">
-		<span>{{dateNormalize(blog.stat.mtime)}}</span>
-		<h1>{{blog.info.title}}<sup>*</sup></h1>
+		<span>Last update in {{dateNormalize(blog.stat.mtime)}}</span>
+		
+	
+
+		<h1>{{cate.name}}*</h1>
+		<ul class="catlist toc-container toc-list">
+			{{each cate.list as elem i }}
+
+				{{if elem.info.title == blog.info.title }}
+
+					<li class="toc-list-item">
+						<a class="is-active-link node-name--H1" href="#">&gt;&gt; {{elem.info.title}}</a>
+					</li>
+				{{else}} 
+					<li class="toc-list-item">
+						<a class="node-name--H1" href="{{ path.join('/', 'blog', cate.name, path.parse(elem.fileName).name + '.html').toString().replace(/\\/g, '/')}}"># {{elem.info.title}}</a>
+					</li>
+				{{/if}}
+			{{/each}}
+		</ul>
+
+		<h1>Content*</h1>
 		<div id="toc"></div> 
 	</div>
 	{{/if}}
+	
 
 	<div class="VS-btn">
 		<span class="btn-VS-toggle">
@@ -197,45 +216,68 @@ a.is-active-link {
 	</div> 
 </aside>
 
-<script>
-(function($){ // it needs jQuery or Zeptos 
-	var toggle = false; 
-	var $btn = $('#toggle-btn'); 
-	var $VS = $('#VS'); 
-	var $body = $('body');
-
-	$body.addClass('padding-push'); 
-	$btn.removeClass('btn-VS-toggle-false')
-		.addClass('btn-VS-toggle-true');
-	$VS.addClass('vally-push'); 
-
-	$('.btn-VS-toggle').click(function(){
-		// $('.btn-VS-toggle-false, .btn-VS-toggle-true')
-		if (toggle){ // turn to false
-			$body.removeClass('padding-push'); 
-			$btn.removeClass('btn-VS-toggle-true')
-				.addClass('btn-VS-toggle-false'); 
-			$VS.removeClass('vally-push'); 
-		} else { // turn to true 
-			$body.addClass('padding-push'); 
-			$btn.removeClass('btn-VS-toggle-false')
-				.addClass('btn-VS-toggle-true');
-			$VS.addClass('vally-push'); 
-		}
-		toggle = !toggle; 
-	});
-})($); 
-
-</script>
 
 <script src="//cdn.bootcss.com/tocbot/2.1.5/tocbot.min.js"></script>
 <script>
-tocbot.init({
-	// Where to render the table of contents.
-	tocSelector: '#toc',
-	// Where to grab the headings to build the table of contents.
-	contentSelector: '.md',
-	// Which headings to grab inside of the contentSelector element.
-	headingSelector: 'h1, h2, h3',
-});
+var aside = (function($){ // it needs jQuery or Zeptos 
+	var aside = {
+		stat: false,
+		$btn: $('#toggle-btn'),
+		$VS: $('#VS'),
+		$body: $('body'),
+		toggle: toggle_hook,
+		init: init
+	}
+
+	Object.defineProperty(aside, "setStat", {
+		get: function(){
+			return this.stat; 
+		}, 
+		set: function(val){
+			if (val ^ this.stat) { // 一真一假 
+				this.toggle(); 
+			} else {
+				// do not do any thing 
+			}
+		}
+	});
+
+	function toggle_hook(){
+		if (aside.stat){ // turn to false
+			aside.$body.removeClass('padding-push'); 
+			aside.$btn.removeClass('btn-VS-toggle-true')
+				.addClass('btn-VS-toggle-false'); 
+			aside.$VS.removeClass('vally-push'); 
+		} else { // turn to true 
+			aside.$body.addClass('padding-push'); 
+			aside.$btn.removeClass('btn-VS-toggle-false')
+				.addClass('btn-VS-toggle-true');
+			aside.$VS.addClass('vally-push'); 
+		}
+
+		aside.stat = !aside.stat; 
+	}
+
+	function init(){
+		$('.btn-VS-toggle').click(toggle_hook);	
+
+		window.tocbot.init({
+			// Where to render the table of contents.
+			tocSelector: '#toc',
+			// Where to grab the headings to build the table of contents.
+			contentSelector: '.md',
+			// Which headings to grab inside of the contentSelector element.
+			headingSelector: 'h1, h2, h3',
+		});
+
+		console.info('aside loaded'); 
+		return aside; 
+	}
+	
+	return aside; 
+})($); 
+
+aside.init(); 
+aside.setStat = true; 
+
 </script>

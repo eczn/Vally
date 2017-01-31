@@ -12,9 +12,53 @@ body {
 }
 
 .md a {
-	color: #446;
+	display: inline-block;
+	color: #833;
+	font-style: italic;
 	text-decoration: none;
 	/*border-bottom: 1px dashed;*/
+}
+
+p > a {
+	/* ..... */
+	text-decoration: underline!important;
+}
+
+a.markdownIt-Anchor {
+	color: #454;
+	font-size: 1.5rem; 
+	font-style: normal;
+	text-decoration: none;
+}
+a.markdownIt-Anchor:hover {
+	text-decoration: underline;
+}
+
+.blog-bottom {
+	word-wrap: break-word;
+	max-width: 700px; 
+	margin: 4rem auto 7rem auto;
+	color: #446;
+} 
+
+.blog-bottom a {
+	display: inline-block;
+	text-decoration: none;
+	vertical-align: middle;
+	color: #464;
+	font-size: 2rem; 
+}
+
+.blog-bottom span {
+	display: inline-block;
+}
+
+.blog-bottom-left {
+	float: left;
+}
+
+.blog-bottom-right {
+	float: right;
 }
 
 .red {
@@ -24,6 +68,7 @@ body {
 .color446 {
 	color: #446; 
 }
+
 
 strong {
 	font-weight: bold;

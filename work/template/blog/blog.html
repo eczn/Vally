@@ -7,15 +7,17 @@
 	{{if blog.info}}
 		{{if blog.info.tags}}
 			<meta name="keywords" content="{{blog.info.tags}}">
+			<meta name="twitter:title" content="{{blog.info.title}}">
 		{{/if}}
 	{{/if}}
-
 	{{if blog.info}}
 		{{if blog.info.intro}}
+			<meta name="twitter:description" content="{{blog.info.intro}}">
 			<meta name="description" content="{{blog.info.intro}}">
 		{{/if}}
 	{{/if}}
-	<title>{{blog.title}}</title>
+
+	<title>{{blog.info.title}} - eczn's blog</title>
 	<link rel="shortcut icon" type="image/x-icon" href="icon.jpg" media="screen" >
 	<link rel="stylesheet" href="/css/rem.css">
 	<link rel="stylesheet" href="/css/main.css">
@@ -37,15 +39,20 @@
 		{{ blog.md }}
 
 
-		<h1>脚注</h1>
+		<h1 id="foot">脚注</h1>
 		<ol id="vally-foot">
 			
 		</ol>
 	</article>
 	
 
-	<div style="margin: 4rem auto;" class="blog-bottom">
-		<a href="/">← GotoHome</a>
+	<div class="blog-bottom">
+		<a class="blog-bottom-left" href="/"><span>&lt;&nbsp;Home</span></a>
+		<a class="blog-bottom-right" href="{{cate.position.next.a}}">
+			<span>Next&nbsp;&gt;</span>
+			<p style="font-size: 1rem;">{{cate.position.next.name}}</p>
+		</a>
+		<!-- <p style="text-align: center;">{{blog.info.title}}</p> -->
 	</div>
 
 	<div class="img-dis display-none">
@@ -61,20 +68,10 @@
 		<script src="//comment.moe/dest/static/js/build.js" charset="UTF-8"></script>
 	</details>
 	
-	
+
 	{{include '../public/aside'}}
 	{{include '../public/footer'}}
 </body>
-
-<style>
-	.blog-bottom {
-		word-wrap: break-word;
-		max-width: 700px; 
-		margin: 0 auto;
-		color: #446;
-	}
-</style>
-
 <script src="/js/fastclick.js"></script>
 <script>
 	document.addEventListener('DOMContentLoaded', function(){

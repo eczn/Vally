@@ -147,18 +147,28 @@ p {
 	display: inline-block;
 }
 
+
+.md > blockquote {
+	font-size: 1rem; 
+}
+
 .md > blockquote > ul {
 	list-style-type: circle;
 	padding-left: 1em;
+	
 }
 .md > blockquote > ol {
 	list-style-type: katakana-iroha;
 	padding-left: 1.8em;
+	
 }
 
 .md > blockquote strong {
-	font-size: 1.5rem;
+	display: inline-block;
+	font-size: 1.2rem;
+	margin: 4px 0; 
 }
+
 
 .md > blockquote code {
 	font-family: Menlo, "Consolas", "微软雅黑";
