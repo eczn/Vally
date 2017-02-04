@@ -206,6 +206,11 @@
 		<h1>Content*</h1>
 		<div id="toc"></div> 
 	</div>
+	{{else}}
+	<div class="">
+		<h1>Vally *</h1>
+		<p>eczn's blog</p>
+	</div>
 	{{/if}}
 	
 
@@ -215,7 +220,6 @@
 		</span>
 	</div> 
 </aside>
-
 
 <script src="//cdn.bootcss.com/tocbot/2.1.5/tocbot.min.js"></script>
 <script>
@@ -278,6 +282,6 @@ var aside = (function($){ // it needs jQuery or Zeptos
 })($); 
 
 aside.init(); 
-aside.setStat = true; 
+// aside.setStat = true; 
 
 </script>

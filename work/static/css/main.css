@@ -80,8 +80,8 @@ nav {
 }
 
 .nav-msg {
-	margin: 20px 0;
-	padding: 0 .8rem; 
+	/*margin: 20px 0;*/
+	padding: 20px 1rem; 
 }
 .nav-msg > h1 {
 	font-size: 1.8rem;
@@ -157,6 +157,10 @@ nav {
 	font-size: 12px;
 }
 
+.pageNum-container a {
+	text-decoration: none;
+}
+
 .pageNum {
 	margin: 0 5px;
 	display: -webkit-inline-box;
@@ -168,32 +172,26 @@ nav {
 
 	width: 2.4rem;
 	height: 2.4rem; 
-	/*width: calc(2.2rem - 3px * 2);*/
-	/*height: calc(2.2rem - 3px * 2);*/
 	border-radius: 11rem;
-	/*border: 3px dotted rgb(60, 45, 80);*/
-	border: 3px dotted rgba(59, 59, 70, .618);
-	/*box-shadow: 0 1rem 200px #eee;*/
+	border: 3px dotted rgba(102, 68, 68, .618);
 	cursor: pointer;
 	transition: all .3s;
-	color: rgb(60, 45, 80);
+	color: #444;
 }
 .pageNum > span {
-	font-family: Courier;
+	font-family: Courier; 
 	font-size: 1.5rem; 
 	font-weight: bolder;
-	margin-top: 3px;
+	margin-top: 2px;
 	display: inline-block;
 }
 
 .pageNum:hover {
-	color: rgba(97, 83, 120, .7);
-	border: 3px dotted rgba(59, 59, 70, .3);
-	/*border: 2px dashed #555;*/
-	transition: all .3s;
+	color: rgba(97, 83, 120, .5);
+	border: 3px dotted rgba(102, 68, 68, .3);
 }
 
 .pageBtn-active {
 	color: #FFF;
-	background-color: rgb(60, 45, 80);
+	background-color: #644; 
 }

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN"> 
+<html lang="zh-Hans"> 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
@@ -33,13 +33,13 @@
 		<div class="title">
 			<!-- 0v0 -->
 			<!-- <p class="time">{{+blog.stat.birthtime}}</p> -->
-			<p class="time">{{dateFormat(blog.stat)}}</p>
-			<p class="title-content">{{ blog.info.title }}</p>
+			<h3 class="time">{{dateFormat(blog.stat)}}</h3>
+			<h1 class="title-content">{{ blog.info.title }}</h1>
 		</div>
 		{{ blog.md }}
 
 
-		<h1 id="foot">脚注</h1>
+		<h1 id="foot-note">脚注</h1>
 		<ol id="vally-foot">
 			
 		</ol>

@@ -9,9 +9,8 @@
        /    / o         /   /o
        /  /            /  /
        '''     +       " '    +                -->
-
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
@@ -22,54 +21,52 @@
 	<link rel="stylesheet" href="/css/rem.css">
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/home.css">
+	<script src="/js/zepto.min.js"></script>
 </head>
-<script src="/js/zepto.min.js"></script>
+
 <body>
 	{{include '../public/nav'}}
-	<div class="arch-default main">
-		<ul>
-			{{each blogs as blog bi }}
-			<li>
-				<a href="{{ '/blog/all' + '/' + blog.fileName.replace('.md', '.h' + 't' + 'ml')}}">
-					{{blog.fileName.replace('.md', '')}}
-				</a>
-				<div class="intro">
+	<ul class="blog-ul">
+		{{each blogs as blog bi }}
+		<li>
+			<a href="{{ '/blog/all' + '/' + blog.fileName.replace('.md', '.h' + 't' + 'ml')}}">
+				<h2 class="item-title">{{blog.fileName.replace('.md', '')}}&nbsp;</h2>
+				<summary class="item-intro">
 				{{if blog.info}}
 					{{if blog.info.intro}}
 						{{blog.info.intro}}
 					{{/if}}
 				{{/if}}
-				</div>
-				<span></span>
-				<div class="blog-info">
-				{{if blog.info}}
-					{{if blog.info.tags}}
-						{{each blog.info.tags.split(',') as tag}}
-						{{'#'+tag.trim()}}
-						{{/each}}
-					{{/if}}
-				{{/if}}
-				
-				</div>
-			</li>
-	    	{{/each}}
-		</ul>
-	</div>
-	
-	<!-- now, nowArch, total -->
-	<ul style="margin: 0 auto;margin-top: 1.5rem;text-align: center;">
+				</summary>
+			</a>
 
+			<mark class="item-tags">
+			{{if blog.info}}
+				{{if blog.info.tags}}
+					{{each blog.info.tags.split(',') as tag}}
+					{{'#'+tag.trim()}}
+					{{/each}}
+				{{/if}}
+			{{/if}}
+			</mark>
+			<time class="item-time">{{dateNormalize(blog.stat.birthtime)}}</time>
+		</li>
+		{{/each}}
+	</ul>
+	
+	<!--  -->
+	<ul class="pageNum-container" style="margin: 0 auto;margin-top: 1.5rem;text-align: center;">
 		{{each total as temp bi}}
 			{{if bi == 0}}
-				{{ '<a href="/index.html">'}}
+			{{'<a href="/index.html">'}}
 			{{else}}
-				{{ '<a href=' + '/page/index' + bi + '.html' + '>'}}
+			{{'<a href=' + '/page/index' + bi + '.html' + '>'}}
 			{{/if}}
 			
 			{{if bi == now}}
-			    {{ '<li class="pageNum pageBtn-active"><span>' + bi + '</span></li>' }}
+			{{'<li class="pageNum pageBtn-active"><span>' + bi + '</span></li>'}}
 			{{else}}
-			    {{ '<li class="pageNum"><span>' + bi + '</span></li>' }}
+			{{'<li class="pageNum"><span>' + bi + '</span></li>'}}
 			{{/if}}
 			</a>
 		{{/each}}
