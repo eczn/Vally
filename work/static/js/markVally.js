@@ -60,9 +60,9 @@ mark = (function($){
 		}); 
 
 		if (subs.length == 0) {
-			$('#vally-foot').empty();
+			$('#foot-note').remove(); 
 		}
-		console.log(subs); 
+		console.info(subs); 
 	}
 
 	var makeNode = function(name, content){
