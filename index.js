@@ -178,12 +178,21 @@ var vv = function(){
 			}); 
 			// log('DEBUG', blogList, 'debug'); 
 
-			// 分页
+			// 分页  0  7  14 
+			var de = 0;
 			for (let i=0;i*config.blog.countPerPage < pureBlog.length;i++){
-				let page = pureBlog.slice(i*config.blog.countPerPage, (i+1)*config.blog.countPerPage); 
+				let page = pureBlog.slice(
+					i*config.blog.countPerPage,
+					(i+1)*config.blog.countPerPage 
+				);
+
+				log('DEBUG', [page.length], 'debug');  
+				
+
 				let html = vally.render({
 					blogs: page,
-					total: new Array(parseInt((pureBlog.length) / config.blog.countPerPage)),
+					// dirty
+					total: new Array(parseInt((pureBlog.length) / config.blog.countPerPage) + 1),
 					now: i
 				}, path.join(config.path.template, "entry", "home")); 
 
@@ -216,8 +225,6 @@ var vv = function(){
 
 				return new_elem;
 			}); 
-
-			
 
 			setTimeout(function(){ // all entry 
 				let allhtml = vally.render({
@@ -257,8 +264,9 @@ var vv = function(){
 				});
 
 				// 从这里渲染博客 
-				
+				cate.list = cate.list.reverse(); 
 				cate.list.forEach((blog, idx, its)=>{
+
 					log('PARSE', [('>> √  ' + blog.fileName + ' ==> ' + path.parse(blog.fileName).name + '.html').info], 'verbose'); 
 
 					// let next = (idx < its.length-1)?(its[idx+1]):(false); 
