@@ -60,7 +60,7 @@ mark = (function($){
 		}); 
 
 		if (subs.length == 0) {
-			$('#foot-note').remove(); 
+			$('#脚注').remove(); 
 		}
 		console.info(subs); 
 	}
