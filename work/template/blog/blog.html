@@ -50,37 +50,13 @@
 		<ol id="vally-foot"></ol>
 	</article>
 	
-	<style>
-		@media screen and (max-width: 960px) {
-			.blog-bottom  {
-				width: 90%;
-				border: none;
-			}
-		}
-
-		.blog-bottom {
-			text-align: justify;
-			word-wrap: break-word;
-			max-width: 700px; 
-			margin: 4rem auto 7rem auto;	
-
-		} 
-
-		.blog-bottom > .gotohome {
-			display: inline-block;
-			text-decoration: none;
-			vertical-align: middle;
-			color: #444;
-			/*font-size: 2rem; */
-			display: inline-block;
-			font-size: 1.4rem; 
-			font-family: "Consolas", "Lucida Console", "Monaco", "Menlo", Courier; 		
-		}
-	</style>
-	
 	<div style="margin: 3rem auto;" class="md">
 		<hr style="margin-bottom: 1rem;" />
+		{{if blog.info.category}}
 		<p style="margin: 0 0 3rem 0;color: #666;">本文分类于 <a href="/blog/{{blog.info.category}}">{{blog.info.category}}</a>, <span>最后编辑于 {{dateNormalize(blog.stat.mtime)}}</span></p>
+		{{else}}
+		<p style="margin: 0 0 3rem 0;color: #666;">本文<a href="/blog/noname">未分类</a>, <span>最后编辑于 {{dateNormalize(blog.stat.mtime)}}</span></p>
+		{{/if}}
 	</div>
 
 	<div style="font-size: 0;" class="blog-bottom">

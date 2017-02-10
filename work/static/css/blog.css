@@ -40,3 +40,30 @@
     color: #aab!important;
     background: none!important;
 }
+
+@media screen and (max-width: 960px) {
+	.blog-bottom  {
+		width: 90%;
+		border: none;
+	}
+}
+
+.blog-bottom {
+	text-align: justify;
+	word-wrap: break-word;
+	max-width: 700px; 
+	margin: 4rem auto 7rem auto;	
+
+} 
+
+.blog-bottom > .gotohome {
+	display: inline-block;
+	text-decoration: none;
+	vertical-align: middle;
+	color: #444;
+	/*font-size: 2rem; */
+	display: inline-block;
+	font-size: 1.4rem; 
+	font-family: "Consolas", "Lucida Console", "Monaco", "Menlo", Courier; 		
+}
+
