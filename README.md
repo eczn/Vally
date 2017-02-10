@@ -1,5 +1,6 @@
 # Vally
-基于 node + artTemplate 写的静态博客程序。  
+基于 node.js 的静态博客程序
+an blog engine based on node.js
 
 # 尚未完成！ 
 完全陌生的开发模式233 
