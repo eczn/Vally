@@ -88,25 +88,26 @@ var vv = function(){
 			blog.locatedAt = blogPath; 
 			blog.stat = blogPathStat;
 			blog.fileName = elem; 
+
 			if (blogPathStat.isDirectory()){
 				blog.isDirectory = true; 
 				return blog; 
-			} else { // true file  to load it 
-				
+			} else { // true file to load it 
 				log('COLLECT', [('>> '+blogPath).info], 'verbose');
 
 				blog.isDirectory = false; 
 				var blogData = fs.readFileSync(blogPath); 
 				var blogText = blogData.toString(); 
+				// temp: blogInfo + blogContent or just blogContent 
 				var temp = blogText.split('------'); 
 				var blogInfo;
 				var blogContent; 
 
-				if (temp.length <= 1){ // blog with no info
+				if (temp.length <= 1){ // blog with no info, just blogContent 
 					blogInfo = {}; 
 					blogContent = temp[0]; 
-					blog.category = ['all', 'noname'];  
-					console.log('blog with no info'.info);
+					blog.category = ['all', 'noname'];
+					log('INFO', ['Blog With No Info'], 'info'); 
 				} else {
 					blogInfo = JSON.parse(temp[0]); 
 					blogContent = temp[1]; 
@@ -142,32 +143,8 @@ var vv = function(){
 			}
 		});
 
-
-
 		// blogList 
 		setTimeout(vally.preInit, 0, blogList, categoryNames, function(){
-			// 渲染博客  事实说明这样并不好... 
-			// blogList.forEach((elem, idx, its)=>{
-			// 	if (!elem.isDirectory){
-			// 		log('PARSE', [('>> √  ' + elem.fileName + ' ==> ' + path.parse(elem.fileName).name + '.html').info], 'verbose'); 
-			// 		let html = vally.mdRender(elem);
-
-			// 		elem.category.forEach((categoryName, idx, its)=>{
-			// 			let categoryDirectory = path.join(config.path.dist, 'blog', categoryName); 
-			// 			let filePath = path.parse(elem.fileName); 
-			// 			let dist = path.join(categoryDirectory, filePath.name+'.html'); 
-
-			// 			fs.writeFile(dist, html, {
-			// 				flags: 'w+'
-			// 			}, function(err) {
-			// 				if (err){
-			// 					console.log(err); 
-			// 				}
-			// 			}); 
-			// 		}); 
-			// 	}
-			// });
-
 			// config.blog.countPerPage
 			var pureBlog = blogList.filter(function(elem, idx, its){
 				if (elem.isDirectory){ // dir 
@@ -179,7 +156,6 @@ var vv = function(){
 			// log('DEBUG', blogList, 'debug'); 
 
 			// 分页  0  7  14 
-			var de = 0;
 			for (let i=0;i*config.blog.countPerPage < pureBlog.length;i++){
 				let page = pureBlog.slice(
 					i*config.blog.countPerPage,
@@ -243,8 +219,6 @@ var vv = function(){
 				});
 			}, 0);
 			
-			// categoryList.push(categoryList.shift()); 
-
 			categoryList.forEach((cate, idx, its)=>{ // no all 
 				let tempArr = []; 
 
@@ -263,10 +237,9 @@ var vv = function(){
 					}
 				});
 
-				// 从这里渲染博客 
-				cate.list = cate.list.reverse(); 
+				// blog rendering 
+				// cate.list = cate.list.reverse(); 
 				cate.list.forEach((blog, idx, its)=>{
-
 					log('PARSE', [('>> √  ' + blog.fileName + ' ==> ' + path.parse(blog.fileName).name + '.html').info], 'verbose'); 
 
 					// let next = (idx < its.length-1)?(its[idx+1]):(false); 
@@ -279,9 +252,11 @@ var vv = function(){
 					let position = {
 						next: {
 							a: next_a.replace(/\\/g, '/'),
-							name: nextPath.name
+							name: nextPath.name,
+							body: nextBlog
 						}
 					}; 
+
 
 					let cateInfo = {
 						position: position, 
