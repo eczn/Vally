@@ -220,8 +220,6 @@ module.exports = {
 		// console.log(blog)
 		blog.id = md5(blog.fileName); // 唯一标识符 
 
-		
-
 		var data = {
 			msg: 'blogs',
 			cate: cate,
