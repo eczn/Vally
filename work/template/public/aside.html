@@ -222,9 +222,49 @@
 		<div id="toc"></div> 
 	</div>
 	{{else}}
-	<div class="">
+	<style>
+		.intro {
+			margin: 0 1em; 
+			padding: 0 20px 1em 20px; 
+			border-bottom: 1px dashed #433;
+		}
+		.intro > img {
+			width: 150px;
+			border-radius: 150px; 
+			display: block;
+			margin: 1.5em auto 0.25em auto;
+		}
+		.intro .name {
+			text-align: center;
+			margin-bottom: 40px; 
+			font-size: 2rem; 
+			font-style: italic;
+		}
+		.intro a {
+			padding: 0;
+		}
+
+		.to-you {
+			margin: 2em auto; 
+		}
+		.to-you h1 {
+			text-align: left;
+			margin: 0 20px;
+			padding-left: .5em;
+			font-size: 2.5rem; 
+			border-bottom: 1px dashed #433; 
+		}
+	</style>
+
+	<div class="intro">
 		<h1>Vally *</h1>
 		<p>eczn's blog</p>
+		<img src="/images/cir.jpg" alt="cir.jpg">
+		<p class="name">eczn</p>
+	</div>
+	<div class="to-you">
+		<h1><a href="/blog/all/about.html">About</a></h1>
+		<h1><a href="https://github.com/eczn">Github</a></h1>
 	</div>
 	{{/if}}
 	
@@ -297,6 +337,6 @@ var aside = (function($){ // it needs jQuery or Zeptos
 })($); 
 
 aside.init(); 
-// aside.setStat = true; 
+aside.setStat = true; 
 
 </script>
