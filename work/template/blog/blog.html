@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
-	
 	{{if blog.info}}
 		{{if blog.info.tags}}
 			<meta name="keywords" content="{{blog.info.tags}}">
@@ -21,6 +20,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="icon.jpg" media="screen" >
 	<link rel="stylesheet" href="/css/rem.css">
 	<link rel="stylesheet" href="/css/main.css">
+	<!-- <link rel="stylesheet" href="/css/home.css"> -->
 	<link rel="stylesheet" href="/css/blog.css">
 	<link rel="stylesheet" href="/css/mark-vally.css">
 	<link rel="stylesheet" href="/css/monokai_sublime.min.css">
@@ -33,28 +33,61 @@
 		<div class="title">
 			<!-- 0v0 -->
 			<!-- <p class="time">{{+blog.stat.birthtime}}</p> -->
-			<h3 class="time">{{dateFormat(blog.stat)}}</h3>
+			<time class="time">{{dateFormat(blog.stat)}}</time>
 			<h1 class="title-content">{{ blog.info.title }}</h1>
 		</div>
+		
+		{{if blog.info.headPic}}
+		<div style="background-image: url({{blog.info.headPic}});" class="head-pic">
+			<!-- <img src="{{blog.info.headPic}}" alt=""> -->
+		</div>
+		{{/if}}
 		{{ blog.md }}
 
-
-		<h1 id="foot-note">脚注</h1>
-		<ol id="vally-foot">
-			
-		</ol>
+		<h1 id="脚注">
+		<a class="markdownIt-Anchor" href="#脚注">#</a>
+		脚注</h1>
+		<ol id="vally-foot"></ol>
 	</article>
 	
+	<style>
+		@media screen and (max-width: 960px) {
+			.blog-bottom  {
+				width: 90%;
+				border: none;
+			}
+		}
 
-	<div class="blog-bottom">
-		<a class="blog-bottom-left" href="/"><span>&lt;&nbsp;Home</span></a>
-		<a class="blog-bottom-right" href="{{cate.position.next.a}}">
-			<span>Next&nbsp;&gt;</span>
-			<p style="font-size: 1rem;">{{cate.position.next.name}}</p>
-		</a>
-		<!-- <p style="text-align: center;">{{blog.info.title}}</p> -->
+		.blog-bottom {
+			text-align: justify;
+			word-wrap: break-word;
+			max-width: 700px; 
+			margin: 4rem auto 7rem auto;	
+
+		} 
+
+		.blog-bottom > .gotohome {
+			display: inline-block;
+			text-decoration: none;
+			vertical-align: middle;
+			color: #444;
+			/*font-size: 2rem; */
+			display: inline-block;
+			font-size: 1.4rem; 
+			font-family: "Consolas", "Lucida Console", "Monaco", "Menlo", Courier; 		
+		}
+	</style>
+	
+	<div style="margin: 3rem auto;" class="md">
+		<hr style="margin-bottom: 1rem;" />
+		<p style="margin: 0 0 3rem 0;color: #666;">本文分类于 <a href="/blog/{{blog.info.category}}">{{blog.info.category}}</a>, <span>最后编辑于 {{dateNormalize(blog.stat.mtime)}}</span></p>
 	</div>
 
+	<div style="font-size: 0;" class="blog-bottom">
+		<a class="gotohome" href="/"><span>&lt;&nbsp;首页</span></a>
+		<a style="float: right;" class="gotohome" href="{{cate.position.next.a}}"><span>{{cate.position.next.name}}&nbsp;&gt;</span></a>
+	</div>
+	
 	<div class="img-dis display-none">
 		<img alt="">
 	</div>
@@ -68,7 +101,6 @@
 		<script src="//comment.moe/dest/static/js/build.js" charset="UTF-8"></script>
 	</details>
 	
-
 	{{include '../public/aside'}}
 	{{include '../public/footer'}}
 </body>
