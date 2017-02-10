@@ -1,7 +1,7 @@
 module.exports = {
 	path: { // diretory 
-		blog: 'D:\\www\\git-vally\\blogs', 
-		dist: 'D:\\www\\git-vally\\eczn.coding.me', 
+		blog: 'W:\\www\\git-vally\\blogs', 
+		dist: 'W:\\www\\git-vally\\eczn.coding.me', 
 		static: './work/static',
 		template: './work/template'
 	},
