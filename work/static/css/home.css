@@ -33,13 +33,16 @@
 }
 
 
+.blog-ul a:hover {
+	opacity: .9;
+}
 
 .blog-ul a:hover::after {
-	content: ">"; 
+/*	content: ">"; 
 	font-size: 72px; 
 	top: -26px; 
-	right: -16px;
-	color: rgba(102, 68, 68, .3);
+	right: -16px;*/
+	/*color: rgba(102, 68, 68, .8);*/
 }
 
 .blog-ul a {

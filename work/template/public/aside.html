@@ -170,7 +170,7 @@
 		background-color:#507B50;
 	}
 
-	.toc-container > h1, .toc-container > span {
+	.toc-container > h1, .toc-container > span, .toc-container > p {
 		margin: .2rem; 
 		padding: 10px; 
 	}
@@ -178,20 +178,30 @@
 		font-size: 10px; 
 		color: #AAA; 
 	}
+	.toc-container > p {
+		font-size: 10px; 
+		vertical-align: middle;
+		color: #AAA; 
+	}
+	.toc-container > p > a {
+		cursor: pointer;
+		display: inline-block;
+		font-size: 1.2rem; 
+		color: #DDD;
+	}
 </style>
 <aside class="vally-side" id="VS">
 	{{if blog}}
 	<div class="toc-container">
 		<span>Last update in {{dateNormalize(blog.stat.mtime)}}</span>
 		
-	
-
+		{{if cate.name === 'all'}}
+		<p>本文分类于 <a href="/blog/{{blog.info.category}}">{{blog.info.category}}</a></p>
+		{{else}}
 		<h1>{{cate.name}}*</h1>
 		<ul class="catlist toc-container toc-list">
 			{{each cate.list as elem i }}
-
 				{{if elem.info.title == blog.info.title }}
-
 					<li class="toc-list-item">
 						<a class="is-active-link node-name--H1" href="#">&gt;&gt; {{elem.info.title}}</a>
 					</li>
@@ -202,7 +212,7 @@
 				{{/if}}
 			{{/each}}
 		</ul>
-
+		{{/if}}
 		<h1>Content*</h1>
 		<div id="toc"></div> 
 	</div>
