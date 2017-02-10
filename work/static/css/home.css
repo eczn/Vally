@@ -72,6 +72,7 @@
 	text-align: justify;
 	text-decoration: none!important;
 	line-height: 1.5; 
+	width: 95%; 
 }
 .blog-ul .item-intro:hover {
 	text-decoration: none!important;

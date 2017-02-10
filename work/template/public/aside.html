@@ -196,7 +196,12 @@
 		<span>Last update in {{dateNormalize(blog.stat.mtime)}}</span>
 		
 		{{if cate.name === 'all'}}
-		<p>本文分类于 <a href="/blog/{{blog.info.category}}">{{blog.info.category}}</a></p>
+			{{if blog.info.category}}
+			<p>本文分类于 <a href="/blog/{{blog.info.category}}">{{blog.info.category}}</a></p>
+			{{else}}
+			<p>本文<a href="/blog/noname">未分类</a></p>
+			{{/if}}
+		
 		{{else}}
 		<h1>{{cate.name}}*</h1>
 		<ul class="catlist toc-container toc-list">
