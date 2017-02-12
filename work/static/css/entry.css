@@ -31,19 +31,14 @@
 	.arch-container {
 		column-count: 2;
 	}
-	/*.arch {
-		width: 50%; 
-	}*/
 }
 
 .update-time {
-	/*color: rgba(68, 68, 102, .55);*/
 	color: #AAA; 
 	font-size: 10px
 }
 
-.arch > ul {
-	/*margin-left: 4em;*/
+.arch > ul {	
 	position: relative; 
 	padding: 0 16px; 
 	list-style: none; 
@@ -56,9 +51,6 @@
 	text-align: left; 
 	font-size: 20px; 
 }
-
-
-
 
 .arch > ul > li:after {
 	content: ""; 
