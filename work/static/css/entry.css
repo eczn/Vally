@@ -31,9 +31,9 @@
 	.arch-container {
 		column-count: 2;
 	}
-	.arch {
+	/*.arch {
 		width: 50%; 
-	}
+	}*/
 }
 
 .update-time {
