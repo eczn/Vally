@@ -20,8 +20,6 @@
 	}
 }
 
-
-
 .blog-ul a:after {
 	content: "#"; 
 	display: block;
@@ -128,3 +126,9 @@
 	background-color: #644; 
 }
 
+
+.blog-ul code {
+	font-style: italic;
+	font-weight: bold;
+	font-family: "PT Sans", Menlo, Consolas, "-apple-system", BlinkMacSystemFont,"微软雅黑", Verdana, Arial, Helvetica, sans-serif;
+}
