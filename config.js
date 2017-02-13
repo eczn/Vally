@@ -9,6 +9,7 @@ module.exports = {
 		PORT: 4444
 	},
 	blog: {
+		url: 'https://eczn.coding.me',
 		default: 'A',
 		countPerPage: 7
 	},
