@@ -1,4 +1,4 @@
-var config = require('./config');
+// var config = require('./config');
 var vally = require('./vally'); 
 var archTree = require('./archList'); 
 var fs = require("fs"); 
@@ -282,12 +282,4 @@ var vv = function(){
 	}); 
 }
 
-
-server.start(function(){
-	console.log('reload'); 
-	vv(); 
-}); 
-
-vv();
-
-
+module.exports = vv; 

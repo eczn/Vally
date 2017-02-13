@@ -8,11 +8,9 @@ var config = require('./config');
 var gulp = require('gulp');
 var connect = require('gulp-connect'); 
 var path = require('path'); 
-var server; 
 var chokidar = require('chokidar'); 
 
 module.exports = {
-	server: server, 
 	start: function(cb){
 		connect.server({
 			root: config.path.dist,
@@ -28,16 +26,14 @@ module.exports = {
 				.pipe(connect.reload());
 		});
 
-		var watcher = chokidar.watch(['./**/*', config.path.blog], {
+		var watcher = chokidar.watch(['./**/*.md', config.path.blog], {
 			ignored: /[\/\\]\./,
-			persistent: true
+			persistent: true,
+			ignoreInitial: true
 			// awaitWriteFinish: true
 		});
 
-		watcher.on('change', cb);
+		watcher.on(['all'], cb);
 
-	},
-	close: function(cb){
-		server.close(cb); 
 	}
 }

@@ -1,9 +1,55 @@
 <style>
 	header {
 		display: block;
+		position: relative;
 		text-align: center;
 		margin: 0 auto;; 
 		line-height: 314.15926px;
 	}
 </style>
+{{if blog.info}}
+{{if blog.info.head}}
+<style>
+	header {
+		color: #FBFBFB;
+		font-size: 3.5rem; 
+		margin-bottom: 1rem;
+		text-shadow: 4px 3px rgba(0,0,0,0.6), -4px -3px rgba(0,0,0,0.25);
+		background-image: url({{blog.info.head[0]}});
+		background-position: {{blog.info.head[1]}} {{blog.info.head[2]}};
+	}
+
+	@media screen and (min-width: 1366px) {
+		header {
+			background-size: 100% auto;
+		}
+	}
+
+	header:after {
+		content: " ";
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		height: 3px;
+		background: repeating-linear-gradient(
+			-45deg,
+			#DDD,#DDD 4px,
+			transparent 4px,
+			transparent 8px
+		);
+	}
+
+	body {
+		border-top: none;
+	}
+</style>
 <header>Eczn's Blog</header>
+
+{{else}}
+
+<header>Eczn's Blog</header>
+
+{{/if}}
+
+{{/if}}
