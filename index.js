@@ -70,7 +70,7 @@ function log(name, disArr, color){
 var config = require('./config'); 
 log('CONFIG', [config], 'info'); 
 
-var vv = function(){
+var vv = function(QINIU_FLAG){
 	fs.readdir(config.path.blog, function(err, list){
 		if (err){
 			log("BUG", [err], 'debug'); 
@@ -202,7 +202,8 @@ var vv = function(){
 				return new_elem;
 			}); 
 
-			setTimeout(function(){ // all entry 
+			// entry render 
+			setTimeout(function(){ 
 				let allhtml = vally.render({
 					archives: categoryList.splice(1)  // no all 
 				}, path.join(config.path.template, "entry", "entry"));
@@ -264,7 +265,7 @@ var vv = function(){
 						name: cate.name
 					}
 
-					let html = vally.mdRender(blog, cateInfo);
+					let html = vally.mdRender(blog, cateInfo, QINIU_FLAG);
 					let cateDir = path.join(config.path.dist, 'blog', cate.name); 
 					let filePath = path.parse(blog.fileName); 
 					let dist = path.join(cateDir, filePath.name+'.html'); 
@@ -276,7 +277,8 @@ var vv = function(){
 					}); 
 				}); 
 			}); 
-
+			// call back here, vally all done 
+			vally.finish(); 
 		}); 
 
 	}); 

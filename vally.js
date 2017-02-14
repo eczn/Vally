@@ -3,6 +3,7 @@ var fs = require('fs');
 var path = require('path')
 var hljs = require('highlight.js'); // https://highlightjs.org/
 var md5 = require('md5'); 
+var config = require('./config'); 
 // Actual default values
 var md = require('markdown-it')({
 	highlight: function (str, lang) {
@@ -69,6 +70,10 @@ template.helper('dateFormat', function (date, format) {
 template.helper('path', path); 
 
 template.helper('md5', md5); 
+function toQiniu(name){
+	// config 
+	return path.join(config.qiniu.url, name); 
+}; 
 
 template.helper('dateNormalize', function (date, format) {
 	let time = yearMonthDay(date); 
@@ -83,7 +88,7 @@ template.helper('dateNormalize', function (date, format) {
 	return str;
 });
 
-var config = require('./config'); 
+
 var preInit = function(blogList, categoryNames, cb){
 	var dist = path.join(config.path.dist, 'blog');
 	var pageDir = path.join(config.path.dist, 'page');
@@ -148,66 +153,60 @@ var preInit = function(blogList, categoryNames, cb){
 	cb(); 
 }
 
+const cheerio = require('cheerio'); 
+const url =require('url'); 
+var imgList = []; 
+function imgCatcher(html){
+	let $ = cheerio.load(html); 
+	$('img').each(function(idx, elem){
+		var newSrc = $(this).attr('src'); 
+		// newSrc 不能是 undefined 
+		// 原列表不包含 newSrc 
+		// newSrc 不包含 http:// https:// 等外链图 
+		if (newSrc && !imgList.includes(newSrc) && newSrc.slice(0, 4) !== 'http'){
+			imgList.push(newSrc);
+
+			let path_newSrc = path.parse(newSrc); 
+			let qiniuSrc = path.join(config.qiniu.url, path_newSrc.base); 
+
+			qiniuSrc = 'http://' + qiniuSrc; 
+
+			qiniuSrc = url.format(url.parse(path.format(path.parse(qiniuSrc)))); 
+
+			$(this).attr('src', qiniuSrc); 
+
+			log('INFO', [('>> ADD: ' + newSrc).info], 'info'); 
+		}
+	});
+
+	return $.html(); 
+}
+
+
+// var upload = require('./upload');
+
 module.exports = {
 	preInit: preInit, 
-	generate(filePath, cb){
-		fs.readFile(filePath, (err, mdFileData) => {
-			if (err){
-				console.log(err); 
-			}
-			// console.log(mdFileData.toString()); 
-			// var parseRes = md.toHTML(mdFileData.toString());
-			mdFileText = mdFileData.toString(); 
-			mdArr = mdFileText.split('------'); 
-			var blog; 
-			var parseRes;
+	imgList: imgList, 
+	finish: function(){
+		var str = imgList.join('\n'); 
 
-			if (mdArr[0] == mdFileText){
-				// no config
-				blog = {}; 
-				parseRes = md.render( mdFileText ); 
-			} else {
-				blog = JSON.parse(mdArr[0]); 
-				// console.log(blog.title); 
-				// console.log(blog); 
-				parseRes = md.render( mdArr[1] ); 
-			}
-			
-			
-			var stat = fs.statSync(filePath); 
-			// console.log(stat); 
-			// console.log(parseRes); 
-			var data = {
-				msg: 'blogs',
-				md: parseRes,
-				blog: blog,
-				stat: stat
-			}
+		fs.writeFileSync(path.join('temp', 'list.dat'), str, {
+			flag: 'w+'
+		}); 
 
-			// parseRes = template(parseRes, {
-			// 	blog: blog
-			// });
-			// console.log(parseRes);
-
-			template.config('base', __dirname);
-			template.config('escape', false);
-			template.config('encoding', 'utf-8'); 
-
-
-			var html = template(config.path.template+"/blog/blog", data);
-
-			// console.log(html); 
-			// fs.writeFile(config.dist+'/'+(fileName.split('.'))[0]+'.html', html,  function(err) {
-			// 	if (err) {
-			// 		return console.error(err);
-			// 	}
-			// });
-			
-			cb(html); 
-		});
-	},
-	mdRender: (blog, cate) => {
-		// cate.position, cate.list   
+		// fs.writeFile(path.join('temp', 'list.dat'), str, {
+		// 	flags: 'w+'
+		// }, function(err) { // !@#$ 
+		// 	if (err) {
+		// 		console.log(err); 
+		// 	} else {
+		// 		// true 
+		// 	}
+		// }); 
+	}, 
+	mdRender: (blog, cate, QINIU_FLAG) => {
+		// cate.position, cate.list
 		var mdContent = md.render(blog.content);
 		blog.md = mdContent; 
 
@@ -231,9 +230,15 @@ module.exports = {
 		template.config('encoding', 'utf-8'); 
 		template.config('cache', false); 
 		// template.config('compress', false); 
-
 		var html = template(config.path.template+"/blog/blog", data);
-		return html; 
+
+		var qiniuSrcHtml = imgCatcher(html);
+
+		if (QINIU_FLAG){
+			return qiniuSrcHtml; 
+		} else {
+			return html; 
+		}
 	},
 	render: (data, templatePath) => {
 		template.config('base', __dirname);
