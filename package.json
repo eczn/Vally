@@ -29,6 +29,8 @@
     "highlight.js": "^9.9.0",
     "markdown": "^0.5.0",
     "markdown-it": "^8.2.1",
+    "markdown-it-toc-and-anchor": "^4.1.1",
+    "md5": "^2.2.1",
     "minimist": "^1.2.0",
     "qiniu": "^6.1.13",
     "sha1": "^1.1.1",
