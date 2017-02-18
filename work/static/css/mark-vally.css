@@ -102,7 +102,7 @@ p {
 
 .md li > ul {
 	list-style: circle;
-	display: inline-block;
+	display: block;
 	vertical-align: top;
 	padding-left: 1.5em;
 	/*position: relative;*/

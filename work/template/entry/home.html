@@ -39,7 +39,8 @@
 				{{/if}}
 				</summary>
 			</a>
-
+			
+			<time class="item-time">{{dateNormalize(blog.stat.birthtime)}}</time>
 			<mark class="item-tags">
 			{{if blog.info}}
 				{{if blog.info.tags}}
@@ -49,7 +50,6 @@
 				{{/if}}
 			{{/if}}
 			</mark>
-			<time class="item-time">{{dateNormalize(blog.stat.birthtime)}}</time>
 		</li>
 		{{/each}}
 	</ul>
