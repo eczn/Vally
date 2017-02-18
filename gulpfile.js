@@ -133,6 +133,10 @@ gulp.task('qiniu', function(){
 	}
 }); 
 
+gulp.task('new', function(){
+	
+}); 
+
 gulp.task('default', ['help']);
 
 gulp.task('serve', ['vally', 'connect']); 
