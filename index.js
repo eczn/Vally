@@ -133,14 +133,6 @@ var vv = function(QINIU_FLAG){
 				blog.content = blogContent; 
 				return blog; 
 			}
-		}).sort(function(a, b){ // 排序
-			if (a.stat.birthtime < b.stat.birthtime) {
-				return 1; 
-			} else if (a.stat.birthtime > b.stat.birthtime) {
-				return -1; 
-			} else {
-				return 0; 
-			}
 		}).filter((elem, idx, its) => {
 			// 草稿 draft
 			if (elem.info){
@@ -148,7 +140,33 @@ var vv = function(QINIU_FLAG){
 			} else {
 				return true; 
 			}
-		});
+		}).sort(function(a, b){ // 排序 
+			// if (a.info){
+			// 	var A = new Date(a.info.date); 
+			// } else {
+			// 	var A = a.stat.birthtime; 
+			// }
+			// if (b.info){
+			// 	var B = new Date(b.info.date); 
+			// } else {
+			// 	var B = b.stat.birthtime; 
+			// }
+			// if (A < B){
+			// 	return 1; 
+			// } else if (A > B){
+			// 	return -1; 
+			// } else {
+			// 	return 0; 
+			// }
+
+			if (a.stat.birthtime < b.stat.birthtime) {
+				return 1; 
+			} else if (a.stat.birthtime > b.stat.birthtime) {
+				return -1; 
+			} else {
+				return 0; 
+			}
+		}); 
 
 		// blogList 
 		setTimeout(vally.preInit, 0, blogList, categoryNames, function(){
@@ -169,13 +187,21 @@ var vv = function(QINIU_FLAG){
 					(i+1)*config.blog.countPerPage 
 				);
 
-				log('DEBUG', [page.length], 'debug');  
+				var nums = pureBlog.length; 
+				var para = config.blog.countPerPage; 
+				if (nums % para === 0){
+					var total = nums / para; 
+				} else {
+					var total = (nums + (para-nums%para)) / para;	
+				}
 				
+
+				log('DEBUG', [('NOW PAGE AT: ' + i), total], 'debug');
 
 				let html = vally.render({
 					blogs: page,
 					// dirty
-					total: new Array(parseInt((pureBlog.length) / config.blog.countPerPage) + 1),
+					total: new Array(total),
 					now: i
 				}, path.join(config.path.template, "entry", "home")); 
 
