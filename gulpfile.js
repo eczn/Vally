@@ -159,6 +159,24 @@ gulp.task('new', function(){
 	// fs.write(printer, )
 }); 
 
+gulp.task('list', function(){
+	let BLOG_FROM = config.path.blog; 
+	let list = fs.readdirSync(BLOG_FROM); 
+
+	log('LIST', [], 'info'); 
+	list.forEach((elem, idx, its)=>{
+		let stat = fs.statSync(path.join(BLOG_FROM, elem)); 
+		let temp = {}; 
+
+		if (stat.isDirectory()){
+
+		} else {
+			let i = (idx<10)?('0'+idx.toString()):(idx.toString()); 
+			console.log(`${i} >> `.input, elem.help); 
+		}
+	}); 
+}); 
+
 gulp.task('default', ['help']);
 
 gulp.task('serve', ['vally', 'connect']); 
