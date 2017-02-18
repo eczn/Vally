@@ -158,6 +158,12 @@ var vv = function(QINIU_FLAG){
 			// } else {
 			// 	return 0; 
 			// }
+			if (a.info && a.info.date){
+				a.stat.birthtime = new Date(a.info.date); 
+			}
+			if (b.info && b.info.date){
+				b.stat.birthtime = new Date(b.info.date); 
+			}
 
 			if (a.stat.birthtime < b.stat.birthtime) {
 				return 1; 
