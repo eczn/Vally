@@ -9,7 +9,7 @@
 		"center", "100%"
 	],
 	"headerStyle": ["line-height: 500px;"], 
-	"headPic", "Your Pic"
+	"headPic": "Your Pic"
 }
 ------ 
 # Fir Header
