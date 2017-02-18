@@ -141,6 +141,13 @@ var vv = function(QINIU_FLAG){
 			} else {
 				return 0; 
 			}
+		}).filter((elem, idx, its) => {
+			// 草稿 draft
+			if (elem.info){
+				return !elem.info.isDraft
+			} else {
+				return true; 
+			}
 		});
 
 		// blogList 
