@@ -129,7 +129,7 @@ p {
 }
 
 /*====== blockquote ======*/
-.md > blockquote {
+.md > blockquote, .md > blockquote > blockquote {
 	max-width: 80%;
 	display: block;
 	/*margin: 0 auto;*/
@@ -138,10 +138,10 @@ p {
 	font-size: 1rem; 
 	position: relative;
 	vertical-align: top;
-
 	border-bottom: 1px dashed #DDD;
 }
-.md > blockquote:before {
+
+.md > blockquote:before, .md > blockquote > blockquote:before {
 	content: "“";
 	opacity: .45;
 	left: 0; 
@@ -150,7 +150,7 @@ p {
 	position: absolute;
 	display: inline-block;
 }
-.md > blockquote:after {
+.md > blockquote:after, .md > blockquote > blockquote:after {
 	content: "”"; 
 	opacity: .45;
 	right: 0; 
