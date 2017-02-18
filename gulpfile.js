@@ -50,9 +50,12 @@ gulp.task('copy',  function() {
 
 gulp.task('help', function(){
 	setTimeout(function(){
-		console.log(" * Vally ? ")
-		console.log(" - gulp serve   // open blog server"); 
-		console.log(" - gulp deploy  // generate blog to destination configed in config.js"); 
+		console.log(" * Vally ? ");
+		console.log(" - gulp new --name New.md   // new a blog to config.path.blog");
+		console.log(" - gulp list        // to list your blog"); 
+		console.log(" - gulp serve       // open blog server"); 
+		console.log(" - gulp generate    // generate html site without localhost server")
+		console.log(" - gulp deploy      // generate blog to destination configed in config.js"); 
 	}, 2000);
 }); 
 
@@ -149,6 +152,7 @@ gulp.task('new', function(){
 			console.log('NEW FAILED'.error); 
 		} else {
 			console.log('NEW SUCCESS: '.verbose, `${path.join(config.path.blog, fileName)}`.verbose)
+			console.log('NEXT,'.verbose, 'You Can Use "'.verbose+"gulp serve".warn+'" To Start Vally Server'.verbose); 
 		}
 	}); 
 	// var printer = fs.createWriteStream(path.join(blog, 'New.md')); 
