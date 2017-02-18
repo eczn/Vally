@@ -13,17 +13,11 @@ var path = require('path');
 var server = require('./server'); 
 var fs = require('fs'); 
 var vv = require('./index'); 
+var log = require('./vlog'); 
 
-var opt = minimist(process.argv.slice(2), {
-	string: 'dest'
-}); 
-if (opt.dest == ''){
-	opt.dest = './build'; 
-}
-console.log(opt); 
 
 gulp.task('blog', function(){
-	console.log('change')
+	console.log('change'); 
 }); 
 
 gulp.task('vally', function(){
@@ -134,7 +128,31 @@ gulp.task('qiniu', function(){
 }); 
 
 gulp.task('new', function(){
-	
+	let opt = minimist(process.argv.slice(2), {}); 
+	let fileName = opt.name; 
+
+	let blog = config.path.blog; 
+	log('INFO', [
+		('Your Blogs Source Located in ' + blog.verbose),
+		`And Vally Will Add A New File "${fileName}" To There`.warn
+	], 'info'); 
+
+	let data = fs.readFileSync(
+		path.join(__dirname, 'work', 'template', 'blog', 'New.md')
+	); 
+	data = data.toString(); 
+	data = data.replace('TIMETIMETIME', new Date().toString()); 
+
+	// let data = JSON.stringify(temp); 
+	fs.writeFile(path.join(blog, fileName), data, function(err){
+		if (err){
+			console.log('NEW FAILED'.error); 
+		} else {
+			console.log('NEW SUCCESS: '.verbose, `${path.join(config.path.blog, fileName)}`.verbose)
+		}
+	}); 
+	// var printer = fs.createWriteStream(path.join(blog, 'New.md')); 
+	// fs.write(printer, )
 }); 
 
 gulp.task('default', ['help']);
