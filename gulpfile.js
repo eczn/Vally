@@ -158,6 +158,7 @@ gulp.task('new', function(){
 	// var printer = fs.createWriteStream(path.join(blog, 'New.md')); 
 	// fs.write(printer, )
 }); 
+gulp.task('n', ['new']); 
 
 gulp.task('list', function(){
 	let BLOG_FROM = config.path.blog; 
@@ -176,10 +177,13 @@ gulp.task('list', function(){
 		}
 	}); 
 }); 
+gulp.task('l', ['list']); 
 
 gulp.task('default', ['help']);
 
 gulp.task('serve', ['vally', 'connect']); 
-
+gulp.task('s', ['vally', 'connect']); 
 gulp.task('generate', ['vally-generate']);
+gulp.task('g', ['vally-generate']);
 gulp.task('deploy', ['clean', 'git-push', 'qiniu']); 
+gulp.task('d', ['clean', 'git-push', 'qiniu']); 
