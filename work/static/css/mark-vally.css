@@ -67,15 +67,20 @@ p {
 	margin: .6em 0; 
 }
 
+.md li > p > code {
+	font-family: "Consolas", "Menlo", "微软雅黑";
+	color: #744; 
+}
+
 .md > p > code, .md li > code {
-	font-family: Menlo, "Consolas", "微软雅黑";
+	font-family: "Consolas", "Menlo", "微软雅黑";
 	padding: .2em .5em;
 	border: 1px dashed #BBB;
 	border-radius: 4px;
 }
 
 .md h1 > code {
-	font-family: Menlo, "Consolas", "微软雅黑";
+	font-family: "Consolas", "Menlo", "微软雅黑";
 	font-style: italic;
 	color: #AAA; 	
 }
@@ -349,7 +354,7 @@ blockquote img {
 	/*left: -5%;*/
 	/*width: 110%;*/
 	padding: 4px 8px; 
-	margin: 4px 0; 
+	margin: 4px 0 1em 0; 
 	overflow-wrap: normal;
 }
 

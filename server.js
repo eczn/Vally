@@ -26,7 +26,7 @@ module.exports = {
 				.pipe(connect.reload());
 		});
 
-		var watcher = chokidar.watch(['./**/*.md', config.path.blog], {
+		var watcher = chokidar.watch(['./work/**/*', config.path.blog], {
 			ignored: /[\/\\]\./,
 			persistent: true,
 			ignoreInitial: true

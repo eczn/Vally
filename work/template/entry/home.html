@@ -27,6 +27,7 @@
 <body>
 	{{include '../public/nav'}}
 	<ul class="blog-ul">
+		{{include '../public/aside'}}
 		{{each blogs as blog bi }}
 		<li>
 			<a href="{{ '/blog/all' + '/' + blog.fileName.replace('.md', '.h' + 't' + 'ml')}}">
@@ -72,7 +73,6 @@
 		{{/each}}
 	</ul>
 	
-	{{include '../public/aside'}}
 	{{include '../public/footer'}}
 </body>
 <script src="/js/fastclick.js"></script>

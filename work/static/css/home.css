@@ -5,6 +5,7 @@
 	max-width: 700px; 
 	margin: 0 auto;
 	list-style: none;
+	position: relative;
 }
 
 .blog-ul > li {

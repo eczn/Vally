@@ -14,7 +14,7 @@ var server = require('./server');
 var fs = require('fs'); 
 var vv = require('./index'); 
 var log = require('./vlog'); 
-
+var open = require("open");
 
 gulp.task('blog', function(){
 	console.log('change'); 
@@ -34,6 +34,13 @@ gulp.task('connect', function(){
 		vv(); 
 	});
 });
+
+gulp.task('connect-dev', function(){
+	server.strat(function(){
+		console.log('[DEV] Reload'); 
+		vv(); 
+	}); 
+}); 
 
 gulp.task('listen', function(){
 	var blogs = path.join(config.path.blog, '**/*'); 
@@ -153,12 +160,17 @@ gulp.task('new', function(){
 		} else {
 			console.log('NEW SUCCESS: '.verbose, `${path.join(config.path.blog, fileName)}`.verbose)
 			console.log('NEXT,'.verbose, 'You Can Use "'.verbose+"gulp serve".warn+'" To Start Vally Server'.verbose); 
+			open(path.join(config.path.blog, fileName)); 
 		}
 	}); 
 	// var printer = fs.createWriteStream(path.join(blog, 'New.md')); 
 	// fs.write(printer, )
 }); 
 gulp.task('n', ['new']); 
+
+gulp.task('open', ['connect'], function(){
+	open("http://localhost:4444");
+}); 
 
 gulp.task('list', function(){
 	let BLOG_FROM = config.path.blog; 
@@ -181,9 +193,14 @@ gulp.task('l', ['list']);
 
 gulp.task('default', ['help']);
 
-gulp.task('serve', ['vally', 'connect']); 
+gulp.task('serve', ['vally', 'connect', 'open']); 
 gulp.task('s', ['vally', 'connect']); 
+
+gulp.task('dev-serve', ['vally', 'connect-dev']); 
+
 gulp.task('generate', ['vally-generate']);
 gulp.task('g', ['vally-generate']);
 gulp.task('deploy', ['clean', 'git-push', 'qiniu']); 
 gulp.task('d', ['clean', 'git-push', 'qiniu']); 
+
+gulp.task('edit', ['n', 's']); 
