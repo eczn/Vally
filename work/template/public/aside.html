@@ -233,7 +233,7 @@
 	<style>
 		.vally-side {
 			min-width: 320px; 
-			padding-top: 30%;
+			padding-top: 0%;
 			/*margin-bottom: 4em; */
 			position: absolute;
 			opacity: 0;
@@ -249,14 +249,19 @@
 			color: white; 
 			background-size: 2px 100%;
 
-			transition: opacity .6s, height .7s;
+			transition: opacity .6s, height .7s, padding .7s;
 			overflow: hidden;
 			transform: rotateZ(0); 
+
+			/*visibility: hidden;*/
 		}
 		
 		.vally-side-topen {
+			padding-top: 30%;
 			height: 135%;
+			min-height: 600px; 
 			opacity: 1; 
+			/*visibility: visible;*/
 		}
 		
 		.intro {

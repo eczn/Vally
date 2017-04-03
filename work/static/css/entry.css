@@ -1,5 +1,6 @@
 /*arch.css*/
 .arch-container {
+	position: relative;
 	display: block;
 	max-width: 700px; 
 	margin: .4rem auto; 

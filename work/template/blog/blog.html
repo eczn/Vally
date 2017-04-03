@@ -27,6 +27,14 @@
 
 	<script src="/js/zepto.min.js"></script>
 </head>
+{{if blog.info.textPlain}}
+	<style>
+		article.md > p {
+			text-indent: 2em; 
+			font-size: 1.1rem; 
+		}
+	</style>
+{{/if}}
 <body>
 	{{include '../public/header'}}
 	<article class="md">

@@ -10,7 +10,8 @@
 .md p {
 	word-wrap: break-word;
 	text-align: justify; 
-	margin-bottom: 1.2em; 
+	margin-bottom: 2em; 
+	/*font-size: 1.3rem; */
 }
 
 @media screen and (max-width: 960px) {
@@ -35,7 +36,7 @@ p {
 .md {
 	max-width: 700px;
 	margin: 0 auto;
-	line-height: 1.5;
+	line-height: 2;
 	position: relative;
 }
 
