@@ -50,12 +50,27 @@
 				border-top: none;
 			}
 		</style>
+		{{if blog.info.headerText}}
+		<header>{{blog.info.headerText}}</header>
+		{{else}}
 		<header>Eczn's Blog</header>
-
+		{{/if}}
 	{{else}}
-
+		
+		{{if blog.info.headerText}}
+		<header>{{blog.info.headerText}}</header>
+		{{else}}
 		<header>Eczn's Blog</header>
+		{{/if}}
 
 	{{/if}}
+	
+	<style>
+	{{if blog.info.customCSS}}
+		{{each blog.info.customCSS as cus i}}
+			{{cus}}
+		{{/each}}
+	{{/if}}
+	</style>
 
 {{/if}}
