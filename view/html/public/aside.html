@@ -1,0 +1,450 @@
+<!-- vallySide.vue --> 
+<!-- Miexd CSS HTML JavaScript -->
+<aside class="vally-side" id="VS">
+	{{if blog}}
+	<style>
+		/* 移动端隐藏 */
+		@media screen and (max-width: 768px) {
+			.vally-side {
+				display: none;
+			}
+		}
+
+		.vally-side {
+			position: fixed;
+			height: 100%; 
+			width: 320px; 
+			left: -320px;
+			top: 0;
+
+			color: rgba(255,255,255,.65); 
+			/*background-color: #2E1B1B;*/
+			background-color: #2E2222;
+			transition: left .6s;
+		}
+		.vally-side:before {
+			content: ""; 
+			position: absolute;
+			height: 100%;
+			width: 100px;
+			top: 0; 
+			right: 0; 
+			
+			/*background: linear-gradient(
+				to right,
+				transparent,
+				transparent,
+				transparent,
+				rgba(0,0,0,0.4)
+			);*/
+		}
+
+		.vally-push {
+			left: 0px; 
+		}
+		
+		.VS-btn {
+			position: absolute;
+			bottom: 0; 
+			left: 320px;
+			font-size: 0; 
+			color: #222;
+			cursor: pointer;
+		}
+		
+		.vally-side a {
+			color: rgba(255,255,255,.3);
+			text-decoration: none;
+			padding: 0 .25em;
+			/*border-bottom: dotted 2px; */
+			transition: color .3s; 
+		}
+
+		.vally-side a:hover {
+			color: rgba(200,200,255,.6);
+		}
+
+		.btn-VS-toggle {
+			position: relative;
+			bottom: 20px; 
+			left: 15px;
+			display: flex;
+			align-items: center;
+			transition: opacity .1s, left .1s;
+		}
+
+		.btn-VS-toggle:hover {
+			opacity: .5;
+		}
+
+		.btn-VS-toggle > div {
+			width: 24px; 
+			height: 24px;
+			border-radius: 24px;
+			border: 4px solid #444; 
+			transform: rotate(135deg) scaleX(1) scaleY(1);
+			transition: transform .3s ease .3s; 
+		}
+
+		@keyframes VSHaipa {
+			from {
+				left: 15px;
+			} to {
+				left: 10px;
+			}
+		}
+
+		.btn-VS-toggle-true {
+			transform: rotate(135deg) scaleX(-1) scaleY(-1)!important;
+		}
+		.btn-VS-toggle-false {
+			
+		}
+		
+		.padding-push {
+			padding-left: 320px;
+		}
+
+		.toc {
+			overflow-y:auto
+		}
+
+		.toc > ul {
+			overflow:hidden;
+			position:relative
+		}
+
+		.toc-list {
+			list-style-type: none;
+			padding-left: 0.6em;
+		}
+
+		.toc-list-item {
+			
+		}
+
+		a.node-name--H1 {
+			font-size: 1.0rem; 
+			color: rgba(255,255,255,.65);
+		}
+
+		a.node-name--H2 {
+			font-size: 0.8rem; 
+			color: rgba(255,255,255,.5);
+		}
+
+		a.toc-link {
+			/*color: rgba(255,255,255,.65);*/
+			height: 100%
+		}
+
+		.is-collapsible {
+			max-height:1000px;
+			overflow:hidden;
+			transition:all 300ms ease-in-out
+		}
+		.is-collapsed {
+			max-height: 0;
+		}
+		.is-position-fixed {
+			position:fixed !important;
+			top: 0;
+		}
+
+		a.is-active-link {
+			/*font-weight: 700;*/
+			font-size: 1.2rem; 
+			color: rgba(255,255,255,.8);
+			margin-left: 4px;
+		}
+
+		.toc-link::before {
+			background-color: #2E1B1B;
+			content: '';
+			display: inline-block;
+			height: inherit;
+			left: 0;
+			/*margin-top: -1px;*/
+			position: absolute;
+			width: 2px
+		}
+
+		.is-active-link::before {
+			/*background-color:#54BC4B*/
+			background-color:#507B50;
+		}
+
+		.toc-container > h1, .toc-container > span, .toc-container > p {
+			margin: .2rem; 
+			padding: 10px; 
+		}
+		.toc-container > span {
+			font-size: 10px; 
+			color: #AAA; 
+		}
+		.toc-container > p {
+			font-size: 10px; 
+			vertical-align: middle;
+			color: #AAA; 
+		}
+		.toc-container > p > a {
+			cursor: pointer;
+			display: inline-block;
+			font-size: 1.2rem; 
+			color: #DDD;
+		}
+	</style>
+	<div class="toc-container">
+		<span>Last update in {{dateNormalize(blog.stat.mtime)}}</span>
+		
+		{{if cate.name === 'all'}}
+			{{if blog.info.category}}
+			<p>本文分类于 <a href="/blog/{{blog.info.category}}">{{blog.info.category}}</a></p>
+			{{else}}
+			<p>本文<a href="/blog/noname">未分类</a></p>
+			{{/if}}
+		
+		{{else}}
+		<h1>{{cate.name}}*</h1>
+		<ul class="catlist toc-container toc-list">
+			{{each cate.list as elem i }}
+				{{if elem.info.title == blog.info.title }}
+					<li class="toc-list-item">
+						<a class="is-active-link node-name--H1" href="#">&gt;&gt; {{elem.info.title}}</a>
+					</li>
+				{{else}} 
+					<li class="toc-list-item">
+						<a class="node-name--H1" href="{{ path.join('/', 'blog', cate.name, path.parse(elem.fileName).name + '.html').toString().replace(/\\/g, '/')}}"># {{elem.info.title}}</a>
+					</li>
+				{{/if}}
+			{{/each}}
+		</ul>
+		{{/if}}
+		<h1>Content*</h1>
+		<div id="toc"></div> 
+	</div>
+	<div class="VS-btn">
+		<span class="btn-VS-toggle">
+			<div id="toggle-btn" class="btn-VS-toggle-false"></div>
+		</span>
+	</div> 
+
+	{{else}}
+	<style>
+		.vally-side {
+			min-width: 320px; 
+			padding-top: 0%;
+			/*margin-bottom: 4em; */
+			position: absolute;
+			opacity: 0;
+			top: -30%;
+			left: 0; 
+			height: 0%;
+			width: 100%; 
+			z-index: 10; 
+			/*background-color: rgba(255,255,255, .8);*/
+			background: linear-gradient(
+				90deg, #444 50%, transparent 0
+			), rgba(0,0,0,.25);
+			color: white; 
+			background-size: 2px 100%;
+
+			transition: opacity .6s, height .7s, padding .7s;
+			overflow: hidden;
+			transform: rotateZ(0); 
+
+			/*visibility: hidden;*/
+		}
+		
+		.vally-side-topen {
+			padding-top: 30%;
+			height: 135%;
+			min-height: 600px; 
+			opacity: 1; 
+			/*visibility: visible;*/
+		}
+		
+		.intro {
+			margin: 0 1em; 
+			padding: 0 20px 1em 20px; 
+			position: relative;
+			/*border-bottom: 1px dashed;*/
+		}
+		.intro > img {
+			width: 150px;
+			border-radius: 4px; 
+			display: block;
+			margin: 1.5em auto 0.25em auto;
+		}
+		.intro .name {
+			text-align: center;
+			margin-bottom: 40px; 
+			font-size: 2rem; 
+			font-style: italic;
+			text-shadow: 2px 3px 2px rgba(0,0,0,0.5);
+		}
+		.intro a {
+			padding: 0;
+		}
+
+		.to-you {
+			margin: 2em auto; 
+		}
+		.to-you h1 {
+			text-align: left;
+			margin: 0 20px 50px 20px;
+			padding-left: .25em .5em;
+			font-size: 2.5rem; 
+			border-bottom: 1px dashed rgba(255,255,255,.5); 
+		}
+		.to-you a {
+			color: #FFF;
+			text-shadow: 2px 3px 2px rgba(0,0,0,0.5);
+		}
+
+		.toClose {
+			width: 50px; 
+			height: 50px; 
+			/*background-color: rgba(0,0,0,.4); */
+			position: absolute;
+			top: 0;
+			right: 0; 
+			transform: rotate(45deg);
+			-webkit-transform: rotate(45deg);
+			cursor: pointer;
+			border-radius: 100px; 
+
+			filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.5));
+		}
+		
+		.toClose-heng {
+			width: 100%;
+			height: 100%; 
+			position: absolute;
+			top: 0;
+			left: 0; 
+			background: linear-gradient(
+				0deg, #FFF 100%, transparent 0
+			);
+			background-size: 100% 6px; 
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		.toClose-shu {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0; 
+			background: linear-gradient(
+				90deg, #FFF 100%, transparent 0
+			);
+			background-size: 6px 100%; 
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+	</style>
+
+	<div class="intro">
+		<!-- <h1>Vally *</h1> -->
+		<!-- <p>eczn's blog</p> -->
+		<img src="/images/cir.jpg" alt="cir.jpg">
+		<p class="name">eczn</p>
+		<div id="_about-off" class="toClose">
+			<span class="toClose-heng"></span>
+			<span class="toClose-shu"></span>
+		</div> 
+	</div>
+	<div class="to-you">
+		<h1><a href="/blog/all/about.html">About</a></h1>
+		<h1><a target="_blank" href="https://github.com/eczn">Github</a></h1>
+		<h1><a target="_blank" href="http://www.pixiv.net/member.php?id=3185353">Pixiv</a></h1>
+	</div>
+	
+	{{/if}}
+
+	
+	
+	<script>
+		$('#_about').click(function(){
+			if ($(this).attr('is-show')){
+				$(this).attr('is-show', ''); 
+				$('.vally-side').removeClass('vally-side-topen'); 
+			} else {
+				$(this).attr('is-show', '√'); 
+				$('.vally-side').addClass('vally-side-topen'); 
+			}
+		});
+		// $('.vally-side').addClass('vally-side-topen'); 
+		$('#_about-off').click(function(){
+			$('#_about').attr('is-show', ''); 
+			$('.vally-side').removeClass('vally-side-topen'); 
+		});
+	</script>
+</aside>
+
+<script src="//cdn.bootcss.com/tocbot/2.1.5/tocbot.min.js"></script>
+<script>
+var aside = (function($){ // it needs jQuery or Zeptos 
+	var aside = {
+		stat: false,
+		$btn: $('#toggle-btn'),
+		$VS: $('#VS'),
+		$body: $('body'),
+		toggle: toggle_hook,
+		init: init
+	}
+
+	Object.defineProperty(aside, "setStat", {
+		get: function(){
+			return this.stat; 
+		}, 
+		set: function(val){
+			if (val ^ this.stat) { // 一真一假 
+				this.toggle(); 
+			} else {
+				// do not do any thing 
+			}
+		}
+	});
+
+	function toggle_hook(){
+		if (aside.stat){ // turn to false
+			aside.$body.removeClass('padding-push'); 
+			aside.$btn.removeClass('btn-VS-toggle-true')
+				.addClass('btn-VS-toggle-false'); 
+			aside.$VS.removeClass('vally-push'); 
+		} else { // turn to true 
+			aside.$body.addClass('padding-push'); 
+			aside.$btn.removeClass('btn-VS-toggle-false')
+				.addClass('btn-VS-toggle-true');
+			aside.$VS.addClass('vally-push'); 
+		}
+
+		aside.stat = !aside.stat; 
+	}
+
+	function init(){
+		$('.btn-VS-toggle').click(toggle_hook);	
+
+		window.tocbot.init({
+			// Where to render the table of contents.
+			tocSelector: '#toc',
+			// Where to grab the headings to build the table of contents.
+			contentSelector: '.md',
+			// Which headings to grab inside of the contentSelector element.
+			headingSelector: 'h1, h2, h3',
+		});
+
+		console.info('aside loaded'); 
+		return aside; 
+	}
+	
+	return aside; 
+})($); 
+
+aside.init(); 
+// aside.setStat = true; 
+
+</script>

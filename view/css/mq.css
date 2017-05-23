@@ -1,0 +1,32 @@
+/* mq.css */ 
+
+@media screen and (max-width: 700px) and (min-width: 320px) {
+	.page-normal {
+		width: 35px;
+		height: 35px; 
+		margin: 8px; 
+	}
+
+	body {
+		padding: 15px 20px; 
+		margin: 0; 
+	}
+
+	.blog > .title {
+		position: relative;
+		font-size: .6rem; 
+	}
+	
+	.md h1 {
+		font-size: .6rem; 
+	}
+
+	.md {
+		font-size: .45rem; 
+	}
+
+	.hljs { 
+		margin-left: -20px; 
+		margin-right: -20px; 
+	}
+}

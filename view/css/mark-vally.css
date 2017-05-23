@@ -1,0 +1,137 @@
+/* mark-vally.css */
+.title {
+	position: relative;
+}
+
+.time {
+	color: #BBB;
+	/* position: absolute; */
+	margin-bottom: -1em;
+	bottom: 100%;
+	display: block;
+	font-size: 10px;
+}
+
+.title-content {
+	font-size: .6rem; 
+	font-weight: 600; 
+	display: block;
+	margin-top: 0; 
+}
+
+.hljs {
+	line-height: 1.25; 
+	background-color: rgb(35, 38, 40);
+	color: rgb(204, 204, 204);
+	overflow-x: auto;
+	margin-bottom: 1em; 
+	padding: 15px 20px; 
+}
+
+.hljs-keyword {
+	color: rgb(204, 153, 204);
+}
+
+.hljs-attr { color: rgb(255, 204, 102); }
+
+.hljs-string { color: rgb(153, 204, 153); }
+
+.hljs-comment { color: rgb(120, 120, 120); }
+
+.hljs-function { color: rgb(249, 145, 87); }
+
+.hljs-built_in { color: rgb(255, 204, 102); }
+
+.hljs-number { color: rgb(249, 145, 87); }
+
+.hljs-function .hljs-keyword { color: rgb(102, 153, 204); }
+
+.md {
+	line-height: 2; 
+	font-size: .3rem; 
+}
+
+.md h1 a {
+	color: #BBB;
+	text-decoration: none;
+}
+
+.md a {
+	color: #855; 
+	text-decoration: underline;
+}
+.md a:active {
+	opacity: .5; 
+}
+
+.md h1 {
+	position: relative;
+	font-size: .5rem; 
+	margin-top: 2em; 
+	margin-bottom: .5em; 
+}
+
+.md p {
+	font-size: inherit;
+	margin-bottom: 1em; 
+}
+
+.md code { 
+	font-family: Consolas, Menlo;
+}
+
+.md p > code, .md ul > code, .md ol > code, .md blockquote > code {
+	color: #A33;
+	border: 1px dashed #DDD;
+	padding: .1em .4em; 
+	border-radius: 4px;
+}
+
+.md > h1 code {
+	color: #BBB;
+	float: right;
+}
+
+.md ul, .md ol {
+	font-size: inherit; 
+	margin-bottom: 1em; 
+}
+
+.md ol {
+	list-style-type: decimal; 
+	/*list-style-type: decimal-leading-zero; */
+	margin-left: 1.8em;
+}
+
+.md ul li:before {
+	content: ">"; 
+	padding-right: .5em; 
+}
+
+.md hr {
+	height: 0;
+	border: none;
+	border-bottom: 1px solid #EEE;
+	width: 60%;
+	height: 1em; 
+	margin-bottom: 2em;
+	/*margin-left: auto;
+	margin-right: auto;*/
+	box-shadow: 0 15px 24px -14px rgba(0,0,0,.5);
+}
+
+.md > * img {
+	width: 100%; 
+}
+
+.md > img {
+	max-width: 100%; 
+	display: block;
+	margin: 0 auto; 
+	padding: 4px 8px; 
+	border: 1px solid #DDD;
+}
+
+.md blockquote {
+	position: relative;
+}

@@ -1,0 +1,60 @@
+ <!--            /\              .\
+              /   |            /  |
+             / /| | .         / | | 
+          .,--,. /        .,--,. /         Vally
+         /      /|       /      /|
+         \ ,   / /       \ .   / /
+         /\_../-'         \_../-'
+      , / |/ /           / / /
+       /    / o         /   /o
+       /  /            /  /
+       '''     +       " '    +                -->
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+	<meta name="keywords" content="vally,blog,code">
+	<meta name="description" content="eczn的个人博客">
+	<title>The New Vally - eczn's blog</title>
+	<script src="/lib/flexible.min.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="/icon.jpg" media="screen">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/home.css">
+	<link rel="stylesheet" href="/css/mq.css">
+	<script src="/lib/zepto.min.js"></script>
+</head>
+<body>
+	{{include 'html/public/nav.html'}}
+	<ul class="blogs">
+		{{each blogs blog idx}}
+		<a href="{{blog.info.link}}">
+			<li class="blog">
+				<div class="intro">
+					{{blog.info.date | yyyymmdd}}
+				</div>
+				<div class="title">
+					<span class="content">{{blog.info.title}}</span>
+				</div>
+				{{each blog.info.tags tag}}
+				<span class="tag">#{{tag}}</span>
+				{{/each}}
+			</li>
+		</a>
+		{{/each}}
+	</ul>
+
+	<ul class="page-container">
+		{{each pages page idx}}
+			
+		<a href="{{page.link}}" active={{page.active}} class="page-normal">
+			<li>{{idx}}</li>
+		</a>
+
+		{{/each}}
+	</ul>
+
+	{{include 'html/public/footer.html'}}
+	{{include 'html/public/ga.html'}}
+</body>
+</html>   
