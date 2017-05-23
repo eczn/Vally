@@ -8,5 +8,6 @@
 /work/build/*
 /work/blogs/*
 /temp/*
+/old_code/temp/*
 /config.js 
 /npm-debug.*
