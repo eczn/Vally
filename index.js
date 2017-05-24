@@ -4,7 +4,8 @@ require('shelljs/global');
 
 var server = require('./tools/server')
   , newblog = require('./cmd/newblog.js')
-  , config = require('./config'); 
+  , config = require('./config')
+  , generate = require('./cmd/generate'); 
 
 var argv = require('yargs')
 	.command(["serve", "s"], "Opening Vally Server For Edit And Read", function (yargs){  
@@ -25,6 +26,8 @@ var argv = require('yargs')
 	.command(["generate", "g"], "Generate The Miniest Code For Vally's Blog", function(yargs){
 		// uglify 
 		echo("Generating ... "); 
+
+		generate(); 
 	})
 	.command(["deploy", "d"], "Deploy You Vally Site To Git Page", function(yargs){
 		echo("Deploying ... ");
