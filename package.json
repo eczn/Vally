@@ -1,5 +1,8 @@
 {
   "name": "Vally",
+  "bin": {
+    "vally": "index.js"
+  },
   "version": "3.0.0",
   "description": "Static Blog Generator",
   "main": "index.js",
@@ -14,6 +17,7 @@
     "chokidar": "^1.6.1",
     "colors": "^1.1.2",
     "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
     "highlight.js": "^9.9.0",
     "markdown": "^0.5.0",
     "markdown-it": "^8.2.1",
