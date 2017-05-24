@@ -2,7 +2,7 @@
 var config = require('../config')
   , fs = require('fs')
   , path = require('path')
-  , log = require('../tools/vlog')
+  , logger = require('../tools/logger')
   , open = require("open");
 
 module.exports = function(fileName){
@@ -13,19 +13,18 @@ module.exports = function(fileName){
 	// Blog Directory Location 
 	let blog = config.path.blog; 
 
+	const errLog = logger.bind(this, 'X'.error, '[FILE EXIST]'.input); 
+	const infoLog = logger.bind(this, '>>'.verbose, 'INFO:'.input); 
+
 	if (fs.existsSync(path.join(blog, fileName))){
-		log('ERROR', [
-			`${fileName} EXIST !!! `
-		], 'prompt'); 
+		errLog(fileName.warn); 
 
 		// EXIST 
 		return; 
 	} else {
 		// Log 
-		log('INFO', [
-			('Your Blogs Source Located in ' + blog.verbose),
-			`And Vally Will Add A New File "${fileName}" To There`.warn
-		], 'info'); 
+		infoLog('Your Blogs Source Located in ' + blog.verbose); 
+		infoLog(`And Vally Will Add A New File "${fileName}" To There`.warn)
 	}
 
 	// New Blog Template
