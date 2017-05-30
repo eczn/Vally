@@ -56,7 +56,7 @@ function collector() {
 		// 分类 
 		blogs => {
 			let categories = _.reduce((acc, blog) => {
-				let blogIdx = _.indexOf(blog)(blogs); 
+				// let blogIdx = _.indexOf(blog)(blogs); 
 
 				if (acc[blog.info.category]) {
 					acc[blog.info.category].push(blog); 
@@ -69,6 +69,9 @@ function collector() {
 
 			// 所有分类
 			let allCategoriesName = _.map(cateName => {
+				// 分类简介 （以该分类下的第一个博文的 cateIntro 为准）
+				let cateIntro = categories[cateName].slice(-1)[0].info.cateIntro;
+				
 				// blogs from cateName
 				_.forEach(blog => {
 					// 注入 /blog/*.html 
@@ -90,15 +93,18 @@ function collector() {
 				let base = path.join(config.path.dist, 'categories'); 
 				let html = categoryRender({
 					blogs: categories[cateName],
-					cateName: cateName
+					cateName: cateName,
+					cateIntro: cateIntro
 				}); 
 
 				fs.writeFile(path.join(base, cateName + '.html'), html).then(err => {
 					if (err) throw err; 
 				})
 
+				
 				return {
 					name: cateName,
+					cateIntro: cateIntro,
 					count: categories[cateName].length
 				}
 			})(Object.keys(categories));
