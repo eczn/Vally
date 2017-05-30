@@ -16,15 +16,14 @@
 </head>
 <body>
 	<header>
-		<h1>{{cateName}}</h1>
-		<p style="color: #BBB;">[{{blogs.length}} 篇] {{cateIntro}}</p>
-		<!-- <p>@Category</p> -->
+		<h1>{{cateName}} <sub>[共 {{blogs.length}} 篇]</sub> </h1>
+		<p intro>{{cateIntro}}</p>
 	</header>
 
 	<ul class="blogs">
 		{{each blogs blog idx}}
 		<a href="{{blog.info.link}}">
-			<li class="blog">
+			<li class="blog cate">
 				<div class="time">
 					{{blog.info.date | yyyymmdd}}
 				</div>

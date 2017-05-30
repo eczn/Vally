@@ -43,14 +43,10 @@
 .blog {
 	display: inline-block;
 	vertical-align: top;
-	/*width: 315px; */
-	/*in mq.css*/
 	padding-bottom: 1rem; 
 	word-wrap: break-word;
 	word-break: normal;
-	
 	padding-right: .25rem;
-
 	margin-bottom: 1rem;
 }
 
@@ -96,3 +92,13 @@ header h1 {
 	font-size: .7rem;
 }
 
+header h1 sub {
+	color: #BBB;
+	font-size: .35rem;
+	bottom: -.4em;
+	font-weight: normal;
+}
+
+header p[intro] {
+	color: #BBB; 
+}

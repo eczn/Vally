@@ -17,13 +17,13 @@
 <body>
 	<header>
 		<h1>所有分类</h1>
-		<p style="color: #BBB;"><span>[{{categories.length}} 类] => [共 {{count4all}} 篇]</span></p>
+		<p intro>[{{categories.length}} 类] => [共 {{count4all}} 篇]</p>
 	</header>
 
 	<ul class="blogs">
 		{{each categories cate idx}}
 		<a href="{{cate.name}}.html">
-			<li class="blog">
+			<li class="blog cate">
 				<div class="title">
 					<span class="content">&gt; {{cate.name}}</span>
 					<span class="count">[共 {{cate.count}} 篇]</span>

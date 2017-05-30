@@ -15,10 +15,15 @@
 
 	.blog > .title {
 		position: relative;
+		font-size: .6rem; 
+		padding-top: 2px;
+	}
+
+	.cate > .title {
 		font-size: .65rem; 
 	}
 
-	.blog {
+	.cate {
 		display: block;
 	}
 	
@@ -46,7 +51,7 @@
 }
 
 @media screen and (min-width: 700px) {
-	.blog {
+	.cate {
 		width: 315px; 	
 	}
 }
