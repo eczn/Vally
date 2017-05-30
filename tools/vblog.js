@@ -35,6 +35,7 @@ var vParse = function(blogPath){
 	// category init 
 	vblog.info.category = vblog.info.category || '_'; 
 	vblog.info.categoryLink = path.join('/categories', vblog.info.category + '.html'); 
+	vblog.info.cateIntro = vblog.info.cateIntro || `该分类无介绍 创建于 ${+vblog.info.date} 0v0`; 
 
 	// blog id 
 	vblog.info.id = md5(vblog.info.title); 

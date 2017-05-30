@@ -29,15 +29,22 @@ function start(cb){
 		// awaitWriteFinish: true
 	});
 
+	var watchBlogs = chokidar.watch([config.path.blog], {
+		ignored: /[\/\\]\./,
+		persistent: true,
+		ignoreInitial: true
+		// awaitWriteFinish: true
+	});
+
 	watchView.on(['all'], function(name, where, stat){
 		cb(name, where); 
-
 		copy.jscss(); 
-
 		collector(); 
 	});
 
-	
+	watchBlogs.on(['all'], function(name, where, stat){
+		collector(); 
+	}); 
 
 	// Init 
 	copy.jscss(); 
