@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="zh-Hans"> 
+{{include 'html/public/all.html'}}
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>	
@@ -14,6 +15,10 @@
 	<link rel="stylesheet" href="/css/mark-vally.css">
 	<link rel="stylesheet" href="/css/mq.css">
 	<script src="/lib/zepto.min.js"></script>
+	<script src="/js/mark-vally.js"></script>
+
+	<meta name="msapplication-TileColor" content="#232628">
+	<meta name="theme-color" content="#232628" />
 </head>
 {{if blog.info.textPlain}}
 	<style>
@@ -70,7 +75,9 @@
 		<link rel="stylesheet" href="//comment.moe/dest/static/css/plus.css">
 		<script src="//comment.moe/dest/static/js/build.js" charset="UTF-8"></script>
 	</div>
-	
+
+	<div class="img-clicked"></div>
+
 	{{include 'html/public/footer.html'}}
 	{{include 'html/public/ga.html'}}
 </body>
