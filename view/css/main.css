@@ -16,10 +16,12 @@ body {
     position: relative;
     max-width: 700px;
     margin: 100px auto 0px;
-    font-family: "PT Sans", Menlo, Consolas, "-apple-system", BlinkMacSystemFont,"微软雅黑", Verdana, Arial, Helvetica, sans-serif;
+    /*font-family: "PT Sans", Menlo, Consolas, "-apple-system", BlinkMacSystemFont,"微软雅黑", Verdana, Arial, Helvetica, sans-serif;*/
+    font-family: "PT Mono", Consolas, Monaco, Menlo, "-apple-system", BlinkMacSystemFont,"微软雅黑", Verdana, Arial, Helvetica, sans-serif;
     background-color: white;
     padding: 30px 35px 40px 35px;
     box-shadow: 0 68px 107px -24px rgba(0,0,0,.4);
+    /*border: 1px solid #DDD;*/
     border-radius: 0 0 15px 0px;
     z-index: 10;
     color: #5B5B5B;
@@ -76,4 +78,8 @@ footer hr {
     height: 1px; 
     background-color: #EEE; 
     width: 275px; 
+}
+
+.no-scroll {
+    overflow: hidden;
 }
