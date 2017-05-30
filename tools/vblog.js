@@ -4,46 +4,11 @@ var path = require('path')
   , md5 = require('md5')
   , template = require('art-template')
   , _ = require('ramda')
-  , hljs = require('highlight.js')
-  , alias = require('./alias')
   , config = require('../config')
 
-hljs.configure({
-	useBR: true
-});
 
-var md = require('markdown-it')({
-	highlight: function (str, lang) {
-		lang = alias(lang); 
 
-		let line = str.split('\n').length - 2; 
-		let lefts = ['3em', '3.6em'];
-
-		var lineCount = new Array(line + 1).fill(0).reduce((acc, cur, idx) => {
-			idx = idx < 100 ? ('00' + idx.toString()).slice(-2) : idx; 
-
-			return acc + `<li>${idx}</li>`; 
-		}, '<div class="lines">') + '</div>'; 
-
-		var left = lefts[Math.floor((line + 1) / 100)] || lefts[1]; 
-
-		if (lang && hljs.getLanguage(lang)) {
-			try {
-				return `<pre style="padding-left: ${left}" class="hljs ${lang}">${lineCount}<code class="lang-name">${lang}</code><code>` +
-							hljs.highlight(lang, str, true).value +
-						`</code></pre>`;
-			} catch (__) { throw __; }
-		}
-		return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
-	},
-	html: true,
-	xhtmlOut: true,
-	breaks: true,
-	linkify: true,
-	typographer: true
-}).use(require('markdown-it-toc-and-anchor').default, {
-	// markdown-it-toc-and-anchor 
-});
+var md = require('./md');
 
 
 
