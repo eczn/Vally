@@ -14,9 +14,10 @@
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/mark-vally.css">
 	<link rel="stylesheet" href="/css/mq.css">
+	<script src="https://cdn.bootcss.com/jump.js/1.0.2/jump.min.js"></script>
 	<script src="/lib/zepto.min.js"></script>
 	<script src="/js/mark-vally.js"></script>
-
+	
 	<meta name="msapplication-TileColor" content="#232628">
 	<meta name="theme-color" content="#232628" />
 </head>
@@ -51,7 +52,15 @@
 	</article>
 	
 	<div style="margin: 3rem auto;" class="md">
-		<hr />
+		<hr init forbtns />
+		<div class="btns">
+			<button onclick="linkto('/')" class="nav-btn" hash circle grey>↖</button>
+			<button onclick="totop()" class="nav-btn" hash circle grey>↑</button>
+			<button onclick="linkto('{{pre.info.link}}')" class="nav-btn" hash circle grey>←</button>
+			<button onclick="linkto('{{next.info.link}}')" class="nav-btn" hash circle grey>→</button>
+		</div>
+		<hr init forbtns />
+		
 		<span class="eof">完 :: EOF</span>
 		<p style="margin: 0 0 1rem 0;color: #666;">分类于 <a href="{{blog.info.categoryLink}}?id={{blog.info.id}}">{{blog.info.category}}</a></p>
 		
@@ -59,7 +68,7 @@
 			
 		</style>
 
-		<div class="btns">
+		<div center class="btns">
 			<a class="gotohome" href="{{next.info.link}}"><p>下一篇: {{next.info.title}}</p></a>
 			<a class="gotohome" href="/"><span class="return">&lt; 回首页</span></a>
 		</div>

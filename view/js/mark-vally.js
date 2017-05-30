@@ -1,4 +1,26 @@
 // mark-vally.js
+function linkto(str){
+	window.location.href = str; 
+}
+
+function totop(){
+	// $('body').scrollTop(0); 
+	Jump('html', {
+		duration: 500,
+		offset: 0,
+		callback: function(e){
+			var $body = $('body'); 
+			var f = $body.css('margin-top'); 
+
+			$body.css('margin-top', '150px'); 
+			setTimeout(function(){
+				$body.css('margin-top', 0); 
+			}, 200)
+		},
+		a11y: false
+	})
+}
+
 $(function(){
 	var list = []; 
 
