@@ -5,10 +5,10 @@ an blog generator based on node.js
 
 **第三次重构 Vally**
 
-1. 重写了核心 
-2. 重写了样式
-3. 计划重写图片部署 
-4. 计划重写成命令行程序 
+1. √ 重写了核心 
+2. √ 重写了样式
+3. √ 重写图片部署 
+4. √ 重写成命令行程序 
 
 # DEMO 
 https://eczn.coding.me  
