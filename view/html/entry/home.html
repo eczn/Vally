@@ -13,9 +13,11 @@
 	<link rel="stylesheet" href="/css/home.css">
 	<link rel="stylesheet" href="/css/mq.css">
 	<script src="/lib/zepto.min.js"></script>
+	<script src="/js/mark-vally.js"></script>
 </head>
 <body>
 	{{include 'html/public/nav.html'}}
+	<div class="top"></div>
 	<ul class="blogs">
 		{{each blogs blog idx}}
 		<a href="{{blog.info.link}}">

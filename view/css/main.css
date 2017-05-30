@@ -86,3 +86,13 @@ footer hr {
 .no-scroll {
     overflow: hidden;
 }
+
+.top {
+    position: fixed;
+    z-index: 9; 
+    left: 0;
+    width: 5px;
+    top: 0; 
+    height: 5px;
+    background-color: #F0BFB5; 
+}

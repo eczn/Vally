@@ -3,12 +3,34 @@ function linkto(str){
 	window.location.href = str; 
 }
 
+$(window).scroll(function(e){
+    var rate = getRate(); 
+    var rateStr = rate * 100 + '%'; 
+    // console.log(rate, rateStr)
+    $('.top').css('width', rateStr); 
+}); 
+
+function getRate(){
+	var $b = $('body'); 
+
+	var cha = parseInt($b.css('margin-top')) + parseInt($b.css('margin-bottom'));
+
+	var total = $b.height() + cha - window.innerHeight; 
+	var now = $b.scrollTop(); 
+	// console.log('now, total', now, total); 
+	// console.log('rate:', now / total); 
+
+	return now / total; 
+}
+
 function totop(){
 	// $('body').scrollTop(0); 
 	Jump('html', {
 		duration: 500,
 		offset: 0,
 		callback: function(e){
+			console.log(e); 
+
 			var $body = $('body'); 
 			var f = $body.css('margin-top'); 
 
