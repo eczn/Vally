@@ -71,7 +71,7 @@ function collector() {
 			let allCategoriesName = _.map(cateName => {
 				// 分类简介 （以该分类下的第一个博文的 cateIntro 为准）
 				let cateIntro = categories[cateName].slice(-1)[0].info.cateIntro;
-				
+
 				// blogs from cateName
 				_.forEach(blog => {
 					// 注入 /blog/*.html 
@@ -80,6 +80,7 @@ function collector() {
 					  , base = path.join(config.path.dist, 'blog')
 					  , html = blogRender({
 						blog: blog,
+						pre: blogs[blogIdx - 1] || blogs[blogs.length - 1],
 						next: blogs[blogIdx + 1] || blogs[0]
 					}); 
 
