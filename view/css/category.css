@@ -1,6 +1,7 @@
 /*category.css*/
 .blogs {
-    text-align: justify;
+    /*text-align: justify;*/
+    font-size: 0; 
 }
 
 .blogs a {
@@ -42,10 +43,15 @@
 .blog {
 	display: inline-block;
 	vertical-align: top;
-	width: 250px; 
+	/*width: 315px; */
+	/*in mq.css*/
 	padding-bottom: 1rem; 
 	word-wrap: break-word;
 	word-break: normal;
+	
+	padding-right: .25rem;
+
+	margin-bottom: 1rem;
 }
 
 .blog .title {

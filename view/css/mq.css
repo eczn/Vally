@@ -10,11 +10,16 @@
 	body {
 		padding: 15px 20px; 
 		margin: 0; 
+		box-shadow: inset 0 42px 60px -60px rgba(0,0,0,.3);
 	}
 
 	.blog > .title {
 		position: relative;
-		font-size: .6rem; 
+		font-size: .65rem; 
+	}
+
+	.blog {
+		display: block;
 	}
 	
 	.md h1 {
@@ -34,8 +39,14 @@
 		font-size: .45rem; 
 	}
 
-	.md > .hljs { 
+	.md > .hljs, .md > figure { 
 		margin-left: -20px; 
 		margin-right: -20px; 
+	}
+}
+
+@media screen and (min-width: 700px) {
+	.blog {
+		width: 315px; 	
 	}
 }
