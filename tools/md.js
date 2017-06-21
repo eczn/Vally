@@ -43,6 +43,8 @@ let md = require('markdown-it')({
 md.use(require('markdown-it-sub'));
 md.use(require('markdown-it-sup'));
 
+md.use(require('markdown-it-table-of-contents')); 
+
 var implicitFigures = require('markdown-it-implicit-figures');
 md.use(implicitFigures, {
   dataType: false,  // <figure data-type="image">, default: false 
