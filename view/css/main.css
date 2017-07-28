@@ -14,22 +14,28 @@ h1, h2 {
 
 body {
     position: relative;
-    max-width: 700px;
-    margin: 100px auto 0px;
+
     /*font-family: "PT Sans", Menlo, Consolas, "-apple-system", BlinkMacSystemFont,"微软雅黑", Verdana, Arial, Helvetica, sans-serif;*/
     font-family: "PT Mono", Consolas, Monaco, Menlo, "-apple-system", BlinkMacSystemFont,"微软雅黑", Verdana, Arial, Helvetica, sans-serif;
     background-color: white;
-    padding: 30px 35px 40px 35px;
-    box-shadow: 0 68px 107px -24px rgba(0,0,0,.4);
-    /*border: 1px solid #DDD;*/
-    border-radius: 0 0 15px 0px;
+    
     z-index: 10;
     color: #5B5B5B;
-    overflow-x: hidden;
-    margin-bottom: 10em; 
     
+    overflow-x: hidden;
+    
+    
+}
+
+.container {
+    padding: 30px 35px 40px 35px;
+    border-radius: 0 0 15px 0px;
+    max-width: 700px;
+    margin: 100px auto 0px;
+    margin-bottom: 10em; 
     transition: margin .2s; 
     transition-timing-function: cubic-bezier(0.3, 0.53, 0.58, 0.79);
+
 }
 
 ::selection {
