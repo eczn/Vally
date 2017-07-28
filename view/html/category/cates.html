@@ -17,23 +17,25 @@
 </head>
 <body>
 	<div class="top"></div>
-	<header>
-		<h1>所有分类</h1>
-		<p intro>[{{categories.length}} 类] => [共 {{count4all}} 篇]</p>
-	</header>
+	<div class="container">
+		<header>
+			<h1>所有分类</h1>
+			<p intro>[{{categories.length}} 类] => [共 {{count4all}} 篇]</p>
+		</header>
 
-	<ul class="blogs">
-		{{each categories cate idx}}
-		<a href="{{cate.name}}.html">
-			<li class="blog cate">
-				<div class="title">
-					<span class="content">&gt; {{cate.name}}</span>
-					<span class="count">[共 {{cate.count}} 篇]</span>
-				</div>
-			</li>
-		</a> 
-		{{/each}}
-	</ul>
+		<ul class="blogs">
+			{{each categories cate idx}}
+			<a href="{{cate.name}}.html">
+				<li class="blog cate">
+					<div class="title">
+						<span class="content">&gt; {{cate.name}}</span>
+						<span class="count">[共 {{cate.count}} 篇]</span>
+					</div>
+				</li>
+			</a> 
+			{{/each}}
+		</ul>
+	</div>
 
 	<script src="/lib/fastclick.min.js"></script>
 	<script>

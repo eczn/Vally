@@ -18,35 +18,37 @@
 <body>
 	{{include 'html/public/nav.html'}}
 	<div class="top"></div>
-	<ul class="blogs">
-		{{each blogs blog idx}}
-		<a href="{{blog.info.link}}">
-			<li class="blog">
-				<div class="intro">
-					{{blog.info.date | yyyymmdd}}
-				</div>
-				<div class="title">
-					<span class="content">{{blog.info.title}}</span>
-				</div>
-				{{each blog.info.tags tag}}
-				<span class="tag">#{{tag}}</span>
-				{{/each}}
-			</li>
-		</a>
-		{{/each}}
-	</ul>
+	<div class="container">
+		<ul class="blogs">
+			{{each blogs blog idx}}
+			<a href="{{blog.info.link}}">
+				<li class="blog">
+					<div class="intro">
+						{{blog.info.date | yyyymmdd}}
+					</div>
+					<div class="title">
+						<span class="content">{{blog.info.title}}</span>
+					</div>
+					{{each blog.info.tags tag}}
+					<span class="tag">#{{tag}}</span>
+					{{/each}}
+				</li>
+			</a>
+			{{/each}}
+		</ul>
 
-	<ul class="page-container">
-		{{each pages page idx}}
-			
-		<a href="{{page.link}}" active={{page.active}} class="page-normal">
-			<li>{{idx}}</li>
-		</a>
+		<ul class="page-container">
+			{{each pages page idx}}
+				
+			<a href="{{page.link}}" active={{page.active}} class="page-normal">
+				<li>{{idx}}</li>
+			</a>
 
-		{{/each}}
-	</ul>
+			{{/each}}
+		</ul>
 
-	{{include 'html/public/footer.html'}}
+		{{include 'html/public/footer.html'}}
+	</div>
 	{{include 'html/public/ga.html'}}
 </body>
 </html>   

@@ -32,63 +32,65 @@
 <body>
 	{{include 'html/public/header.html'}}
 	<div class="top"></div>
-	<article class="md">
-		<div class="title">
-			<time class="time">{{blog.info.date | yyyymmdd}}
-			{{each blog.info.tags tag i}}
-			<span class="tag">{{tag}}</span>
-			{{/each}}
-			</time>
+	<div class="container">
+		<article class="md">
+			<div class="title">
+				<time class="time">{{blog.info.date | yyyymmdd}}
+				{{each blog.info.tags tag i}}
+				<span class="tag">{{tag}}</span>
+				{{/each}}
+				</time>
 
-			<span class="title-content">{{ blog.info.title }}</span>
-			<hr />
-		</div>
-		
-		{{if blog.info.headPic}}
-		<div style="background-image: url({{blog.info.headPic}});" class="head-pic">
-			<!-- <img src="{{blog.info.headPic}}" alt=""> -->
-		</div>
-		{{/if}}
-		{{@ blog.content }}
-	</article>
-	
-	<div style="margin: 3rem auto;" class="md">
-		<hr init forbtns />
-		<div class="btns">
-			<button onclick="linkto('/')" class="nav-btn" hash circle grey>↖</button>
-			<button onclick="totop()" class="nav-btn" hash circle grey>↑</button>
-			<button onclick="linkto('{{pre.info.link}}')" class="nav-btn" hash circle grey>←</button>
-			<button onclick="linkto('{{next.info.link}}')" class="nav-btn" hash circle grey>→</button>
-		</div>
-		<hr init forbtns />
-		
-		<span class="eof">完 :: EOF</span>
-		<p style="margin: 0 0 1rem 0;color: #666;">分类于 <a href="{{blog.info.categoryLink}}?id={{blog.info.id}}">{{blog.info.category}}</a></p>
-		
-		<style>
+				<span class="title-content">{{ blog.info.title }}</span>
+				<hr />
+			</div>
 			
-		</style>
+			{{if blog.info.headPic}}
+			<div style="background-image: url({{blog.info.headPic}});" class="head-pic">
+				<!-- <img src="{{blog.info.headPic}}" alt=""> -->
+			</div>
+			{{/if}}
+			{{@ blog.content }}
+		</article>
+		
+		<div style="margin: 3rem auto;" class="md">
+			<hr init forbtns />
+			<div class="btns">
+				<button onclick="linkto('/')" class="nav-btn" hash circle grey>↖</button>
+				<button onclick="totop()" class="nav-btn" hash circle grey>↑</button>
+				<button onclick="linkto('{{pre.info.link}}')" class="nav-btn" hash circle grey>←</button>
+				<button onclick="linkto('{{next.info.link}}')" class="nav-btn" hash circle grey>→</button>
+			</div>
+			<hr init forbtns />
+			
+			<span class="eof">完 :: EOF</span>
+			<p style="margin: 0 0 1rem 0;color: #666;">分类于 <a href="{{blog.info.categoryLink}}?id={{blog.info.id}}">{{blog.info.category}}</a></p>
+			
+			<style>
+				
+			</style>
 
-		<div center class="btns">
-			<a class="gotohome" href="{{next.info.link}}"><p>下一篇: {{next.info.title}}</p></a>
-			<a class="gotohome" href="/"><span class="return">&lt; 回首页</span></a>
+			<div center class="btns">
+				<a class="gotohome" href="{{next.info.link}}"><p>下一篇: {{next.info.title}}</p></a>
+				<a class="gotohome" href="/"><span class="return">&lt; 回首页</span></a>
+			</div>
 		</div>
-	</div>
-	
-	<div class="img-dis display-none">
-		<img alt="">
-	</div>
-	
-	<div class="comment">
-		<!-- <p>茶馆id {{blog.info.id}}</p> -->
-		<div class="cm-article" data-key="{{blog.info.id}}"></div>
-		<link rel="stylesheet" href="//comment.moe/dest/static/css/plus.css">
-		<script src="//comment.moe/dest/static/js/build.js" charset="UTF-8"></script>
-	</div>
+		
+		<div class="img-dis display-none">
+			<img alt="">
+		</div>
+		
+		<div class="comment">
+			<!-- <p>茶馆id {{blog.info.id}}</p> -->
+			<div class="cm-article" data-key="{{blog.info.id}}"></div>
+			<link rel="stylesheet" href="//comment.moe/dest/static/css/plus.css">
+			<script src="//comment.moe/dest/static/js/build.js" charset="UTF-8"></script>
+		</div>
 
-	<div class="img-clicked"></div>
+		<div class="img-clicked"></div>
 
-	{{include 'html/public/footer.html'}}
+		{{include 'html/public/footer.html'}}
+	</div>
 	{{include 'html/public/ga.html'}}
 </body>
 </html>
