@@ -7,4 +7,5 @@ var o = {
 	html: 'HTML'
 }
 
+// 别名 
 module.exports = key => o[key] || key 

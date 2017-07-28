@@ -7,17 +7,17 @@ var path = require('path')
   , config = require('../config')
 
 
-
+// markdown 渲染器 
 var md = require('./md');
 
 
-
+// 解析 vally 博客的文件格式 
 var vParse = function(blogPath){
 	let text = fs.readFileSync(blogPath).toString()
 	  , temp = text.split('------')
 	  , vblog = {}; 
 
-	if (temp.length <= 1) throw new Error(`${blogPath} Has NOT The Vally's Blog Format !!! `); 
+	if (temp.length <= 1) throw new Error(`${blogPath} Is NOT The Vally's Blog Format !!! `); 
 
 	// content Parse 
 	vblog.markdown = temp[1]; 
@@ -66,7 +66,7 @@ var normalOpt = {
 }
 
 
-
+// 创建文件夹，如果存在则跳过 
 function mkdir(dir, cb){
 	try { fs.mkdirSync(dir) } catch (e){ cb && cb(e) }
 }

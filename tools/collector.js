@@ -11,15 +11,13 @@ var fs = require('then-fs')
   , mkdir = vBlogTools.mkdir
   , dir = config.path.blog; 
 
-
-
 var isDirectory = file => fs.statSync(path.join(dir, file)).isDirectory(); 
 var isDraft = blog => blog.info.isDraft; 
 
 
 function collector() {
 	// 读取文件列表  
-	fs.readdir(config.path.blog).then(
+	return fs.readdir(config.path.blog).then(
 		// 剔除 
 		// lists 里可能含有文件夹 得剔除 
 		lists => _.reject(isDirectory)(lists)
@@ -55,6 +53,7 @@ function collector() {
 	).then(
 		// 分类 
 		blogs => {
+			// Object cateName -> Array blog_list 
 			let categories = _.reduce((acc, blog) => {
 				// let blogIdx = _.indexOf(blog)(blogs); 
 
