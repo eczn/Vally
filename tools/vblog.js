@@ -17,6 +17,7 @@ var vParse = function(blogPath){
 	  , temp = text.split('------')
 	  , vblog = {}; 
 
+	// 不是 vblog 要求的格式 
 	if (temp.length <= 1) throw new Error(`${blogPath} Is NOT The Vally's Blog Format !!! `); 
 
 	// content Parse 
