@@ -67,12 +67,4 @@ logger.list = function(){
 
 logger.clear = clear; 
 
-// var warn = logger.bucket('WARN'); 
-// var w = logger.list('blogs'); 
-
-// // warn('警告'); 
-
-
-// w([1, 2, 3, 4, 5], '[ALL BLOG GENERATED]'); 
-
 module.exports = logger; 

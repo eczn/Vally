@@ -6,6 +6,8 @@ const collector = require('./collector')
 	, fs = require('then-fs')
 	, path = require('path')
 	, DIST = config.path.dist
+	, logger = require('./logger')
+	, infoLog = e => logger.bucket(e.cyan)
 
 var timeSort = _.sort(
 	(a, b) => b.date - a.date
@@ -92,7 +94,8 @@ var home2html = pages => {
 			)
 		)
 	).then(allSuc => {
-		console.log(`[[ PAGE ]] All /pages/x/ Generated, Count: ${status.length}`);
+		// console.log(`[[ PAGE ]] All /pages/x/ Generated, Count: ${status.length}`);
+		infoLog('PAGE')(`All /pages/x/ Generated, Count: ${status.length}`.yellow); 
 	}); 
 }
 
@@ -124,7 +127,8 @@ var cate2html = cates => {
 			return fs.writeFile(path.join(location, 'index.html'), html); 
 		})
 	)).then(allSuc => {
-		console.log(`[[ CATE ]] Cates Generated, Count: ${cateNames.length}`); 
+		// console.log(`[[ CATE ]] Cates Generated, Count: ${cateNames.length}`); 
+		infoLog('CATE')(`Cates Generated, Count: ${cateNames.length}`.yellow); 
 	})
 }
 
@@ -146,7 +150,8 @@ var makeBlog = vblogs => {
 	return Promise.all(
 		allPenddings
 	).then(allSuc => {
-		console.log(`[[ BLOG ]] All Blogs Generated, Count: ${allPenddings.length}`); 
+		// console.log(`[[ BLOG ]] All Blogs Generated, Count: ${allPenddings.length}`); 
+		infoLog('BLOG')(`All Blogs Generated, Count: ${allPenddings.length}`.yellow); 
 	})
 }
 
