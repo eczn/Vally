@@ -3,7 +3,7 @@
   "bin": {
     "vally": "index.js"
   },
-  "version": "3.4.3",
+  "version": "4.0.0",
   "description": "Static Blog Generator",
   "main": "index.js",
   "scripts": {
