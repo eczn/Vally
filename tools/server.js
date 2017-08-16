@@ -7,8 +7,39 @@ var chokidar = require('chokidar');
 // var collector = require('./collector');
 var render = require('./render'); 
 // var copy = require('./copy'); 
-
+var logger = require('./logger'); 
 var write = require('./write'); 
+
+var reloadLog = logger.bucket('RELOAD'); 
+var blank = n => new Array(n).fill(' ').join(''); 
+
+var fillTo = (str, n) => {
+	// var m = parseInt(str.length / 2); 
+	var d = n - str.length; 
+	if (d % 2 === 0){
+		var temp = blank(parseInt(d / 2)); 
+		return temp + str + temp; 	
+	} else {
+		var temp = blank(parseInt(d / 2)); 
+		return temp + str + temp + ' '; 
+	}
+}
+
+var reloadSuc = now => {
+	let end = new Date(); 
+	
+	logger.clear(); 
+
+	[
+		blank(38).bgWhite.black, 
+		fillTo('RELOAD SUCCESS', 38).bgWhite.black, 
+		fillTo(`In ${end - now} ms`, 38).bgWhite.black,
+		blank(38).bgWhite.black, 
+		''
+	].forEach(e => {
+		console.log(e)
+	}); 
+}
 
 function start(){
 	connect.server({
@@ -25,6 +56,8 @@ function start(){
 			.pipe(connect.reload());
 	});
 
+	
+
 	// Watch For config.path.view 
 	chokidar.watch([config.path.view], {
 		ignored: /[\/\\]\./,
@@ -34,7 +67,7 @@ function start(){
 	}).on(['all'], function(name, where, stat){
 		let now = new Date(); 
 
-		console.log('[[ RELOAD ]] Reloading Template ... ');
+		reloadLog('Reloading Template ... ');
 
 		// render 重载
 		render.reload({
@@ -42,9 +75,11 @@ function start(){
 			tpl: where
 		}); 
 
-		write().then(allDone => {
-			let end = new Date(); 
-			console.log(`[[ RELOAD ]] Reload Ending, Time: ${end - now} ms`); 
+		write().then(() => {
+			reloadSuc(now); 
+
+			console.log(`[ ${ name.toUpperCase() } ] Finish `.green); 
+			console.log(`  ${'*'.grey} ${ where.yellow } `)
 		});
 	});
 
@@ -53,11 +88,12 @@ function start(){
 	gulp.task('blog-reload', function(){
 		let now = new Date(); 
 
-		console.log('[[ RELOAD ]] Reloading Blogs ... ');
+		reloadLog('Reloading Blogs ... ');
 
-		write().then(allDone => {
-			let end = new Date(); 
-			console.log(`[[ RELOAD ]] Reload Ending, Time: ${end - now}`);
+		write().then(() => {
+			reloadSuc(now); 
+
+			console.log(`[ MOD ] Edit Blogs`); 
 		});
 	}) 
 }
