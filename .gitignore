@@ -11,3 +11,4 @@
 /old_code/temp/*
 /config.js 
 /npm-debug.*
+/package-lock.json
