@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>eczn's blog</title>
+</head>
+<style>
+	* {
+		margin: 0;
+		padding: 0; 
+	}
+
+	body {
+		color: #555;
+		font-family: Menlo, Consolas, '微软雅黑'; 
+	}
+
+	html {
+		overflow: hidden;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.loading {
+		text-align: center;
+	}
+
+	.center {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		box-sizing: border-box;
+		/*background-image: url(http://ogz5pg6y8.bkt.clouddn.com/63957933_p0_master1200.jpg);*/
+		background-repeat: no-repeat;
+		background-position: center 0;
+		background-size: auto 100%;
+	}
+
+	.list {
+		margin: .5em 0;
+	}
+
+	.list > a {
+		display: inline-block;
+		background-color: #555; 
+		margin-right: .3em; 
+		color: #FFF;
+		padding: .4em 1em; 
+		border-radius: 4px; 
+	}
+
+	.bottom {
+		position: absolute;
+		padding: .8em 0; 
+		text-align: center;
+		bottom: 0; 
+		left: 0; 
+		background-color: rgba(255, 255, 255, .6);
+		width: 100%;
+
+	}
+</style>
+<body>
+	<p class="loading">Loading</p>
+	<div class="center">
+		<div class="bottom">
+			<ul class="list">
+				<a href="/pages/0">Blog</a>
+				<a href="https://github.com/eczn">Github</a>
+			</ul>
+			<h1>{{ title }}</h1>
+		</div>
+	</div>
+
+	<script>
+		function imgCut(h){
+			return '?imageView2/2/w/9999/h/' + h + '/q/100|imageslim'
+		}
+
+		function getDownload(){
+			var imgs = [
+				'http://source.ijarvis.cn/blog/test/a.jpg',
+				'http://source.ijarvis.cn/blog/test/r.png',
+				'http://source.ijarvis.cn/blog/test/s.jpg',
+				'http://source.ijarvis.cn/blog/test/t.png',
+				'http://source.ijarvis.cn/blog/test/v.jpg',
+				'http://source.ijarvis.cn/blog/test/y.jpg'
+			]; 
+
+			var now = Math.floor(
+				Math.random() * imgs.length
+			); 
+
+			return imgs[now]; 
+		}
+
+		function main(){
+			var screenHeight = parseInt(window.innerHeight / 500) * 1000; 
+			var url = getDownload() + imgCut(screenHeight); 
+
+			imageFade(url); 
+		}
+
+		function imageFade(url){
+			var $center = document.getElementsByClassName('center')[0]; 
+
+			$center.style.backgroundImage = 'url(' + url + ')'; 
+
+			console.log('It Works', url); 
+		}
+
+
+		window.onload = main; 
+	</script>
+</body>
+</html>
