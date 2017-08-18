@@ -6,15 +6,12 @@ const tpl = require('tplser')
     	compress: true
     }
     , createRender = tplPath => tpl.fromFile(tplPath, tplConfig)
+    , style = require('./style')
     
 // Global 
 tpl.push({
 	config: config,
-	style: name => {
-		console.log(name); 
-
-		return name; 
-	}
+	style: style
 }); 
 
 
@@ -50,12 +47,21 @@ var catesRender = tpl.fromFile(
 	}
 )
 
+var indexRender = tpl.fromFile(
+	path.join(__dirname, '../view/index.html'), 
+	{
+		compress: true, 
+		name: 'index'
+	}
+)
+
 
 let render = {
 	blog: blogRender, 
 	home: homeRender, 
 	cate: cateRender, 
 	cates: catesRender, 
+	index: indexRender,
 	reload: reload
 }
 

@@ -87,12 +87,13 @@ var home2html = pages => {
 	}); 
 
 	return Promise.all(
-		status.map(e => e.saving).concat(
-			fs.writeFile(
-				path.join(DIST, 'index.html'),
-				status[0].html
-			)
-		)
+		// status.map(e => e.saving).concat(
+		// 	fs.writeFile(
+		// 		path.join(DIST, 'index.html'),
+		// 		status[0].html
+		// 	)
+		// )
+		status.map(e => e.saving)
 	).then(allSuc => {
 		// console.log(`[[ PAGE ]] All /pages/x/ Generated, Count: ${status.length}`);
 		infoLog('PAGE')(`All /pages/x/ Generated, Count: ${status.length}`.yellow); 
@@ -155,6 +156,19 @@ var makeBlog = vblogs => {
 	})
 }
 
+var makeIndex = () => {
+	let html = render.index({
+		title: '破站施工中'
+	}); 
+
+	return fs.writeFile(
+		path.join(DIST, 'index.html'),
+		html
+	).then(suc => {
+		infoLog('INDX')(`/index.html Ready`.yellow); 
+	}); 
+}
+
 // 总督 
 var write = vblogs => {
 	// 时间排序 
@@ -166,10 +180,14 @@ var write = vblogs => {
 	// 普通的渲染
 	let allBlogFinish = makeBlog(vblogs); 
 
+	// INDEX 
+	let indexFinish = makeIndex(); 
+
 	return Promise.all([
 		allHomeFinish, 
 		allCateFinish,
-		allBlogFinish
+		allBlogFinish,
+		indexFinish
 	])
 }
 
