@@ -9,24 +9,45 @@ const tpl = require('tplser')
     
 // Global 
 tpl.push({
-	config: config
+	config: config,
+	style: name => {
+		console.log(name); 
+
+		return name; 
+	}
 }); 
 
 
-var blogRender = createRender(
-	path.join(__dirname, '../view/blog.html')
+var blogRender = tpl.fromFile(
+	path.join(__dirname, '../view/blog.html'), 
+	{
+		compress: true,
+		name: 'blog'
+	}
 )
 
-var homeRender = createRender(
-	path.join(__dirname, '../view/home.html')
+var homeRender = tpl.fromFile(
+	path.join(__dirname, '../view/home.html'), 
+	{
+		compress: true,
+		name: 'home'
+	}
 )
 
-var cateRender = createRender(
-	path.join(__dirname, '../view/cate.html')
+var cateRender = tpl.fromFile(
+	path.join(__dirname, '../view/cate.html'), 
+	{
+		compress: true, 
+		name: 'cate'
+	}
 )
 
-var catesRender = createRender(
-	path.join(__dirname, '../view/cates.html')
+var catesRender = tpl.fromFile(
+	path.join(__dirname, '../view/cates.html'), 
+	{
+		compress: true, 
+		name: 'cates'
+	}
 )
 
 
@@ -39,11 +60,14 @@ let render = {
 }
 
 function reload(p){
-	let { name, tpl } = p; 
+	// let { name, tpl } = p; 
 
-	if (this[name]){
+	if (this[p.name]){
 		// 如果存在则reload 
-		this[name] = createRender(tpl); 
+		this[p.name] = tpl.fromFile(p.tpl, {
+			comress: true, 
+			name: p.name
+		}); 
 	} else {
 		// 否则警告 
 		console.warn(`[[ WARN ]] The Template ${p.name} Not Found In Render`); 

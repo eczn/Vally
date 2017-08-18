@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>eczn's blog</title>
+	{{ style name }}
 </head>
 <body>
 	<h1>{{ config.blog.title }}</h1>
@@ -11,6 +12,8 @@
 	{{ get (blog, idx) >>>> blogs }}
 		<li>
 			<a href="/blogs/{{ blog.ts }}">{{ blog.title }}</a>
+
+			{{ blog.intro }}
 		</li>
 	{{ teg }}
 	</ul>
