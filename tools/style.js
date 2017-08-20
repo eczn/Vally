@@ -1,33 +1,16 @@
 // style.js 
 const path = require('path'); 
 
-function Style(file){
-	this.file = file; 
-}
-
-Style.create = function(file){
-	return new Style(file); 
-}
-
-Style.prototype.toTag = function(){
-	let ext = path.parse(this.file);
+var file2tag = item => {
+	let o = path.parse(item); 
+	let ext = o.ext
 
 	if (ext === '.js'){
-		return this.toJSTag(); 
+		return `<script src="/js/${item}"></script>`; 
 	} else {
-		return this.toLinkTag(); 
+		return `<link rel="stylesheet" href="/css/${item}">`
 	}
 }
-
-Style.prototype.toLinkTag = function(){
-	return `<link rel="stylesheet" href="/css/${this.file}">`
-}
-
-Style.prototype.toJSTag = function(){
-	return `<script src="/js/${this.file}"></script>`; 
-}
-
-var item2tag = item => Style.create(item).toTag();
 
 let styleTable = {
 	home: [
@@ -47,10 +30,10 @@ let styleTable = {
 let publicFiles = [
 	'flexible.min.js', 
 	'__________.css'
-].map(item2tag)
+].map(file2tag).join(''); 
 
 module.exports = function(name){
 	let fileArr = styleTable[name]; 
 
-	return publicFiles.join('') + fileArr.map(item2tag).join(''); 
+	return publicFiles + fileArr.map(file2tag).join(''); 
 }
