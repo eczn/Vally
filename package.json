@@ -16,6 +16,7 @@
     "chokidar": "^1.6.1",
     "clear": "0.0.1",
     "colors": "^1.1.2",
+    "glob": "^7.1.2",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
     "highlight.js": "^9.9.0",
