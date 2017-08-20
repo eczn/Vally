@@ -8,6 +8,7 @@ const collector = require('./collector')
 	, DIST = config.path.dist
 	, logger = require('./logger')
 	, infoLog = e => logger.bucket(e.cyan)
+	, glob = require('glob')
 
 var timeSort = _.sort(
 	(a, b) => b.date - a.date
@@ -169,8 +170,50 @@ var makeIndex = () => {
 	}); 
 }
 
+var copyFiles = () => {
+	let VIEW_BASE = config.path.view; 
+	let count = 0;
+
+	mkdir(path.join(config.path.dist, 'js'));
+	mkdir(path.join(config.path.dist, 'css'));
+
+	return new Promise((res, rej) => {
+		// Collect Files 
+		glob(path.join(VIEW_BASE, '**/*.js'), function(err, js){
+			glob(path.join(VIEW_BASE, '**/*.css'), function(err, css){
+				res(js.concat(css)); 
+			})
+		}); 
+	}).then(files => {
+		count = files.length; 
+		// Read And Write 
+		return files.map(file => {
+			return fs.readFile(file).then(rawFile => {
+				let pathObj = path.parse(file); 
+				let ext = pathObj.ext.slice(1); 
+				let fileName = pathObj.base; 
+				let dist = path.join(config.path.dist, ext, fileName); 
+
+				return fs.writeFile(dist, rawFile)
+			})
+		})
+	}).then(allPenddings => {
+		if (count === 0){
+			infoLog('COPY')(`No Static JS CSS Files`.yellow); 
+		} else {
+		// Promise.all 
+			return Promise.all(allPenddings).then(suc => {
+				infoLog('COPY')(`Static Files Ready, Count: ${count}`.yellow); 
+			}); 
+		}
+	})
+}
+
 // 总督 
 var write = vblogs => {
+	// Static File Copy 
+	let allFilesReady = copyFiles(); 
+
 	// 时间排序 
 	let allHomeFinish = makeHome(vblogs); 
 
@@ -187,6 +230,7 @@ var write = vblogs => {
 		allHomeFinish, 
 		allCateFinish,
 		allBlogFinish,
+		allFilesReady,
 		indexFinish
 	])
 }
