@@ -59,7 +59,7 @@ function start(){
 	
 
 	// Watch For config.path.view 
-	chokidar.watch([config.path.view], {
+	chokidar.watch([path.join(config.path.view, '**/*.html')], {
 		ignored: /[\/\\]\./,
 		persistent: true,
 		ignoreInitial: true
@@ -96,6 +96,29 @@ function start(){
 			console.log(`[ MOD ] Edit Blogs`); 
 		});
 	}) 
+
+	// Watch For JS/CSS 
+	chokidar.watch(
+		[
+			path.join(config.path.view, '**/*.js'), 
+			path.join(config.path.view, '**/*.css')
+		], {
+		ignored: /[\/\\]\./,
+		persistent: true,
+		ignoreInitial: true
+		// awaitWriteFinish: true
+	}).on(['all'], function(name, where, stat){
+		// config.path.dist
+		var ext = path.parse(where).ext.slice(1); 
+
+		var end = path.join(config.path.dist, ext); 
+
+		console.log(`[ RELOAD ] ${where} ${name}, Reloaded`);
+
+		// Copy 
+		gulp.src(where)
+			.pipe(gulp.dest(end))
+	})
 }
 
 module.exports = start; 
