@@ -24,7 +24,7 @@ Style.prototype.toLinkTag = function(){
 }
 
 Style.prototype.toJSTag = function(){
-	return `<script src="${this.file}"></script>`; 
+	return `<script src="/js/${this.file}"></script>`; 
 }
 
 var item2tag = item => Style.create(item).toTag();
@@ -45,11 +45,12 @@ let styleTable = {
 }
 
 let publicFiles = [
-
+	'flexible.min.js', 
+	'__________.css'
 ].map(item2tag)
 
 module.exports = function(name){
 	let fileArr = styleTable[name]; 
 
-	return fileArr.map(item2tag).join('') + publicFiles.join(''); 
+	return publicFiles.join('') + fileArr.map(item2tag).join(''); 
 }
