@@ -55,6 +55,21 @@ var indexRender = tpl.fromFile(
 	}
 )
 
+var loadPublic = () => {
+	let needRegistry = [
+		'../view/aside.html'
+	].map(file => {
+		let name = path.parse(file);
+
+		return tpl.fromFile(
+			path.join(__dirname, file), 
+			{
+				compress: true, 
+				name: name
+			}
+		)
+	})
+}
 
 let render = {
 	blog: blogRender, 
@@ -65,8 +80,11 @@ let render = {
 	reload: reload
 }
 
+loadPublic(); 
+
 function reload(p){
 	// let { name, tpl } = p; 
+	loadPublic();
 
 	if (this[p.name]){
 		// 如果存在则reload 
