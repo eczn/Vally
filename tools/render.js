@@ -7,12 +7,18 @@ const tpl = require('tplser')
     }
     , createRender = tplPath => tpl.fromFile(tplPath, tplConfig)
     , style = require('./style')
+    , icon = require('./icon')
     
 // Global 
 tpl.push({
 	config: config,
 	style: style
 }); 
+
+// Icon Loader 
+let icons = icon(); 
+console.log(Object.keys(icons)); 
+tpl.push(icons); 
 
 
 var blogRender = tpl.fromFile(
