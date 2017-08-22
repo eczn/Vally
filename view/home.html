@@ -7,25 +7,37 @@
 	{{ style name }}
 </head>
 <body>
-	<h1>{{ config.blog.title }}</h1>
-	<p>css 部分还没搞定 233</p>
+	<header>
+		<div inner>
+			<h1 title>{{ config.blog.title }}</h1>
+			<img right src="https://avatars2.githubusercontent.com/u/13131724" />
+		</div>
+	</header>
 	
-	<ul class="blogs">
-	{{ get (blog, idx) >>>> blogs }}
-		<li>
-			<a href="/blogs/{{ blog.ts }}">{{ blog.title }}</a>
+	<div class="main-align">
+		<!-- {{ asideRender config }} -->
 
-			{{ blog.intro }}
-		</li>
-	{{ teg }}
-	</ul>
-
-	<ul class="pages">
-	{{ get (btn, idx) >>>> pageBtns }}
-		<li class="page-btn {{ isActive btn.now }}">
-			<a href="{{ makeLink btn.to }}">{{ btn.to }}</a>
-		</li>
-	{{ teg }}
-	</ul>
+		<ul class="blogs">
+		{{ get (blog, idx) >>>> blogs }}
+			<li>
+				<a title href="/blogs/{{ blog.ts }}">{{ blog.title }}</a>
+				{{ blog.intro }}
+			</li>
+		{{ teg }}
+		</ul>
+	</div>
+	
+	<!-- Footer -->
+	<footer class="pages">
+		<div inner>
+		{{ get (btn, idx) >>>> pageBtns }}
+			<li class="page-btn {{ isActive btn.now }}">
+				<a href="{{ makeLink btn.to }}">{{ btn.to }}</a>
+			</li>
+		{{ teg }}
+			<div view>2012 <span grey>Views</span></div>
+			<div view right>Love</div>
+		</div>
+	</footer>
 </body>
 </html>

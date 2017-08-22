@@ -1,0 +1,56 @@
+/* 
+ * File: __________.css
+ * For Global CSS
+ */
+
+body {
+	color: #555; 
+}
+
+[grey] {
+	color: #BBB; 
+}
+
+.main-align {
+	max-width: 600px; 
+	margin: 0 auto; 
+}
+
+a {
+	color: inherit; 
+}
+
+header {
+	padding: .4rem 0; 
+	margin-bottom: .4rem; 
+	border-bottom: 1px solid #DDD; 
+}
+
+footer {
+	padding: .4rem 0; 
+	margin-top: .4rem; 
+	border-top: 1px solid #DDD; 
+}
+
+header [title], footer [title] {
+	font-size: .5rem; 
+}
+
+
+header [inner], footer [inner] {
+	position: relative;
+	max-width: 600px; 
+	margin: 0 auto; 
+}
+
+header [right], footer [right] {
+	position: absolute;
+	right: 0;
+	height: .8rem; 
+	top: 0; 
+	border-radius: 4px; 
+}
+
+footer [view] {
+	font-size: .3rem; 
+}

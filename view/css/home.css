@@ -1,0 +1,27 @@
+/*home.css*/
+.pages {
+	font-family: Consolas, Menlo; 
+	font-size: 0; 
+}
+
+.page-btn {
+	display: inline-block;
+	font-size: .4rem; 
+}
+
+.page-active {
+	opacity: .6; 
+}
+
+.blogs {
+
+}
+
+.blogs > li {
+	padding-bottom: 2rem; 
+}
+
+.blogs [title] {
+	display: block;
+	font-size: .5rem; 
+}
