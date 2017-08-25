@@ -9,14 +9,12 @@ const collector = require('./collector')
 	, logger = require('./logger')
 	, infoLog = e => logger.bucket(e.cyan)
 	, glob = require('glob')
+	, mkdir = require('./mkdir')
+	, copy = require('./copy')
 
 var timeSort = _.sort(
 	(a, b) => b.date - a.date
 ); 
-
-var mkdir = (dir, cb) => {
-	try { fs.mkdirSync(dir) } catch (e){ cb && cb(e) }
-}
 
 var makePage = _.splitEvery(config.blog.countPerPage)
 
@@ -31,10 +29,6 @@ var cateReduce = _.reduce((acc, cur) => {
 
 	return acc; 
 }, {}); 
-
-var copy = () => {
-	// copy static file 
-}
 
 // 没什么特别的 尽管渲染 
 var blog2html = vblog => {
@@ -171,42 +165,12 @@ var makeIndex = () => {
 }
 
 var copyFiles = () => {
-	let VIEW_BASE = config.path.view; 
-	let count = 0;
-
-	mkdir(path.join(config.path.dist, 'js'));
-	mkdir(path.join(config.path.dist, 'css'));
-
-	return new Promise((res, rej) => {
-		// Collect Files 
-		glob(path.join(VIEW_BASE, '**/*.js'), function(err, js){
-			glob(path.join(VIEW_BASE, '**/*.css'), function(err, css){
-				res(js.concat(css)); 
-			})
-		}); 
-	}).then(files => {
-		count = files.length; 
-		// Read And Write 
-		return files.map(file => {
-			return fs.readFile(file).then(rawFile => {
-				let pathObj = path.parse(file); 
-				let ext = pathObj.ext.slice(1); 
-				let fileName = pathObj.base; 
-				let dist = path.join(config.path.dist, ext, fileName); 
-
-				return fs.writeFile(dist, rawFile)
-			})
-		})
-	}).then(allPenddings => {
-		if (count === 0){
-			infoLog('COPY')(`No Static JS CSS Files`.yellow); 
-		} else {
-		// Promise.all 
-			return Promise.all(allPenddings).then(suc => {
-				infoLog('COPY')(`Static Files Ready, Count: ${count}`.yellow); 
-			}); 
-		}
-	})
+	return copy([
+		'js', 
+		'css'
+	]).then(suc => {
+		infoLog('COPY')(`Static Files Copy Finish`.yellow); 
+	});
 }
 
 // 总督 
