@@ -41,9 +41,6 @@ define(['jquery'], function($){
 
 			$nowAt.removeClass('transition-all'); 
 			$another.removeClass('transition-all'); 
-			
-			console.log($nowAt, $another); 
-			console.log(touch);
 		});
 
 		$navContainer.on('touchmove', function(e){
@@ -57,7 +54,6 @@ define(['jquery'], function($){
 		$navContainer.on('touchend', function(e){
 			$nowAt.addClass('transition-all'); 
 			$another.addClass('transition-all');
-
 
 			if (Math.abs(inc) > 30){
 				console.log('应该 toggle'); 

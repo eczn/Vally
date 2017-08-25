@@ -6,24 +6,23 @@ body {
 
 .nav-container {
 	position: fixed;
+	z-index: -99; 
 	right: 0; 
 	top: 0; 
 	height: 100%; 
 	width: 320px; 
-	
 	padding: .5em; 
-
-	/*border-left: 1px solid; */
-
 	box-sizing: border-box;
-
-	/*background-color: #4A4444; */
-	/*color: #EEE; */
-	/*background-image: url(/icon/bg-settings.svg);*/
-
-	z-index: -99; 
 	transition: all .3s; 
 	transform: translateX(100px);
+
+	background-image: repeating-linear-gradient(
+		-45deg, 
+		#F9F9F9 0px,
+		#F9F9F9 5px,
+		transparent 0px,
+		transparent 10px
+	); 
 }
 
 .nav-btn {
@@ -36,13 +35,12 @@ body {
 	/*position: fixed;*/
 	width: 100%; 
 	left: 0; 
-	top: 0;
+	/*top: 0;*/
 	z-index: 100; 
 	background-color: white; 
 	transition: all .3s; 
 	
-	box-shadow: 1px 0 16px rgba(0, 0, 0, .5);
-
+	box-shadow: 0px 0 20px rgba(0, 0, 0, .5);
 	transform: translateX(0px);
 }
 
@@ -71,6 +69,13 @@ body {
 	height: 4em; 
 	line-height: 2em; 
 	text-align: center; 
+
+	background-image: linear-gradient(
+		180deg, 
+		rgba(0, 0, 0, .1),
+		transparent,
+		transparent
+	); 
 }
 
 .nav-container .for-tab {
@@ -146,7 +151,10 @@ body {
 	padding-top: 100%; 
 	box-sizing: border-box;
 	height: 240px; 
-	background-image: url(http://source.ijarvis.cn/blog/test/r.png?imageView2/2/w/9999/h/2000/q/100|imageslim);
+	background-image: url(
+		"http://source.ijarvis.cn/blog/test/r.png?imageView2/2/w/9999/h/2000/q/100|imageslim"
+	);
+
 	background-repeat: no-repeat;
 	background-position: center 23%;
 	background-size: 100%;

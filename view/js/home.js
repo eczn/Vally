@@ -9,7 +9,9 @@ require.config({
 
 define(['jquery', 'nav'], function($, nav){
 	$(function(){
-		nav.init(); 
-		nav.open(); 	
+		setTimeout(function(){
+			nav.init(); 
+			nav.open(); 
+		}, 500); 
 	}); 
 })
