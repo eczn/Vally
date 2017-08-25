@@ -65,16 +65,18 @@ define(['jquery'], function($){
 		});
 	}
 
-	$(document).click(function(e){
+	function clickOtherArea(e){
 		var _con = $('.nav-container')
 		  , active = $(sel).attr('active')
-
 
 		if (active && !_con.is(e.target) && _con.has(e.target).length === 0){ 
 			// 功能代码
 			nav.close('click'); 
 		}
-	});
+	}
+
+	$(document).click(clickOtherArea);
+	$(document).on('touchstart', clickOtherArea);
 
 	nav.toggle = function(){
 		var dom = this; 
