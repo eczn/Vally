@@ -19,7 +19,7 @@
 }
 
 .blogs > li {
-	padding-bottom: 2rem; 
+	padding: 1rem 0; 
 }
 
 .blogs [title] {
