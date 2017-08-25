@@ -7,37 +7,82 @@
 	{{ style name }}
 </head>
 <body>
-	<header>
-		<div inner>
-			<h1 title>{{ config.blog.title }}</h1>
-			<img right src="https://avatars2.githubusercontent.com/u/13131724" />
-		</div>
-	</header>
-	
-	<div class="main-align">
-		<!-- {{ asideRender config }} -->
+	<!-- 有别于 aside -->
+	<div class="blog-container">
+		<header>
+			<div inner>
+				<h1 title>{{ config.blog.title }}</h1>
+			</div>
 
-		<ul class="blogs">
-		{{ get (blog, idx) >>>> blogs }}
-			<li>
-				<a title href="/blogs/{{ blog.ts }}">{{ blog.title }}</a>
-				{{ blog.intro }}
-			</li>
-		{{ teg }}
-		</ul>
-	</div>
-	
-	<!-- Footer -->
-	<footer class="pages">
-		<div inner>
-		{{ get (btn, idx) >>>> pageBtns }}
-			<li class="page-btn {{ isActive btn.now }}">
-				<a href="{{ makeLink btn.to }}">{{ btn.to }}</a>
-			</li>
-		{{ teg }}
-			<div view>2012 <span grey>Views</span></div>
-			<div view right>eczn loves you</div>
+			<div icon-btn-grey class="nav-btn">
+				<img class="icon" src="/icon/list.svg" />
+			</div>
+		</header>
+		
+		<div class="main-align">
+			<!-- {{ asideRender config }} -->
+
+			<ul class="blogs">
+			{{ get (blog, idx) >>>> blogs }}
+				<li>
+					<a title href="/blogs/{{ blog.ts }}">{{ blog.title }}</a>
+					{{ blog.intro }}
+				</li>
+			{{ teg }}
+			</ul>
 		</div>
-	</footer>
+		
+		<!-- Footer -->
+		<footer class="pages">
+			<div inner>
+			{{ get (btn, idx) >>>> pageBtns }}
+				<li class="page-btn {{ isActive btn.now }}">
+					<a href="{{ makeLink btn.to }}">{{ btn.to }}</a>
+				</li>
+			{{ teg }}
+				<div view>2012 <span grey>Views</span></div>
+				<div view right>eczn loves you</div>
+			</div>
+		</footer>
+	</div>
+
+	<!-- nav aside -->
+	<nav class="nav-container">
+		<div class="tab-bar">
+			<input class="for-about for-tab" checked name="choose-tab" type="radio" />
+			
+			<div class="about tab">
+				<div class="bg-container">
+					<div class="bg-inner">
+						<p has-bg class="name">eczn*</p>
+					</div>
+				</div>
+
+				<div class="links">
+					<a class="link" href="https://github.com/eczn" target="_blank">
+						<img src="/icon/github.svg" />
+						<span>Github</span>
+					</a>
+					<a class="link" href="https://segmentfault.com/u/eczn" target="_blank">
+						<img src="/icon/sf.svg" />
+						<span>segment<span style="color: rgb(0, 154, 97);">fault</span></span>
+					</a>
+					<a class="link" href="mailto:eczn@moebaka.com" target="_blank">
+						<img src="/icon/mail.svg" />
+						<span>eczn</span>
+					</a>
+				</div>
+			</div>
+			<span has-bg class="for-tab-title">About</span>
+		</div>
+		<div class="tab-bar">
+			<input class="for-list for-tab" name="choose-tab" type="radio" />
+			
+			<div class="list tab">
+				list list list 
+			</div>
+			<span has-bg class="for-tab-title">List</span>
+		</div>
+	</nav>
 </body>
 </html>
