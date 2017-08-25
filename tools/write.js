@@ -166,8 +166,18 @@ var makeIndex = () => {
 
 var copyFiles = () => {
 	return copy([
-		'js', 
-		'css'
+		{
+			ext: 'js', 
+			dist: 'js'
+		}, 
+		{
+			ext: 'css', 
+			dist: 'css'
+		}, 
+		{
+			ext: 'svg', 
+			dist: 'icon'
+		}
 	]).then(suc => {
 		infoLog('COPY')(`Static Files Copy Finish`.yellow); 
 	});
