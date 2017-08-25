@@ -5,6 +5,7 @@
 
 body {
 	color: #555; 
+	font-family: "Consolas", "Menlo", "微软雅黑"; 
 }
 
 [grey] {
@@ -21,6 +22,7 @@ a {
 }
 
 header {
+	position: relative;
 	padding: .4rem 0; 
 	margin-bottom: .4rem; 
 	border-bottom: 1px solid #DDD; 
