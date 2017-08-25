@@ -24,7 +24,7 @@ function glob(pattern){
 // String[] exts -> Promise glob 
 var findFileByExt = _.map(ext => {
 	let pattern = path.join(VIEW_BASE, `**/*.${ext}`)
-	  , distFolder = path.join('S:\\4', ext); 
+	  , distFolder = path.join(BLOG_DIST, ext); 
 
 	// new a folder as destination 
 	console.log(distFolder)
