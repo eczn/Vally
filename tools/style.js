@@ -14,7 +14,8 @@ var file2tag = item => {
 
 let styleTable = {
 	home: [
-		'home.css'
+		'home.css', 
+		'btn.css'
 	], 
 	cate: [
 		'cate.css'
@@ -29,11 +30,21 @@ let styleTable = {
 
 let publicFiles = [
 	'flexible.min.js', 
-	'__________.css'
+	'__________.css', 
+	'nav.css'
 ].map(file2tag).join(''); 
+
+function addRequireJS(name){
+	return `
+		<script src="/js/require.min.js" async="true"></script>
+		<script async="true" data-main="/js/${name}"></script>
+	`; 
+}
 
 module.exports = function(name){
 	let fileArr = styleTable[name]; 
 
-	return publicFiles + fileArr.map(file2tag).join(''); 
+
+
+	return addRequireJS(name) + publicFiles + fileArr.map(file2tag).join(''); 
 }
