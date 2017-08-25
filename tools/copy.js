@@ -29,7 +29,7 @@ var findFileByExt = _.map(describe => {
 	  , distFolder = path.join(BLOG_DIST, dist); 
 
 	// new a folder as destination 
-	console.log(distFolder)
+	// console.log(distFolder)
 	mkdir(distFolder); 
 
 	return glob(pattern).then(list => {

@@ -17,7 +17,6 @@ tpl.push({
 
 // Icon Loader 
 let icons = icon(); 
-console.log(Object.keys(icons)); 
 tpl.push(icons); 
 
 
