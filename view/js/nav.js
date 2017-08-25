@@ -1,10 +1,13 @@
-// nav.js
+// nav.js 
 define(['jquery'], function($){
 	var nav = {}
 	  , sel = '.nav-btn'
 	  , navActive = 'nav-active'
+	  , navWidth = 320; 
 
 	if (window.innerWidth < 500) {
+		navWidth = 250; 
+
 		$('.nav-container').css('width', '250px'); 
 		$('head').append(
 			'<style>' + 
@@ -16,7 +19,54 @@ define(['jquery'], function($){
 	}
 
 	nav.init = function(){
-		$(sel).click(nav.toggle); 
+		$(sel).click(nav.toggle);
+		var $navContainer = $('.nav-container') 
+
+		var startAt, endAt, $nowAt, nowAt, $another, another, inc; 
+
+		$navContainer.on('touchstart', function(e){
+			var touch = e.targetTouches[0]; 
+
+			startAt = touch; 
+
+			nowAt = $('.for-tab:checked').val(); 
+			$nowAt = $('.nav-container .' + nowAt); 
+			if (nowAt === 'about'){
+				another = 'list'; 
+				$another = $('.nav-container .list');
+			} else {
+				another = 'about'; 
+				$another = $('.nav-container .about');
+			}
+
+			$nowAt.removeClass('transition-all'); 
+			$another.removeClass('transition-all'); 
+			
+			console.log($nowAt, $another); 
+			console.log(touch);
+		});
+
+		$navContainer.on('touchmove', function(e){
+			var touch = e.targetTouches[0]; 
+
+			inc = (touch.clientX - startAt.clientX ) * 100 / navWidth; 
+
+			$nowAt.css('left', inc + '%'); 
+		});
+
+		$navContainer.on('touchend', function(e){
+			$nowAt.addClass('transition-all'); 
+			$another.addClass('transition-all');
+
+
+			if (Math.abs(inc) > 30){
+				console.log('应该 toggle'); 
+				$('.for-' + another).click(); 
+			}
+
+			$nowAt.css('left', ''); 
+			$another.css('left', ''); 
+		});
 	}
 
 	$(document).click(function(e){

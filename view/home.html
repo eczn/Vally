@@ -49,9 +49,9 @@
 	<!-- nav aside -->
 	<nav class="nav-container">
 		<div class="tab-bar">
-			<input class="for-about for-tab" checked name="choose-tab" type="radio" />
+			<input class="for-about for-tab" checked value="about" name="choose-tab" type="radio" />
 			
-			<div class="about tab">
+			<div class="about tab transition-all">
 				<div class="bg-container">
 					<div class="bg-inner">
 						<p has-bg class="name">eczn*</p>
@@ -71,14 +71,19 @@
 						<img src="/icon/mail.svg" />
 						<span>eczn</span>
 					</a>
+					<a class="link" href="http://www.gdut.edu.cn/" target="_blank">
+						<img src="/icon/university.svg" />
+						<span>GDUT</span>
+					</a>
+					
 				</div>
 			</div>
 			<span has-bg class="for-tab-title">About</span>
 		</div>
 		<div class="tab-bar">
-			<input class="for-list for-tab" name="choose-tab" type="radio" />
+			<input class="for-list for-tab" value="list" name="choose-tab" type="radio" />
 			
-			<div class="list tab">
+			<div class="list tab transition-all">
 				list list list 
 			</div>
 			<span has-bg class="for-tab-title">List</span>

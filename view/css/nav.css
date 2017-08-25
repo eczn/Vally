@@ -1,6 +1,7 @@
 /*nav.css*/
 body {
 	height: 0px;
+	font-family: "Consolas", "Menlo", "Helvetica Neue", "Helvetica", "Lucida Grande", "Arial", "Hiragino Sans GB", "Microsoft Yahei", "WenQuanYi Micro Hei", "sans-serif"; 
 }
 
 .nav-container {
@@ -68,7 +69,7 @@ body {
 	display: inline-block; 
 	width: 50%; 
 	height: 4em; 
-	line-height: 4em; 
+	line-height: 2em; 
 	text-align: center; 
 }
 
@@ -96,21 +97,26 @@ body {
 	top: 4em; 
 	width: 100%; 
 	z-index: -98; 
-	transition: all .3s; 
 	text-align: left; 
 }
 
+.transition-all {
+	transition: all .3s; 
+}
+
 .nav-container .about {
-	left: -100%; 
+	left: -95%; 
+	opacity: .4;
 }
 
 .nav-container .list {
-	left: 100%; 
+	left: 95%; 
+	opacity: .4;
 }
 
 .for-tab:checked ~ .tab {
-	opacity: 1; 
 	left: 0; 
+	opacity: 1; 
 }
 
 .for-tab-title {
@@ -170,6 +176,11 @@ body {
 	display: block; 
 	font-size: 0; 
 	margin-bottom: 14px; 
+}
+
+.link::after {
+	content: "<"; 
+
 }
 
 .link > img {
