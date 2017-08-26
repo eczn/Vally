@@ -181,14 +181,22 @@ body {
 }
 
 .link {
+	position: relative;
 	display: block; 
 	font-size: 0; 
 	margin-bottom: 14px; 
 }
 
 .link::after {
-	content: "<"; 
-
+	content: ""; 
+	position: absolute;
+	display: block;
+	right: 0; 
+	top: 0; 
+	height: 20px; 
+	width: 20px; 
+	background-image: url(/icon/left.svg);
+	background-color: #000; 
 }
 
 .link > img {
