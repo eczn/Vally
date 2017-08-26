@@ -49,14 +49,29 @@ function start(){
 	});
 
 	// Watch For config.path.dist 
-	var toWatch = path.join(config.path.dist, '**/*');
+	var toWatch = [
+		path.join(config.path.dist, '**/*'), 
+		'!' + path.join(config.path.dist, '**/*.css')
+	]
+
+	var toWatchCSS = path.join(config.path.dist, '**/*.css'); 
+
+	console.log(toWatch)
+
 	gulp.watch(toWatch, ['reload']); 
+	gulp.watch(toWatchCSS, ['reload-css']); 
+
+	gulp.task('reload-css', function(){
+		// console.log('Reload CSS'); 
+		return gulp.src([toWatchCSS])
+			.pipe(connect.reload())
+	})
+
 	gulp.task('reload', function(){
-		return gulp.src([toWatch])
+		// console.log('Reload All'); 
+		return gulp.src(toWatch)
 			.pipe(connect.reload());
 	});
-
-	
 
 	// Watch For config.path.view 
 	chokidar.watch([path.join(config.path.view, '**/*.html')], {
