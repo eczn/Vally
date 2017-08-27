@@ -11,7 +11,7 @@ define(['jquery', 'nav'], function($, nav){
 	$(function(){
 		setTimeout(function(){
 			nav.init(); 
-			nav.open(); 
+			// nav.open(); 
 		}, 500); 
 	}); 
 })
