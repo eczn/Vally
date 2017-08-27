@@ -56,8 +56,6 @@ function start(){
 
 	var toWatchCSS = path.join(config.path.dist, '**/*.css'); 
 
-	console.log(toWatch)
-
 	gulp.watch(toWatch, ['reload']); 
 	gulp.watch(toWatchCSS, ['reload-css']); 
 
