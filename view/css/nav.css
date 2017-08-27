@@ -13,7 +13,7 @@ body {
 	width: 320px; 
 	padding: .5em; 
 	box-sizing: border-box;
-	transition: all .3s; 
+	transition: transform .3s; 
 	transform: translateX(100px);
 
 	background-image: repeating-linear-gradient(
@@ -211,7 +211,7 @@ body {
 }
 
 .link:hover::before {
-	opacity: 1; 
+	opacity: .6; 
 	right: 0px; 
 }
 

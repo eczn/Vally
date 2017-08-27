@@ -94,12 +94,16 @@ define(['jquery'], function($){
 
 	nav.open = function(){
 		$(sel).attr('active', '✔'); 
-		$('.blog-container').addClass(navActive)
+		$('.blog-container').addClass(navActive); 
+		$('.nav-container').removeClass('opa0'); 
 	}
 
 	nav.close = function(){
 		$(sel).attr('active', ''); 
-		$('.blog-container').removeClass(navActive)
+		$('.blog-container').removeClass(navActive); 
+		setTimeout(function(){
+			$('.nav-container').addClass('opa0'); 
+		}, 300)
 	}
 
 	return nav; 
