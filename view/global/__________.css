@@ -12,6 +12,10 @@ body {
 	color: #BBB; 
 }
 
+.opa0 {
+	opacity: 0; 
+}
+
 .main-align {
 	max-width: 600px; 
 	margin: 0 auto; 
