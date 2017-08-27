@@ -15,6 +15,17 @@ var informator = jsonStr => {
 	// id 
 	info.id = md5(info.title); 
 
+	// tags 
+	if (!info.tags){
+		// 不存在 tags 
+		info.tags = []; 
+	} else if (typeof info.tags === 'string'){
+		// 或者 
+		info.tags = info.tags.split(',').map(e => e.trim()); 
+	} else {
+		info.tags = '[[ 非法标签写法 ]]'; 
+	}
+
 	return info; 
 }
 
