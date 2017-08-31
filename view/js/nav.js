@@ -95,14 +95,14 @@ define(['jquery'], function($){
 	nav.open = function(){
 		$(sel).attr('active', '✔'); 
 		$('.blog-container').addClass(navActive); 
-		$('.nav-container').removeClass('opa0'); 
+		$('.nav-container').removeClass('opa0').css('z-index', '-40'); 
 	}
 
 	nav.close = function(){
 		$(sel).attr('active', ''); 
 		$('.blog-container').removeClass(navActive); 
 		setTimeout(function(){
-			$('.nav-container').addClass('opa0'); 
+			$('.nav-container').addClass('opa0').css('z-index', '-99'); 
 		}, 300)
 	}
 

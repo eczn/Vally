@@ -14,7 +14,7 @@ body {
 	padding: .5em; 
 	box-sizing: border-box;
 	transition: transform .3s; 
-	transform: translateX(100px);
+	transform: translateX(160px);
 
 	background-image: repeating-linear-gradient(
 		-45deg, 

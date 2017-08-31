@@ -4,10 +4,15 @@
 	font-size: 0; 
 }
 
+.pages [inner] {
+	display: flex;
+	justify-content: space-between; 
+}
+
 .page-btn {
 	display: inline-block;
-	font-size: .4rem; 
-	padding-right: .5em;
+	font-size: 24px;
+	padding: 4px 12px 4px 0; 
 }
 
 .page-active {
@@ -18,11 +23,73 @@
 
 }
 
-.blogs > li {
+.blog {
 	padding: 1rem 0; 
+	border-bottom: 1px solid #DDD; 
+	line-height: 1.5; 
 }
 
-.blogs [title] {
+.blog:last-child {
+	border-bottom: none!important;
+}
+
+.blog-title {
 	display: block;
-	font-size: .5rem; 
+	/*font-size: .5rem; */
+	font-size: 22px; 
+}
+
+.tags {
+	display: block;
+	/*text-align: center;*/
+}
+
+.date {
+	/*float: right;*/
+	text-align: right; 
+}
+
+.tags > span {
+	padding-top: .4em; 
+	vertical-align: middle;
+	/*line-height: 0; */
+}
+
+.tag::before {
+	content: ""; 
+	display: inline-block;
+	width: 1.5em; 
+	height: 1.5em; 
+	margin: 0 .2em; 
+	font-size: inherit;
+	background-image: url(/icon/tag.svg);
+	background-size: 100%; 
+
+	vertical-align: middle;
+}
+
+.intro {
+	font-size: .3rem; 
+	margin-bottom: 1em; 
+}
+
+.align-icon {
+	display: flex;
+	align-items: center;
+}
+
+.align-icon img {
+	width: 32px; 
+	height: 32px; 
+}
+
+.bottom-views {
+	font-size: 16px; 
+}
+
+@media screen and (max-width: 700px) and (min-width: 320px) {
+	.blogs > .blog {
+		padding-left: 15px; 
+		padding-right: 15px; 
+	}	
 }
