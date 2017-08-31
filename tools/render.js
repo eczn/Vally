@@ -12,7 +12,15 @@ const tpl = require('tplser')
 // Global 
 tpl.push({
 	config: config,
-	style: style
+	style: style,
+	YYMMDD: function(date, sep = '-'){
+		return [
+			date.getFullYear(),
+			date.getMonth()+1,
+			date.getDate()
+		].map(d => d.toString())
+		.map(d => ('00' + d).slice(d.length >= 4 ? -4 : -2)).join(sep); 
+	}
 }); 
 
 // Icon Loader 
