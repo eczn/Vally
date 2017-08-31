@@ -25,14 +25,21 @@
 			<ul class="blogs">
 			{{ get (blog, idx) >>>> blogs }}
 				<li class="blog">
-					<a class="blog-title" href="/blogs/{{ blog.ts }}">{{ blog.title }}</a>
-					
-					<div class="tags">
-						{{ get (tag, idx) >>>> blog.tags }}
-						<span class="tag">{{ tag }}</span>
-						{{ teg }}
-						<span class="date">{{ YYMMDD blog.date }}</span>
-					</div>
+					<a class="blog-title" href="/blogs/{{ blog.ts }}">
+						<h1>{{ blog.title }}</h1>
+						<div class="tags">
+							{{ get (tag, idx) >>>> blog.tags }}
+							<span class="tag">
+								<img inline-icon class="blog-icon" src="/icon/tag.svg" />
+								<span>{{ tag }}</span>
+							</span>
+							{{ teg }}
+							<span class="date">
+								<img inline-icon class="blog-icon" src="/icon/date.svg" />
+								<span>{{ YYMMDD blog.date }}</span>
+							</span>
+						</div>
+					</a>
 				</li>
 			{{ teg }}
 			</ul>
