@@ -10,6 +10,5 @@ function deploy(){
 		}) 
 }
 
-deploy()
 
 module.exports = deploy; 
