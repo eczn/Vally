@@ -7,6 +7,19 @@ function introGetter(content){
 	return content.slice(0, 300); 
 }
 
+function calcPreset(blog){
+	let { customCSS } = blog; 
+
+	let res = ''; 
+
+	if (customCSS){
+		let temp = customCSS.join(''); 
+		res += `<style>${temp}</style>`; 
+	}
+
+	return res; 
+}
+
 var informator = (jsonStr, content) => {
 	let info = JSON.parse(jsonStr); 
 
@@ -31,6 +44,8 @@ var informator = (jsonStr, content) => {
 	}
 
 	info.intro = introGetter(content);
+
+	info.preset = calcPreset(info); 
 
 	return info; 
 }
