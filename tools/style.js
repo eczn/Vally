@@ -13,19 +13,34 @@ var file2tag = item => {
 }
 
 let styleTable = {
-	home: [
-		'home.css', 
-		'btn.css'
-	], 
-	cate: [
-		'cate.css'
-	], 
-	cates: [
-		'cates.css'
-	], 
-	blog: [
-		'blog.css'
-	]
+	home: {
+		js: 'home', 
+		static: [
+			'home.css', 
+			'btn.css'
+		]
+	}, 
+	cate: {
+		js: 'cate', 
+		static: [
+			'cate.css'
+		]
+	}, 
+	cates: {
+		js: 'cates', 
+		static: [
+			'cates.css'
+		]
+	}, 
+	blog: {
+		js: 'blog', 
+		static: [
+			'home.css', 
+			'btn.css', 
+			'mark-vally.css',
+			'blog.css'
+		]
+	}
 }
 
 let publicFiles = [
@@ -42,9 +57,11 @@ function addRequireJS(name){
 }
 
 module.exports = function(name){
-	let fileArr = styleTable[name]; 
+	let page = styleTable[name]; 
+	let fileArr = page.static; 
+	let jsEntry = page.js; 
 
 
 
-	return addRequireJS(name) + publicFiles + fileArr.map(file2tag).join(''); 
+	return addRequireJS(jsEntry) + publicFiles + fileArr.map(file2tag).join(''); 
 }
