@@ -20,7 +20,7 @@
 }
 
 .blog {
-	padding: 1rem 0; 
+	padding: .7rem 0; 
 	border-bottom: 1px solid #EBEBEB; 
 	line-height: 1.5; 
 }
@@ -85,7 +85,6 @@
 
 @media screen and (max-width: 700px) and (min-width: 320px) {
 	.blogs > .blog {
-		padding-left: 15px; 
-		padding-right: 15px; 
-	}	
+		padding: 1rem 15px; 
+	}
 }

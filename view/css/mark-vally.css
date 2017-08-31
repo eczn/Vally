@@ -138,15 +138,19 @@
 }
 
 .md h1 {
-	font-size: 165%; 
+	font-size: 150%; 
 	margin-top: 2em; 
 	margin-bottom: .4em; 
 }
 
 .md h2 {
-	font-size: 150%; 
+	font-size: 130%; 
 	margin-top: 1.5em; 
 	margin-bottom: .4em; 
+}
+
+.md h3 {
+	font-size: 110%; 
 }
 
 .md p {

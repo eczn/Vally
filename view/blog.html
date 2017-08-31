@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>{{ blog.title }}</title>
 	{{ style name }}
+
+	{{ blog.preset }}
 </head>
 <body>
 	<!-- 有别于 aside -->
@@ -13,16 +15,31 @@
 			<img class="icon" src="/icon/list.svg" />
 		</div>
 		
-		<div class="blog-header blog-content">
-			<h1>{{ blog.title }}</h1>
+		<div class="blog-header">
+			<div class="vally-header">{{ blog.headerText }}</div>
+			
+			<div class="blog-info blog-content">
+				<div class="tags">
+					{{ get (tag, idx) >>>> blog.tags }}
+					<span class="tag">
+						<img inline-icon class="blog-icon" src="/icon/tag.svg" />
+						<span>{{ tag }}</span>
+					</span>
+					{{ teg }}
+
+					<span class="date">
+						<img inline-icon class="blog-icon" src="/icon/date.svg" />
+						<span>{{ YYMMDD blog.date }}</span>
+					</span>
+				</div>
+				<h1>{{ blog.title }}</h1>
+			</div>
 		</div>
 
 		<div class="md blog-content">
 			{{ blog.content }}
 		</div>
 	</div>
-
-	
 
 	<!-- nav aside -->
 	<nav class="nav-container">

@@ -3,28 +3,38 @@
 	font-size: 16px; 
 }
 
-.blog-header {
-	font-family: "PT Sans", Menlo, Consolas, "-apple-system", BlinkMacSystemFont,"微软雅黑", Verdana, Arial, Helvetica, sans-serif;
+.blog-info {
+	text-align: right;
 }
 
-.blog-header > h1 {
+.blog-header {
+	font-family: "PT Sans", Menlo, Consolas, "-apple-system", BlinkMacSystemFont, "微软雅黑", Verdana, Arial, Helvetica, sans-serif;
+}
+
+.blog-header h1 {
 	font-weight: bold; 
 	font-size: 175%; 
-	
 	position: relative;
 	font-weight: bold; 
 }
 
 .blog-content {
+	padding-top: 2em; 
+	padding-bottom: 2em; 
 	max-width: 600px; 
 	margin: 0 auto; 
 }
 
-@media screen and (max-width: 700px) and (min-width: 320px) {
+@media screen and (max-width: 600px) and (min-width: 320px) {
 	.blog-content {
 		box-sizing: border-box;
 		padding-left: 20px; 
 		padding-right: 20px; 
+	}
+
+	.md > pre {
+		margin-left: -20px; 
+		margin-right: -20px; 
 	}
 }
 

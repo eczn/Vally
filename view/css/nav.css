@@ -27,6 +27,7 @@ body {
 
 .nav-btn {
 	position: absolute;
+	z-index: 100; 
 	right: .4rem; 
 	top: .4rem; 
 }
