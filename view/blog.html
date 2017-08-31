@@ -5,8 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>{{ blog.title }}</title>
 	{{ style name }}
-
-	{{ blog.preset }}
+	
+	{{ if blog.preset }}
+		{{ blog.preset }}
+	{{ fi }}
 </head>
 <body>
 	<!-- 有别于 aside -->
@@ -16,7 +18,11 @@
 		</div>
 		
 		<div class="blog-header">
+			{{ if blog.headerText }}
 			<div class="vally-header">{{ blog.headerText }}</div>
+			{{ else }}
+			<div class="vally-header">eczn's blog</div>
+			{{ fi }}
 			
 			<div class="blog-info blog-content">
 				<div class="tags">

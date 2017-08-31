@@ -89,6 +89,28 @@ body::before {
 	text-align: center;
 }
 
+::selection {
+	color: #FFF;
+	background-color: #C6BCBB;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 16px;
+	background-color: #AAA;
+}
+
+/* 轨道 */  
+::-webkit-scrollbar-track {
+	background-color: #E0E0E0;
+}
+
+/* 定义滑块 */
+::-webkit-scrollbar-thumb {
+	background-color: #AAA;
+} 
+
 @media screen and (max-width: 700px) and (min-width: 320px) {
 	header [inner], footer [inner] {
 		margin-left: 15px; 

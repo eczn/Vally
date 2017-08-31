@@ -155,8 +155,11 @@
 
 .md p {
 	font-size: inherit;
-	text-align: justify;
 	margin-bottom: 1em; 
+}
+
+.md > p {
+	text-align: justify;
 }
 
 .md code, .md pre { 
@@ -234,7 +237,7 @@
 	border-bottom: 1px solid #EEE;
 	width: 60%;
 	/*height: 1em; */
-	margin-bottom: 2em;
+	margin-bottom: 3em;
 	margin-left: auto; 
 	margin-right: auto; 
 

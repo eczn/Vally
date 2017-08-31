@@ -18,6 +18,11 @@
 	font-weight: bold; 
 }
 
+.vally-header {
+	line-height: 400px; 
+	text-align: center; 
+}
+
 .blog-content {
 	padding-top: 2em; 
 	padding-bottom: 2em; 
