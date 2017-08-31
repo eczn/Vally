@@ -1,13 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>{{ blog.title }}</title>
+	{{ style name }}
 </head>
 <body>
-	<div>
-		{{ blog.content }}
+	<!-- 有别于 aside -->
+	<div class="blog-container">
+		<div icon-btn-grey class="nav-btn">
+			<img class="icon" src="/icon/list.svg" />
+		</div>
+		
+		<div class="blog-header blog-content">
+			<h1>{{ blog.title }}</h1>
+		</div>
+
+		<div class="md blog-content">
+			{{ blog.content }}
+		</div>
 	</div>
+
+	
+
+	<!-- nav aside -->
+	<nav class="nav-container">
+		<div class="tab-bar">
+			<input class="for-about for-tab" checked value="about" name="choose-tab" type="radio" />
+			
+			<div class="about tab transition-all">
+				<div class="bg-container">
+					<div class="bg-inner">
+						<p has-bg class="name">eczn*</p>
+					</div>
+				</div>
+
+				<div class="links">
+					<a class="link" href="https://github.com/eczn" target="_blank">
+						<img src="/icon/github.svg" />
+						<span>Github</span>
+					</a>
+					<a class="link" href="https://segmentfault.com/u/eczn" target="_blank">
+						<img src="/icon/sf.svg" />
+						<span>segment<span style="color: rgb(0, 154, 97);">fault</span></span>
+					</a>
+					<a class="link" href="mailto:eczn@moebaka.com" target="_blank">
+						<img src="/icon/mail.svg" />
+						<span>eczn</span>
+					</a>
+					<a class="link" href="http://www.gdut.edu.cn/" target="_blank">
+						<img src="/icon/university.svg" />
+						<span>GDUT</span>
+					</a>
+					
+				</div>
+			</div>
+			<span has-bg class="for-tab-title">About</span>
+		</div>
+		<div class="tab-bar">
+			<input class="for-list for-tab" value="list" name="choose-tab" type="radio" />
+			
+			<div class="list tab transition-all">
+				list list list 
+			</div>
+			<span has-bg class="for-tab-title">List</span>
+		</div>
+	</nav>
 </body>
 </html>
