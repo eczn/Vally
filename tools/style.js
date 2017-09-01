@@ -5,10 +5,19 @@ var file2tag = item => {
 	let o = path.parse(item); 
 	let ext = o.ext
 
-	if (ext === '.js'){
-		return `<script src="/js/${item}"></script>`; 
+	if (item.startWith('//')){
+		let temp = {
+			'.js': `<script src="${item}"></script>`, 
+			'.css': `<link rel="stylesheet" href="${item}">`
+		}
+		
+		return temp[ext]; 
 	} else {
-		return `<link rel="stylesheet" href="/css/${item}">`
+		if (ext === '.js'){
+			return `<script src="/js/${item}"></script>`; 
+		} else {
+			return `<link rel="stylesheet" href="/css/${item}">`
+		}
 	}
 }
 
@@ -46,7 +55,8 @@ let styleTable = {
 let publicFiles = [
 	'flexible.min.js', 
 	'__________.css', 
-	'nav.css'
+	'nav.css',
+	'//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js'
 ].map(file2tag).join(''); 
 
 function addRequireJS(name){
