@@ -5,12 +5,12 @@ var file2tag = item => {
 	let o = path.parse(item); 
 	let ext = o.ext
 
-	if (item.startWith('//')){
+	if (item.startsWith('//')){
 		let temp = {
 			'.js': `<script src="${item}"></script>`, 
 			'.css': `<link rel="stylesheet" href="${item}">`
 		}
-		
+
 		return temp[ext]; 
 	} else {
 		if (ext === '.js'){

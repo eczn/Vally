@@ -43,7 +43,8 @@ var findFileByExt = _.map(describe => {
 
 var readFile = _.map(file => {
 	let temp = path.parse(file)
-	  , name = temp.base; 
+	  , name = temp.base
+	  , ext = temp.ext; 
 
 	return fs.readFile(file).then(data => {
 		return {
