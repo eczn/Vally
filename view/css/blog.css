@@ -30,6 +30,11 @@
 	margin: 0 auto; 
 }
 
+.comment {
+	max-width: 600px; 
+	margin: 0 auto; 
+}
+
 @media screen and (max-width: 600px) and (min-width: 320px) {
 	.blog-content {
 		box-sizing: border-box;
