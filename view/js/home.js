@@ -7,7 +7,9 @@ require.config({
 	}
 });
 
-define(['jquery', 'nav'], function($, nav){
+define(['jquery', 'nav', 'ga'], function($, nav, ga){
+	ga(); 
+
 	$(function(){
 		setTimeout(function(){
 			nav.init(); 
