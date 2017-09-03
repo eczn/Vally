@@ -152,9 +152,7 @@ var makeBlog = vblogs => {
 }
 
 var makeIndex = () => {
-	let html = render.index({
-		title: '破站施工中'
-	}); 
+	let html = render.index(); 
 
 	return fs.writeFile(
 		path.join(DIST, 'index.html'),
