@@ -7,12 +7,19 @@ const logger = require('./tools/logger');
 const initLog = logger.bucket('INIT'.cyan); 
 const deploy = require('./tools/deploy'); 
 
+
 let argv = process.argv.slice(2); 
 let [ operation, ...params ] = argv; 
 
 var todos = {
 	new: function(fileName){
-		
+		const newBlog = require('./tools/new-blog'); 
+
+		newBlog(fileName).then(suc => {
+			console.log('Generate A New Blog Success'); 
+		}).catch(err => {
+			console.log(err); 
+		}); 
 	}, 
 	generate: function(){
 		process.env.VALLY = true; 
