@@ -1,5 +1,5 @@
 // copy.js
-const nativeGlob = require('glob')
+const glob = require('./glob-promise')
 	, path = require('path')
 	, _ = require('ramda')
 	, config = require('../config')
@@ -7,19 +7,6 @@ const nativeGlob = require('glob')
 	, fs = require('then-fs')
 	, VIEW_BASE = config.path.view
 	, BLOG_DIST = config.path.dist
-
-// Promise glob 
-function glob(pattern){
-	return new Promise((res, rej) => {
-		nativeGlob(pattern, (err, list) => {
-			if (err) {
-				rej(err);
-			} else {
-				res(list);
-			}
-		}); 
-	})
-}
 
 // String[] exts -> Promise glob 
 var findFileByExt = _.map(describe => {
