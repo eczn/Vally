@@ -42,7 +42,10 @@ var blog2html = vblog => {
 		blog: vblog
 	}); 
 
-	return fs.writeFile(path.join(vblog_location, 'index.html'), html); 
+	return Promise.all([
+		fs.writeFile(path.join(vblog_location, 'index.html'), html), 
+		fs.writeFile(path.join(vblog_location, 'index.json'), JSON.stringify(vblog)) 
+	])
 }
 
 // 这里需要分页的 
