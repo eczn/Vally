@@ -6,6 +6,7 @@ const write = require('./tools/write');
 const logger = require('./tools/logger'); 
 const initLog = logger.bucket('INIT'.cyan); 
 const deploy = require('./tools/deploy'); 
+const replacer = require('./tools/replacer'); 
 
 
 let argv = process.argv.slice(2); 
@@ -25,9 +26,11 @@ var todos = {
 		process.env.VALLY = true; 
 
 		let now = new Date(); 
+
+
+
 		write().then(initSuc => {
-			let end = new Date(); 
-			initLog(`Generate Success, Time: ${end - now} ms`.yellow); 
+			replacer(); 
 		}); 
 	}, 
 	serve: function(){
