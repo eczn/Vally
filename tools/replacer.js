@@ -136,7 +136,7 @@ module.exports = function(){
 					} else {
 						return pusher.uploadFile(absImg, 'vally' + img).then(ret => {
 							let name = path.parse(img).base; 
-							console.log(`[✔]`.info, 'Upload Success,'.grey, name.debug); 
+							console.log(`[鉁擼`.info, 'Upload Success,'.grey, name.debug); 
 							console.log('    File Hash:'.grey, ret.hash.debug); 
 
 							haveUploaded.push(img); 
