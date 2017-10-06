@@ -18,7 +18,7 @@ var timeSort = _.sort(
 
 var makePage = _.splitEvery(config.blog.countPerPage)
 
-var cateReduce = _.reduce((acc, cur) => {
+var cateReduce = vblogs => vblogs.reduce((acc, cur) => {
 	if (acc[cur.category]){
 		// Push It 
 		acc[cur.category].push(cur)
@@ -35,7 +35,7 @@ var blog2html = vblog => {
 	let BLOG_BASE = path.join(DIST, 'blogs'); 
 	mkdir(BLOG_BASE); 
 
-	let vblog_location = path.join(BLOG_BASE, vblog.ts); 
+	let vblog_location = path.join(BLOG_BASE, vblog.id); 
 	mkdir(vblog_location);
 
 	let html = render.blog({
@@ -106,9 +106,18 @@ var cate2html = cates => {
 	// 建文件夹
 	mkdir(CATE_BASE); 
 
+	let allLength = cateNames.reduce((sum, cateName) => {
+		let cate = cates[cateName]; 
+		return sum + cate.length; 
+	}, 0); 
+
 	let cateIndex = render.cates({
-		cates: cateNames
+		cateNames: cateNames, 
+		cates: cates, 
+		allLength: allLength
 	});
+
+	// console.log(cates['世界观'])
 
 	// Promises 
 	return Promise.all([

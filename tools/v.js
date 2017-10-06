@@ -45,6 +45,10 @@ var informator = (jsonStr, content) => {
 
 	info.intro = introGetter(content);
 
+	info.category = info.category || '未分类'; 
+
+	info.cateIntro = info.cateIntro || '该分类暂无介绍'; 
+
 	info.preset = calcPreset(info); 
 
 	return info; 
