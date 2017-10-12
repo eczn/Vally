@@ -78,6 +78,7 @@
 }
 
 .lines > li {
+	word-break: break-all;
 	transform: scale(.8);
 }
 
@@ -160,10 +161,12 @@
 
 .md > p {
 	text-align: justify;
+	word-break: break-all;
 }
 
 .md code, .md pre { 
 	font-size: inherit;
+	word-break: break-all;
 	font-family: "PT Mono", Consolas, Monaco, Menlo, "-apple-system", BlinkMacSystemFont,"微软雅黑", Verdana, Arial, Helvetica, sans-serif;
 }
 
