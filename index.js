@@ -5,8 +5,9 @@ const collector = require('./tools/collector');
 const write = require('./tools/write'); 
 const logger = require('./tools/logger'); 
 const initLog = logger.bucket('INIT'.cyan); 
-const deploy = require('./tools/deploy'); 
+const deploy = require('./cmd/deploy'); 
 const replacer = require('./tools/replacer'); 
+const sync = require('./cmd/sync')
 
 
 let argv = process.argv.slice(2); 
@@ -71,7 +72,9 @@ var todos = {
 	d: deploy,
 	// Help 
 	help: help, 
-	h: help
+	h: help, 
+	// pull 
+	sync: sync
 }
 
 if (todos[operation]){
