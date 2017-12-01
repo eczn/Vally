@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>eczn's blog</title>
+	<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <style>
 	* {
@@ -26,7 +27,7 @@
 	}
 
 	.loading {
-		text-align: center;
+		margin: 100px auto; 
 	}
 
 	.center {
@@ -63,11 +64,33 @@
 		left: 0; 
 		background-color: rgba(255, 255, 255, .6);
 		width: 100%;
+	}
 
+	.circle {
+	    border-radius: 50%;
+	    width: 64px;
+	    height: 64px;
+	    border: 6px solid rgba(0, 0, 0, 0.1);
+	    border-top: 6px solid #555;
+	}
+
+	@keyframes rotating {
+	    100% {
+	        transform: rotate(360deg);
+	    }
+	}
+
+	.spinner {
+	    border-radius: 50%;
+	    width: 64px;
+	    height: 64px;
+	    border: 6px solid rgba(0, 0, 0, 0.1);
+	    border-top: 6px solid #555;
+	    animation: rotating 1.2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
 	}
 </style>
 <body>
-	<p class="loading">Loading</p>
+	<div class="loading circle spinner"></div>
 	<div class="center">
 		<div class="bottom">
 			<ul class="list">
@@ -80,12 +103,15 @@
 
 	<script>
 		function imgCut(h){
-			return '?imageView2/2/w/9999/h/' + h + '/q/100|imageslim'
+			// return '?imageView2/2/w/9999/h/' + h + '/q/100|imageslim'
+			return ''; 
 		}
 
 		function getDownload(){
 			var imgs = [
 				'http://source.ijarvis.cn/blog/test/a.jpg',
+				'http://source.ijarvis.cn/blog/test/b.png',
+				'http://source.ijarvis.cn/blog/test/c.jpg',
 				'http://source.ijarvis.cn/blog/test/r.png',
 				'http://source.ijarvis.cn/blog/test/s.jpg',
 				'http://source.ijarvis.cn/blog/test/t.png',
@@ -93,28 +119,49 @@
 				'http://source.ijarvis.cn/blog/test/y.jpg'
 			]; 
 
-			var now = Math.floor(
-				Math.random() * imgs.length
-			); 
+			// var now = Math.floor(
+			// 	Math.random() * imgs.length
+			// ); 
+			var rawJSON = window.localStorage.getItem('index-count'); 
+			var now = JSON.parse(rawJSON) || 0; 
+			var RET = imgs[now]
 
-			return imgs[now]; 
+			now = now + 1; 
+			now = now % imgs.length; 
+			window.localStorage.setItem('index-count', JSON.stringify(now)); 
+
+			return RET; 
 		}
 
 		function main(){
 			var screenHeight = parseInt(window.innerHeight / 500) * 1000; 
 			var url = getDownload() + imgCut(screenHeight); 
 
-			imageFade(url); 
+			imageFade(url, url + '?imageAve'); 
 		}
 
-		function imageFade(url){
+		function imageFade(url, aveUrl){
 			var $center = document.getElementsByClassName('center')[0]; 
+			var $html = document.getElementsByTagName('html')[0];
+			var $bottom = document.getElementsByClassName('bottom')[0]; 
 
 			$center.style.backgroundImage = 'url(' + url + ')'; 
 
+
+
+			$.ajax({
+				url: aveUrl, 
+				success: function(res){
+					let RGB = res.RGB; 
+					let target = RGB.replace('0x', '#'); 
+
+					// $html.style.backgroundColor = target; 
+					// $bottom.style.backgroundColor = target; 
+				}
+			})
+
 			console.log('It Works', url); 
 		}
-
 
 		window.onload = main; 
 	</script>

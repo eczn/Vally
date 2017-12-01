@@ -152,6 +152,8 @@
 
 .md h3 {
 	font-size: 110%; 
+	margin-top: 1.5em; 
+	margin-bottom: .5em; 
 }
 
 .md p {
@@ -165,9 +167,9 @@
 }
 
 .md code, .md pre { 
+	font-family: "PT Mono", Consolas, Monaco, Menlo, "-apple-system", BlinkMacSystemFont,"微软雅黑", Verdana, Arial, Helvetica, sans-serif;
 	font-size: inherit;
 	word-break: break-all;
-	font-family: "PT Mono", Consolas, Monaco, Menlo, "-apple-system", BlinkMacSystemFont,"微软雅黑", Verdana, Arial, Helvetica, sans-serif;
 }
 
 .md p > code, .md ul > code, .md ol > code, .md blockquote > code {
@@ -260,6 +262,7 @@
 
 .md > * img {
 	max-width: 100%; 
+	box-sizing: border-box;
 }
 
 .md > figure {
