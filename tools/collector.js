@@ -51,6 +51,7 @@ var collector = () => readBlog().then(
 	_.reject(_.prop('isDraft'))
 )
 
+collector.readBlog = readBlog; 
 
 // 暴露 
 module.exports = collector
