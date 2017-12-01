@@ -188,19 +188,11 @@
 	position: relative;
 	font-size: inherit; 
 	margin-bottom: 1em; 
-	/*border-right: 4px solid #DFDFDF;*/
-	border-radius: 1px; 
-
-	background-image: repeating-linear-gradient(
-		-45deg, 
-		#F9F9F9 0px,
-		#F9F9F9 5px,
-		transparent 0px,
-		transparent 10px
-	); 
-
 	padding-top: 1em; 
 	padding-bottom: 1em; 
+	border-radius: 1px; 
+
+	/* background-color: #FBFBFB;  */
 }
 
 .md ul > li, .md ol > li {
@@ -217,7 +209,7 @@
 	background-color: #EBEBEB;
 	transition: all .5s; 
 	z-index: -1; 
-	border-radius: 0; 
+	border-radius: 4px; 
 }
 
 .md ul > li:hover::after, .md ol > li:hover::after {

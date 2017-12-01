@@ -11,6 +11,7 @@
 	{{ fi }}
 </head>
 <body>
+	<div id="top-anchor"></div>
 	<!-- 有别于 aside -->
 	<div class="blog-container">
 		<div icon-btn-grey class="nav-btn">
@@ -44,6 +45,11 @@
 
 		<div class="md blog-content">
 			{{ blog.content }}
+
+
+			<div class="mobile-btns">
+				<a href="#top-anchor"><img class="back-2-top" src="/icon/2top.svg" /></a>
+			</div>
 		</div>
 
 		<div class="comment">
@@ -97,5 +103,9 @@
 			<span has-bg class="for-tab-title">List</span>
 		</div>
 	</nav>
+
+	<div pc class="control-btns">
+		<a href="#top-anchor"><img class="back-2-top" src="/icon/2top.svg" /></a>
+	</div>
 </body>
 </html>
