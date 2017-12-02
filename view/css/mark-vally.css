@@ -121,6 +121,7 @@
 .md h1 a, .md h2 a, .md h3 a {
 	color: #BBB;
 	text-decoration: none;
+	font-weight: normal;
 }
 
 .md a {
