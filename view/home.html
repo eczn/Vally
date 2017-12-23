@@ -34,6 +34,11 @@
 								<span>{{ tag }}</span>
 							</span>
 							{{ teg }}
+							{{ if isTop blog }}
+							<span class="tag top">
+								<img inline-icon class="blog-icon" src="/icon/star.svg" />
+							</span>
+							{{ else }}{{ fi }}
 							<span class="date">
 								<img inline-icon class="blog-icon" src="/icon/date.svg" />
 								<span>{{ YYMMDD blog.date }}</span>

@@ -68,7 +68,8 @@ var home2html = pages => {
 			blogs: page,
 			pageBtns: pageBtns, 
 			isActive: now => now ? 'page-active' : '', 
-			makeLink: idx => `/pages/${idx}/`
+			makeLink: idx => `/pages/${idx}/`,
+			isTop: blog => blog.isTop
 		}); 
 
 
@@ -143,6 +144,12 @@ var cate2html = cates => {
 // 一个接一个  
 var makeHome = _.pipe(
 	timeSort,
+	vblogs => {
+		let l = vblogs.filter(vblog => vblog.isTop); 
+		let r = vblogs.filter(vblog => !vblog.isTop); 
+		
+		return l.concat(r); 
+	},
 	makePage, 
 	home2html
 ); 
