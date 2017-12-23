@@ -68,8 +68,7 @@ var home2html = pages => {
 			blogs: page,
 			pageBtns: pageBtns, 
 			isActive: now => now ? 'page-active' : '', 
-			makeLink: idx => `/pages/${idx}/`,
-			isTop: blog => blog.isTop
+			makeLink: idx => `/pages/${idx}/`
 		}); 
 
 
