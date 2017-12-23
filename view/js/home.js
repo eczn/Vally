@@ -13,7 +13,7 @@ define(['jquery', 'nav', 'ga'], function($, nav, ga){
 	$(function(){
 		setTimeout(function(){
 			nav.init(); 
-			nav.open(); 
+			// nav.open(); 
 
 			setTimeout(() => {
 				nav.toggle(); 
