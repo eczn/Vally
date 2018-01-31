@@ -170,7 +170,9 @@ var makeBlog = vblogs => {
 }
 
 var makeIndex = () => {
-	let html = render.index(); 
+	let html = render.index({
+		name: 'index'
+	}); 
 
 	return fs.writeFile(
 		path.join(DIST, 'index.html'),

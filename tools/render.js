@@ -13,6 +13,10 @@ const tpl = require('tplser')
 tpl.push({
 	config: config,
 	style: style,
+	preFill: (e, preSet = '00') => {
+		const L = preSet.length; 
+		return (preSet + e).slice(-L); 
+	},
 	YYMMDD: function(date, sep = '-'){
 		return [
 			date.getFullYear(),

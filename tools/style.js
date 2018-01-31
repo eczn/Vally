@@ -49,6 +49,12 @@ let styleTable = {
 			'mark-vally.css',
 			'blog.css'
 		]
+	},
+	index: {
+		js: 'index', 
+		static: [
+			'index.css'
+		]
 	}
 }
 
@@ -70,8 +76,6 @@ module.exports = function(name){
 	let page = styleTable[name]; 
 	let fileArr = page.static; 
 	let jsEntry = page.js; 
-
-
 
 	return addRequireJS(jsEntry) + publicFiles + fileArr.map(file2tag).join(''); 
 }
