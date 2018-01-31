@@ -1,0 +1,52 @@
+/* index.css */
+li {
+	list-style: none; 
+}
+
+.pics {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.pics .pics-title {
+	font-size: 36px ;
+	line-height: 500px;
+}
+
+.pics .imgs .img {
+	position: relative;
+	margin-bottom: 150px;
+}
+
+.pics .img .user  {		
+	font-size: 24px
+}
+
+.pics .img img {
+	/* max-width: 300px; */
+	height: 400px;
+	margin-bottom: 4px;
+	border-radius: 6px;
+}
+
+
+.pics .img .index {
+	position: absolute;
+	right: 0;
+	bottom: 2rem;
+	font-size: 40px;
+}
+
+.pics .img .index .grey {
+	color: #BBB;
+}
+
+.no-data {
+	font-size: 36px;
+	color: #BBB;
+	text-align: right;
+}
+
+.no-data.bottom {
+	margin: 170px 0; 
+}
