@@ -24,6 +24,9 @@ tpl.push({
 			date.getDate()
 		].map(d => d.toString())
 		.map(d => ('00' + d).slice(d.length >= 4 ? -4 : -2)).join(sep); 
+	},
+	list: n => {
+		return new Array(parseInt(n)).fill(0); 
 	}
 }); 
 
