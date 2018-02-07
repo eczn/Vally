@@ -7,29 +7,28 @@
 	{{ style name }}
 </head>
 <body>
-	<div class="pics">
-		<div class="pics-title">照片墙</div>
-
-		<div class="imgs">
-			{{ let 'imgs config.pics }}
-
-			{{ get (img, idx) >>>> imgs }}
-			<li class="img">
-				<img src="{{ img.src }}">
-				<p class="index"><span class="grey">#</span> {{ preFill idx }}</p>
-				<p class="user">{{ img.intro }}</p>
-				{{ if img.time }}
-				<p class="time">上传于 {{ img.time }}</p>
-				{{ else}}
-				{{ fi }}
-			</li>
-			{{ teg }}
+	<div class="main">
+		<div class="timers-wrap">
+			<div class="seconds-wrap">
+				<div class="seconds">
+					
+				</div>
+				<div class="hm">
+					<span class="hh">16</span>
+					<span class="sp">:</span>
+					<span class="mm">32</span>
+				</div>
+			</div>
+	
+			<div class="about-me">
+				<p class="intro">eczn 的破站</p>
+		
+				<div class="contents">
+					<a href="/pages/0/">Blog</a>
+					<a target="_blank" href="https://github.com/eczn">Github</a>					
+				</div>
+			</div>
 		</div>
-
-		<div class="no-data bottom" v-else>
-			共计 {{ preFill imgs.length }} 张照片
-		</div>
-
 	</div>
 </body>
 </html>
