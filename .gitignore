@@ -12,3 +12,5 @@
 /config.js 
 /npm-debug.*
 /package-lock.json
+
+dist/
