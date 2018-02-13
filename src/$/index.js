@@ -57,5 +57,5 @@ function $(vblogs, args){
     
     // let qs_res = query[todo].apply(null, query_args); 
 
-    return QUERY_METHODS[todo].apply(null, query_args); 
+    return QUERY_METHODS[todo].apply($, query_args); 
 }
