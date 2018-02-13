@@ -1,6 +1,20 @@
 基于 node.js 的静态博客程序 
 an blog generator based on node.js
 
+# Vally Star
+
+**第五次啦** 
+
+<s>害怕... 说好的不写了</s>
+
+嘛，功能不是很好。。前几天看了看。。 一年前写的代码，简直 2333，算了完全重写下： 
+
+1. 使用 `webapck` 做工程化、打包
+2. 配合 `V` 类进行文件的读、监听 （不用 webpack 的监听） 
+3. 内建查询器用来查询博客... 比如这样使用： `$('/sort-by/date/desc').exec()` 支持链式，返回 Promise 
+4. 建设中 ..... emmmm ~ 
+
+
 # Vally Q 
 
 **第四次重构 Vally**
