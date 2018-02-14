@@ -53,9 +53,12 @@ function _$(...args){
 function $(vblogs, args){
     let [todo, ...query_args] = args; 
 
+    todo = todo || 'all'; 
+
     query_args.unshift(vblogs); 
     
     // let qs_res = query[todo].apply(null, query_args); 
+    console.log('[ Query ]', args); 
 
     return QUERY_METHODS[todo].apply($, query_args); 
 }

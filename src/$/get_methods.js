@@ -8,4 +8,6 @@ module.exports = () =>
         query[p.name] = require('./' + p.name); 
 
         return query; 
-    }, {});
+    }, {
+        all: arr => arr 
+    });

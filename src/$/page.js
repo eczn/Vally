@@ -16,8 +16,6 @@ function page(vblogs, ...args){
     args[1] = (P + 1) * N; 
 
     args.unshift('slice'); 
-
-    console.log(args)
     
     return this(vblogs, args); 
 }
