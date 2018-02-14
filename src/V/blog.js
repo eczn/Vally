@@ -1,6 +1,7 @@
 const path = require('path')
     , fs = require('then-fs')
     , parse = require('./parse')
+    , broadcast = require('../server/broadcast')
 
 class V { 
     /**
@@ -40,15 +41,7 @@ class V {
             .then(e => e.toString())
             .then(parse) 
     }
-
-    /**
-     * @description 监听
-     */
-    watch(){
-        this.data = null; 
-    }
 }
-
 
 /**
  * @description 
