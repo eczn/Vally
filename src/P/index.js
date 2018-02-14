@@ -4,15 +4,65 @@ const pageCollector = require('./page-collector')
     , webpack = require('webpack')
     , HtmlWebpackPlugin = require('html-webpack-plugin')
     , fs = require('fs')
+    , $ = require('../$')
+    , tplEngine = require('../tpl/engine')
+    , CONFIG = require('../config')
+    , chokidar = require('chokidar')
+    , broadcast = require('../server/broadcast')
+
 
 class P {
-    constructor(name, tpl, style, js){
+    /**
+     * @description 构造函数 
+     * @param { String } name 
+     * @param { String } tpl 
+     * @param { String } style 
+     * @param { String } js 
+     * @param { String } render 
+     */
+    constructor(name, tpl, style, js, render){
         this.name  =  name; 
         this.tpl   =  tpl; 
         this.style =  style; 
         this.js    =  js; 
+        
+        let render_fn; 
+
+        try {
+            render_fn = require(render)
+            this.render = render_fn
+        } catch (err){
+            this.render = () => {
+                console.log('[ P ]', `render not found, \`${name}\``)
+                return null; 
+            }
+
+            console.log('[ P ]', `render loading error, \`${name}\``)
+        }
+        
+        // init tpl
+        this.tplRender = tplEngine.fromFile(tpl, { }); 
+
+        // watcher 
+        let watcher = chokidar.watch(tpl); 
+        watcher.on('change', path => {
+            console.log(`[ P ] Tpl Reload ... ${tpl}`); 
+            this.tplRender = tplEngine.fromFile(tpl, { }); 
+
+            console.log('[ P ] and toHTML ... '); 
+
+            this.toHTML().then(all_done => {
+                // reload 
+                console.log('[ P ] Client Reload'); 
+                broadcast('F5'); 
+            }); 
+        });
     }
 
+    toHTML(...args){
+        return this.render.apply(this, args); 
+    }
+    
     // toHtmlWebpackPlugin(filename){
     //     filename = filename || `./no-set/${this.name}.html`; 
 
@@ -32,6 +82,9 @@ class P {
     // }
 }
 
+P.prototype.$ = $; 
+P.prototype.CONFIG = CONFIG; 
+
 /**
  * @description from path 
  * @param { Path } p 
@@ -39,9 +92,10 @@ class P {
  */
 P.from = p => new P(
     p.name,
-    path.join(p.dir, p.name, p.name + '.ejs'),
+    path.join(p.dir, p.name, p.name + '.html'),
     path.join(p.dir, p.name, p.name + '.css'),
-    path.join(p.dir, p.name, p.name + '.js')
+    path.join(p.dir, p.name, p.name + '.js'),
+    path.join(p.dir, p.name, 'render.js')
 ); 
 
 /**
