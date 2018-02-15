@@ -7,43 +7,17 @@ const express = require('express')
     , logger = require('morgan')
     , http = require('http')
     , broadcast = require('./broadcast')
+    , serve = require('serve')
 
-// var favicon = require('serve-favicon');
 
-let app = express();
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-// app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-app.use(
-    express.static(CONFIG_PATH.dist)
-);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
-});
+// static serve 
 
 let PORT = CONFIG.server.PORT || 4444; 
-let server = http.createServer(app);
-server.listen(PORT);
+
+serve(CONFIG_PATH.dist, {
+    port: PORT
+})
+
 
 console.log(`Listen On ${PORT}`)
 
