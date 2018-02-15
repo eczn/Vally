@@ -6,7 +6,8 @@ let PAGE_LIST = fs.readdirSync(__dirname)
 let ignore = {
     'dist': true, 
     'test.html': true, 
-    '.js': true
+    '.js': true, 
+    'utils': true
 }
 
 PAGE_LIST = PAGE_LIST.filter(
