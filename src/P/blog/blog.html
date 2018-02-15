@@ -4,13 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
+    <title>{{ blog.title }} - vally</title>
 </head>
-<body>
-    {{ blog.content }}
+<body class="body-hidden">
+    <div class="top-header">
+        eczn's blog
+    </div>
 
-    asd
+    <div class="blog-header">
+        <div class="tags">
+        {{ get (item, idx) >>>> blog.tags }}
+            <span class="tags">{{ item }}</span>
+        {{ teg }}
+        </div>
+
+        <div class="title">
+            {{ blog.title }}
+        </div>
+    </div>
+
+
+    <div class="md blog-content">
+        {{ blog.content }}
+    </div>
 
     {{ require 'blog }}
 </body>
