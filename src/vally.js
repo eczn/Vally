@@ -1,24 +1,54 @@
 const P = require('./P')
-    , webpack = require('webpack')
     , path = require('path')
-    , DIST = path.join(__dirname, './dist')
+    , $ = require('./$')
+    , broadcast = require('./server/broadcast')
+    , V = require('./V/blog')
+    , chokidar = require('chokidar')
+    , CONFIG = require('./config')
+
+process.env.dev = true; 
+
+// module bundle 
+require('./bundle')(() => {
+    broadcast('F5'); 
+}); 
 
 
-let pages_config = P.getBundleConfig(DIST); 
+require('./server/app'); 
 
-webpack(pages_config, function (err, stats) {
-    if (err) throw err; 
+let ps = P.getPages(); 
 
-    process.stdout.write(stats.toString({
-        colors: true,
-        modules: false,
-        children: false,
-        chunks: false,
-        chunkModules: false
-    }) + '\n\n'); 
 
-    if (stats.hasErrors()) {
-        console.log('  Build failed with errors.\n'); 
-        process.exit(1); 
-    }
-})
+function page_generator(ps){
+    return Promise.all(
+        ps.map(p => {
+            return p.toHTML();
+        })
+    ); 
+}
+
+// init 
+page_generator(ps); 
+
+let mds = path.join(CONFIG.path.blog, '**\\*.md'); 
+
+let watcher = chokidar.watch(mds, {
+    ignored: /(^|[\/\\])\../,
+    persistent: true
+});
+
+watcher.on('change', path => {
+    console.log(`[ $ ] ${path} changed`); 
+
+    page_generator(ps); 
+
+    broadcast('F5'); 
+}); 
+
+
+// $('sort-by/date/desc')
+//     .$('page/2/1')
+//     .exec()
+//     .then(vblogs => {
+//     console.log(vblogs); 
+// })

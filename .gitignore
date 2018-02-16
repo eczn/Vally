@@ -9,7 +9,7 @@
 /work/blogs/*
 /temp/*
 /old_code/temp/*
-/config.js 
+config.js 
 /npm-debug.*
 /package-lock.json
 
