@@ -4,7 +4,7 @@ const fs = require('then-fs')
 
 module.exports = render; 
 
-function render(id){
+async function render(id){
     let { $, tplRender, CONFIG } = this; 
 
     let CONFIG_PATH = CONFIG.path; 
@@ -12,30 +12,31 @@ function render(id){
     let DIST_BASE = CONFIG_PATH.dist; 
     let PAGE_BASE = path.join(DIST_BASE, 'page'); 
     // let N = CONFIG_BLOG.page_count; 
-    let N = 1; 
+    let N = CONFIG.blog.page_count; 
 
     mkdir(PAGE_BASE); 
     
-    
     // html 
-    let vblogs_query = $('sort-by/date')
-                      .$(`split-every/${N}`)
-                      .exec()
-                    
+    let [pages, blog_count] = await Promise.all([
+        $('sort-by/date').$(`split-every/${N}`).exec(), 
+        $('count').exec()
+    ]); 
 
-    return vblogs_query.then(vblogs_by_pages => {
-        return vblogs_by_pages.map((vblogs, idx) => {
-            let html = tplRender({
-                vblogs
-            }); 
+    let writing = pages.map((page, now_page) => {
+        let html = tplRender({
+            page, 
+            blog_count, 
+            now_page
+        }); 
 
-            let dir = path.join(PAGE_BASE, idx.toString()); 
+        let dir = path.join(PAGE_BASE, now_page.toString()); 
 
-            mkdir(dir); 
+        mkdir(dir); 
 
-            let html_target = path.join(dir, 'index.html'); 
+        let html_target = path.join(dir, 'index.html'); 
 
-            return fs.writeFile(html_target, html); 
-        })
-    })
+        return fs.writeFile(html_target, html); 
+    }); 
+
+    return Promise.all(writing); 
 }

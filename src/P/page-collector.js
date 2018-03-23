@@ -7,9 +7,11 @@ let ignore = {
     'dist': true, 
     'test.html': true, 
     '.js': true, 
-    'utils': true
+    'utils': true, 
+    'global': true
 }
 
+// 忽略 ignore 里列的 
 PAGE_LIST = PAGE_LIST.filter(
     e => {
         let p = path.parse(e); 

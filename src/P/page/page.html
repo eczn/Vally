@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>eczn's Vally - Pages[{{ now_page }}]</title>
 </head>
 <body>
     <h1>分页</h1>
+
+    {{ get (vblog, idx) >>>> page }}
+        <a href="../{{ idx }}">{{ idx }}</a>
+    {{ teg }}
+
+    <ul class="blogs">
+        {{ get (vblog, idx) >>>> page }}
+        <li class="blog">
+            <div class="tags">
+                {{ get (tag, tag_idx) >>> vblog.tags }}
+                <span class="tag">{{ tag }}</span>
+                {{ teg }}
+                <span class="time">{{ vblog.date }}</span>
+            </div>
+
+            <a href="/blog/{{ vblog.id }}">
+                <h1 class="title">{{ vblog.title }}</h1>
+            </a>
+            
+            {{ keysFor vblog.data }}
+
+        </li>
+        {{ teg }}
+    </ul>
+
+    <h1>{{ now_page }}</h1>
+
+    {{ require 'page }}
 </body>
 </html>
