@@ -1,5 +1,5 @@
 {
-  "name": "Vally",
+  "name": "vally",
   "bin": {
     "vally": "index.js"
   },
@@ -46,7 +46,7 @@
     "socket.io-client": "^2.0.4",
     "style-loader": "^0.20.1",
     "then-fs": "^2.0.0",
-    "tplser": "^1.0.2",
+    "tplser": "^1.0.3",
     "url-loader": "^0.6.2",
     "webpack": "^3.11.0",
     "ws": "^4.0.0",
