@@ -4,7 +4,7 @@ const fs = require('then-fs')
 
 module.exports = render; 
 
-function render(){
+async function render(){
     let { $, tplRender, CONFIG } = this; 
 
     let CONFIG_PATH = CONFIG.path; 
@@ -15,23 +15,22 @@ function render(){
     mkdir(BLOG_BASE); 
     
     // html 
-    let vblogs_query = $('sort-by/date').exec();
+    let vblogs = await $('sort-by/date').exec();
 
-    return vblogs_query.then(vblogs => {       
-        let write_all = vblogs.map(vblog => {
-            
-            let html = tplRender({
-                blog: vblog.data
-            }); 
-
-            let dir = path.join(BLOG_BASE, vblog.data.id); 
-            mkdir(dir); 
-
-            let html_path = path.join(dir, 'index.html'); 
-
-            return fs.writeFile(html_path, html); 
+    let write_all = vblogs.map(vblog => {
+        
+        let html = tplRender({
+            blog: vblog.data
         }); 
 
-        return Promise.all(write_all); 
-    })
+        let dir = path.join(BLOG_BASE, vblog.data.id); 
+
+        mkdir(dir); 
+
+        let html_path = path.join(dir, 'index.html'); 
+
+        return fs.writeFile(html_path, html); 
+    }); 
+
+    return Promise.all(write_all); 
 }
