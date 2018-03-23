@@ -13,7 +13,9 @@ function collector(){
         v => v.fresh()
     ); 
 
-    return Promise.all(vblogs_loading); 
+    return Promise.all(vblogs_loading).then(vblogs => {
+        return vblogs.filter(v => !v.isDraft); 
+    }); 
 }
 
 // collector().then(console.log)
