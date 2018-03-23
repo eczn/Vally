@@ -9,15 +9,9 @@ const express = require('express')
     , broadcast = require('./broadcast')
     , serve = require('serve')
 
-
-// static serve 
-
-let PORT = CONFIG.server.PORT || 4444; 
+// Static Servev Port 
+const PORT = CONFIG.server.PORT || 4444; 
 
 serve(CONFIG_PATH.dist, {
     port: PORT
-})
-
-
-console.log(`Listen On ${PORT}`)
-
+}); 

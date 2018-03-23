@@ -9,26 +9,28 @@ const P = require('./P')
 process.env.dev = true; 
 
 // module bundle 
-require('./bundle')(() => {
+let bundler = require('./bundle'); 
+
+bundler.on('re-build', () => {
     broadcast('F5'); 
 }); 
-
 
 require('./server/app'); 
 
 let ps = P.getPages(); 
 
-
 function page_generator(ps){
     return Promise.all(
-        ps.map(p => {
-            return p.toHTML();
-        })
+        ps.map(p => p.toHTML())
     ); 
 }
 
 // init 
-page_generator(ps); 
+bundler.once('first-build', () => {
+    page_generator(ps); 
+}); 
+
+
 
 let mds = path.join(CONFIG.path.blog, '**\\*.md'); 
 
@@ -37,10 +39,10 @@ let watcher = chokidar.watch(mds, {
     persistent: true
 });
 
-watcher.on('change', path => {
+watcher.on('change', async path => {
     console.log(`[ $ ] ${path} changed`); 
 
-    page_generator(ps); 
+    await page_generator(ps)
 
     broadcast('F5'); 
 }); 

@@ -3,18 +3,19 @@ const P = require('./P')
     , path = require('path')
     , CONFIG = require('./config')
     , MODULE_BASE = path.join(CONFIG.path.dist, 'js')
+    , { EventEmitter } = require('events')
     // , broadcast = require('./server/broadcast')
 
 let pages_config = P.getBundleConfig(MODULE_BASE); 
 
+let bus = new EventEmitter(); 
 
-let reloads = []; 
+module.exports = bus; 
 
-module.exports = fn => {
-    reloads.push(fn); 
-} 
 
-webpack(pages_config, function (err, stats) {
+let isFirst = true; 
+
+webpack(pages_config, function(err, stats){
     if (err) throw err; 
 
     process.stdout.write(stats.toString({
@@ -30,10 +31,10 @@ webpack(pages_config, function (err, stats) {
         // process.exit(1); 
     }
 
-    // reload 
+    if (isFirst){
+        isFirst = false; 
+        bus.emit('first-build'); 
+    }
 
-    reloads.forEach(fn => fn()); 
-
-
-    // broadcast('F5'); 
+    bus.emit('re-build');
 }); 
