@@ -60,26 +60,10 @@ class P {
     }
 
     toHTML(...args){
-        return this.render.apply(this, args); 
+        return this.render(...args).then(ok => {
+            console.log('[ Render ]', this.name); 
+        }); 
     }
-    
-    // toHtmlWebpackPlugin(filename){
-    //     filename = filename || `./no-set/${this.name}.html`; 
-
-    //     return new HtmlWebpackPlugin({
-    //         filename: filename, 
-    //         template: this.tpl,
-    //         cache: false, 
-    //         chunks: ['vendors', this.name],
-    //         data: {
-    //             file(){
-    //                 let content = fs.readFileSync('./test.js').toString(); ; 
-    //                 console.log('new content', content); 
-    //                 return content;
-    //             }
-    //         }
-    //     });
-    // }
 }
 
 P.prototype.$ = $; 
@@ -134,6 +118,15 @@ P.getBundleConfig = base => {
                         'style-loader',
                         { loader: 'css-loader', options: { importLoaders: 1 } },
                         // 'postcss-loader'
+                    ]
+                },
+                {
+                    test: /\.scss$/,
+                    use: [
+                        'style-loader',
+                        { loader: 'css-loader', options: { importLoaders: 1 } },
+                        'sass-loader',
+                        'postcss-loader'
                     ]
                 },
                 {
