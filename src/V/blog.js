@@ -2,15 +2,18 @@ const path = require('path')
     , fs = require('then-fs')
     , parse = require('./parse')
     , broadcast = require('../server/broadcast')
+    , MetaProxy = require('./MetaProxy')
 
-class V { 
+
+class V extends MetaProxy { 
     /**
      * @description V constructor 
      * @param { String } file 
      */
     constructor(file) {
-        this.file = file; 
+        super(); 
 
+        this.file = file; 
         // On Load 
         this._ = null; 
     }
