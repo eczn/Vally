@@ -1,5 +1,11 @@
+@import "../global/reset"; 
 @import "../global/vars";
 
 a {
     color: $main-color; 
+}
+
+.blogs {
+    width: 600px; 
+    margin: 0 auto; 
 }

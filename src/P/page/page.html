@@ -2,12 +2,13 @@
 <html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>eczn's Vally - Pages[{{ now_page }}]</title>
+    {{ require 'page }}
 </head>
 <body>
-    <h1>分页</h1>
+    <h1>desEczn*</h1>
 
     {{ get (vblog, idx) >>>> page }}
         <a href="../{{ idx }}">{{ idx }}</a>
@@ -34,7 +35,5 @@
     </ul>
 
     <h1>{{ now_page }}</h1>
-
-    {{ require 'page }}
 </body>
 </html>
