@@ -8,11 +8,9 @@
     {{ require 'page }}
 </head>
 <body>
-    <h1>desEczn*</h1>
-
-    {{ get (vblog, idx) >>>> page }}
-        <a href="../{{ idx }}">{{ idx }}</a>
-    {{ teg }}
+    <header class="blogs">
+        <h1>$ desEczn*</h1>
+    </header>
 
     <ul class="blogs">
         {{ get (vblog, idx) >>>> page }}
@@ -21,19 +19,37 @@
                 {{ get (tag, tag_idx) >>> vblog.tags }}
                 <span class="tag">{{ tag }}</span>
                 {{ teg }}
-                <span class="time">{{ vblog.date }}</span>
+                <span class="time">{{ pageDate vblog.date }}</span>
             </div>
 
-            <a href="../../blog/{{ vblog.id }}">
-                <h1 class="title">{{ vblog.title }}</h1>
+            <a class="title" href="../../blog/{{ vblog.id }}">
+                <span>> {{ vblog.title }}</span>
             </a>
             
-            {{ keysFor vblog.data }}
+            
+            <!-- 
+                title,intro,date,
+                category,tags,head,
+                headerStyle,headPic,
+                ts,id,cateIntro,preset,
+                content
+            -->
+
 
         </li>
         {{ teg }}
     </ul>
 
-    <h1>{{ now_page }}</h1>
+    <footer class="blogs">
+        <div class="pages">
+        {{ get (vblog, idx) >>>> pages }}
+            {{ if == now_page idx }}
+            <a class="now-at" href="../{{ idx }}">{{ idx }}</a>
+            {{ else }}
+            <a href="../{{ idx }}">{{ idx }}</a>
+            {{ fi }}
+        {{ teg }}
+        </div>
+    </footer>
 </body>
 </html>

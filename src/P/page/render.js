@@ -26,7 +26,8 @@ async function render(id){
         let html = tplRender({
             page, 
             blog_count, 
-            now_page
+            now_page, 
+            pages
         }); 
 
         let dir = path.join(PAGE_BASE, now_page.toString()); 
