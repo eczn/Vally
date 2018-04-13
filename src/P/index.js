@@ -3,29 +3,30 @@ const pageCollector = require('./page-collector')
     , path = require('path')
     , webpack = require('webpack')
     , HtmlWebpackPlugin = require('html-webpack-plugin')
-    , fs = require('fs')
+    , fs = require('fs-extra')
     , $ = require('../$')
     , tplEngine = require('../tpl/engine')
     , CONFIG = require('../config')
     , chokidar = require('chokidar')
     , broadcast = require('../server/broadcast')
+    , { mkdir } = require('./utils')
 
 
 class P {
     /**
      * @description 构造函数 
-     * @param { String } name 
-     * @param { String } tpl 
-     * @param { String } style 
-     * @param { String } js 
-     * @param { String } render 
+     * @param { Path } p
      */
-    constructor(name, tpl, style, js, render){
-        this.name  =  name; 
-        this.tpl   =  tpl; 
-        this.style =  style; 
-        this.js    =  js; 
-        
+    constructor(p){
+        this.path = p; 
+        this.name   =  p.name; 
+        this.tpl    =  path.join(p.dir, p.name, p.name + '.html'); 
+        this.style  =  path.join(p.dir, p.name, p.name + '.css'); 
+        this.js     =  path.join(p.dir, p.name, p.name + '.js'); 
+        this.assets =  path.join(p.dir, p.name, 'assets'); 
+        this.assetsWatch(); 
+
+        let render = path.join(p.dir, p.name, 'render.js')
         let render_fn; 
 
         try {
@@ -41,13 +42,13 @@ class P {
         }
         
         // init tpl
-        this.tplRender = tplEngine.fromFile(tpl, { }); 
+        this.tplRender = tplEngine.fromFile(this.tpl, { }); 
 
         // watcher 
-        let watcher = chokidar.watch(tpl); 
+        let watcher = chokidar.watch(this.tpl); 
         watcher.on('change', path => {
-            console.log(`[ P ] Tpl Reload ... ${tpl}`); 
-            this.tplRender = tplEngine.fromFile(tpl, { }); 
+            console.log(`[ P ] Tpl Reload ... ${this.tpl}`); 
+            this.tplRender = tplEngine.fromFile(this.tpl, { }); 
 
             console.log('[ P ] and toHTML ... '); 
 
@@ -64,6 +65,26 @@ class P {
             console.log('[ Render ]', this.name); 
         }); 
     }
+
+    /**
+     * @description 监听资源
+     */
+    assetsWatch(){
+        if (!fs.existsSync(this.assets)) return; 
+
+        let DIST = this.CONFIG.path.dist; 
+        let ASSETS = path.join(DIST, 'assets'); 
+        mkdir(ASSETS); 
+        let THIS_PAGE_ASSETS = path.join(ASSETS, this.name);
+        mkdir(THIS_PAGE_ASSETS); 
+
+        // Copy File 
+        try {
+            fs.copySync(this.assets, THIS_PAGE_ASSETS); 
+        } catch (err) {
+            console.log(err); 
+        }
+    }
 }
 
 P.prototype.$ = $; 
@@ -74,13 +95,7 @@ P.prototype.CONFIG = CONFIG;
  * @param { Path } p 
  * @returns { P }
  */
-P.from = p => new P(
-    p.name,
-    path.join(p.dir, p.name, p.name + '.html'),
-    path.join(p.dir, p.name, p.name + '.css'),
-    path.join(p.dir, p.name, p.name + '.js'),
-    path.join(p.dir, p.name, 'render.js')
-); 
+P.from = p => new P(p); 
 
 /**
  * @description 实例化

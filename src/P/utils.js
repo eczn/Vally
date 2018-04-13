@@ -1,6 +1,6 @@
-const fs = require('fs')
-let utils = {};
+const fs = require('fs-extra')
 
+let utils = {};
 
 utils.mkdir = dir => {
     try {
