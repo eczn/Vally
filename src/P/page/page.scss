@@ -23,6 +23,7 @@ header {
 footer {
     font-size: .3rem; 
     .pages {
+        display: inline-block; 
         > a {
             text-decoration: none; 
             display: inline-block;
@@ -51,6 +52,12 @@ footer {
         list-style: none; 
         position: relative;
         margin-bottom: 3em; 
+        padding-top: 3em; 
+        border-top: 1px solid #DDD; 
+
+        &:nth-child(1) {
+            border: none; 
+        }
 
         .title {
             display: block; 
@@ -77,9 +84,41 @@ footer {
                 display: inline-block; 
             }
 
-            .tag {
-                
+            .tag, .time {
+                span {
+                    display: inline-block; 
+                    vertical-align: middle; 
+                }
+
+                &::before {
+                    vertical-align: middle; 
+                    height: .8em;
+                    width: .8em; 
+                    margin-right: .3em; 
+                    content: ""; 
+                    display: inline-block; 
+                    background-size: cover; 
+                }   
             }
+
+            .tag::before {
+                background-image: url('/assets/page/tag.svg'); 
+            }
+
+            .time::before {
+                background-image: url('/assets/page/date.svg'); 
+            }
+
+            
         }
+    }
+}
+
+
+.footer-docker {
+    position: relative;
+
+    .footer-transition {
+        transition: all .3s; 
     }
 }

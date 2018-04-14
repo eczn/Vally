@@ -17,9 +17,9 @@
         <li class="blog">
             <div class="tags">
                 {{ get (tag, tag_idx) >>> vblog.tags }}
-                <span class="tag">{{ tag }}</span>
+                <div class="tag"><span>{{ tag }}</span></div>
                 {{ teg }}
-                <span class="time">{{ pageDate vblog.date }}</span>
+                <div class="time"><span>{{ pageDate vblog.date }}</span></div>
             </div>
 
             <a class="title" href="../../blog/{{ vblog.id }}">

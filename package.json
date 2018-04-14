@@ -21,6 +21,7 @@
     "cookie-parser": "^1.4.3",
     "css-loader": "^0.28.9",
     "express": "^4.16.2",
+    "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
     "globby": "^8.0.0",
     "gulp": "^3.9.1",
