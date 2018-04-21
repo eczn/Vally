@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/eczn/Vally#readme",
   "dependencies": {
+    "fs-extra": "^5.0.0",
+    "os-homedir": "^1.0.2",
     "tplser": "^1.0.3"
   }
 }
