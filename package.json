@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/eczn/Vally/issues"
   },
-  "homepage": "https://github.com/eczn/Vally#readme"
+  "homepage": "https://github.com/eczn/Vally#readme",
+  "dependencies": {
+    "tplser": "^1.0.3"
+  }
 }
