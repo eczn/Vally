@@ -7,6 +7,9 @@ an blog generator based on node.js
 
 <s>好折腾</s>
 
+> 上一个版本 Star:
+> https://github.com/eczn/Vally/tree/star
+
 # Vally Star
 
 **第五次啦** 
