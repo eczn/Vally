@@ -7,8 +7,5 @@ require('./page.scss');
 
 
 $(async () => {
-    // footerPages(); 
-    let docker = new FooterDocker($('.pages')); 
 
-    window.docker = docker; 
 }); 
