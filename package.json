@@ -1,0 +1,27 @@
+{
+  "name": "vally",
+  "version": "7.0.0",
+  "description": "static blog generator",
+  "main": "src/index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eczn/Vally.git"
+  },
+  "keywords": [
+    "blog",
+    "static",
+    "markdown"
+  ],
+  "author": "eczn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eczn/Vally/issues"
+  },
+  "homepage": "https://github.com/eczn/Vally#readme"
+}
