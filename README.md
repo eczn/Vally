@@ -1,6 +1,12 @@
 基于 node.js 的静态博客程序 
 an blog generator based on node.js
 
+# Vally Star*
+
+换种思路... 对... 重新写一次。
+
+<s>好折腾</s>
+
 # Vally Star
 
 **第五次啦** 
@@ -14,6 +20,7 @@ an blog generator based on node.js
 3. 内建查询器用来查询博客... 比如这样使用： `$('/sort-by/date/desc').exec()` 支持链式，返回 Promise 
 4. 建设中 ..... emmmm ~ 
 
+<s>额。。。失败了 好烦</s>
 
 # Vally Q 
 
