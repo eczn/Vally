@@ -1,4 +1,4 @@
-const sy = require('./index')
+const { sy } = require('./index')
     , { CONFIG_FILE } = require('./home-resource')
     , fs = require('fs-extra')
 
