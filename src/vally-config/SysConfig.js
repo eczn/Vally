@@ -36,6 +36,19 @@ class SysConfig {
     }
 
     /**
+     * @description 读取配置文件 
+     * @returns { Object }
+     */
+    async load(){
+        let temp = await fs.readFile(
+            this.CONFIG_FILE, 
+            'utf-8'
+        ); 
+        
+        return JSON.parse(temp); 
+    }
+
+    /**
      * @description get & save 
      * @returns { Promise } fs.writeFile 所返回的 promise 
      */
