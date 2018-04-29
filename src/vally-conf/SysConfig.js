@@ -39,8 +39,8 @@ class SysConfig {
      * @description 读取配置文件 
      * @returns { Object }
      */
-    async load(){
-        let temp = await fs.readFile(
+    load(){
+        let temp = fs.readFileSync(
             this.CONFIG_FILE, 
             'utf-8'
         ); 

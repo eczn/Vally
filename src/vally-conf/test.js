@@ -1,4 +1,4 @@
-const { sy } = require('./index')
+const { vallyConf } = require('./index')
     , { CONFIG_FILE } = require('./home-resource')
     , fs = require('fs-extra')
 
@@ -14,7 +14,7 @@ async function printConfig(title){
 
     await printConfig('之前的配置'); 
     console.log('------------'); 
-    await sy.getAndSave();
+    await vallyConf.getAndSave();
     console.log('------------\n');
     await printConfig('之后的配置'); 
 
