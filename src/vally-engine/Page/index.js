@@ -10,13 +10,15 @@ class Page extends EventEmitter {
 
         // 初始化 
         this.info = this.getInfo(); 
+        
+        
     }
     
     /**
      * @description 从磁盘读取 index.json 
-     * @returns { js: String, css: String }
+     * @returns { js: String, css: String } 
      */
-    getInfo(){
+    getInfo() {
         let json_path = this.entryResolve('index.json'); 
         let json = fs.readFileSync(json_path); 
         let ret = null; 
