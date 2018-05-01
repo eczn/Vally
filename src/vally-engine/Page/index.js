@@ -10,8 +10,6 @@ class Page extends EventEmitter {
 
         // 初始化 
         this.info = this.getInfo(); 
-        
-        
     }
     
     /**
@@ -19,18 +17,16 @@ class Page extends EventEmitter {
      * @returns { js: String, css: String } 
      */
     getInfo() {
-        let json_path = this.entryResolve('index.json'); 
-        let json = fs.readFileSync(json_path); 
-        let ret = null; 
+        let info = null; 
         try {
-            ret = JSON.parse(json); 
+            info = require(this.entry); 
         } catch (err){
             console.error('[ Error ] Page 错误: 未定义 index.json'); 
             console.error('Page 位置: ', this.entry); 
             process.exit(1);
         }
 
-        return ret; 
+        return info; 
     }
 }
 
