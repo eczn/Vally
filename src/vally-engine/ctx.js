@@ -1,8 +1,10 @@
 const vallyBlogs = require('../vally-blogs')
     , { vallyConf } = require('../vally-conf')
-// 
+    , VallyCtx = require('./VallyCtx')
 
-module.exports = {
-    blogs: vallyBlogs, 
-    conf: vallyConf
-}
+/**
+ * @description 为了配置类型才这样写的
+ * @return { VallyCtx } vallyCtx 
+ */
+module.exports = new VallyCtx(vallyBlogs, vallyConf); 
+
